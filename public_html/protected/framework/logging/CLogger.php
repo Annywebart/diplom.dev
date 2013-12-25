@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CLogger class file
  *
@@ -31,6 +32,7 @@
  */
 class CLogger extends CComponent
 {
+
     const LEVEL_TRACE = 'trace';
     const LEVEL_WARNING = 'warning';
     const LEVEL_ERROR = 'error';
@@ -44,6 +46,7 @@ class CLogger extends CComponent
      * @since 1.1.0
      */
     public $autoFlush = 10000;
+
     /**
      * @var boolean this property will be passed as the parameter to {@link flush()} when it is
      * called in {@link log()} due to the limit of {@link autoFlush} being reached.
@@ -53,30 +56,37 @@ class CLogger extends CComponent
      * @since 1.1.8
      */
     public $autoDump = false;
+
     /**
      * @var array log messages
      */
     private $_logs = array();
+
     /**
      * @var integer number of log messages
      */
     private $_logCount = 0;
+
     /**
      * @var array log levels for filtering (used when filtering)
      */
     private $_levels;
+
     /**
      * @var array log categories for filtering (used when filtering)
      */
     private $_categories;
+
     /**
      * @var array log categories for excluding from filtering (used when filtering)
      */
     private $_except = array();
+
     /**
      * @var array the profiling results (category, token => time in seconds)
      */
     private $_timings;
+
     /**
      * @var boolean if we are processing the log or still accepting new log messages
      * @since 1.1.9
@@ -300,8 +310,7 @@ class CLogger extends CComponent
                     $delta = $log[3] - $last[3];
                     $this->_timings[] = array($message, $category, $delta);
                 } else
-                    throw new CException(Yii::t('yii', 'CProfileLogRoute found a mismatching code block "{token}". Make sure the calls to Yii::beginProfile() and Yii::endProfile() be properly nested.',
-                        array('{token}' => $token)));
+                    throw new CException(Yii::t('yii', 'CProfileLogRoute found a mismatching code block "{token}". Make sure the calls to Yii::beginProfile() and Yii::endProfile() be properly nested.', array('{token}' => $token)));
             }
         }
 
@@ -335,4 +344,5 @@ class CLogger extends CComponent
     {
         $this->raiseEvent('onFlush', $event);
     }
+
 }

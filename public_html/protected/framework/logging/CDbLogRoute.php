@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CDbLogRoute class file.
  *
@@ -7,7 +8,6 @@
  * @copyright 2008-2013 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
-
 
 /**
  * CDbLogRoute stores log messages in a database table.
@@ -23,12 +23,14 @@
  */
 class CDbLogRoute extends CLogRoute
 {
+
     /**
      * @var string the ID of CDbConnection application component. If not set, a SQLite database
      * will be automatically created and used. The SQLite database file is
      * <code>protected/runtime/log-YiiVersion.db</code>.
      */
     public $connectionID;
+
     /**
      * @var string the name of the DB table that stores log content. Defaults to 'YiiLog'.
      * If {@link autoCreateLogTable} is false and you want to create the DB table manually by yourself,
@@ -48,11 +50,13 @@ class CDbLogRoute extends CLogRoute
      * @see autoCreateLogTable
      */
     public $logTableName = 'YiiLog';
+
     /**
      * @var boolean whether the log DB table should be automatically created if not exists. Defaults to true.
      * @see logTableName
      */
     public $autoCreateLogTable = true;
+
     /**
      * @var CDbConnection the DB connection instance
      */
@@ -104,8 +108,7 @@ class CDbLogRoute extends CLogRoute
             if (($this->_db = Yii::app()->getComponent($id)) instanceof CDbConnection)
                 return $this->_db;
             else
-                throw new CException(Yii::t('yii', 'CDbLogRoute.connectionID "{id}" does not point to a valid CDbConnection application component.',
-                    array('{id}' => $id)));
+                throw new CException(Yii::t('yii', 'CDbLogRoute.connectionID "{id}" does not point to a valid CDbConnection application component.', array('{id}' => $id)));
         } else {
             $dbFile = Yii::app()->getRuntimePath() . DIRECTORY_SEPARATOR . 'log-' . Yii::getVersion() . '.db';
             return $this->_db = new CDbConnection('sqlite:' . $dbFile);
@@ -123,9 +126,10 @@ class CDbLogRoute extends CLogRoute
             $command->insert($this->logTableName, array(
                 'level' => $log[1],
                 'category' => $log[2],
-                'logtime' => (int)$log[3],
+                'logtime' => (int) $log[3],
                 'message' => $log[0],
             ));
         }
     }
+
 }

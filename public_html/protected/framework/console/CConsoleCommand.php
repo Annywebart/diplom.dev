@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CConsoleCommand class file.
  *
@@ -48,12 +49,12 @@
  */
 abstract class CConsoleCommand extends CComponent
 {
+
     /**
      * @var string the name of the default action. Defaults to 'index'.
      * @since 1.1.5
      */
     public $defaultAction = 'index';
-
     private $_name;
     private $_runner;
 
@@ -77,6 +78,7 @@ abstract class CConsoleCommand extends CComponent
      */
     public function init()
     {
+        
     }
 
     /**
@@ -212,8 +214,7 @@ abstract class CConsoleCommand extends CComponent
         $options = array(); // named parameters
         $params = array(); // unnamed parameters
         foreach ($args as $arg) {
-            if (preg_match('/^--(\w+)(=(.*))?$/', $arg, $matches)) // an option
-            {
+            if (preg_match('/^--(\w+)(=(.*))?$/', $arg, $matches)) { // an option
                 $name = $matches[1];
                 $value = isset($matches[3]) ? $matches[3] : true;
                 if (isset($options[$name])) {
@@ -560,4 +561,5 @@ abstract class CConsoleCommand extends CComponent
     {
         $this->raiseEvent('onAfterAction', $event);
     }
+
 }

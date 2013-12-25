@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CDbCacheDependency class file.
  *
@@ -22,21 +23,23 @@
  */
 class CDbCacheDependency extends CCacheDependency
 {
+
     /**
      * @var string the ID of a {@link CDbConnection} application component. Defaults to 'db'.
      */
     public $connectionID = 'db';
+
     /**
      * @var string the SQL statement whose result is used to determine if the dependency has been changed.
      * Note, the SQL statement should return back a single value.
      */
     public $sql;
+
     /**
      * @var array parameters (name=>value) to be bound to the SQL statement specified by {@link sql}.
      * @since 1.1.4
      */
     public $params;
-
     private $_db;
 
     /**
@@ -56,7 +59,7 @@ class CDbCacheDependency extends CCacheDependency
     public function __sleep()
     {
         $this->_db = null;
-        return array_keys((array)$this);
+        return array_keys((array) $this);
     }
 
     /**
@@ -99,8 +102,8 @@ class CDbCacheDependency extends CCacheDependency
             if (($this->_db = Yii::app()->getComponent($this->connectionID)) instanceof CDbConnection)
                 return $this->_db;
             else
-                throw new CException(Yii::t('yii', 'CDbCacheDependency.connectionID "{id}" is invalid. Please make sure it refers to the ID of a CDbConnection application component.',
-                    array('{id}' => $this->connectionID)));
+                throw new CException(Yii::t('yii', 'CDbCacheDependency.connectionID "{id}" is invalid. Please make sure it refers to the ID of a CDbConnection application component.', array('{id}' => $this->connectionID)));
         }
     }
+
 }

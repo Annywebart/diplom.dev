@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CFileCacheDependency class file.
  *
@@ -22,6 +23,7 @@
  */
 class CFileCacheDependency extends CCacheDependency
 {
+
     /**
      * @var string the name of the file whose last modification time is used to
      * check if the dependency has been changed.
@@ -50,4 +52,5 @@ class CFileCacheDependency extends CCacheDependency
         else
             throw new CException(Yii::t('yii', 'CFileCacheDependency.fileName cannot be empty.'));
     }
+
 }

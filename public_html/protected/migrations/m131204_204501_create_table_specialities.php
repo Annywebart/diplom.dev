@@ -2,6 +2,7 @@
 
 class m131204_204501_create_table_specialities extends CDbMigration
 {
+
     public function up()
     {
         $this->execute("

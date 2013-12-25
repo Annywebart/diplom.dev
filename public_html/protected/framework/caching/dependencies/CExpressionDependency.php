@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CExpressionDependency class file.
  *
@@ -22,6 +23,7 @@
  */
 class CExpressionDependency extends CCacheDependency
 {
+
     /**
      * @var string the PHP expression whose result is used to determine the dependency.
      * The expression can also be a valid serializable PHP callback.
@@ -52,4 +54,5 @@ class CExpressionDependency extends CCacheDependency
     {
         return $this->evaluateExpression($this->expression);
     }
+
 }

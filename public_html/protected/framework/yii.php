@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Yii bootstrap file.
  *
@@ -9,8 +10,7 @@
  * @package system
  * @since 1.0
  */
-
-require(dirname(__FILE__).'/YiiBase.php');
+require(dirname(__FILE__) . '/YiiBase.php');
 
 /**
  * Yii is a helper class serving common framework functionalities.
@@ -24,4 +24,5 @@ require(dirname(__FILE__).'/YiiBase.php');
  */
 class Yii extends YiiBase
 {
+    
 }

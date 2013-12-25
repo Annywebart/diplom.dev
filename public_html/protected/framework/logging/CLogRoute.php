@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CLogRoute class file.
  *
@@ -30,25 +31,30 @@
  */
 abstract class CLogRoute extends CComponent
 {
+
     /**
      * @var boolean whether to enable this log route. Defaults to true.
      */
     public $enabled = true;
+
     /**
      * @var string list of levels separated by comma or space. Defaults to empty, meaning all levels.
      */
     public $levels = '';
+
     /**
      * @var mixed array of categories, or string list separated by comma or space.
      * Defaults to empty array, meaning all categories.
      */
     public $categories = array();
+
     /**
      * @var mixed array of categories, or string list separated by comma or space, to EXCLUDE from logs.
      * Defaults to empty array, meaning no categories are excluded.
      * This will exclude any categories after $categories has been ran.
      */
     public $except = array();
+
     /**
      * @var mixed the additional filter (eg {@link CLogFilter}) that can be applied to the log messages.
      * The value of this property will be passed to {@link Yii::createComponent} to create
@@ -59,12 +65,12 @@ abstract class CLogRoute extends CComponent
      * Defaults to null, meaning no filter will be used.
      */
     public $filter;
+
     /**
      * @var array the logs that are collected so far by this log route.
      * @since 1.1.0
      */
     public $logs = array();
-
 
     /**
      * Initializes the route.
@@ -72,6 +78,7 @@ abstract class CLogRoute extends CComponent
      */
     public function init()
     {
+        
     }
 
     /**

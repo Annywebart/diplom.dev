@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CFormatter class file.
  *
@@ -50,6 +51,7 @@
  */
 class CFormatter extends CApplicationComponent
 {
+
     /**
      * @var CHtmlPurifier
      */
@@ -59,14 +61,17 @@ class CFormatter extends CApplicationComponent
      * @var string the format string to be used to format a date using PHP date() function. Defaults to 'Y/m/d'.
      */
     public $dateFormat = 'Y/m/d';
+
     /**
      * @var string the format string to be used to format a time using PHP date() function. Defaults to 'h:i:s A'.
      */
     public $timeFormat = 'h:i:s A';
+
     /**
      * @var string the format string to be used to format a date and time using PHP date() function. Defaults to 'Y/m/d h:i:s A'.
      */
     public $datetimeFormat = 'Y/m/d h:i:s A';
+
     /**
      * @var array the format used to format a number with PHP number_format() function.
      * Three elements may be specified: "decimals", "decimalSeparator" and "thousandSeparator".
@@ -74,17 +79,20 @@ class CFormatter extends CApplicationComponent
      * and the thousands separator character.
      */
     public $numberFormat = array('decimals' => null, 'decimalSeparator' => null, 'thousandSeparator' => null);
+
     /**
      * @var array the text to be displayed when formatting a boolean value. The first element corresponds
      * to the text display for false, the second element for true. Defaults to <code>array('No', 'Yes')</code>.
      */
     public $booleanFormat = array('No', 'Yes');
+
     /**
      * @var array the options to be passed to CHtmlPurifier instance used in this class. CHtmlPurifier is used
      * in {@link formatHtml} method, so this property could be useful to customize HTML filtering behavior.
      * @since 1.1.13
      */
     public $htmlPurifierOptions = array();
+
     /**
      * @var array the format used to format size (bytes). Three elements may be specified: "base", "decimals" and "decimalSeparator".
      * They correspond to the base at which a kilobyte is calculated (1000 or 1024 bytes per kilobyte, defaults to 1024),
@@ -226,11 +234,11 @@ class CFormatter extends CApplicationComponent
     {
         if (is_string($time)) {
             if (ctype_digit($time) || ($time{0} == '-' && ctype_digit(substr($time, 1))))
-                return (int)$time;
+                return (int) $time;
             else
                 return strtotime($time);
         }
-        return (int)$time;
+        return (int) $time;
     }
 
     /**
@@ -331,4 +339,5 @@ class CFormatter extends CApplicationComponent
                 return $verbose ? Yii::t('yii', '{n} terabyte|{n} terabytes', $params) : Yii::t('yii', '{n} TB', $params);
         }
     }
+
 }

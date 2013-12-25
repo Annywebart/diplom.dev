@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file contains the CDbFixtureManager class.
  *
@@ -40,28 +41,33 @@
  */
 class CDbFixtureManager extends CApplicationComponent
 {
+
     /**
      * @var string the name of the initialization script that would be executed before the whole test set runs.
      * Defaults to 'init.php'. If the script does not exist, every table with a fixture file will be reset.
      */
     public $initScript = 'init.php';
+
     /**
      * @var string the suffix for fixture initialization scripts.
      * If a table is associated with such a script whose name is TableName suffixed this property value,
      * then the script will be executed each time before the table is reset.
      */
     public $initScriptSuffix = '.init.php';
+
     /**
      * @var string the base path containing all fixtures. Defaults to null, meaning
      * the path 'protected/tests/fixtures'.
      */
     public $basePath;
+
     /**
      * @var string the ID of the database connection. Defaults to 'db'.
      * Note, data in this database may be deleted or modified during testing.
      * Make sure you have a backup database.
      */
     public $connectionID = 'db';
+
     /**
      * @var array list of database schemas that the test tables may reside in. Defaults to
      * array(''), meaning using the default schema (an empty string refers to the
@@ -69,16 +75,15 @@ class CDbFixtureManager extends CApplicationComponent
      * so that fixture data can be populated into the database without causing problem.
      */
     public $schemas = array('');
-
     private $_db;
     private $_fixtures;
     private $_rows; // fixture name, row alias => row
     private $_records; // fixture name, row alias => record (or class name)
 
-
     /**
      * Initializes this application component.
      */
+
     public function init()
     {
         parent::init();
@@ -97,8 +102,7 @@ class CDbFixtureManager extends CApplicationComponent
         if ($this->_db === null) {
             $this->_db = Yii::app()->getComponent($this->connectionID);
             if (!$this->_db instanceof CDbConnection)
-                throw new CException(Yii::t('yii', 'CDbTestFixture.connectionID "{id}" is invalid. Please make sure it refers to the ID of a CDbConnection application component.',
-                    array('{id}' => $this->connectionID)));
+                throw new CException(Yii::t('yii', 'CDbTestFixture.connectionID "{id}" is invalid. Please make sure it refers to the ID of a CDbConnection application component.', array('{id}' => $this->connectionID)));
         }
         return $this->_db;
     }
@@ -339,4 +343,5 @@ class CDbFixtureManager extends CApplicationComponent
         } else
             return false;
     }
+
 }

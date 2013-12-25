@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CDateTimeParser class file
  *
@@ -55,6 +56,7 @@
  */
 class CDateTimeParser
 {
+
     /**
      * @var boolean whether 'mbstring' PHP extension available. This static property introduced for
      * the better overall performance of the class functionality. Checking 'mbstring' availability
@@ -87,128 +89,112 @@ class CDateTimeParser
         $n = self::$_mbstringAvailable ? mb_strlen($value, Yii::app()->charset) : strlen($value);
         foreach ($tokens as $token) {
             switch ($token) {
-                case 'yyyy':
-                {
-                    if (($year = self::parseInteger($value, $i, 4, 4)) === false)
-                        return false;
-                    $i += 4;
-                    break;
-                }
-                case 'yy':
-                {
-                    if (($year = self::parseInteger($value, $i, 1, 2)) === false)
-                        return false;
-                    $i += strlen($year);
-                    break;
-                }
-                case 'MMMM':
-                {
-                    $monthName = '';
-                    if (($month = self::parseMonth($value, $i, 'wide', $monthName)) === false)
-                        return false;
-                    $i += self::$_mbstringAvailable ? mb_strlen($monthName, Yii::app()->charset) : strlen($monthName);
-                    break;
-                }
-                case 'MMM':
-                {
-                    $monthName = '';
-                    if (($month = self::parseMonth($value, $i, 'abbreviated', $monthName)) === false)
-                        return false;
-                    $i += self::$_mbstringAvailable ? mb_strlen($monthName, Yii::app()->charset) : strlen($monthName);
-                    break;
-                }
-                case 'MM':
-                {
-                    if (($month = self::parseInteger($value, $i, 2, 2)) === false)
-                        return false;
-                    $i += 2;
-                    break;
-                }
-                case 'M':
-                {
-                    if (($month = self::parseInteger($value, $i, 1, 2)) === false)
-                        return false;
-                    $i += strlen($month);
-                    break;
-                }
-                case 'dd':
-                {
-                    if (($day = self::parseInteger($value, $i, 2, 2)) === false)
-                        return false;
-                    $i += 2;
-                    break;
-                }
-                case 'd':
-                {
-                    if (($day = self::parseInteger($value, $i, 1, 2)) === false)
-                        return false;
-                    $i += strlen($day);
-                    break;
-                }
-                case 'h':
-                case 'H':
-                {
-                    if (($hour = self::parseInteger($value, $i, 1, 2)) === false)
-                        return false;
-                    $i += strlen($hour);
-                    break;
-                }
-                case 'hh':
-                case 'HH':
-                {
-                    if (($hour = self::parseInteger($value, $i, 2, 2)) === false)
-                        return false;
-                    $i += 2;
-                    break;
-                }
-                case 'm':
-                {
-                    if (($minute = self::parseInteger($value, $i, 1, 2)) === false)
-                        return false;
-                    $i += strlen($minute);
-                    break;
-                }
-                case 'mm':
-                {
-                    if (($minute = self::parseInteger($value, $i, 2, 2)) === false)
-                        return false;
-                    $i += 2;
-                    break;
-                }
-                case 's':
-                {
-                    if (($second = self::parseInteger($value, $i, 1, 2)) === false)
-                        return false;
-                    $i += strlen($second);
-                    break;
-                }
-                case 'ss':
-                {
-                    if (($second = self::parseInteger($value, $i, 2, 2)) === false)
-                        return false;
-                    $i += 2;
-                    break;
-                }
-                case 'a':
-                {
-                    if (($ampm = self::parseAmPm($value, $i)) === false)
-                        return false;
-                    if (isset($hour)) {
-                        if ($hour == 12 && $ampm === 'am')
-                            $hour = 0;
-                        elseif ($hour < 12 && $ampm === 'pm')
-                            $hour += 12;
+                case 'yyyy': {
+                        if (($year = self::parseInteger($value, $i, 4, 4)) === false)
+                            return false;
+                        $i += 4;
+                        break;
                     }
-                    $i += 2;
-                    break;
-                }
-                default:
-                    {
-                    $tn = self::$_mbstringAvailable ? mb_strlen($token, Yii::app()->charset) : strlen($token);
-                    if ($i >= $n || ($token{0} != '?' && (self::$_mbstringAvailable ? mb_substr($value, $i, $tn, Yii::app()->charset) : substr($value, $i, $tn)) !== $token))
-                        return false;
-                    $i += $tn;
-                    break;
+                case 'yy': {
+                        if (($year = self::parseInteger($value, $i, 1, 2)) === false)
+                            return false;
+                        $i += strlen($year);
+                        break;
+                    }
+                case 'MMMM': {
+                        $monthName = '';
+                        if (($month = self::parseMonth($value, $i, 'wide', $monthName)) === false)
+                            return false;
+                        $i += self::$_mbstringAvailable ? mb_strlen($monthName, Yii::app()->charset) : strlen($monthName);
+                        break;
+                    }
+                case 'MMM': {
+                        $monthName = '';
+                        if (($month = self::parseMonth($value, $i, 'abbreviated', $monthName)) === false)
+                            return false;
+                        $i += self::$_mbstringAvailable ? mb_strlen($monthName, Yii::app()->charset) : strlen($monthName);
+                        break;
+                    }
+                case 'MM': {
+                        if (($month = self::parseInteger($value, $i, 2, 2)) === false)
+                            return false;
+                        $i += 2;
+                        break;
+                    }
+                case 'M': {
+                        if (($month = self::parseInteger($value, $i, 1, 2)) === false)
+                            return false;
+                        $i += strlen($month);
+                        break;
+                    }
+                case 'dd': {
+                        if (($day = self::parseInteger($value, $i, 2, 2)) === false)
+                            return false;
+                        $i += 2;
+                        break;
+                    }
+                case 'd': {
+                        if (($day = self::parseInteger($value, $i, 1, 2)) === false)
+                            return false;
+                        $i += strlen($day);
+                        break;
+                    }
+                case 'h':
+                case 'H': {
+                        if (($hour = self::parseInteger($value, $i, 1, 2)) === false)
+                            return false;
+                        $i += strlen($hour);
+                        break;
+                    }
+                case 'hh':
+                case 'HH': {
+                        if (($hour = self::parseInteger($value, $i, 2, 2)) === false)
+                            return false;
+                        $i += 2;
+                        break;
+                    }
+                case 'm': {
+                        if (($minute = self::parseInteger($value, $i, 1, 2)) === false)
+                            return false;
+                        $i += strlen($minute);
+                        break;
+                    }
+                case 'mm': {
+                        if (($minute = self::parseInteger($value, $i, 2, 2)) === false)
+                            return false;
+                        $i += 2;
+                        break;
+                    }
+                case 's': {
+                        if (($second = self::parseInteger($value, $i, 1, 2)) === false)
+                            return false;
+                        $i += strlen($second);
+                        break;
+                    }
+                case 'ss': {
+                        if (($second = self::parseInteger($value, $i, 2, 2)) === false)
+                            return false;
+                        $i += 2;
+                        break;
+                    }
+                case 'a': {
+                        if (($ampm = self::parseAmPm($value, $i)) === false)
+                            return false;
+                        if (isset($hour)) {
+                            if ($hour == 12 && $ampm === 'am')
+                                $hour = 0;
+                            elseif ($hour < 12 && $ampm === 'pm')
+                                $hour += 12;
+                        }
+                        $i += 2;
+                        break;
+                    }
+                default: {
+                        $tn = self::$_mbstringAvailable ? mb_strlen($token, Yii::app()->charset) : strlen($token);
+                        if ($i >= $n || ($token{0} != '?' && (self::$_mbstringAvailable ? mb_substr($value, $i, $tn, Yii::app()->charset) : substr($value, $i, $tn)) !== $token))
+                            return false;
+                        $i += $tn;
+                        break;
                     }
             }
         }
@@ -228,13 +214,12 @@ class CDateTimeParser
             else
                 $year += 2000;
         }
-        $year = (int)$year;
-        $month = (int)$month;
-        $day = (int)$day;
+        $year = (int) $year;
+        $month = (int) $month;
+        $day = (int) $day;
 
         if (
-            !isset($hour) && !isset($minute) && !isset($second)
-            && !isset($defaults['hour']) && !isset($defaults['minute']) && !isset($defaults['second'])
+                !isset($hour) && !isset($minute) && !isset($second) && !isset($defaults['hour']) && !isset($defaults['minute']) && !isset($defaults['second'])
         )
             $hour = $minute = $second = 0;
         else {
@@ -244,9 +229,9 @@ class CDateTimeParser
                 $minute = isset($defaults['minute']) ? $defaults['minute'] : date('i');
             if (!isset($second))
                 $second = isset($defaults['second']) ? $defaults['second'] : date('s');
-            $hour = (int)$hour;
-            $minute = (int)$minute;
-            $second = (int)$second;
+            $hour = (int) $hour;
+            $minute = (int) $minute;
+            $second = (int) $second;
         }
 
         if (CTimestamp::isValidDate($year, $month, $day) && CTimestamp::isValidTime($hour, $minute, $second))
@@ -258,6 +243,7 @@ class CDateTimeParser
     /*
      * @param string $pattern the pattern that the date string is following
      */
+
     private static function tokenize($pattern)
     {
         if (!($n = self::$_mbstringAvailable ? mb_strlen($pattern, Yii::app()->charset) : strlen($pattern)))
@@ -318,8 +304,7 @@ class CDateTimeParser
         $valueLength = self::$_mbstringAvailable ? mb_strlen($value, Yii::app()->charset) : strlen($value);
         for ($len = 1; $offset + $len <= $valueLength; $len++) {
             $monthName = self::$_mbstringAvailable ? mb_substr($value, $offset, $len, Yii::app()->charset) : substr($value, $offset, $len);
-            if (!preg_match('/^[\p{L}\p{M}]+$/u', $monthName)) // unicode aware replacement for ctype_alpha($monthName)
-            {
+            if (!preg_match('/^[\p{L}\p{M}]+$/u', $monthName)) { // unicode aware replacement for ctype_alpha($monthName)
                 $monthName = self::$_mbstringAvailable ? mb_substr($monthName, 0, -1, Yii::app()->charset) : substr($monthName, 0, -1);
                 break;
             }
@@ -338,4 +323,5 @@ class CDateTimeParser
             return false;
         return $v;
     }
+
 }

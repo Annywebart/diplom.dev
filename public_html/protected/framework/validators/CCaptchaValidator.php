@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CCaptchaValidator class file.
  *
@@ -19,16 +20,19 @@
  */
 class CCaptchaValidator extends CValidator
 {
+
     /**
      * @var boolean whether the comparison is case sensitive. Defaults to false.
      */
     public $caseSensitive = false;
+
     /**
      * @var string ID of the action that renders the CAPTCHA image. Defaults to 'captcha',
      * meaning the 'captcha' action declared in the current controller.
      * This can also be a route consisting of controller ID and action ID.
      */
     public $captchaAction = 'captcha';
+
     /**
      * @var boolean whether the attribute value can be null or empty.
      * Defaults to false, meaning the attribute is invalid if it is empty.
@@ -63,16 +67,14 @@ class CCaptchaValidator extends CValidator
     protected function getCaptchaAction()
     {
         if (($captcha = Yii::app()->getController()->createAction($this->captchaAction)) === null) {
-            if (strpos($this->captchaAction, '/') !== false) // contains controller or module
-            {
+            if (strpos($this->captchaAction, '/') !== false) { // contains controller or module
                 if (($ca = Yii::app()->createController($this->captchaAction)) !== null) {
                     list($controller, $actionID) = $ca;
                     $captcha = $controller->createAction($actionID);
                 }
             }
             if ($captcha === null)
-                throw new CException(Yii::t('yii', 'CCaptchaValidator.action "{id}" is invalid. Unable to find such an action in the current controller.',
-                    array('{id}' => $this->captchaAction)));
+                throw new CException(Yii::t('yii', 'CCaptchaValidator.action "{id}" is invalid. Unable to find such an action in the current controller.', array('{id}' => $this->captchaAction)));
         }
         return $captcha;
     }
@@ -116,5 +118,5 @@ if(jQuery.trim(value)!='') {
 
         return $js;
     }
-}
 
+}

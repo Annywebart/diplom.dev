@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CRedisCache class file
  *
@@ -43,26 +44,32 @@
  */
 class CRedisCache extends CCache
 {
+
     /**
      * @var string hostname to use for connecting to the redis server. Defaults to 'localhost'.
      */
     public $hostname = 'localhost';
+
     /**
      * @var int the port to use for connecting to the redis server. Default port is 6379.
      */
     public $port = 6379;
+
     /**
      * @var string the password to use to authenticate with the redis server. If not set, no AUTH command will be sent.
      */
     public $password;
+
     /**
      * @var int the redis database to use. This is an integer value starting from 0. Defaults to 0.
      */
     public $database = 0;
+
     /**
      * @var float timeout to use for connection to redis. If not set the timeout set in php.ini will be used: ini_get("default_socket_timeout")
      */
     public $timeout = null;
+
     /**
      * @var resource redis socket connection
      */
@@ -76,17 +83,14 @@ class CRedisCache extends CCache
     protected function connect()
     {
         $this->_socket = @stream_socket_client(
-            $this->hostname . ':' . $this->port,
-            $errorNumber,
-            $errorDescription,
-            $this->timeout ? $this->timeout : ini_get("default_socket_timeout")
+                        $this->hostname . ':' . $this->port, $errorNumber, $errorDescription, $this->timeout ? $this->timeout : ini_get("default_socket_timeout")
         );
         if ($this->_socket) {
             if ($this->password !== null)
                 $this->executeCommand('AUTH', array($this->password));
             $this->executeCommand('SELECT', array($this->database));
         } else
-            throw new CException('Failed to connect to redis: ' . $errorDescription, (int)$errorNumber);
+            throw new CException('Failed to connect to redis: ' . $errorDescription, (int) $errorNumber);
     }
 
     /**
@@ -155,7 +159,7 @@ class CRedisCache extends CCache
                 }
                 return substr($data, 0, -2);
             case '*': // Multi-bulk replies
-                $count = (int)$line;
+                $count = (int) $line;
                 $data = array();
                 for ($i = 0; $i < $count; $i++)
                     $data[] = $this->parseResponse();
@@ -203,8 +207,8 @@ class CRedisCache extends CCache
     protected function setValue($key, $value, $expire)
     {
         if ($expire == 0)
-            return (bool)$this->executeCommand('SET', array($key, $value));
-        return (bool)$this->executeCommand('SETEX', array($key, $expire, $value));
+            return (bool) $this->executeCommand('SET', array($key, $value));
+        return (bool) $this->executeCommand('SETEX', array($key, $expire, $value));
     }
 
     /**
@@ -219,7 +223,7 @@ class CRedisCache extends CCache
     protected function addValue($key, $value, $expire)
     {
         if ($expire == 0)
-            return (bool)$this->executeCommand('SETNX', array($key, $value));
+            return (bool) $this->executeCommand('SETNX', array($key, $value));
 
         if ($this->executeCommand('SETNX', array($key, $value))) {
             $this->executeCommand('EXPIRE', array($key, $expire));
@@ -236,7 +240,7 @@ class CRedisCache extends CCache
      */
     protected function deleteValue($key)
     {
-        return (bool)$this->executeCommand('DEL', array($key));
+        return (bool) $this->executeCommand('DEL', array($key));
     }
 
     /**
@@ -248,4 +252,5 @@ class CRedisCache extends CCache
     {
         return $this->executeCommand('FLUSHDB');
     }
+
 }

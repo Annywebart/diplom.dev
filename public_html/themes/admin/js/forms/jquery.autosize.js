@@ -2,42 +2,42 @@
 // (c) 2011 Jack Moore - jacklmoore.com
 // license: www.opensource.org/licenses/mit-license.php
 
-(function ($, undefined) {
-    var 
-    hidden = 'hidden',
-    copy = '<textarea style="position:absolute; top:-9999px; left:-9999px; right:auto; bottom:auto; box-sizing:content-box; word-wrap:break-word; height:0 !important; min-height:0 !important; overflow:hidden">',
-    // line-height is omitted because IE7/IE8 doesn't return the correct value.
-    copyStyle = [
-        'fontFamily',
-        'fontSize',
-        'fontWeight',
-        'fontStyle',
-        'letterSpacing',
-        'textTransform',
-        'wordSpacing'
-    ],
-    oninput = 'oninput',
-    onpropertychange = 'onpropertychange',
-    test = $(copy)[0];
+(function($, undefined) {
+    var
+            hidden = 'hidden',
+            copy = '<textarea style="position:absolute; top:-9999px; left:-9999px; right:auto; bottom:auto; box-sizing:content-box; word-wrap:break-word; height:0 !important; min-height:0 !important; overflow:hidden">',
+            // line-height is omitted because IE7/IE8 doesn't return the correct value.
+            copyStyle = [
+                'fontFamily',
+                'fontSize',
+                'fontWeight',
+                'fontStyle',
+                'letterSpacing',
+                'textTransform',
+                'wordSpacing'
+            ],
+            oninput = 'oninput',
+            onpropertychange = 'onpropertychange',
+            test = $(copy)[0];
 
     test.setAttribute(oninput, "return");
 
     if ($.isFunction(test[oninput]) || onpropertychange in test) {
-        $.fn.autosize = function (className) {
-            return this.each(function () {
-                var 
-                ta = this,
-                $ta = $(ta).css({
-                    overflow: hidden, 
-                    overflowY: hidden, 
+        $.fn.autosize = function(className) {
+            return this.each(function() {
+                var
+                        ta = this,
+                        $ta = $(ta).css({
+                    overflow: hidden,
+                    overflowY: hidden,
                     wordWrap: 'break-word'
                 }),
                 mirror = $(copy).addClass(className || 'autosizejs')[0],
-                minHeight = $ta.height(),
-                maxHeight = parseInt($ta.css('maxHeight'), 10),
-                active,
-                i = copyStyle.length,
-                boxOffset = ($ta.css('box-sizing') || $ta.css('-moz-box-sizing') || $ta.css('-webkit-box-sizing') ) === 'border-box' ? $ta.outerHeight() - $ta.height() : 0
+                        minHeight = $ta.height(),
+                        maxHeight = parseInt($ta.css('maxHeight'), 10),
+                        active,
+                        i = copyStyle.length,
+                        boxOffset = ($ta.css('box-sizing') || $ta.css('-moz-box-sizing') || $ta.css('-webkit-box-sizing')) === 'border-box' ? $ta.outerHeight() - $ta.height() : 0
 
                 // Opera returns '-1px' when max-height is set to 'none'.
                 maxHeight = maxHeight && maxHeight > 0 ? maxHeight : 9e4;
@@ -80,10 +80,10 @@
                         // Setting the minHeight and maxHeight will restrict webkit resize 
                         // to only resizing the width.
                         ta.style.height = ta.style.minHeight = ta.style.maxHeight = height + boxOffset + 'px';
-                        
+
                         // This small timeout gives IE a chance to draw it's scrollbar
                         // before adjust can be run again (prevents an infinite loop).
-                        setTimeout(function () {
+                        setTimeout(function() {
                             active = false;
                         }, 1);
                     }
@@ -123,10 +123,10 @@
                 // Call adjust in case the textarea already contains text.
                 adjust();
             });
-        }; 
+        };
     } else {
         // Makes no changes for older browsers (FireFox3- and Safari4-)
-        $.fn.autosize = function () {
+        $.fn.autosize = function() {
             return this;
         };
     }

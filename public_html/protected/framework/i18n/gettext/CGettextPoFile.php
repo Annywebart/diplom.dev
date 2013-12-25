@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CGettextPoFile class file.
  *
@@ -17,6 +18,7 @@
  */
 class CGettextPoFile extends CGettextFile
 {
+
     /**
      * Loads messages from a PO file.
      * @param string $file file path
@@ -26,8 +28,8 @@ class CGettextPoFile extends CGettextFile
     public function load($file, $context)
     {
         $pattern = '/(msgctxt\s+"(.*?(?<!\\\\))")?\s+'
-            . 'msgid\s+((?:".*(?<!\\\\)"\s*)+)\s+'
-            . 'msgstr\s+((?:".*(?<!\\\\)"\s*)+)/';
+                . 'msgid\s+((?:".*(?<!\\\\)"\s*)+)\s+'
+                . 'msgstr\s+((?:".*(?<!\\\\)"\s*)+)/';
         $matches = array();
         $n = preg_match_all($pattern, file_get_contents($file), $matches);
 
@@ -71,9 +73,7 @@ class CGettextPoFile extends CGettextFile
     protected function encode($string)
     {
         return str_replace(
-            array('"', "\n", "\t", "\r"),
-            array('\\"', "\\n", '\\t', '\\r'),
-            $string
+                array('"', "\n", "\t", "\r"), array('\\"', "\\n", '\\t', '\\r'), $string
         );
     }
 
@@ -85,10 +85,9 @@ class CGettextPoFile extends CGettextFile
     protected function decode($string)
     {
         $string = preg_replace(
-            array('/"\s+"/', '/\\\\n/', '/\\\\r/', '/\\\\t/', '/\\\\"/'),
-            array('', "\n", "\r", "\t", '"'),
-            $string
+                array('/"\s+"/', '/\\\\n/', '/\\\\r/', '/\\\\t/', '/\\\\"/'), array('', "\n", "\r", "\t", '"'), $string
         );
         return substr(rtrim($string), 1, -1);
     }
+
 }

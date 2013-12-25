@@ -4,29 +4,29 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Gebo Admin Panel - Login Page</title>
-    
+
         <!-- Bootstrap framework -->
-            <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
-            <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
         <!-- theme color-->
-            <link rel="stylesheet" href="css/blue.css" />
+        <link rel="stylesheet" href="css/blue.css" />
         <!-- tooltip -->    
-            <link rel="stylesheet" href="lib/qtip2/jquery.qtip.min.css" />
+        <link rel="stylesheet" href="lib/qtip2/jquery.qtip.min.css" />
         <!-- colorbox -->   
-            <link rel="stylesheet" href="lib/colorbox/colorbox.css" />
+        <link rel="stylesheet" href="lib/colorbox/colorbox.css" />
         <!-- main styles -->
-            <link rel="stylesheet" href="css/style.css" />
-    
+        <link rel="stylesheet" href="css/style.css" />
+
         <!-- Favicon -->
-            <link rel="shortcut icon" href="favicon.ico" />
-    
+        <link rel="shortcut icon" href="favicon.ico" />
+
         <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
-    
+
         <!--[if lte IE 8]>
             <script src="js/ie/html5.js"></script>
             <script src="js/ie/respond.min.js"></script>
         <![endif]-->
-        
+
     </head>
     <body>
         <button class="btn login_open">Open modal</button>
@@ -57,10 +57,10 @@
                         <span class="link_reg"><a href="#reg_form">Not registered? Sign up here</a></span>
                     </div>  
                 </form>
-                
+
                 <form action="index.php?uid=1&amp;page=dashboard" method="post" id="pass_form" style="display:none">
                     <div class="top_b">Can't sign in?</div>    
-                        <div class="alert alert-info alert-login">
+                    <div class="alert alert-info alert-login">
                         Please enter your email address. You will receive a link to create a new password via email.
                     </div>
                     <div class="cnt_b">
@@ -74,14 +74,14 @@
                         <button class="btn btn-inverse" type="submit">Request New Password</button>
                     </div>  
                 </form>
-                
+
                 <form action="index.php?uid=1&amp;page=dashboard" method="post" id="reg_form" style="display:none">
                     <div class="top_b">Sign up to Gebo Admin</div>
                     <div class="alert alert-login">
                         By filling in the form bellow and clicking the "Sign Up" button, you accept and agree to Terms of Service.
                     </div>
                     <div class="cnt_b">
-                        
+
                         <div class="formRow">
                             <div class="input-prepend">
                                 <span class="add-on"><i class="icon-user"></i></span><input type="text" placeholder="Username" />
@@ -98,20 +98,20 @@
                             </div>
                             <small>The e-mail address is not made public and will only be used if you wish to receive a new password.</small>
                         </div>
-                         
+
                     </div>
                     <div class="btm_b tac" style="border-bottom:1px solid #E7E7E7">
                         <button class="btn btn-inverse" type="submit">Sign Up</button>
                     </div>  
                 </form>
-                
+
                 <div class="links_btm clearfix" style="font-size:11px;text-align:center;padding:5px 0">
                     <span class="linkform"><a href="#pass_form">Forgot password?</a></span>
                     <span class="linkform" style="display:none">Never mind, <a href="#login_form">send me back to the sign-in screen</a></span>
                 </div>
             </div>
         </div>
-        
+
         <script src="js/jquery.min.js"></script>
         <script src="js/jquery-migrate.min.js"></script>
         <script src="js/jquery.actual.min.js"></script>
@@ -119,39 +119,39 @@
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="lib/colorbox/jquery.colorbox.min.js"></script>
         <script>
-            $(document).ready(function(){
+            $(document).ready(function() {
                 $('.login_open').colorbox({
                     opacity: 0.2,
                     width: 374,
                     initialWidth: 10,
                     initialHeight: 10,
                     href: "#login_modal",
-                    inline:true,
+                    inline: true,
                     scrolling: false,
-                    onComplete:function() {
+                    onComplete: function() {
                         //* boxes animation
                         form_wrapper = $('#login_modal');
-                        $('.linkform a,.link_reg a').on('click',function(e){
-                            var target  = $(this).attr('href');
-                            $(form_wrapper.find('form:visible')).fadeOut(400,function(){
-                                $(target).fadeIn(10,function(){
+                        $('.linkform a,.link_reg a').on('click', function(e) {
+                            var target = $(this).attr('href');
+                            $(form_wrapper.find('form:visible')).fadeOut(400, function() {
+                                $(target).fadeIn(10, function() {
                                     $.colorbox.resize();
                                 });
                                 form_wrapper
                                 $('.links_btm .linkform').toggle();
                             });
-                            
+
                             e.preventDefault();
                         });
-                        
+
                         //* validation
                         $('#login_form').validate({
                             onkeyup: false,
                             errorClass: 'error',
                             validClass: 'valid',
                             rules: {
-                                username: { required: true, minlength: 3 },
-                                password: { required: true, minlength: 3 }
+                                username: {required: true, minlength: 3},
+                                password: {required: true, minlength: 3}
                             },
                             highlight: function(element) {
                                 $(element).closest('div').addClass("f_error");

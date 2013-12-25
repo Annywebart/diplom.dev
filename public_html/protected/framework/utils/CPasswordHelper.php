@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CPasswordHelper class file.
  *
@@ -52,6 +53,7 @@
  */
 class CPasswordHelper
 {
+
     /**
      * Check for availability of PHP crypt() with the Blowfish hash option.
      * @throws CException if the runtime system does not have PHP crypt() or its Blowfish hash option.
@@ -59,13 +61,10 @@ class CPasswordHelper
     protected static function checkBlowfish()
     {
         if (!function_exists('crypt'))
-            throw new CException(Yii::t('yii', '{class} requires the PHP crypt() function. This system does not have it.',
-                array('{class}' => __CLASS__)));
+            throw new CException(Yii::t('yii', '{class} requires the PHP crypt() function. This system does not have it.', array('{class}' => __CLASS__)));
 
         if (!defined('CRYPT_BLOWFISH') || !CRYPT_BLOWFISH)
-            throw new CException(Yii::t('yii',
-                '{class} requires the Blowfish option of the PHP crypt() function. This system does not have it.',
-                array('{class}' => __CLASS__)));
+            throw new CException(Yii::t('yii', '{class} requires the Blowfish option of the PHP crypt() function. This system does not have it.', array('{class}' => __CLASS__)));
     }
 
     /**
@@ -114,7 +113,7 @@ class CPasswordHelper
             return false;
 
         if (!$password || !preg_match('{^\$2[axy]\$(\d\d)\$[\./0-9A-Za-z]{22}}', $hash, $matches) ||
-            $matches[1] < 4 || $matches[1] > 31
+                $matches[1] < 4 || $matches[1] > 31
         )
             return false;
 
@@ -182,7 +181,7 @@ class CPasswordHelper
         if (!is_numeric($cost))
             throw new CException(Yii::t('yii', '{class}::$cost must be a number.', array('{class}' => __CLASS__)));
 
-        $cost = (int)$cost;
+        $cost = (int) $cost;
         if ($cost < 4 || $cost > 31)
             throw new CException(Yii::t('yii', '{class}::$cost must be between 4 and 31.', array('{class}' => __CLASS__)));
 
@@ -191,4 +190,5 @@ class CPasswordHelper
                 throw new CException(Yii::t('yii', 'Unable to generate random string.'));
         return sprintf('$2a$%02d$', $cost) . strtr($random, array('_' => '.', '~' => '/'));
     }
+
 }

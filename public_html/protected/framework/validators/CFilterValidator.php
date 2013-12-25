@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CFilterValidator class file.
  *
@@ -28,6 +29,7 @@
  */
 class CFilterValidator extends CValidator
 {
+
     /**
      * @var callback the filter method
      */
@@ -46,4 +48,5 @@ class CFilterValidator extends CValidator
             throw new CException(Yii::t('yii', 'The "filter" property must be specified with a valid callback.'));
         $object->$attribute = call_user_func_array($this->filter, array($object->$attribute));
     }
+
 }

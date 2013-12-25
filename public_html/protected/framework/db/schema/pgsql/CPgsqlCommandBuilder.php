@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CPgsqlCommandBuilder class file.
  *
@@ -17,14 +18,16 @@
  */
 class CPgsqlCommandBuilder extends CDbCommandBuilder
 {
-	/**
-	 * Returns default value of the integer/serial primary key. Default value means that the next
-	 * autoincrement/sequence value would be used.
-	 * @return string default value of the integer/serial primary key.
-	 * @since 1.1.14
-	 */
-	protected function getIntegerPrimaryKeyDefaultValue()
-	{
-		return 'DEFAULT';
-	}
+
+    /**
+     * Returns default value of the integer/serial primary key. Default value means that the next
+     * autoincrement/sequence value would be used.
+     * @return string default value of the integer/serial primary key.
+     * @since 1.1.14
+     */
+    protected function getIntegerPrimaryKeyDefaultValue()
+    {
+        return 'DEFAULT';
+    }
+
 }

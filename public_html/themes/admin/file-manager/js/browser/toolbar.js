@@ -1,114 +1,113 @@
-<?php
+< ?php
 
-/** This file is part of KCFinder project
-  *
-  *      @desc Toolbar functionality
-  *   @package KCFinder
-  *   @version 2.51
-  *    @author Pavel Tzonkov <pavelc@users.sourceforge.net>
-  * @copyright 2010, 2011 KCFinder Project
-  *   @license http://www.opensource.org/licenses/gpl-2.0.php GPLv2
-  *   @license http://www.opensource.org/licenses/lgpl-2.1.php LGPLv2
-  *      @link http://kcfinder.sunhater.com
-  */?>
-
-browser.initToolbar = function() {
-    $('#toolbar a').click(function() {
-        browser.hideDialog();
-    });
-
-    if (!_.kuki.isSet('displaySettings'))
-        _.kuki.set('displaySettings', 'off');
-
-    if (_.kuki.get('displaySettings') == 'on') {
-        $('#toolbar a[href="kcact:settings"]').addClass('selected');
-        $('#settings').css('display', 'block');
-        browser.resize();
-    }
-
-    $('#toolbar a[href="kcact:settings"]').click(function () {
-        if ($('#settings').css('display') == 'none') {
-            $(this).addClass('selected');
-            _.kuki.set('displaySettings', 'on');
-            $('#settings').css('display', 'block');
-            browser.fixFilesHeight();
-        } else {
-            $(this).removeClass('selected');
-            _.kuki.set('displaySettings', 'off');
-            $('#settings').css('display', 'none');
-            browser.fixFilesHeight();
-        }
-        return false;
-    });
-
-    $('#toolbar a[href="kcact:refresh"]').click(function() {
-        browser.refresh();
-        return false;
-    });
-
-    if (window.opener || this.opener.TinyMCE || $('iframe', window.parent.document).get(0))
-        $('#toolbar a[href="kcact:maximize"]').click(function() {
-            browser.maximize(this);
-            return false;
-        });
-    else
-        $('#toolbar a[href="kcact:maximize"]').css('display', 'none');
-
-    $('#toolbar a[href="kcact:about"]').click(function() {
-        var html = '<div class="box about">' +
-            '<div class="head"><a href="http://kcfinder.sunhater.com" target="_blank">KCFinder</a> ' + browser.version + '</div>';
-        if (browser.support.check4Update)
-            html += '<div id="checkver"><span class="loading"><span>' + browser.label("Checking for new version...") + '</span></span></div>';
-        html +=
-            '<div>' + browser.label("Licenses:") + ' GPLv2 & LGPLv2</div>' +
-            '<div>Copyright &copy;2010, 2011 Pavel Tzonkov</div>' +
-            '<button>' + browser.label("OK") + '</button>' +
-        '</div>';
-        $('#dialog').html(html);
-        $('#dialog').data('title', browser.label("About"));
-        browser.showDialog();
-        var close = function() {
-            browser.hideDialog();
-            browser.unshadow();
-        }
-        $('#dialog button').click(close);
-        var span = $('#checkver > span');
-        setTimeout(function() {
-            $.ajax({
-                dataType: 'json',
-                url: browser.baseGetData('check4Update'),
-                async: true,
-                success: function(data) {
-                    if (!$('#dialog').html().length)
-                        return;
-                    span.removeClass('loading');
-                    if (!data.version) {
-                        span.html(browser.label("Unable to connect!"));
-                        browser.showDialog();
-                        return;
-                    }
-                    if (browser.version < data.version)
-                        span.html('<a href="http://kcfinder.sunhater.com/download" target="_blank">' + browser.label("Download version {version} now!", {version: data.version}) + '</a>');
-                    else
-                        span.html(browser.label("KCFinder is up to date!"));
-                    browser.showDialog();
-                },
-                error: function() {
-                    if (!$('#dialog').html().length)
-                        return;
-                    span.removeClass('loading');
-                    span.html(browser.label("Unable to connect!"));
-                    browser.showDialog();
-                }
+        /** This file is part of KCFinder project
+         *
+         *      @desc Toolbar functionality
+         *   @package KCFinder
+         *   @version 2.51
+         *    @author Pavel Tzonkov <pavelc@users.sourceforge.net>
+         * @copyright 2010, 2011 KCFinder Project
+         *   @license http://www.opensource.org/licenses/gpl-2.0.php GPLv2
+         *   @license http://www.opensource.org/licenses/lgpl-2.1.php LGPLv2
+         *      @link http://kcfinder.sunhater.com
+         */? >
+        browser.initToolbar = function() {
+            $('#toolbar a').click(function() {
+                browser.hideDialog();
             });
-        }, 1000);
-        $('#dialog').unbind();
 
-        return false;
-    });
+            if (!_.kuki.isSet('displaySettings'))
+                _.kuki.set('displaySettings', 'off');
 
-    this.initUploadButton();
-};
+            if (_.kuki.get('displaySettings') == 'on') {
+                $('#toolbar a[href="kcact:settings"]').addClass('selected');
+                $('#settings').css('display', 'block');
+                browser.resize();
+            }
+
+            $('#toolbar a[href="kcact:settings"]').click(function() {
+                if ($('#settings').css('display') == 'none') {
+                    $(this).addClass('selected');
+                    _.kuki.set('displaySettings', 'on');
+                    $('#settings').css('display', 'block');
+                    browser.fixFilesHeight();
+                } else {
+                    $(this).removeClass('selected');
+                    _.kuki.set('displaySettings', 'off');
+                    $('#settings').css('display', 'none');
+                    browser.fixFilesHeight();
+                }
+                return false;
+            });
+
+            $('#toolbar a[href="kcact:refresh"]').click(function() {
+                browser.refresh();
+                return false;
+            });
+
+            if (window.opener || this.opener.TinyMCE || $('iframe', window.parent.document).get(0))
+                $('#toolbar a[href="kcact:maximize"]').click(function() {
+                    browser.maximize(this);
+                    return false;
+                });
+            else
+                $('#toolbar a[href="kcact:maximize"]').css('display', 'none');
+
+            $('#toolbar a[href="kcact:about"]').click(function() {
+                var html = '<div class="box about">' +
+                        '<div class="head"><a href="http://kcfinder.sunhater.com" target="_blank">KCFinder</a> ' + browser.version + '</div>';
+                if (browser.support.check4Update)
+                    html += '<div id="checkver"><span class="loading"><span>' + browser.label("Checking for new version...") + '</span></span></div>';
+                html +=
+                        '<div>' + browser.label("Licenses:") + ' GPLv2 & LGPLv2</div>' +
+                        '<div>Copyright &copy;2010, 2011 Pavel Tzonkov</div>' +
+                        '<button>' + browser.label("OK") + '</button>' +
+                        '</div>';
+                $('#dialog').html(html);
+                $('#dialog').data('title', browser.label("About"));
+                browser.showDialog();
+                var close = function() {
+                    browser.hideDialog();
+                    browser.unshadow();
+                }
+                $('#dialog button').click(close);
+                var span = $('#checkver > span');
+                setTimeout(function() {
+                    $.ajax({
+                        dataType: 'json',
+                        url: browser.baseGetData('check4Update'),
+                        async: true,
+                        success: function(data) {
+                            if (!$('#dialog').html().length)
+                                return;
+                            span.removeClass('loading');
+                            if (!data.version) {
+                                span.html(browser.label("Unable to connect!"));
+                                browser.showDialog();
+                                return;
+                            }
+                            if (browser.version < data.version)
+                                span.html('<a href="http://kcfinder.sunhater.com/download" target="_blank">' + browser.label("Download version {version} now!", {version: data.version}) + '</a>');
+                            else
+                                span.html(browser.label("KCFinder is up to date!"));
+                            browser.showDialog();
+                        },
+                        error: function() {
+                            if (!$('#dialog').html().length)
+                                return;
+                            span.removeClass('loading');
+                            span.html(browser.label("Unable to connect!"));
+                            browser.showDialog();
+                        }
+                    });
+                }, 1000);
+                $('#dialog').unbind();
+
+                return false;
+            });
+
+            this.initUploadButton();
+        };
 
 browser.initUploadButton = function() {
     var btn = $('#toolbar a[href="kcact:upload"]');
@@ -120,11 +119,11 @@ browser.initUploadButton = function() {
     var width = btn.outerWidth();
     var height = btn.outerHeight();
     $('#toolbar').prepend('<div id="upload" style="top:' + top + 'px;width:' + width + 'px;height:' + height + 'px">' +
-        '<form enctype="multipart/form-data" method="post" target="uploadResponse" action="' + browser.baseGetData('upload') + '">' +
+            '<form enctype="multipart/form-data" method="post" target="uploadResponse" action="' + browser.baseGetData('upload') + '">' +
             '<input type="file" name="upload[]" onchange="browser.uploadFile(this.form)" style="height:' + height + 'px" multiple="multiple" />' +
             '<input type="hidden" name="dir" value="" />' +
-        '</form>' +
-    '</div>');
+            '</form>' +
+            '</div>');
     $('#upload input').css('margin-left', "-" + ($('#upload input').outerWidth() - width) + 'px');
     $('#upload').mouseover(function() {
         $('#toolbar a[href="kcact:upload"]').addClass('hover');
@@ -237,8 +236,10 @@ browser.maximize = function(button) {
                 clearInterval(browser.maximizeThread);
                 browser.maximizeThread = null;
             }
-            if (browser.maximizeW) browser.maximizeW = null;
-            if (browser.maximizeH) browser.maximizeH = null;
+            if (browser.maximizeW)
+                browser.maximizeW = null;
+            if (browser.maximizeH)
+                browser.maximizeH = null;
             $.each($('*', window.parent.document).get(), function(i, e) {
                 e.style.display = browser.maximizeDisplay[i];
             });
@@ -277,8 +278,8 @@ browser.maximize = function(button) {
                 width = $(window.parent).width();
                 height = $(window.parent).height();
                 if (!browser.maximizeW || (browser.maximizeW != width) ||
-                    !browser.maximizeH || (browser.maximizeH != height)
-                ) {
+                        !browser.maximizeH || (browser.maximizeH != height)
+                        ) {
                     browser.maximizeW = width;
                     browser.maximizeH = height;
                     ifrm.css({
@@ -290,13 +291,13 @@ browser.maximize = function(button) {
             }
             ifrm.css('position', 'absolute');
             if ((ifrm.offset().left == ifrm.position().left) &&
-                (ifrm.offset().top == ifrm.position().top)
-            )
+                    (ifrm.offset().top == ifrm.position().top)
+                    )
                 ifrm.css({left: '0', top: '0'});
             else
                 ifrm.css({
-                    left: - ifrm.offset().left + 'px',
-                    top: - ifrm.offset().top + 'px'
+                    left: -ifrm.offset().left + 'px',
+                    top: -ifrm.offset().top + 'px'
                 });
 
             resize();
@@ -311,7 +312,7 @@ browser.refresh = function(selected) {
         type: 'POST',
         dataType: 'json',
         url: browser.baseGetData('chDir'),
-        data: {dir:browser.dir},
+        data: {dir: browser.dir},
         async: false,
         success: function(data) {
             if (browser.check4errors(data))
@@ -322,7 +323,7 @@ browser.refresh = function(selected) {
             browser.statusDir();
         },
         error: function() {
-            $('#files > div').css({opacity:'', filter:''});
+            $('#files > div').css({opacity: '', filter: ''});
             $('#files').html(browser.label("Unknown error."));
         }
     });

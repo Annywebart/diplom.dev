@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CConsoleCommandRunner class file.
  *
@@ -20,6 +21,7 @@
  */
 class CConsoleCommandRunner extends CComponent
 {
+
     /**
      * @var array list of all available commands (command name=>command configuration).
      * Each command configuration can be either a string or an array.
@@ -40,7 +42,6 @@ class CConsoleCommandRunner extends CComponent
      * </pre>
      */
     public $commands = array();
-
     private $_scriptName;
     private $_command;
 
@@ -150,8 +151,7 @@ class CConsoleCommandRunner extends CComponent
         }
 
         if ($command !== null) {
-            if (is_string($command)) // class file path or alias
-            {
+            if (is_string($command)) { // class file path or alias
                 if (strpos($command, '/') !== false || strpos($command, '\\') !== false) {
                     $className = substr(basename($command), 0, -4);
                     if (!class_exists($className, false))
@@ -166,4 +166,5 @@ class CConsoleCommandRunner extends CComponent
         else
             return null;
     }
+
 }

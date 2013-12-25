@@ -1,5 +1,6 @@
 <?php
-return array (
-  'template' => 'default',
-  'baseControllerClass' => 'AdminController',
+
+return array(
+    'template' => 'default',
+    'baseControllerClass' => 'AdminController',
 );

@@ -1,4 +1,5 @@
 <?php
+
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 /**
  * BB code renderer.
@@ -20,11 +21,9 @@
  * @version    CVS: $Id: BB.php,v 1.1 2007/06/03 02:37:08 ssttoo Exp $
  * @link       http://pear.php.net/package/Text_Highlighter
  */
-
 /**
  * @ignore
  */
-
 require_once dirname(__FILE__) . '/../Renderer.php';
 
 /**
@@ -70,11 +69,9 @@ require_once dirname(__FILE__) . '/../Renderer.php';
  * @version    Release: 0.5.0
  * @link       http://pear.php.net/package/Text_Highlighter
  */
-
 class Text_Highlighter_Renderer_BB extends Text_Highlighter_Renderer_Array
 {
-
-    /**#@+
+    /*     * #@+
      * @access private
      */
 
@@ -128,7 +125,7 @@ class Text_Highlighter_Renderer_BB extends Text_Highlighter_Renderer_Array
         'inlinetags' => 'Blue',
     );
 
-    /**#@-*/
+    /*     * #@- */
 
     /**
      * Resets renderer state
@@ -155,7 +152,6 @@ class Text_Highlighter_Renderer_BB extends Text_Highlighter_Renderer_Array
             $this->_colors = array_merge($this->_colors, $this->_options['colors']);
         }
     }
-
 
     /**
      * Signals that no more tokens are available
@@ -201,26 +197,26 @@ class Text_Highlighter_Renderer_BB extends Text_Highlighter_Renderer_Array
         if ($this->_numbers) {
 
             $item_tag = $this->_tag_brackets['start'] .
-                $this->_bb_tags['list_item'] .
-                $this->_tag_brackets['end'];
+                    $this->_bb_tags['list_item'] .
+                    $this->_tag_brackets['end'];
             $this->_output = $item_tag . str_replace("\n", "\n" . $item_tag . ' ', $bb_output);
             $this->_output = $this->_tag_brackets['start'] .
-                $this->_bb_tags['list'] .
-                $this->_tag_brackets['end'] .
-                $this->_output .
-                $this->_tag_brackets['start'] .
-                '/' .
-                $this->_bb_tags['list'] .
-                $this->_tag_brackets['end'];
+                    $this->_bb_tags['list'] .
+                    $this->_tag_brackets['end'] .
+                    $this->_output .
+                    $this->_tag_brackets['start'] .
+                    '/' .
+                    $this->_bb_tags['list'] .
+                    $this->_tag_brackets['end'];
         } else {
             $this->_output = $this->_tag_brackets['start'] .
-                $this->_bb_tags['code'] .
-                $this->_tag_brackets['end'] .
-                $bb_output .
-                $this->_tag_brackets['start'] .
-                '/' .
-                $this->_bb_tags['code'] .
-                $this->_tag_brackets['end'];
+                    $this->_bb_tags['code'] .
+                    $this->_tag_brackets['end'] .
+                    $bb_output .
+                    $this->_tag_brackets['start'] .
+                    '/' .
+                    $this->_bb_tags['code'] .
+                    $this->_tag_brackets['end'];
         }
     }
 
@@ -233,5 +229,4 @@ class Text_Highlighter_Renderer_BB extends Text_Highlighter_Renderer_Array
  * c-hanging-comment-ender-p: nil
  * End:
  */
-
 ?>

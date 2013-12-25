@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author drozdenko <drozdenko@zfort.com>
  * @link http://www.zfort.com/
@@ -32,5 +33,3 @@ class AdminController extends CController
     public $breadcrumbs = array();
 
 }
-
-

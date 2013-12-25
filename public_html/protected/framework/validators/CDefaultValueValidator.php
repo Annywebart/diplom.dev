@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CDefaultValueValidator class file.
  *
@@ -19,10 +20,12 @@
  */
 class CDefaultValueValidator extends CValidator
 {
+
     /**
      * @var mixed the default value to be set to the specified attributes.
      */
     public $value;
+
     /**
      * @var boolean whether to set the default value only when the attribute value is null or empty string.
      * Defaults to true. If false, the attribute will always be assigned with the default value,
@@ -45,5 +48,5 @@ class CDefaultValueValidator extends CValidator
                 $object->$attribute = $this->value;
         }
     }
-}
 
+}

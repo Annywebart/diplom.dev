@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file contains CTypedList class.
  *
@@ -20,6 +21,7 @@
  */
 class CTypedList extends CList
 {
+
     private $_type;
 
     /**
@@ -45,7 +47,7 @@ class CTypedList extends CList
         if ($item instanceof $this->_type)
             parent::insertAt($index, $item);
         else
-            throw new CException(Yii::t('yii', 'CTypedList<{type}> can only hold objects of {type} class.',
-                array('{type}' => $this->_type)));
+            throw new CException(Yii::t('yii', 'CTypedList<{type}> can only hold objects of {type} class.', array('{type}' => $this->_type)));
     }
+
 }

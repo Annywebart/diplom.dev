@@ -6,166 +6,160 @@
  * Licensed under the MIT license.
  */
 
-	// COMBOBOX CONSTRUCTOR AND PROTOTYPE
+// COMBOBOX CONSTRUCTOR AND PROTOTYPE
 
-	var Combobox = function (element, options) {
-		this.$element = $(element);
-		this.options = $.extend({}, $.fn.combobox.defaults, options);
-		this.$element.on('click', 'a', $.proxy(this.itemclicked, this));
-		this.$element.on('change', 'input', $.proxy(this.inputchanged, this));
-		this.$input = this.$element.find('input');
-		this.$button = this.$element.find('.btn');
+var Combobox = function(element, options) {
+    this.$element = $(element);
+    this.options = $.extend({}, $.fn.combobox.defaults, options);
+    this.$element.on('click', 'a', $.proxy(this.itemclicked, this));
+    this.$element.on('change', 'input', $.proxy(this.inputchanged, this));
+    this.$input = this.$element.find('input');
+    this.$button = this.$element.find('.btn');
 
-		// set default selection
-		this.setDefaultSelection();
-	};
+    // set default selection
+    this.setDefaultSelection();
+};
 
-	Combobox.prototype = {
+Combobox.prototype = {
+    constructor: Combobox,
+    selectedItem: function() {
+        var item = this.$selectedItem;
+        var data = {};
 
-		constructor: Combobox,
+        if (item) {
+            var txt = this.$selectedItem.text();
+            data = $.extend({text: txt}, this.$selectedItem.data());
+        }
+        else {
+            data = {text: this.$input.val()};
+        }
 
-		selectedItem: function () {
-			var item = this.$selectedItem;
-			var data = {};
+        return data;
+    },
+    selectByText: function(text) {
+        var selector = 'li:fuelTextExactCI(' + text + ')';
+        this.selectBySelector(selector);
+    },
+    selectByValue: function(value) {
+        var selector = 'li[data-value="' + value + '"]';
+        this.selectBySelector(selector);
+    },
+    selectByIndex: function(index) {
+        // zero-based index
+        var selector = 'li:eq(' + index + ')';
+        this.selectBySelector(selector);
+    },
+    selectBySelector: function(selector) {
+        var $item = this.$element.find(selector);
 
-			if (item) {
-				var txt = this.$selectedItem.text();
-				data = $.extend({ text: txt }, this.$selectedItem.data());
-			}
-			else {
-				data = { text: this.$input.val()};
-			}
+        if (typeof $item[0] !== 'undefined') {
+            this.$selectedItem = $item;
+            this.$input.val(this.$selectedItem.text());
+        }
+        else {
+            this.$selectedItem = null;
+        }
+    },
+    setDefaultSelection: function() {
+        var selector = 'li[data-selected=true]:first';
+        var item = this.$element.find(selector);
 
-			return data;
-		},
+        if (item.length > 0) {
+            // select by data-attribute
+            this.selectBySelector(selector);
+            item.removeData('selected');
+            item.removeAttr('data-selected');
+        }
+    },
+    enable: function() {
+        this.$input.removeAttr('disabled');
+        this.$button.removeClass('disabled');
+    },
+    disable: function() {
+        this.$input.attr('disabled', true);
+        this.$button.addClass('disabled');
+    },
+    itemclicked: function(e) {
+        this.$selectedItem = $(e.target).parent();
 
-		selectByText: function (text) {
-			var selector = 'li:fuelTextExactCI(' + text + ')';
-			this.selectBySelector(selector);
-		},
+        // set input text and trigger input change event marked as synthetic
+        this.$input.val(this.$selectedItem.text()).trigger('change', {synthetic: true});
 
-		selectByValue: function (value) {
-			var selector = 'li[data-value="' + value + '"]';
-			this.selectBySelector(selector);
-		},
+        // pass object including text and any data-attributes
+        // to onchange event
+        var data = this.selectedItem();
 
-		selectByIndex: function (index) {
-			// zero-based index
-			var selector = 'li:eq(' + index + ')';
-			this.selectBySelector(selector);
-		},
+        // trigger changed event
+        this.$element.trigger('changed', data);
 
-		selectBySelector: function (selector) {
-			var $item = this.$element.find(selector);
+        e.preventDefault();
+    },
+    inputchanged: function(e, extra) {
 
-			if (typeof $item[0] !== 'undefined') {
-				this.$selectedItem = $item;
-				this.$input.val(this.$selectedItem.text());
-			}
-			else {
-				this.$selectedItem = null;
-			}
-		},
+        // skip processing for internally-generated synthetic event
+        // to avoid double processing
+        if (extra && extra.synthetic)
+            return;
 
-		setDefaultSelection: function () {
-			var selector = 'li[data-selected=true]:first';
-			var item = this.$element.find(selector);
+        var val = $(e.target).val();
+        this.selectByText(val);
 
-			if (item.length > 0) {
-				// select by data-attribute
-				this.selectBySelector(selector);
-				item.removeData('selected');
-				item.removeAttr('data-selected');
-			}
-		},
+        // find match based on input
+        // if no match, pass the input value
+        var data = this.selectedItem();
+        if (data.text.length === 0) {
+            data = {text: val};
+        }
 
-		enable: function () {
-			this.$input.removeAttr('disabled');
-			this.$button.removeClass('disabled');
-		},
+        // trigger changed event
+        this.$element.trigger('changed', data);
 
-		disable: function () {
-			this.$input.attr('disabled', true);
-			this.$button.addClass('disabled');
-		},
+    }
 
-		itemclicked: function (e) {
-			this.$selectedItem = $(e.target).parent();
-
-			// set input text and trigger input change event marked as synthetic
-			this.$input.val(this.$selectedItem.text()).trigger('change', { synthetic: true });
-
-			// pass object including text and any data-attributes
-			// to onchange event
-			var data = this.selectedItem();
-
-			// trigger changed event
-			this.$element.trigger('changed', data);
-
-			e.preventDefault();
-		},
-
-		inputchanged: function (e, extra) {
-
-			// skip processing for internally-generated synthetic event
-			// to avoid double processing
-			if (extra && extra.synthetic) return;
-
-			var val = $(e.target).val();
-			this.selectByText(val);
-
-			// find match based on input
-			// if no match, pass the input value
-			var data = this.selectedItem();
-			if (data.text.length === 0) {
-				data = { text: val };
-			}
-
-			// trigger changed event
-			this.$element.trigger('changed', data);
-
-		}
-
-	};
+};
 
 
-	// COMBOBOX PLUGIN DEFINITION
+// COMBOBOX PLUGIN DEFINITION
 
-	$.fn.combobox = function (option, value) {
-		var methodReturn;
+$.fn.combobox = function(option, value) {
+    var methodReturn;
 
-		var $set = this.each(function () {
-			var $this = $(this);
-			var data = $this.data('combobox');
-			var options = typeof option === 'object' && option;
+    var $set = this.each(function() {
+        var $this = $(this);
+        var data = $this.data('combobox');
+        var options = typeof option === 'object' && option;
 
-			if (!data) $this.data('combobox', (data = new Combobox(this, options)));
-			if (typeof option === 'string') methodReturn = data[option](value);
-		});
+        if (!data)
+            $this.data('combobox', (data = new Combobox(this, options)));
+        if (typeof option === 'string')
+            methodReturn = data[option](value);
+    });
 
-		return (methodReturn === undefined) ? $set : methodReturn;
-	};
+    return (methodReturn === undefined) ? $set : methodReturn;
+};
 
-	$.fn.combobox.defaults = {};
+$.fn.combobox.defaults = {};
 
-	$.fn.combobox.Constructor = Combobox;
+$.fn.combobox.Constructor = Combobox;
 
 
-	// COMBOBOX DATA-API
+// COMBOBOX DATA-API
 
-	$(function () {
+$(function() {
 
-		$(window).on('load', function () {
-			$('.combobox').each(function () {
-				var $this = $(this);
-				if ($this.data('combobox')) return;
-				$this.combobox($this.data());
-			});
-		});
+    $(window).on('load', function() {
+        $('.combobox').each(function() {
+            var $this = $(this);
+            if ($this.data('combobox'))
+                return;
+            $this.combobox($this.data());
+        });
+    });
 
-		$('body').on('mousedown.combobox.data-api', '.combobox', function (e) {
-			var $this = $(this);
-			if ($this.data('combobox')) return;
-			$this.combobox($this.data());
-		});
-	});
+    $('body').on('mousedown.combobox.data-api', '.combobox', function(e) {
+        var $this = $(this);
+        if ($this.data('combobox'))
+            return;
+        $this.combobox($this.data());
+    });
+});

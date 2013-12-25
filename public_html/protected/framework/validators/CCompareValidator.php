@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CCompareValidator class file.
  *
@@ -38,24 +39,29 @@
  */
 class CCompareValidator extends CValidator
 {
+
     /**
      * @var string the name of the attribute to be compared with
      */
     public $compareAttribute;
+
     /**
      * @var string the constant value to be compared with
      */
     public $compareValue;
+
     /**
      * @var boolean whether the comparison is strict (both value and type must be the same.)
      * Defaults to false.
      */
     public $strict = false;
+
     /**
      * @var boolean whether the attribute value can be null or empty. Defaults to false.
      * If this is true, it means the attribute is considered valid when it is empty.
      */
     public $allowEmpty = false;
+
     /**
      * @var string the operator for comparison. Defaults to '='.
      * The followings are valid operators:
@@ -193,4 +199,5 @@ if(" . ($this->allowEmpty ? "jQuery.trim(value)!='' && " : '') . $condition . ")
 }
 ";
     }
+
 }

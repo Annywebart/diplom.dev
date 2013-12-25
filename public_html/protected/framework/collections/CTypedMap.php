@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file contains CTypedMap class.
  *
@@ -20,6 +21,7 @@
  */
 class CTypedMap extends CMap
 {
+
     private $_type;
 
     /**
@@ -45,7 +47,7 @@ class CTypedMap extends CMap
         if ($item instanceof $this->_type)
             parent::add($index, $item);
         else
-            throw new CException(Yii::t('yii', 'CTypedMap<{type}> can only hold objects of {type} class.',
-                array('{type}' => $this->_type)));
+            throw new CException(Yii::t('yii', 'CTypedMap<{type}> can only hold objects of {type} class.', array('{type}' => $this->_type)));
     }
+
 }

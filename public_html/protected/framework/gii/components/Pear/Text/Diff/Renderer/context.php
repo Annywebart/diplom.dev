@@ -1,4 +1,5 @@
 <?php
+
 /**
  * "Context" diff renderer.
  *
@@ -13,14 +14,14 @@
  *
  * @package Text_Diff
  */
-
 /** Text_Diff_Renderer */
 require_once 'Text/Diff/Renderer.php';
 
 /**
  * @package Text_Diff
  */
-class Text_Diff_Renderer_context extends Text_Diff_Renderer {
+class Text_Diff_Renderer_context extends Text_Diff_Renderer
+{
 
     /**
      * Number of leading context "lines" to preserve.
@@ -31,7 +32,6 @@ class Text_Diff_Renderer_context extends Text_Diff_Renderer {
      * Number of trailing context "lines" to preserve.
      */
     var $_trailing_context_lines = 4;
-
     var $_second_block = '';
 
     function _blockHeader($xbeg, $xlen, $ybeg, $ylen)

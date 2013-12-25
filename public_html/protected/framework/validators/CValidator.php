@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CValidator class file.
  *
@@ -55,6 +56,7 @@
  */
 abstract class CValidator extends CComponent
 {
+
     /**
      * @var array list of built-in validators (name=>class)
      */
@@ -84,35 +86,41 @@ abstract class CValidator extends CComponent
      * @var array list of attributes to be validated.
      */
     public $attributes;
+
     /**
      * @var string the user-defined error message. Different validators may define various
      * placeholders in the message that are to be replaced with actual values. All validators
      * recognize "{attribute}" placeholder, which will be replaced with the label of the attribute.
      */
     public $message;
+
     /**
      * @var boolean whether this validation rule should be skipped when there is already a validation
      * error for the current attribute. Defaults to false.
      * @since 1.1.1
      */
     public $skipOnError = false;
+
     /**
      * @var array list of scenarios that the validator should be applied.
      * Each array value refers to a scenario name with the same name as its array key.
      */
     public $on;
+
     /**
      * @var array list of scenarios that the validator should not be applied to.
      * Each array value refers to a scenario name with the same name as its array key.
      * @since 1.1.11
      */
     public $except;
+
     /**
      * @var boolean whether attributes listed with this validator should be considered safe for massive assignment.
      * Defaults to true.
      * @since 1.1.4
      */
     public $safe = true;
+
     /**
      * @var boolean whether to perform client-side validation. Defaults to true.
      * Please refer to {@link CActiveForm::enableClientValidation} for more details about client-side validation.
@@ -127,7 +135,6 @@ abstract class CValidator extends CComponent
      * @param string $attribute the name of the attribute to be validated.
      */
     abstract protected function validateAttribute($object, $attribute);
-
 
     /**
      * Creates a validator object.
@@ -221,6 +228,7 @@ abstract class CValidator extends CComponent
      */
     public function clientValidateAttribute($object, $attribute)
     {
+        
     }
 
     /**
@@ -266,5 +274,5 @@ abstract class CValidator extends CComponent
     {
         return $value === null || $value === array() || $value === '' || $trim && is_scalar($value) && trim($value) === '';
     }
-}
 
+}

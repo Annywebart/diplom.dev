@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A class for computing three way diffs.
  *
@@ -12,7 +13,6 @@
  * @package Text_Diff
  * @since   0.3.0
  */
-
 /** Text_Diff */
 require_once 'Text/Diff.php';
 
@@ -22,7 +22,8 @@ require_once 'Text/Diff.php';
  * @package Text_Diff
  * @author  Geoffrey T. Dairiki <dairiki@dairiki.org>
  */
-class Text_Diff_ThreeWay extends Text_Diff {
+class Text_Diff_ThreeWay extends Text_Diff
+{
 
     /**
      * Conflict counter.
@@ -46,8 +47,7 @@ class Text_Diff_ThreeWay extends Text_Diff {
             $engine = new Text_Diff_Engine_native();
         }
 
-        $this->_edits = $this->_diff3($engine->diff($orig, $final1),
-                                      $engine->diff($orig, $final2));
+        $this->_edits = $this->_diff3($engine->diff($orig, $final1), $engine->diff($orig, $final2));
     }
 
     /**
@@ -58,12 +58,7 @@ class Text_Diff_ThreeWay extends Text_Diff {
         foreach ($this->_edits as $edit) {
             if ($edit->isConflict()) {
                 /* FIXME: this should probably be moved somewhere else. */
-                $lines = array_merge($lines,
-                                     array('<<<<<<<' . ($label1 ? ' ' . $label1 : '')),
-                                     $edit->final1,
-                                     array("======="),
-                                     $edit->final2,
-                                     array('>>>>>>>' . ($label2 ? ' ' . $label2 : '')));
+                $lines = array_merge($lines, array('<<<<<<<' . ($label1 ? ' ' . $label1 : '')), $edit->final1, array("======="), $edit->final2, array('>>>>>>>' . ($label2 ? ' ' . $label2 : '')));
                 $this->_conflictingBlocks++;
             } else {
                 $lines = array_merge($lines, $edit->merged());
@@ -127,11 +122,11 @@ class Text_Diff_ThreeWay extends Text_Diff {
                     }
                 }
 
-                if ($e1 && ! $e1->orig) {
+                if ($e1 && !$e1->orig) {
                     $bb->out1($e1->final);
                     $e1 = next($edits1);
                 }
-                if ($e2 && ! $e2->orig) {
+                if ($e2 && !$e2->orig) {
                     $bb->out2($e2->final);
                     $e2 = next($edits2);
                 }
@@ -153,7 +148,8 @@ class Text_Diff_ThreeWay extends Text_Diff {
  *
  * @access private
  */
-class Text_Diff_ThreeWay_Op {
+class Text_Diff_ThreeWay_Op
+{
 
     function Text_Diff_ThreeWay_Op($orig = false, $final1 = false, $final2 = false)
     {
@@ -192,7 +188,8 @@ class Text_Diff_ThreeWay_Op {
  *
  * @access private
  */
-class Text_Diff_ThreeWay_Op_copy extends Text_Diff_ThreeWay_Op {
+class Text_Diff_ThreeWay_Op_copy extends Text_Diff_ThreeWay_Op
+{
 
     function Text_Diff_ThreeWay_Op_Copy($lines = false)
     {
@@ -219,7 +216,8 @@ class Text_Diff_ThreeWay_Op_copy extends Text_Diff_ThreeWay_Op {
  *
  * @access private
  */
-class Text_Diff_ThreeWay_BlockBuilder {
+class Text_Diff_ThreeWay_BlockBuilder
+{
 
     function Text_Diff_ThreeWay_BlockBuilder()
     {

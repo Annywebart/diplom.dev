@@ -1,4 +1,5 @@
 <?php
+
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 /**
  * HTML renderer that uses only basic html tags
@@ -21,11 +22,9 @@
  * @version    CVS: $Id: HtmlTags.php,v 1.1 2007/06/03 02:37:09 ssttoo Exp $
  * @link       http://pear.php.net/package/Text_Highlighter
  */
-
 /**
  * @ignore
  */
-
 require_once dirname(__FILE__) . '/../Renderer.php';
 require_once dirname(__FILE__) . '/../Renderer/Array.php';
 
@@ -64,11 +63,9 @@ require_once dirname(__FILE__) . '/../Renderer/Array.php';
  * @version    Release: 0.5.0
  * @link       http://pear.php.net/package/Text_Highlighter
  */
-
 class Text_Highlighter_Renderer_HtmlTags extends Text_Highlighter_Renderer_Array
 {
-
-    /**#@+
+    /*     * #@+
      * @access private
      */
 
@@ -103,7 +100,7 @@ class Text_Highlighter_Renderer_HtmlTags extends Text_Highlighter_Renderer_Array
         'inlinetags' => '',
     );
 
-    /**#@-*/
+    /*     * #@- */
 
     /**
      * Resets renderer state
@@ -124,7 +121,6 @@ class Text_Highlighter_Renderer_HtmlTags extends Text_Highlighter_Renderer_Array
             $this->_hilite_tags = array_merge($this->_tags, $this->_options['tags']);
         }
     }
-
 
     /**
      * Signals that no more tokens are available
@@ -165,14 +161,13 @@ class Text_Highlighter_Renderer_HtmlTags extends Text_Highlighter_Renderer_Array
 
         if ($this->_numbers) {
             /* additional whitespace for browsers that do not display
-            empty list items correctly */
+              empty list items correctly */
             $html_output = '<li>&nbsp;' . str_replace("\n", "</li>\n<li>&nbsp;", $html_output) . '</li>';
             $this->_output = '<ol>' . str_replace(' ', '&nbsp;', $html_output) . '</ol>';
         } else {
             $this->_output = '<pre>' . $html_output . '</pre>';
         }
     }
-
 
 }
 
@@ -183,5 +178,4 @@ class Text_Highlighter_Renderer_HtmlTags extends Text_Highlighter_Renderer_Array
  * c-hanging-comment-ender-p: nil
  * End:
  */
-
 ?>

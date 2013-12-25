@@ -34,7 +34,7 @@ class HTMLPurifier_Printer_ConfigForm extends HTMLPurifier_Printer
      * @param $compress Integer max length before compressing a directive name, set to false to turn off
      */
     public function __construct(
-        $name, $doc_url = null, $compress = false
+    $name, $doc_url = null, $compress = false
     )
     {
         parent::__construct();
@@ -53,8 +53,10 @@ class HTMLPurifier_Printer_ConfigForm extends HTMLPurifier_Printer
      */
     public function setTextareaDimensions($cols = null, $rows = null)
     {
-        if ($cols) $this->fields['default']->cols = $cols;
-        if ($rows) $this->fields['default']->rows = $rows;
+        if ($cols)
+            $this->fields['default']->cols = $cols;
+        if ($rows)
+            $this->fields['default']->rows = $rows;
     }
 
     /**
@@ -156,12 +158,12 @@ class HTMLPurifier_Printer_ConfigForm extends HTMLPurifier_Printer
             }
 
             $ret .= $this->element(
-                'label',
-                $directive_disp,
-                // component printers must create an element with this id
-                $attr
+                    'label', $directive_disp,
+                    // component printers must create an element with this id
+                    $attr
             );
-            if ($this->docURL) $ret .= $this->end('a');
+            if ($this->docURL)
+                $ret .= $this->end('a');
             $ret .= $this->end('th');
 
             $ret .= $this->start('td');
@@ -173,7 +175,8 @@ class HTMLPurifier_Printer_ConfigForm extends HTMLPurifier_Printer
                 $type = $def->type;
                 $allow_null = isset($def->allow_null);
             }
-            if (!isset($this->fields[$type])) $type = 0; // default
+            if (!isset($this->fields[$type]))
+                $type = 0; // default
             $type_obj = $this->fields[$type];
             if ($allow_null) {
                 $type_obj = new HTMLPurifier_Printer_ConfigForm_NullDecorator($type_obj);
@@ -193,6 +196,7 @@ class HTMLPurifier_Printer_ConfigForm extends HTMLPurifier_Printer
  */
 class HTMLPurifier_Printer_ConfigForm_NullDecorator extends HTMLPurifier_Printer
 {
+
     /**
      * Printer being decorated
      */
@@ -234,13 +238,15 @@ class HTMLPurifier_Printer_ConfigForm_NullDecorator extends HTMLPurifier_Printer
             // modify inline javascript slightly
             $attr['onclick'] = "toggleWriteability('$name:Yes_$ns.$directive',checked);toggleWriteability('$name:No_$ns.$directive',checked)";
         }
-        if ($value === null) $attr['checked'] = 'checked';
+        if ($value === null)
+            $attr['checked'] = 'checked';
         $ret .= $this->elementEmpty('input', $attr);
         $ret .= $this->text(' or ');
         $ret .= $this->elementEmpty('br');
         $ret .= $this->obj->render($ns, $directive, $value, $name, array($gen_config, $config));
         return $ret;
     }
+
 }
 
 /**
@@ -248,6 +254,7 @@ class HTMLPurifier_Printer_ConfigForm_NullDecorator extends HTMLPurifier_Printer
  */
 class HTMLPurifier_Printer_ConfigForm_default extends HTMLPurifier_Printer
 {
+
     public $cols = 18;
     public $rows = 5;
 
@@ -298,21 +305,23 @@ class HTMLPurifier_Printer_ConfigForm_default extends HTMLPurifier_Printer
             'name' => "$name" . "[$ns.$directive]",
             'id' => "$name:$ns.$directive"
         );
-        if ($value === null) $attr['disabled'] = 'disabled';
+        if ($value === null)
+            $attr['disabled'] = 'disabled';
         if (isset($def->allowed)) {
             $ret .= $this->start('select', $attr);
             foreach ($def->allowed as $val => $b) {
                 $attr = array();
-                if ($value == $val) $attr['selected'] = 'selected';
+                if ($value == $val)
+                    $attr['selected'] = 'selected';
                 $ret .= $this->element('option', $val, $attr);
             }
             $ret .= $this->end('select');
         } elseif (
-            $type === HTMLPurifier_VarParser::TEXT ||
-            $type === HTMLPurifier_VarParser::ITEXT ||
-            $type === HTMLPurifier_VarParser::ALIST ||
-            $type === HTMLPurifier_VarParser::HASH ||
-            $type === HTMLPurifier_VarParser::LOOKUP
+                $type === HTMLPurifier_VarParser::TEXT ||
+                $type === HTMLPurifier_VarParser::ITEXT ||
+                $type === HTMLPurifier_VarParser::ALIST ||
+                $type === HTMLPurifier_VarParser::HASH ||
+                $type === HTMLPurifier_VarParser::LOOKUP
         ) {
             $attr['cols'] = $this->cols;
             $attr['rows'] = $this->rows;
@@ -326,6 +335,7 @@ class HTMLPurifier_Printer_ConfigForm_default extends HTMLPurifier_Printer
         }
         return $ret;
     }
+
 }
 
 /**
@@ -333,6 +343,7 @@ class HTMLPurifier_Printer_ConfigForm_default extends HTMLPurifier_Printer
  */
 class HTMLPurifier_Printer_ConfigForm_bool extends HTMLPurifier_Printer
 {
+
     public function render($ns, $directive, $value, $name, $config)
     {
         if (is_array($config) && isset($config[0])) {
@@ -356,8 +367,10 @@ class HTMLPurifier_Printer_ConfigForm_bool extends HTMLPurifier_Printer
             'id' => "$name:Yes_$ns.$directive",
             'value' => '1'
         );
-        if ($value === true) $attr['checked'] = 'checked';
-        if ($value === null) $attr['disabled'] = 'disabled';
+        if ($value === true)
+            $attr['checked'] = 'checked';
+        if ($value === null)
+            $attr['disabled'] = 'disabled';
         $ret .= $this->elementEmpty('input', $attr);
 
         $ret .= $this->start('label', array('for' => "$name:No_$ns.$directive"));
@@ -371,14 +384,17 @@ class HTMLPurifier_Printer_ConfigForm_bool extends HTMLPurifier_Printer
             'id' => "$name:No_$ns.$directive",
             'value' => '0'
         );
-        if ($value === false) $attr['checked'] = 'checked';
-        if ($value === null) $attr['disabled'] = 'disabled';
+        if ($value === false)
+            $attr['checked'] = 'checked';
+        if ($value === null)
+            $attr['disabled'] = 'disabled';
         $ret .= $this->elementEmpty('input', $attr);
 
         $ret .= $this->end('div');
 
         return $ret;
     }
+
 }
 
 // vim: et sw=4 sts=4

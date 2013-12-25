@@ -1,4 +1,5 @@
 <?php
+
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 /**
  * Array renderer.
@@ -22,11 +23,9 @@
  * @version    CVS: $Id: Array.php,v 1.1 2007/06/03 02:37:08 ssttoo Exp $
  * @link       http://pear.php.net/package/Text_Highlighter
  */
-
 /**
  * @ignore
  */
-
 require_once dirname(__FILE__) . '/../Renderer.php';
 
 /**
@@ -49,11 +48,9 @@ require_once dirname(__FILE__) . '/../Renderer.php';
  * @version    Release: 0.5.0
  * @link       http://pear.php.net/package/Text_Highlighter
  */
-
 class Text_Highlighter_Renderer_Array extends Text_Highlighter_Renderer
 {
-
-    /**#@+
+    /*     * #@+
      * @access private
      */
 
@@ -85,7 +82,7 @@ class Text_Highlighter_Renderer_Array extends Text_Highlighter_Renderer
      */
     var $_output = array();
 
-    /**#@-*/
+    /*     * #@- */
 
     /**
      * Preprocesses code
@@ -104,7 +101,6 @@ class Text_Highlighter_Renderer_Array extends Text_Highlighter_Renderer
         $str = str_replace("\t", str_repeat(' ', $this->_tabsize), $str);
         return rtrim($str);
     }
-
 
     /**
      * Resets renderer state
@@ -129,7 +125,6 @@ class Text_Highlighter_Renderer_Array extends Text_Highlighter_Renderer
         }
     }
 
-
     /**
      * Accepts next token
      *
@@ -152,9 +147,7 @@ class Text_Highlighter_Renderer_Array extends Text_Highlighter_Renderer
             $this->_output[][$class] = $content;
         }
         $this->_lastClass = $class;
-
     }
-
 
     /**
      * Given a CSS class name, returns the class name
@@ -185,6 +178,7 @@ class Text_Highlighter_Renderer_Array extends Text_Highlighter_Renderer
     {
         return $this->_output;
     }
+
 }
 
 /*
@@ -194,5 +188,4 @@ class Text_Highlighter_Renderer_Array extends Text_Highlighter_Renderer
  * c-hanging-comment-ender-p: nil
  * End:
  */
-
 ?>

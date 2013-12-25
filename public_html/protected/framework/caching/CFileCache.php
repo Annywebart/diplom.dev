@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CFileCache class file
  *
@@ -25,15 +26,18 @@
  */
 class CFileCache extends CCache
 {
+
     /**
      * @var string the directory to store cache files. Defaults to null, meaning
      * using 'protected/runtime/cache' as the directory.
      */
     public $cachePath;
+
     /**
      * @var string cache file suffix. Defaults to '.bin'.
      */
     public $cacheFileSuffix = '.bin';
+
     /**
      * @var integer the level of sub-directories to store cache files. Defaults to 0,
      * meaning no sub-directories. If the system has huge number of cache files (e.g. 10K+),
@@ -41,6 +45,7 @@ class CFileCache extends CCache
      * The value of this property should not exceed 16 (less than 3 is recommended).
      */
     public $directoryLevel = 0;
+
     /**
      * @var boolean whether cache entry expiration time should be embedded into a physical file.
      * Defaults to false meaning that the file modification time will be used to store expire value.
@@ -50,7 +55,6 @@ class CFileCache extends CCache
      * @since 1.1.14
      */
     public $embedExpiry = false;
-
     private $_gcProbability = 100;
     private $_gced = false;
 
@@ -83,7 +87,7 @@ class CFileCache extends CCache
      */
     public function setGCProbability($value)
     {
-        $value = (int)$value;
+        $value = (int) $value;
         if ($value < 0)
             $value = 0;
         if ($value > 1000000)
@@ -228,8 +232,9 @@ class CFileCache extends CCache
     private function filemtime($path)
     {
         if ($this->embedExpiry)
-            return (int)@file_get_contents($path, false, null, 0, 10);
+            return (int) @file_get_contents($path, false, null, 0, 10);
         else
             return @filemtime($path);
     }
+
 }

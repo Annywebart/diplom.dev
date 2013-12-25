@@ -1,4 +1,5 @@
 <?php
+
 /**
  * MIME types.
  *
@@ -10,7 +11,6 @@
  * @copyright 2008-2013 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
-
 return array(
     'ai' => 'application/postscript',
     'aif' => 'audio/x-aiff',

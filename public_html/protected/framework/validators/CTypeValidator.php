@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CTypeValidator class file.
  *
@@ -43,29 +44,34 @@
  */
 class CTypeValidator extends CValidator
 {
+
     /**
      * @var string the data type that the attribute should be. Defaults to 'string'.
      * Valid values include 'string', 'integer', 'float', 'array', 'date', 'time' and 'datetime'.
      */
     public $type = 'string';
+
     /**
      * @var string the format pattern that the date value should follow. Defaults to 'MM/dd/yyyy'.
      * Please see {@link CDateTimeParser} for details about how to specify a date format.
      * This property is effective only when {@link type} is 'date'.
      */
     public $dateFormat = 'MM/dd/yyyy';
+
     /**
      * @var string the format pattern that the time value should follow. Defaults to 'hh:mm'.
      * Please see {@link CDateTimeParser} for details about how to specify a time format.
      * This property is effective only when {@link type} is 'time'.
      */
     public $timeFormat = 'hh:mm';
+
     /**
      * @var string the format pattern that the datetime value should follow. Defaults to 'MM/dd/yyyy hh:mm'.
      * Please see {@link CDateTimeParser} for details about how to specify a datetime format.
      * This property is effective only when {@link type} is 'datetime'.
      */
     public $datetimeFormat = 'MM/dd/yyyy hh:mm';
+
     /**
      * @var boolean whether the attribute value can be null or empty. Defaults to true,
      * meaning that if the attribute is empty, it is considered valid.
@@ -116,9 +122,9 @@ class CTypeValidator extends CValidator
             return false;
 
         if ($type === 'integer')
-            return (boolean)preg_match('/^[-+]?[0-9]+$/', trim($value));
+            return (boolean) preg_match('/^[-+]?[0-9]+$/', trim($value));
         elseif ($type === 'double')
-            return (boolean)preg_match('/^[-+]?([0-9]*\.)?[0-9]+([eE][-+]?[0-9]+)?$/', trim($value));
+            return (boolean) preg_match('/^[-+]?([0-9]*\.)?[0-9]+([eE][-+]?[0-9]+)?$/', trim($value));
         elseif ($type === 'date')
             return CDateTimeParser::parse($value, $this->dateFormat, array('month' => 1, 'day' => 1, 'hour' => 0, 'minute' => 0, 'second' => 0)) !== false;
         elseif ($type === 'time')
@@ -128,4 +134,5 @@ class CTypeValidator extends CValidator
 
         return false;
     }
+
 }

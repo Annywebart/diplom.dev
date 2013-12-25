@@ -46,18 +46,17 @@
     };
 
     Timepicker.prototype = {
-
         constructor: Timepicker
 
-        , init: function () {
+        , init: function() {
 
             this.$element
-                .on('click', $.proxy(this.show, this))
-                .on('keyup', $.proxy(this.updateFromElementVal, this))
-            ;
-            
+                    .on('click', $.proxy(this.show, this))
+                    .on('keyup', $.proxy(this.updateFromElementVal, this))
+                    ;
+
             this.$widget = $(this.getTemplate()).appendTo('body');
-            
+
             this.$widget.on('click', $.proxy(this.click, this));
 
             this.setDefaultTime(this.defaultTime);
@@ -98,9 +97,9 @@
             return this;
         }
 
-        , hide: function(){
+        , hide: function() {
             this.$element.trigger('hide');
-            
+
             $('html').off('click.timepicker.data-api', $.proxy(this.hide, this));
 
             if (this.options.template === 'modal') {
@@ -135,14 +134,14 @@
             }
         }
 
-        , setDefaultTime: function(defaultTime){
+        , setDefaultTime: function(defaultTime) {
             if (defaultTime) {
                 if (defaultTime === 'current') {
                     var dTime = new Date();
                     var hours = dTime.getHours();
                     var minutes = Math.floor(dTime.getMinutes() / this.minuteStep) * this.minuteStep;
                     var meridian = "AM";
-                    if ( this.showMeridian ) {
+                    if (this.showMeridian) {
                         if (hours === 0) {
                             hours = 12;
                         } else if (hours >= 12) {
@@ -151,14 +150,14 @@
                             }
                             meridian = "PM";
                         } else {
-                           meridian = "AM";
+                            meridian = "AM";
                         }
                     }
                     this.hour = hours;
                     this.minute = minutes;
                     this.meridian = meridian;
                 } else if (defaultTime === 'value') {
-                    this.setValues( this.$element.val() );
+                    this.setValues(this.$element.val());
                 } else {
                     this.setValues(defaultTime);
                 }
@@ -173,7 +172,7 @@
             hour = hour < 10 ? '0' + hour : hour;
             minute = minute < 10 ? '0' + minute : minute;
 
-            return hour + ':' + minute + ( this.showMeridian ? ' ' + meridian : '' );
+            return hour + ':' + minute + (this.showMeridian ? ' ' + meridian : '');
         }
 
         , getTime: function() {
@@ -193,9 +192,9 @@
 
         , updateWidget: function() {
             this.$widget
-                .find('td.bootstrap-timepicker-hour').text(this.hour).end()
-                .find('td.bootstrap-timepicker-minute').text(this.minute < 10 ? '0' + this.minute : this.minute).end()
-                .find('td.bootstrap-timepicker-meridian').text(this.meridian);
+                    .find('td.bootstrap-timepicker-hour').text(this.hour).end()
+                    .find('td.bootstrap-timepicker-minute').text(this.minute < 10 ? '0' + this.minute : this.minute).end()
+                    .find('td.bootstrap-timepicker-meridian').text(this.meridian);
         }
 
         , update: function() {
@@ -203,7 +202,7 @@
             this.updateWidget();
         }
 
-        , updateFromElementVal: function () {
+        , updateFromElementVal: function() {
             var time = this.$element.val();
             if (time) {
                 this.setValues(time);
@@ -228,24 +227,24 @@
         }
 
         , incrementHour: function() {
-            if ( this.showMeridian ) {
-                if ( this.hour === 12 ) {
+            if (this.showMeridian) {
+                if (this.hour === 12) {
                     this.hour = 1;
                     return this.toggleMeridian();
                 }
             }
-            if ( this.hour === 23 ) {
+            if (this.hour === 23) {
                 return this.hour = 0;
             }
             this.hour = this.hour + 1;
         }
 
         , decrementHour: function() {
-            if ( this.showMeridian ) {
+            if (this.showMeridian) {
                 if (this.hour === 1) {
                     this.hour = 12;
                     return this.toggleMeridian();
-                } 
+                }
             }
             if (this.hour === 0) {
                 return this.hour = 23;
@@ -278,72 +277,72 @@
 
             this.update();
         }
-        
+
         , getTemplate: function() {
             if (this.options.templates[this.options.template]) {
                 return this.options.templates[this.options.template];
             }
             var template;
-            switch(this.options.template) {
+            switch (this.options.template) {
                 case 'modal':
-                    template = '<div class="bootstrap-timepicker modal hide fade in" style="top: 30%; margin-top: 0; width: 200px; margin-left: -100px;" data-backdrop="false">'+
-                                   '<div class="modal-header">'+
-                                       '<a href="#" class="close" data-action="hide">×</a>'+
-                                       '<h3>Pick a Time</h3>'+
-                                   '</div>'+
-                                   '<div class="modal-content">'+
-                                       '<table>'+
-                                           '<tr>'+
-                                               '<td><a href="#" data-action="incrementHour"><i class="icon-chevron-up"></i></a></td>'+
-                                               '<td class="separator"></td>'+
-                                               '<td><a href="#" data-action="incrementMinute"><i class="icon-chevron-up"></i></a></td>'+
-                                               ( this.showMeridian ? '<td><a href="#" data-action="toggleMeridian"><i class="icon-chevron-up"></i></a></td>' : '' ) +
-                                           '</tr>'+
-                                           '<tr>'+
-                                               '<td class="bootstrap-timepicker-hour"></td> '+
-                                               '<td class="separator">:</td>'+
-                                               '<td class="bootstrap-timepicker-minute"></td> '+
-                                               ( this.showMeridian ? '<td class="bootstrap-timepicker-meridian"></td>' : '' ) +
-                                           '</tr>'+
-                                           '<tr>'+
-                                               '<td><a href="#" data-action="decrementHour"><i class="icon-chevron-down"></i></a></td>'+
-                                               '<td class="separator"></td>'+
-                                               '<td><a href="#" data-action="decrementMinute"><i class="icon-chevron-down"></i></a></td>'+
-                                               ( this.showMeridian ? '<td><a href="#" data-action="toggleMeridian"><i class="icon-chevron-down"></i></a></td>' : '' ) +
-                                           '</tr>'+
-                                       '</table>'+
-                                   '</div>'+
-                                   '<div class="modal-footer">'+
-                                       '<a href="#" class="btn btn-primary" data-action="hide">Ok</a>'+
-                                   '</div>'+
-                               '</div>';
-                    
-                break;
+                    template = '<div class="bootstrap-timepicker modal hide fade in" style="top: 30%; margin-top: 0; width: 200px; margin-left: -100px;" data-backdrop="false">' +
+                            '<div class="modal-header">' +
+                            '<a href="#" class="close" data-action="hide">×</a>' +
+                            '<h3>Pick a Time</h3>' +
+                            '</div>' +
+                            '<div class="modal-content">' +
+                            '<table>' +
+                            '<tr>' +
+                            '<td><a href="#" data-action="incrementHour"><i class="icon-chevron-up"></i></a></td>' +
+                            '<td class="separator"></td>' +
+                            '<td><a href="#" data-action="incrementMinute"><i class="icon-chevron-up"></i></a></td>' +
+                            (this.showMeridian ? '<td><a href="#" data-action="toggleMeridian"><i class="icon-chevron-up"></i></a></td>' : '') +
+                            '</tr>' +
+                            '<tr>' +
+                            '<td class="bootstrap-timepicker-hour"></td> ' +
+                            '<td class="separator">:</td>' +
+                            '<td class="bootstrap-timepicker-minute"></td> ' +
+                            (this.showMeridian ? '<td class="bootstrap-timepicker-meridian"></td>' : '') +
+                            '</tr>' +
+                            '<tr>' +
+                            '<td><a href="#" data-action="decrementHour"><i class="icon-chevron-down"></i></a></td>' +
+                            '<td class="separator"></td>' +
+                            '<td><a href="#" data-action="decrementMinute"><i class="icon-chevron-down"></i></a></td>' +
+                            (this.showMeridian ? '<td><a href="#" data-action="toggleMeridian"><i class="icon-chevron-down"></i></a></td>' : '') +
+                            '</tr>' +
+                            '</table>' +
+                            '</div>' +
+                            '<div class="modal-footer">' +
+                            '<a href="#" class="btn btn-primary" data-action="hide">Ok</a>' +
+                            '</div>' +
+                            '</div>';
+
+                    break;
                 case 'dropdown':
-                    template = '<div class="bootstrap-timepicker dropdown-menu">'+
-                                   '<table>'+
-                                       '<tr>'+
-                                           '<td><a href="#" data-action="incrementHour"><i class="icon-chevron-up"></i></a></td>'+
-                                           '<td class="separator"></td>'+
-                                           '<td><a href="#" data-action="incrementMinute"><i class="icon-chevron-up"></i></a></td>'+
-                                           ( this.showMeridian ? '<td><a href="#" data-action="toggleMeridian"><i class="icon-chevron-up"></i></a></td>' : '' ) +
-                                       '</tr>'+
-                                       '<tr>'+
-                                           '<td class="bootstrap-timepicker-hour"></td> '+
-                                           '<td class="separator">:</td>'+
-                                           '<td class="bootstrap-timepicker-minute"></td> '+
-                                           ( this.showMeridian ? '<td class="bootstrap-timepicker-meridian"></td>' : '' ) +
-                                       '</tr>'+
-                                       '<tr>'+
-                                           '<td><a href="#" data-action="decrementHour"><i class="icon-chevron-down"></i></a></td>'+
-                                           '<td class="separator"></td>'+
-                                           '<td><a href="#" data-action="decrementMinute"><i class="icon-chevron-down"></i></a></td>'+
-                                           ( this.showMeridian ? '<td><a href="#" data-action="toggleMeridian"><i class="icon-chevron-down"></i></a></td>' : '' ) +
-                                       '</tr>'+
-                                   '</table>'+
-                               '</div>';
-                break;
-                
+                    template = '<div class="bootstrap-timepicker dropdown-menu">' +
+                            '<table>' +
+                            '<tr>' +
+                            '<td><a href="#" data-action="incrementHour"><i class="icon-chevron-up"></i></a></td>' +
+                            '<td class="separator"></td>' +
+                            '<td><a href="#" data-action="incrementMinute"><i class="icon-chevron-up"></i></a></td>' +
+                            (this.showMeridian ? '<td><a href="#" data-action="toggleMeridian"><i class="icon-chevron-up"></i></a></td>' : '') +
+                            '</tr>' +
+                            '<tr>' +
+                            '<td class="bootstrap-timepicker-hour"></td> ' +
+                            '<td class="separator">:</td>' +
+                            '<td class="bootstrap-timepicker-minute"></td> ' +
+                            (this.showMeridian ? '<td class="bootstrap-timepicker-meridian"></td>' : '') +
+                            '</tr>' +
+                            '<tr>' +
+                            '<td><a href="#" data-action="decrementHour"><i class="icon-chevron-down"></i></a></td>' +
+                            '<td class="separator"></td>' +
+                            '<td><a href="#" data-action="decrementMinute"><i class="icon-chevron-down"></i></a></td>' +
+                            (this.showMeridian ? '<td><a href="#" data-action="toggleMeridian"><i class="icon-chevron-down"></i></a></td>' : '') +
+                            '</tr>' +
+                            '</table>' +
+                            '</div>';
+                    break;
+
             }
             return template;
         }
@@ -353,11 +352,11 @@
     /* TIMEPICKER PLUGIN DEFINITION
      * =========================== */
 
-    $.fn.timepicker = function (option) {
-        return this.each(function () {
+    $.fn.timepicker = function(option) {
+        return this.each(function() {
             var $this = $(this)
-            , data = $this.data('timepicker')
-            , options = typeof option == 'object' && option;
+                    , data = $this.data('timepicker')
+                    , options = typeof option == 'object' && option;
             if (!data) {
                 $this.data('timepicker', (data = new Timepicker(this, options)));
             }
@@ -368,12 +367,12 @@
     }
 
     $.fn.timepicker.defaults = {
-      minuteStep: 15
-    , disableFocus: false
-    , defaultTime: 'current'
-    , showMeridian: true
-    , template: 'dropdown'
-    , templates: {} // set custom templates
+        minuteStep: 15
+        , disableFocus: false
+        , defaultTime: 'current'
+        , showMeridian: true
+        , template: 'dropdown'
+        , templates: {} // set custom templates
     }
 
     $.fn.timepicker.Constructor = Timepicker
@@ -381,8 +380,8 @@
     /* TIMEPICKER DATA-API
      * ================== */
 
-    $(function () {
-        $('body').on('focus.timepicker.data-api', '[data-provide="timepicker"]', function (e) {
+    $(function() {
+        $('body').on('focus.timepicker.data-api', '[data-provide="timepicker"]', function(e) {
             var $this = $(this);
             if ($this.data('timepicker')) {
                 return;

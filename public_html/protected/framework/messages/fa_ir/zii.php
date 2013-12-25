@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Persian (Farsi) Translation
  * By : Bamdad Dashtban (bamdadd@gmail.com)

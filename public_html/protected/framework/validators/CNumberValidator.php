@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CNumberValidator class file.
  *
@@ -30,42 +31,49 @@
  */
 class CNumberValidator extends CValidator
 {
+
     /**
      * @var boolean whether the attribute value can only be an integer. Defaults to false.
      */
     public $integerOnly = false;
+
     /**
      * @var boolean whether the attribute value can be null or empty. Defaults to true,
      * meaning that if the attribute is empty, it is considered valid.
      */
     public $allowEmpty = true;
+
     /**
      * @var integer|float upper limit of the number. Defaults to null, meaning no upper limit.
      */
     public $max;
+
     /**
      * @var integer|float lower limit of the number. Defaults to null, meaning no lower limit.
      */
     public $min;
+
     /**
      * @var string user-defined error message used when the value is too big.
      */
     public $tooBig;
+
     /**
      * @var string user-defined error message used when the value is too small.
      */
     public $tooSmall;
+
     /**
      * @var string the regular expression for matching integers.
      * @since 1.1.7
      */
     public $integerPattern = '/^\s*[+-]?\d+\s*$/';
+
     /**
      * @var string the regular expression for matching numbers.
      * @since 1.1.7
      */
     public $numberPattern = '/^\s*[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?\s*$/';
-
 
     /**
      * Validates the attribute of the object.
@@ -169,4 +177,5 @@ if(jQuery.trim(value)!='') {
 
         return $js;
     }
+
 }

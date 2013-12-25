@@ -1,19 +1,15 @@
 <?php
 
 /** Hungarian localization file for KCFinder
-  * Dubravszky József <joe@chilicreative.hu>
-  */
-
+ * Dubravszky József <joe@chilicreative.hu>
+ */
 $lang = array(
-
-    '_locale' => "hu_HU.UTF-8",  // UNIX localization code
-    '_charset' => "utf-8",       // Browser charset
-
+    '_locale' => "hu_HU.UTF-8", // UNIX localization code
+    '_charset' => "utf-8", // Browser charset
     // Date time formats. See http://www.php.net/manual/en/function.strftime.php
     '_dateTimeFull' => "%A, %e.%B.%Y %H:%M",
     '_dateTimeMid' => "%a %e %b %Y %H:%M",
     '_dateTimeSmall' => "%d/%m/%Y %H:%M",
-
     "You don't have permissions to upload files." => "Nincs jogosultsága fájlokat feltölteni.",
     "You don't have permissions to browse server." => "Nincs jogosultsága a kiszolgálón böngészni.",
     "Cannot move uploaded file to target folder." => "Nem lehet áthelyezni a feltöltött fájlt a célkönyvtárba.",
@@ -121,5 +117,4 @@ $lang = array(
     "No" => "Nem",
     "You cannot rename the extension of files!" => "Nem változtathatja meg a fájlok kiterjezstését",
 );
-
 ?>

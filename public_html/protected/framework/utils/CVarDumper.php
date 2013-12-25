@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CVarDumper class file.
  *
@@ -25,6 +26,7 @@
  */
 class CVarDumper
 {
+
     private static $_objects;
     private static $_output;
     private static $_depth;
@@ -68,6 +70,7 @@ class CVarDumper
      * @param mixed $var variable to be dumped
      * @param integer $level depth level
      */
+
     private static function dumpInternal($var, $level)
     {
         switch (gettype($var)) {
@@ -118,7 +121,7 @@ class CVarDumper
                 else {
                     $id = array_push(self::$_objects, $var);
                     $className = get_class($var);
-                    $members = (array)$var;
+                    $members = (array) $var;
                     $spaces = str_repeat(' ', $level * 4);
                     self::$_output .= "$className#$id\n" . $spaces . '(';
                     foreach ($members as $key => $value) {
@@ -131,4 +134,5 @@ class CVarDumper
                 break;
         }
     }
+
 }

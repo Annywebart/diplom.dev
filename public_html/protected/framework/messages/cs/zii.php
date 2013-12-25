@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Message translations for [cs].
  *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CWinCache class file
  *
@@ -21,6 +22,7 @@
  */
 class CWinCache extends CCache
 {
+
     /**
      * Initializes this application component.
      * This method is required by the {@link IApplicationComponent} interface.
@@ -106,4 +108,5 @@ class CWinCache extends CCache
     {
         return wincache_ucache_clear();
     }
+
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CFileValidator class file.
  *
@@ -61,11 +62,13 @@
  */
 class CFileValidator extends CValidator
 {
+
     /**
      * @var boolean whether the attribute requires a file to be uploaded or not.
      * Defaults to false, meaning a file is required to be uploaded.
      */
     public $allowEmpty = false;
+
     /**
      * @var mixed a list of file name extensions that are allowed to be uploaded.
      * This can be either an array or a string consisting of file extension names
@@ -74,6 +77,7 @@ class CFileValidator extends CValidator
      * extensions are allowed.
      */
     public $types;
+
     /**
      * @var mixed a list of MIME-types of the file that are allowed to be uploaded.
      * This can be either an array or a string consisting of MIME-types separated
@@ -83,12 +87,14 @@ class CFileValidator extends CValidator
      * @since 1.1.11
      */
     public $mimeTypes;
+
     /**
      * @var integer the minimum number of bytes required for the uploaded file.
      * Defaults to null, meaning no limit.
      * @see tooSmall
      */
     public $minSize;
+
     /**
      * @var integer the maximum number of bytes required for the uploaded file.
      * Defaults to null, meaning no limit.
@@ -97,21 +103,25 @@ class CFileValidator extends CValidator
      * @see tooLarge
      */
     public $maxSize;
+
     /**
      * @var string the error message used when the uploaded file is too large.
      * @see maxSize
      */
     public $tooLarge;
+
     /**
      * @var string the error message used when the uploaded file is too small.
      * @see minSize
      */
     public $tooSmall;
+
     /**
      * @var string the error message used when the uploaded file has an extension name
      * that is not listed among {@link types}.
      */
     public $wrongType;
+
     /**
      * @var string the error message used when the uploaded file has a MIME-type
      * that is not listed among {@link mimeTypes}. In order to use this property
@@ -119,17 +129,20 @@ class CFileValidator extends CValidator
      * @since 1.1.11
      */
     public $wrongMimeType;
+
     /**
      * @var integer the maximum file count the given attribute can hold.
      * It defaults to 1, meaning single file upload. By defining a higher number,
      * multiple uploads become possible.
      */
     public $maxFiles = 1;
+
     /**
      * @var string the error message used if the count of multiple uploads exceeds
      * limit.
      */
     public $tooMany;
+
     /**
      * @var boolean whether attributes listed with this validator should be considered safe for massive assignment.
      * For this validator it defaults to false.
@@ -280,13 +293,14 @@ class CFileValidator extends CValidator
         // get the latest character
         switch (strtolower(substr($sizeStr, -1))) {
             case 'm':
-                return (int)$sizeStr * 1048576; // 1024 * 1024
+                return (int) $sizeStr * 1048576; // 1024 * 1024
             case 'k':
-                return (int)$sizeStr * 1024; // 1024
+                return (int) $sizeStr * 1024; // 1024
             case 'g':
-                return (int)$sizeStr * 1073741824; // 1024 * 1024 * 1024
+                return (int) $sizeStr * 1073741824; // 1024 * 1024 * 1024
             default:
-                return (int)$sizeStr; // do nothing
+                return (int) $sizeStr; // do nothing
         }
     }
+
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CMapIterator class file.
  *
@@ -19,14 +20,17 @@
  */
 class CMapIterator implements Iterator
 {
+
     /**
      * @var array the data to be iterated through
      */
     private $_d;
+
     /**
      * @var array list of keys in the map
      */
     private $_keys;
+
     /**
      * @var mixed current key
      */
@@ -38,7 +42,7 @@ class CMapIterator implements Iterator
      */
     public function __construct(&$data)
     {
-        $this->_d =& $data;
+        $this->_d = & $data;
         $this->_keys = array_keys($data);
         $this->_key = reset($this->_keys);
     }
@@ -90,4 +94,5 @@ class CMapIterator implements Iterator
     {
         return $this->_key !== false;
     }
+
 }

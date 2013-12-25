@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CFileLogRoute class file.
  *
@@ -33,6 +34,7 @@
  */
 class CFileLogRoute extends CLogRoute
 {
+
     /**
      * @var integer maximum log file size
      */
@@ -41,14 +43,17 @@ class CFileLogRoute extends CLogRoute
      * @var integer number of log files used for rotation
      */
     private $_maxLogFiles = 5;
+
     /**
      * @var string directory storing log files
      */
     private $_logPath;
+
     /**
      * @var string log file name
      */
     private $_logFile = 'application.log';
+
     /**
      * @var boolean Whether to rotate primary log by copy and truncate
      * which is more compatible with log tailers. Defaults to false.
@@ -83,8 +88,7 @@ class CFileLogRoute extends CLogRoute
     {
         $this->_logPath = realpath($value);
         if ($this->_logPath === false || !is_dir($this->_logPath) || !is_writable($this->_logPath))
-            throw new CException(Yii::t('yii', 'CFileLogRoute.logPath "{path}" does not point to a valid directory. Make sure the directory exists and is writable by the Web server process.',
-                array('{path}' => $value)));
+            throw new CException(Yii::t('yii', 'CFileLogRoute.logPath "{path}" does not point to a valid directory. Make sure the directory exists and is writable by the Web server process.', array('{path}' => $value)));
     }
 
     /**
@@ -116,7 +120,7 @@ class CFileLogRoute extends CLogRoute
      */
     public function setMaxFileSize($value)
     {
-        if (($this->_maxFileSize = (int)$value) < 1)
+        if (($this->_maxFileSize = (int) $value) < 1)
             $this->_maxFileSize = 1;
     }
 
@@ -133,7 +137,7 @@ class CFileLogRoute extends CLogRoute
      */
     public function setMaxLogFiles($value)
     {
-        if (($this->_maxLogFiles = (int)$value) < 1)
+        if (($this->_maxLogFiles = (int) $value) < 1)
             $this->_maxLogFiles = 1;
     }
 
@@ -191,4 +195,5 @@ class CFileLogRoute extends CLogRoute
                 @rename($file, $file . '.1');
         }
     }
+
 }

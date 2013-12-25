@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CFileHelper class file.
  *
@@ -17,6 +18,7 @@
  */
 class CFileHelper
 {
+
     /**
      * Returns the extension name of a file path.
      * For example, the path "path/to/something.php" would return "php".
@@ -298,4 +300,5 @@ class CFileHelper
         @chmod($dst, $mode);
         return $res;
     }
+
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CGettextMoFile class file.
  *
@@ -43,6 +44,7 @@
  */
 class CGettextMoFile extends CGettextFile
 {
+
     /**
      * @var boolean whether to use Big Endian when reading and writing an integer.
      */
@@ -66,12 +68,10 @@ class CGettextMoFile extends CGettextFile
     public function load($file, $context)
     {
         if (!($fr = @fopen($file, 'rb')))
-            throw new CException(Yii::t('yii', 'Unable to read file "{file}".',
-                array('{file}' => $file)));
+            throw new CException(Yii::t('yii', 'Unable to read file "{file}".', array('{file}' => $file)));
 
         if (!@flock($fr, LOCK_SH))
-            throw new CException(Yii::t('yii', 'Unable to lock file "{file}" for reading.',
-                array('{file}' => $file)));
+            throw new CException(Yii::t('yii', 'Unable to lock file "{file}" for reading.', array('{file}' => $file)));
 
         $magic = current($array = unpack('c', $this->readByte($fr, 4)));
         if ($magic == -34)
@@ -79,12 +79,10 @@ class CGettextMoFile extends CGettextFile
         elseif ($magic == -107)
             $this->useBigEndian = true;
         else
-            throw new CException(Yii::t('yii', 'Invalid MO file: {file} (magic: {magic}).',
-                array('{file}' => $file, '{magic}' => $magic)));
+            throw new CException(Yii::t('yii', 'Invalid MO file: {file} (magic: {magic}).', array('{file}' => $file, '{magic}' => $magic)));
 
         if (($revision = $this->readInteger($fr)) != 0)
-            throw new CException(Yii::t('yii', 'Invalid MO file revision: {revision}.',
-                array('{revision}' => $revision)));
+            throw new CException(Yii::t('yii', 'Invalid MO file revision: {revision}.', array('{revision}' => $revision)));
 
         $count = $this->readInteger($fr);
         $sourceOffset = $this->readInteger($fr);
@@ -136,12 +134,10 @@ class CGettextMoFile extends CGettextFile
     public function save($file, $messages)
     {
         if (!($fw = @fopen($file, 'wb')))
-            throw new CException(Yii::t('yii', 'Unable to write file "{file}".',
-                array('{file}' => $file)));
+            throw new CException(Yii::t('yii', 'Unable to write file "{file}".', array('{file}' => $file)));
 
         if (!@flock($fw, LOCK_EX))
-            throw new CException(Yii::t('yii', 'Unable to lock file "{file}" for writing.',
-                array('{file}' => $file)));
+            throw new CException(Yii::t('yii', 'Unable to lock file "{file}" for writing.', array('{file}' => $file)));
 
         // magic
         if ($this->useBigEndian)
@@ -236,7 +232,7 @@ class CGettextMoFile extends CGettextFile
      */
     protected function writeInteger($fw, $data)
     {
-        return $this->writeByte($fw, pack($this->useBigEndian ? 'N' : 'V', (int)$data));
+        return $this->writeByte($fw, pack($this->useBigEndian ? 'N' : 'V', (int) $data));
     }
 
     /**
@@ -263,4 +259,5 @@ class CGettextMoFile extends CGettextFile
     {
         return $this->writeByte($fw, $data . "\0");
     }
+
 }

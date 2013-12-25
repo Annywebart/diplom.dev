@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CXCache class file
  *
@@ -21,6 +22,7 @@
  */
 class CXCache extends CCache
 {
+
     /**
      * Initializes this application component.
      * This method is required by the {@link IApplicationComponent} interface.
@@ -98,5 +100,5 @@ class CXCache extends CCache
         }
         return true;
     }
-}
 
+}

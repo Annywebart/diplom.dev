@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Auto-generated class. HTML syntax highlighting
  *
@@ -19,7 +20,6 @@
  * @author Andrey Demenev <demenev@gmail.com>
  *
  */
-
 /**
  * @ignore
  */
@@ -35,8 +35,9 @@
  * @version    Release: 0.7.1
  * @link       http://pear.php.net/package/Text_Highlighter
  */
-class  Text_Highlighter_HTML extends Text_Highlighter
+class Text_Highlighter_HTML extends Text_Highlighter
 {
+
     var $_language = 'html';
 
     /**
@@ -57,63 +58,63 @@ class  Text_Highlighter_HTML extends Text_Highlighter
         );
         $this->_counts = array(
             -1 =>
-                array(
-                    0 => 0,
-                    1 => 0,
-                    2 => 1,
-                ),
+            array(
+                0 => 0,
+                1 => 0,
+                2 => 1,
+            ),
             0 =>
-                array(),
+            array(),
             1 =>
-                array(
-                    0 => 0,
-                    1 => 0,
-                    2 => 0,
-                ),
+            array(
+                0 => 0,
+                1 => 0,
+                2 => 0,
+            ),
             2 =>
-                array(
-                    0 => 1,
-                ),
+            array(
+                0 => 1,
+            ),
         );
         $this->_delim = array(
             -1 =>
-                array(
-                    0 => 'comment',
-                    1 => 'brackets',
-                    2 => '',
-                ),
+            array(
+                0 => 'comment',
+                1 => 'brackets',
+                2 => '',
+            ),
             0 =>
-                array(),
+            array(),
             1 =>
-                array(
-                    0 => '',
-                    1 => '',
-                    2 => 'quotes',
-                ),
+            array(
+                0 => '',
+                1 => '',
+                2 => 'quotes',
+            ),
             2 =>
-                array(
-                    0 => '',
-                ),
+            array(
+                0 => '',
+            ),
         );
         $this->_inner = array(
             -1 =>
-                array(
-                    0 => 'comment',
-                    1 => 'code',
-                    2 => 'special',
-                ),
+            array(
+                0 => 'comment',
+                1 => 'code',
+                2 => 'special',
+            ),
             0 =>
-                array(),
+            array(),
             1 =>
-                array(
-                    0 => 'reserved',
-                    1 => 'var',
-                    2 => 'string',
-                ),
+            array(
+                0 => 'reserved',
+                1 => 'var',
+                2 => 'string',
+            ),
             2 =>
-                array(
-                    0 => 'special',
-                ),
+            array(
+                0 => 'special',
+            ),
         );
         $this->_end = array(
             0 => '/(?i)--\\>/',
@@ -122,81 +123,81 @@ class  Text_Highlighter_HTML extends Text_Highlighter
         );
         $this->_states = array(
             -1 =>
-                array(
-                    0 => 0,
-                    1 => 1,
-                    2 => -1,
-                ),
+            array(
+                0 => 0,
+                1 => 1,
+                2 => -1,
+            ),
             0 =>
-                array(),
+            array(),
             1 =>
-                array(
-                    0 => -1,
-                    1 => -1,
-                    2 => 2,
-                ),
+            array(
+                0 => -1,
+                1 => -1,
+                2 => 2,
+            ),
             2 =>
-                array(
-                    0 => -1,
-                ),
+            array(
+                0 => -1,
+            ),
         );
         $this->_keywords = array(
             -1 =>
-                array(
-                    0 => -1,
-                    1 => -1,
-                    2 =>
-                        array(),
-                ),
-            0 =>
+            array(
+                0 => -1,
+                1 => -1,
+                2 =>
                 array(),
+            ),
+            0 =>
+            array(),
             1 =>
-                array(
-                    0 =>
-                        array(),
-                    1 =>
-                        array(),
-                    2 => -1,
-                ),
+            array(
+                0 =>
+                array(),
+                1 =>
+                array(),
+                2 => -1,
+            ),
             2 =>
-                array(
-                    0 =>
-                        array(),
-                ),
+            array(
+                0 =>
+                array(),
+            ),
         );
         $this->_parts = array(
             0 =>
-                array(),
+            array(),
             1 =>
-                array(
-                    0 => NULL,
-                    1 => NULL,
-                    2 => NULL,
-                ),
+            array(
+                0 => NULL,
+                1 => NULL,
+                2 => NULL,
+            ),
             2 =>
-                array(
-                    0 => NULL,
-                ),
+            array(
+                0 => NULL,
+            ),
         );
         $this->_subst = array(
             -1 =>
-                array(
-                    0 => false,
-                    1 => false,
-                    2 => false,
-                ),
+            array(
+                0 => false,
+                1 => false,
+                2 => false,
+            ),
             0 =>
-                array(),
+            array(),
             1 =>
-                array(
-                    0 => false,
-                    1 => false,
-                    2 => false,
-                ),
+            array(
+                0 => false,
+                1 => false,
+                2 => false,
+            ),
             2 =>
-                array(
-                    0 => false,
-                ),
+            array(
+                0 => false,
+            ),
         );
         $this->_conditions = array();
         $this->_kwmap = array();

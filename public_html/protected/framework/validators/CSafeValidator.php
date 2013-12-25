@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CSafeValidator class file.
  *
@@ -17,6 +18,7 @@
  */
 class CSafeValidator extends CValidator
 {
+
     /**
      * Validates the attribute of the object.
      * If there is any error, the error message is added to the object.
@@ -25,6 +27,7 @@ class CSafeValidator extends CValidator
      */
     protected function validateAttribute($object, $attribute)
     {
+        
     }
-}
 
+}

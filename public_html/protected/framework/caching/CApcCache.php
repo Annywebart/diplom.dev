@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CApcCache class file
  *
@@ -22,6 +23,7 @@
  */
 class CApcCache extends CCache
 {
+
     /**
      * Initializes this application component.
      * This method is required by the {@link IApplicationComponent} interface.
@@ -105,4 +107,5 @@ class CApcCache extends CCache
     {
         return apc_clear_cache('user');
     }
+
 }

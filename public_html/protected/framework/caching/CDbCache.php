@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CDbCache class file
  *
@@ -32,12 +33,14 @@
  */
 class CDbCache extends CCache
 {
+
     /**
      * @var string the ID of the {@link CDbConnection} application component. If not set,
      * a SQLite3 database will be automatically created and used. The SQLite database file
      * is <code>protected/runtime/cache-YiiVersion.db</code>.
      */
     public $connectionID;
+
     /**
      * @var string name of the DB table to store cache content. Defaults to 'YiiCache'.
      * Note, if {@link autoCreateCacheTable} is false and you want to create the DB table
@@ -50,12 +53,14 @@ class CDbCache extends CCache
      * @see autoCreateCacheTable
      */
     public $cacheTableName = 'YiiCache';
+
     /**
      * @var boolean whether the cache DB table should be created automatically if it does not exist. Defaults to true.
      * If you already have the table created, it is recommended you set this property to be false to improve performance.
      * @see cacheTableName
      */
     public $autoCreateCacheTable = true;
+
     /**
      * @var CDbConnection the DB connection instance
      */
@@ -102,7 +107,7 @@ class CDbCache extends CCache
      */
     public function setGCProbability($value)
     {
-        $value = (int)$value;
+        $value = (int) $value;
         if ($value < 0)
             $value = 0;
         if ($value > 1000000)
@@ -147,8 +152,7 @@ EOD;
             if (($this->_db = Yii::app()->getComponent($id)) instanceof CDbConnection)
                 return $this->_db;
             else
-                throw new CException(Yii::t('yii', 'CDbCache.connectionID "{id}" is invalid. Please make sure it refers to the ID of a CDbConnection application component.',
-                    array('{id}' => $id)));
+                throw new CException(Yii::t('yii', 'CDbCache.connectionID "{id}" is invalid. Please make sure it refers to the ID of a CDbConnection application component.', array('{id}' => $id)));
         } else {
             $dbFile = Yii::app()->getRuntimePath() . DIRECTORY_SEPARATOR . 'cache-' . Yii::getVersion() . '.db';
             return $this->_db = new CDbConnection('sqlite:' . $dbFile);
@@ -295,4 +299,5 @@ EOD;
         $this->getDbConnection()->createCommand("DELETE FROM {$this->cacheTableName}")->execute();
         return true;
     }
+
 }

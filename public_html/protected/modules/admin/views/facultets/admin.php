@@ -22,27 +22,23 @@ $('.search-form form').submit(function(){
 ?>
 <div class="row-fluid">
     <div class="span12 tac">
-        <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-        <div class="search-form" style="display:none">
-            <?php $this->renderPartial('_search',array(
-                'model'=>$model,
-            )); ?>
-        </div><!-- search-form -->
-
-        <?php $this->widget('zii.widgets.grid.CGridView', array(
-            'id'=>'facultets-model-grid',
-            'dataProvider'=>$model->search(),
-            'filter'=>$model,
-            'columns'=>array(
-                'id',
+        <h1>Факультеты</h1>
+        <?php echo CHtml::link('Создать', Yii::app()->createAbsoluteUrl('admin/facultets/create'))?>       
+        <?php
+        $this->widget('zii.widgets.grid.CGridView', array(
+            'id' => 'facultets-model-grid',
+            'dataProvider' => $model->search(),
+            'filter' => $model,
+            'columns' => array(
                 'title',
                 'code',
                 'description',
                 array(
-                    'class'=>'CButtonColumn',
+                    'class' => 'CButtonColumn',
                 ),
             ),
-        )); ?>
+        ));
+        ?>
     </div>
 </div>
 <div class="row-fluid">

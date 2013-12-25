@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CChainedLogFilter class file
  *
@@ -17,6 +18,7 @@
  */
 class CChainedLogFilter extends CComponent implements ILogFilter
 {
+
     /**
      * @var array list of filters to apply to the logs.
      * The value of each array element will be passed to {@link Yii::createComponent} to create
@@ -36,4 +38,5 @@ class CChainedLogFilter extends CComponent implements ILogFilter
         foreach ($this->filters as $filter)
             Yii::createComponent($filter)->filter($logs);
     }
+
 }

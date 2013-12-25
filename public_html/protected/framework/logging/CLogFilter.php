@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CLogFilter class file
  *
@@ -23,25 +24,30 @@
  */
 class CLogFilter extends CComponent implements ILogFilter
 {
+
     /**
      * @var boolean whether to prefix each log message with the current user session ID.
      * Defaults to false.
      */
     public $prefixSession = false;
+
     /**
      * @var boolean whether to prefix each log message with the current user
      * {@link CWebUser::name name} and {@link CWebUser::id ID}. Defaults to false.
      */
     public $prefixUser = false;
+
     /**
      * @var boolean whether to log the current user name and ID. Defaults to true.
      */
     public $logUser = true;
+
     /**
      * @var array list of the PHP predefined variables that should be logged.
      * Note that a variable must be accessible via $GLOBALS. Otherwise it won't be logged.
      */
     public $logVars = array('_GET', '_POST', '_FILES', '_COOKIE', '_SESSION', '_SERVER');
+
     /**
      * @var callable or function which will be used to dump context information.
      * Defaults to `var_export`. If you're experiencing issues with circular references
@@ -50,7 +56,6 @@ class CLogFilter extends CComponent implements ILogFilter
      * @since 1.1.14
      */
     public $dumper = 'var_export';
-
 
     /**
      * Filters the given log messages.
@@ -130,4 +135,5 @@ class CLogFilter extends CComponent implements ILogFilter
         $path = implode('.', $parts);
         return $value;
     }
+
 }

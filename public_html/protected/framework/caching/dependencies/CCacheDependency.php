@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CCacheDependency class file.
  *
@@ -25,6 +26,7 @@
  */
 class CCacheDependency extends CComponent implements ICacheDependency
 {
+
     /**
      * @var boolean Whether this dependency is reusable or not.
      * If set to true, dependent data for this cache dependency will only be generated once per request.
@@ -40,7 +42,6 @@ class CCacheDependency extends CComponent implements ICacheDependency
      * @since 1.1.11
      */
     private static $_reusableData = array();
-
     private $_hash;
     private $_data;
 
@@ -111,4 +112,5 @@ class CCacheDependency extends CComponent implements ICacheDependency
             $this->_hash = sha1(serialize($this));
         return $this->_hash;
     }
+
 }

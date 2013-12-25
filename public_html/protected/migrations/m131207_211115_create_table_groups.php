@@ -2,6 +2,7 @@
 
 class m131207_211115_create_table_groups extends CDbMigration
 {
+
     public function up()
     {
         $this->execute("

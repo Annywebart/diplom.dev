@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CUrlValidator class file.
  *
@@ -17,30 +18,35 @@
  */
 class CUrlValidator extends CValidator
 {
+
     /**
      * @var string the regular expression used to validate the attribute value.
      * Since version 1.1.7 the pattern may contain a {schemes} token that will be replaced
      * by a regular expression which represents the {@see validSchemes}.
      */
     public $pattern = '/^{schemes}:\/\/(([A-Z0-9][A-Z0-9_-]*)(\.[A-Z0-9][A-Z0-9_-]*)+)/i';
+
     /**
      * @var array list of URI schemes which should be considered valid. By default, http and https
      * are considered to be valid schemes.
      * @since 1.1.7
-     **/
+     * */
     public $validSchemes = array('http', 'https');
+
     /**
      * @var string the default URI scheme. If the input doesn't contain the scheme part, the default
      * scheme will be prepended to it (thus changing the input). Defaults to null, meaning a URL must
      * contain the scheme part.
      * @since 1.1.7
-     **/
+     * */
     public $defaultScheme;
+
     /**
      * @var boolean whether the attribute value can be null or empty. Defaults to true,
      * meaning that if the attribute is empty, it is considered valid.
      */
     public $allowEmpty = true;
+
     /**
      * @var boolean whether validation process should care about IDN (internationalized domain names). Default
      * value is false which means that validation of URLs containing IDN will always fail.
@@ -77,8 +83,7 @@ class CUrlValidator extends CValidator
      */
     public function validateValue($value)
     {
-        if (is_string($value) && strlen($value) < 2000) // make sure the length is limited to avoid DOS attacks
-        {
+        if (is_string($value) && strlen($value) < 2000) { // make sure the length is limited to avoid DOS attacks
             if ($this->defaultScheme !== null && strpos($value, '://') === false)
                 $value = $this->defaultScheme . '://' . $value;
 
@@ -192,4 +197,5 @@ if(jQuery.trim(value)!='') {
         }
         return $value;
     }
+
 }

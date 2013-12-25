@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CPropertyValue class file.
  *
@@ -42,6 +43,7 @@
  */
 class CPropertyValue
 {
+
     /**
      * Converts a value to boolean type.
      * Note, string 'true' (case-insensitive) will be converted to true,
@@ -55,7 +57,7 @@ class CPropertyValue
         if (is_string($value))
             return !strcasecmp($value, 'true') || $value != 0;
         else
-            return (boolean)$value;
+            return (boolean) $value;
     }
 
     /**
@@ -70,7 +72,7 @@ class CPropertyValue
         if (is_bool($value))
             return $value ? 'true' : 'false';
         else
-            return (string)$value;
+            return (string) $value;
     }
 
     /**
@@ -80,7 +82,7 @@ class CPropertyValue
      */
     public static function ensureInteger($value)
     {
-        return (integer)$value;
+        return (integer) $value;
     }
 
     /**
@@ -90,7 +92,7 @@ class CPropertyValue
      */
     public static function ensureFloat($value)
     {
-        return (float)$value;
+        return (float) $value;
     }
 
     /**
@@ -113,7 +115,7 @@ class CPropertyValue
             } else
                 return $len > 0 ? array($value) : array();
         } else
-            return (array)$value;
+            return (array) $value;
     }
 
     /**
@@ -123,7 +125,7 @@ class CPropertyValue
      */
     public static function ensureObject($value)
     {
-        return (object)$value;
+        return (object) $value;
     }
 
     /**
@@ -147,7 +149,7 @@ class CPropertyValue
         if ($types[$enumType]->hasConstant($value))
             return $value;
         else
-            throw new CException(Yii::t('yii', 'Invalid enumerable value "{value}". Please make sure it is among ({enum}).',
-                array('{value}' => $value, '{enum}' => implode(', ', $types[$enumType]->getConstants()))));
+            throw new CException(Yii::t('yii', 'Invalid enumerable value "{value}". Please make sure it is among ({enum}).', array('{value}' => $value, '{enum}' => implode(', ', $types[$enumType]->getConstants()))));
     }
+
 }

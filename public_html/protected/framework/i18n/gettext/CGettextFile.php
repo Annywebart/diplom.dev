@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CGettextFile class file.
  *
@@ -17,6 +18,7 @@
  */
 abstract class CGettextFile extends CComponent
 {
+
     /**
      * Loads messages from a file.
      * @param string $file file path

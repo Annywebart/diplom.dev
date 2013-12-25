@@ -1,4 +1,5 @@
 <?php
+
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 /**
  * Highlighter base class
@@ -19,26 +20,24 @@
  * @version    CVS: $Id: Highlighter.php,v 1.1 2007/06/03 02:35:28 ssttoo Exp $
  * @link       http://pear.php.net/package/Text_Highlighter
  */
-
 // {{{ BC constants
-
 // BC trick : define constants related to default
 // renderer if needed
 if (!defined('HL_NUMBERS_LI')) {
-    /**#@+
+    /*     * #@+
      * Constant for use with $options['numbers']
      * @see Text_Highlighter_Renderer_Html::_init()
      */
     /**
      * use numbered list
      */
-    define ('HL_NUMBERS_LI', 1);
+    define('HL_NUMBERS_LI', 1);
     /**
      * Use 2-column table with line numbers in left column and code in  right column.
      * Forces $options['tag'] = HL_TAG_PRE
      */
-    define ('HL_NUMBERS_TABLE', 2);
-    /**#@-*/
+    define('HL_NUMBERS_TABLE', 2);
+    /*     * #@- */
 }
 
 // }}}
@@ -46,7 +45,7 @@ if (!defined('HL_NUMBERS_LI')) {
 /**
  * for our purpose, it is infinity
  */
-define ('HL_INFINITY', 1000000000);
+define('HL_INFINITY', 1000000000);
 
 // }}}
 
@@ -59,7 +58,6 @@ define ('HL_INFINITY', 1000000000);
  * @version    Release: 0.7.1
  * @link       http://pear.php.net/package/Text_Highlighter
  */
-
 // {{{ Text_Highlighter
 
 /**
@@ -80,16 +78,15 @@ define ('HL_INFINITY', 1000000000);
  *
  * Usage example
  * <code>
- *require_once 'Text/Highlighter.php';
- *$hlSQL =& Text_Highlighter::factory('SQL',array('numbers'=>true));
- *echo $hlSQL->highlight('SELECT * FROM table a WHERE id = 12');
+ * require_once 'Text/Highlighter.php';
+ * $hlSQL =& Text_Highlighter::factory('SQL',array('numbers'=>true));
+ * echo $hlSQL->highlight('SELECT * FROM table a WHERE id = 12');
  * </code>
  *
  * @author Andrey Demenev <demenev@gmail.com>
  * @package Text_Highlighter
  * @access public
  */
-
 class Text_Highlighter
 {
     // {{{ members
@@ -238,7 +235,6 @@ class Text_Highlighter
         return strtr($str, '()<>[]{}', ')(><][}{');
     }
 
-
     function _getToken()
     {
         if (!empty($this->_tokenStack)) {
@@ -340,7 +336,6 @@ class Text_Highlighter
         return array($this->_lastinner, substr($this->_str, $p));
     }
 
-
     // {{{ highlight
 
     /**
@@ -351,7 +346,6 @@ class Text_Highlighter
      * @return string Highlighted text
      *
      */
-
     function highlight($str)
     {
         if (!($this->_renderer)) {
@@ -377,7 +371,6 @@ class Text_Highlighter
     }
 
     // }}}
-
 }
 
 // }}}
@@ -389,5 +382,4 @@ class Text_Highlighter
  * c-hanging-comment-ender-p: nil
  * End:
  */
-
 ?>

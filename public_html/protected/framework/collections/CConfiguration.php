@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file contains classes implementing configuration feature.
  *
@@ -7,7 +8,6 @@
  * @copyright 2008-2013 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
-
 
 /**
  * CConfiguration represents an array-based configuration.
@@ -39,6 +39,7 @@
  */
 class CConfiguration extends CMap
 {
+
     /**
      * Constructor.
      * @param mixed $data if string, it represents a config file (a PHP script returning the configuration as an array);
@@ -97,4 +98,5 @@ class CConfiguration extends CMap
         foreach ($this->toArray() as $key => $value)
             $object->$key = $value;
     }
+
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CEAcceleratorCache class file
  *
@@ -23,6 +24,7 @@
  */
 class CEAcceleratorCache extends CCache
 {
+
     /**
      * Initializes this application component.
      * This method is required by the {@link IApplicationComponent} interface.
@@ -103,4 +105,5 @@ class CEAcceleratorCache extends CCache
             $this->deleteValue(substr($key['name'], 1));
         return true;
     }
+
 }

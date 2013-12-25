@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Message translations.
  *
@@ -15,7 +16,6 @@
  *
  * @version $Id: $
  */
-
 return array(
     'Powered by {yii}.' => 'Задвижван от {yii}.',
     'Active record class "{class}" does not have a scope named "{scope}".' => 'Active record класа "{class}" няма scope с име "{scope}"',

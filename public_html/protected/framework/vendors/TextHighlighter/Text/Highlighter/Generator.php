@@ -1,4 +1,5 @@
 <?php
+
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 /**
  * Syntax highlighter class generator
@@ -24,21 +25,20 @@
  * @version    CVS: $Id: Generator.php,v 1.1 2007/06/03 02:36:35 ssttoo Exp $
  * @link       http://pear.php.net/package/Text_Highlighter
  */
-
 // {{{ error codes
 
-define ('TEXT_HIGHLIGHTER_EMPTY_RE', 1);
-define ('TEXT_HIGHLIGHTER_INVALID_RE', 2);
-define ('TEXT_HIGHLIGHTER_EMPTY_OR_MISSING', 3);
-define ('TEXT_HIGHLIGHTER_EMPTY', 4);
-define ('TEXT_HIGHLIGHTER_REGION_REGION', 5);
-define ('TEXT_HIGHLIGHTER_REGION_BLOCK', 6);
-define ('TEXT_HIGHLIGHTER_BLOCK_REGION', 7);
-define ('TEXT_HIGHLIGHTER_KEYWORD_BLOCK', 8);
-define ('TEXT_HIGHLIGHTER_KEYWORD_INHERITS', 9);
-define ('TEXT_HIGHLIGHTER_PARSE', 10);
-define ('TEXT_HIGHLIGHTER_FILE_WRITE', 11);
-define ('TEXT_HIGHLIGHTER_FILE_READ', 12);
+define('TEXT_HIGHLIGHTER_EMPTY_RE', 1);
+define('TEXT_HIGHLIGHTER_INVALID_RE', 2);
+define('TEXT_HIGHLIGHTER_EMPTY_OR_MISSING', 3);
+define('TEXT_HIGHLIGHTER_EMPTY', 4);
+define('TEXT_HIGHLIGHTER_REGION_REGION', 5);
+define('TEXT_HIGHLIGHTER_REGION_BLOCK', 6);
+define('TEXT_HIGHLIGHTER_BLOCK_REGION', 7);
+define('TEXT_HIGHLIGHTER_KEYWORD_BLOCK', 8);
+define('TEXT_HIGHLIGHTER_KEYWORD_INHERITS', 9);
+define('TEXT_HIGHLIGHTER_PARSE', 10);
+define('TEXT_HIGHLIGHTER_FILE_WRITE', 11);
+define('TEXT_HIGHLIGHTER_FILE_READ', 12);
 // }}}
 
 /**
@@ -49,10 +49,10 @@ define ('TEXT_HIGHLIGHTER_FILE_READ', 12);
  *
  * Usage example
  * <code>
- *require_once 'Text/Highlighter/Generator.php';
- *$generator =& new Text_Highlighter_Generator('php.xml');
- *$generator->generate();
- *$generator->saveCode('PHP.php');
+ * require_once 'Text/Highlighter/Generator.php';
+ * $generator =& new Text_Highlighter_Generator('php.xml');
+ * $generator->generate();
+ * $generator->saveCode('PHP.php');
  * </code>
  *
  * A command line script <b>generate</b> is provided for
@@ -64,9 +64,9 @@ define ('TEXT_HIGHLIGHTER_FILE_READ', 12);
  * @version    Release: 0.7.1
  * @link       http://pear.php.net/package/Text_Highlighter
  */
-
 class Text_Highlighter_Generator extends XML_Parser
 {
+
     // {{{ properties
     /**
      * Whether to do case folding.
@@ -192,7 +192,6 @@ class Text_Highlighter_Generator extends XML_Parser
      *
      * @access public
      */
-
     function __construct($syntaxFile = '')
     {
         XML_Parser::XML_Parser(null, 'func');
@@ -284,7 +283,6 @@ class Text_Highlighter_Generator extends XML_Parser
      *
      * @access public
      */
-
     function generate()
     {
         $this->_regions = array();
@@ -316,7 +314,6 @@ class Text_Highlighter_Generator extends XML_Parser
      * @return string Generated code
      * @access public
      */
-
     function getCode()
     {
         return $this->_code;
@@ -334,7 +331,6 @@ class Text_Highlighter_Generator extends XML_Parser
      * @return boolean true on success, false on failure
      * @access public
      */
-
     function saveCode($filename)
     {
         $f = @fopen($filename, 'wb');
@@ -356,7 +352,6 @@ class Text_Highlighter_Generator extends XML_Parser
      * @return boolean
      * @access public
      */
-
     function hasErrors()
     {
         return count($this->_errors) > 0;
@@ -371,7 +366,6 @@ class Text_Highlighter_Generator extends XML_Parser
      * @return array
      * @access public
      */
-
     function getErrors()
     {
         return $this->_errors;
@@ -385,7 +379,6 @@ class Text_Highlighter_Generator extends XML_Parser
      *
      * @access private
      */
-
     function _sortBlocks($b1, $b2)
     {
         return $b1['order'] - $b2['order'];
@@ -472,7 +465,7 @@ class Text_Highlighter_Generator extends XML_Parser
 
     // }}}
 
-    /**#@+
+    /*     * #@+
      * @access private
      * @param resource $xp XML parser resource
      * @param string $elem XML element name
@@ -517,8 +510,8 @@ class Text_Highlighter_Generator extends XML_Parser
         }
         $this->_element['innerGroup'] = $attribs['innerGroup'];
         $this->_element['delimGroup'] = isset($attribs['delimGroup']) ?
-            $attribs['delimGroup'] :
-            $attribs['innerGroup'];
+                $attribs['delimGroup'] :
+                $attribs['innerGroup'];
         $this->_element['start'] = $this->_makeRE(@$attribs['start'], $this->_element['case']);
         $this->_element['end'] = $this->_makeRE(@$attribs['end'], $this->_element['case']);
         $this->_element['contained'] = @$attribs['contained'] == 'yes';
@@ -688,12 +681,10 @@ class Text_Highlighter_Generator extends XML_Parser
     {
         $this->_element['contains-all'] = @$attribs['all'] == 'yes';
         if (isset($attribs['region'])) {
-            $this->_element['contains']['region'][$attribs['region']] =
-                xml_get_current_line_number($this->parser);
+            $this->_element['contains']['region'][$attribs['region']] = xml_get_current_line_number($this->parser);
         }
         if (isset($attribs['block'])) {
-            $this->_element['contains']['block'][$attribs['block']] =
-                xml_get_current_line_number($this->parser);
+            $this->_element['contains']['block'][$attribs['block']] = xml_get_current_line_number($this->parser);
         }
     }
 
@@ -740,7 +731,7 @@ class Text_Highlighter_Generator extends XML_Parser
         }
         $this->_authors[] = array(
             'name' => @$attribs['name'],
-            'email' => (string)@$attribs['email']
+            'email' => (string) @$attribs['email']
         );
     }
 
@@ -762,7 +753,7 @@ class Text_Highlighter_Generator extends XML_Parser
 
     // }}}
 
-    /**#@-*/
+    /*     * #@- */
 
     // {{{ _error
 
@@ -805,7 +796,7 @@ class Text_Highlighter_Generator extends XML_Parser
 
     // }}}
 
-    /**#@+
+    /*     * #@+
      * @access private
      * @param resource $xp XML parser resource
      * @param string $elem XML element name
@@ -872,13 +863,12 @@ class Text_Highlighter_Generator extends XML_Parser
             if (!$current['contained'] && !isset($current['onlyin'])) {
                 $toplevel[] = $i;
             }
-            foreach ((array)@$current['onlyin'] as $region => $lineNo) {
+            foreach ((array) @$current['onlyin'] as $region => $lineNo) {
                 if (!isset($this->_regions[$region])) {
-                    $this->_error(TEXT_HIGHLIGHTER_BLOCK_REGION,
-                        array(
-                            'block' => $current['name'],
-                            'region' => $region
-                        ));
+                    $this->_error(TEXT_HIGHLIGHTER_BLOCK_REGION, array(
+                        'block' => $current['name'],
+                        'region' => $region
+                    ));
                 }
             }
         }
@@ -886,31 +876,28 @@ class Text_Highlighter_Generator extends XML_Parser
             if (!$current['contained'] && !isset($current['onlyin'])) {
                 $toplevel[] = $i;
             }
-            foreach ((array)@$current['contains']['region'] as $region => $lineNo) {
+            foreach ((array) @$current['contains']['region'] as $region => $lineNo) {
                 if (!isset($this->_regions[$region])) {
-                    $this->_error(TEXT_HIGHLIGHTER_REGION_REGION,
-                        array(
-                            'region1' => $current['name'],
-                            'region2' => $region
-                        ));
+                    $this->_error(TEXT_HIGHLIGHTER_REGION_REGION, array(
+                        'region1' => $current['name'],
+                        'region2' => $region
+                    ));
                 }
             }
-            foreach ((array)@$current['contains']['block'] as $region => $lineNo) {
+            foreach ((array) @$current['contains']['block'] as $region => $lineNo) {
                 if (!isset($this->_blocks[$region])) {
-                    $this->_error(TEXT_HIGHLIGHTER_REGION_BLOCK,
-                        array(
-                            'block' => $current['name'],
-                            'region' => $region
-                        ));
+                    $this->_error(TEXT_HIGHLIGHTER_REGION_BLOCK, array(
+                        'block' => $current['name'],
+                        'region' => $region
+                    ));
                 }
             }
-            foreach ((array)@$current['onlyin'] as $region => $lineNo) {
+            foreach ((array) @$current['onlyin'] as $region => $lineNo) {
                 if (!isset($this->_regions[$region])) {
-                    $this->_error(TEXT_HIGHLIGHTER_REGION_REGION,
-                        array(
-                            'region1' => $current['name'],
-                            'region2' => $region
-                        ));
+                    $this->_error(TEXT_HIGHLIGHTER_REGION_REGION, array(
+                        'region1' => $current['name'],
+                        'region2' => $region
+                    ));
                 }
             }
             foreach ($this->_regions as $j => $region) {
@@ -943,21 +930,21 @@ class Text_Highlighter_Generator extends XML_Parser
             }
         }
         foreach ($this->_blocks as $i => $current) {
-            unset ($this->_blocks[$i]['never-contained']);
-            unset ($this->_blocks[$i]['contained']);
-            unset ($this->_blocks[$i]['contains-all']);
-            unset ($this->_blocks[$i]['contains']);
-            unset ($this->_blocks[$i]['onlyin']);
-            unset ($this->_blocks[$i]['line']);
+            unset($this->_blocks[$i]['never-contained']);
+            unset($this->_blocks[$i]['contained']);
+            unset($this->_blocks[$i]['contains-all']);
+            unset($this->_blocks[$i]['contains']);
+            unset($this->_blocks[$i]['onlyin']);
+            unset($this->_blocks[$i]['line']);
         }
 
         foreach ($this->_regions as $i => $current) {
-            unset ($this->_regions[$i]['never-contained']);
-            unset ($this->_regions[$i]['contained']);
-            unset ($this->_regions[$i]['contains-all']);
-            unset ($this->_regions[$i]['contains']);
-            unset ($this->_regions[$i]['onlyin']);
-            unset ($this->_regions[$i]['line']);
+            unset($this->_regions[$i]['never-contained']);
+            unset($this->_regions[$i]['contained']);
+            unset($this->_regions[$i]['contains-all']);
+            unset($this->_regions[$i]['contains']);
+            unset($this->_regions[$i]['onlyin']);
+            unset($this->_regions[$i]['line']);
         }
 
         foreach ($this->_keywords as $name => $keyword) {
@@ -969,18 +956,16 @@ class Text_Highlighter_Generator extends XML_Parser
             }
             unset($this->_keywords[$name]['line']);
             if (!isset($this->_blocks[$keyword['inherits']])) {
-                $this->_error(TEXT_HIGHLIGHTER_KEYWORD_INHERITS,
-                    array(
-                        'keyword' => $keyword['name'],
-                        'block' => $keyword['inherits']
-                    ));
+                $this->_error(TEXT_HIGHLIGHTER_KEYWORD_INHERITS, array(
+                    'keyword' => $keyword['name'],
+                    'block' => $keyword['inherits']
+                ));
             }
             if (isset($keyword['otherwise']) && !isset($this->_blocks[$keyword['otherwise']])) {
-                $this->_error(TEXT_HIGHLIGHTER_KEYWORD_BLOCK,
-                    array(
-                        'keyword' => $keyword['name'],
-                        'block' => $keyword['inherits']
-                    ));
+                $this->_error(TEXT_HIGHLIGHTER_KEYWORD_BLOCK, array(
+                    'keyword' => $keyword['name'],
+                    'block' => $keyword['inherits']
+                ));
             }
         }
 
@@ -1120,7 +1105,8 @@ CODE;
                 $re[] = '(' . $block['match'] . ')';
                 $ce[] = $this->_countSubpatterns($block['match']);
                 $rd[] = '';
-                $sb[] = false;;
+                $sb[] = false;
+                ;
                 $st[] = -1;
                 foreach ($syntax['keywords'] as $kwname => $kwgroup) {
                     if ($kwgroup['inherits'] != $name) {
@@ -1169,7 +1155,7 @@ CODE;
             $kw = array();
             $pc = array();
             $sb = array();
-            foreach ((array)@$ablock['lookfor'] as $name) {
+            foreach ((array) @$ablock['lookfor'] as $name) {
                 $block = $syntax['blocks'][$name];
                 if (isset($block['partClass'])) {
                     $pc[] = $block['partClass'];
@@ -1177,7 +1163,8 @@ CODE;
                     $pc[] = null;
                 }
                 if ($block['type'] == 'block') {
-                    $kwm = array();;
+                    $kwm = array();
+                    ;
                     $re[] = '(' . $block['match'] . ')';
                     $ce[] = $this->_countSubpatterns($block['match']);
                     $rd[] = '';
@@ -1244,13 +1231,11 @@ CODE;
 // }}}
 }
 
-
 /*
-* Local variables:
-* tab-width: 4
-* c-basic-offset: 4
-* c-hanging-comment-ender-p: nil
-* End:
-*/
-
+ * Local variables:
+ * tab-width: 4
+ * c-basic-offset: 4
+ * c-hanging-comment-ender-p: nil
+ * End:
+ */
 ?>

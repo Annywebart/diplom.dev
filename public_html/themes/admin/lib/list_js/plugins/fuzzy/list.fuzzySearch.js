@@ -24,31 +24,33 @@ List.prototype.plugins.fuzzySearch = function(locals, options) {
         // At what point does the match algorithm give up. A threshold of '0.0' requires a perfect match (of both letters and location), a threshold of '1.0' would match anything.
         var Match_Threshold = options.threshold || 0.4;
 
-        if (pattern === text) return true; // Exact match
-        if (pattern.length > 32) return false; // This algorithm cannot be used
+        if (pattern === text)
+            return true; // Exact match
+        if (pattern.length > 32)
+            return false; // This algorithm cannot be used
 
         // Set starting location at beginning text and initialise the alphabet.
         var loc = Match_Location,
-            s = (function() {
-                var q = {};
+                s = (function() {
+                    var q = {};
 
-                for (var i = 0; i < pattern.length; i++) {
-                    q[pattern.charAt(i)] = 0;
-                }
+                    for (var i = 0; i < pattern.length; i++) {
+                        q[pattern.charAt(i)] = 0;
+                    }
 
-                for (var i = 0; i < pattern.length; i++) {
-                    q[pattern.charAt(i)] |= 1 << (pattern.length - i - 1);
-                }
+                    for (var i = 0; i < pattern.length; i++) {
+                        q[pattern.charAt(i)] |= 1 << (pattern.length - i - 1);
+                    }
 
-                return q;
-            }());
+                    return q;
+                }());
 
         // Compute and return the score for a match with e errors and x location.
         // Accesses loc and pattern through being a closure.
 
         function match_bitapScore_(e, x) {
             var accuracy = e / pattern.length,
-                proximity = Math.abs(loc - x);
+                    proximity = Math.abs(loc - x);
 
             if (!Match_Distance) {
                 // Dodge divide by zero error.
@@ -58,7 +60,7 @@ List.prototype.plugins.fuzzySearch = function(locals, options) {
         }
 
         var score_threshold = Match_Threshold, // Highest score beyond which we give up.
-            best_loc = text.indexOf(pattern, loc); // Is there a nearby exact match? (speedup)
+                best_loc = text.indexOf(pattern, loc); // Is there a nearby exact match? (speedup)
 
         if (best_loc != -1) {
             score_threshold = Math.min(match_bitapScore_(0, best_loc), score_threshold);
@@ -106,8 +108,8 @@ List.prototype.plugins.fuzzySearch = function(locals, options) {
                     rd[j] = ((rd[j + 1] << 1) | 1) & charMatch;
                 } else {    // Subsequent passes: fuzzy match.
                     rd[j] = (((rd[j + 1] << 1) | 1) & charMatch) |
-                                    (((last_rd[j + 1] | last_rd[j]) << 1) | 1) |
-                                    last_rd[j + 1];
+                            (((last_rd[j + 1] | last_rd[j]) << 1) | 1) |
+                            last_rd[j + 1];
                 }
                 if (rd[j] & matchmask) {
                     var score = match_bitapScore_(d, j - 1);
@@ -141,19 +143,19 @@ List.prototype.plugins.fuzzySearch = function(locals, options) {
         var func = function(searchString, columns) {
             self.i = 1; // Reset paging
             var searchArguments,
-                foundArgument,
-                matching = [],
-                found,
-                item,
-                text,
-                values,
-                is,
-                multiSearch = (typeof options.multiSearch !== 'boolean') ? true : options.multiSearch,
-                columns = (columns === undefined) ? self.items[0].values() : columns,
-                searchString = (searchString === undefined) ? "" : searchString,
-                target = searchString.target || searchString.srcElement; /* IE have srcElement */
+                    foundArgument,
+                    matching = [],
+                    found,
+                    item,
+                    text,
+                    values,
+                    is,
+                    multiSearch = (typeof options.multiSearch !== 'boolean') ? true : options.multiSearch,
+                    columns = (columns === undefined) ? self.items[0].values() : columns,
+                    searchString = (searchString === undefined) ? "" : searchString,
+                    target = searchString.target || searchString.srcElement; /* IE have srcElement */
 
-            searchString = (target === undefined) ? (""+searchString).toLowerCase() : ""+target.value.toLowerCase();
+            searchString = (target === undefined) ? ("" + searchString).toLowerCase() : "" + target.value.toLowerCase();
             is = self.items;
 
             // Substract arguments from the searchString or put searchString as only argument
@@ -172,18 +174,19 @@ List.prototype.plugins.fuzzySearch = function(locals, options) {
                     item = is[k];
                     values = item.values();
 
-                    for(var i = 0; i < searchArguments.length; i++) {
+                    for (var i = 0; i < searchArguments.length; i++) {
                         foundArgument = false;
 
-                        for(var j in columns) {
-                            if(values.hasOwnProperty(j) && columns[j] !== null) {
+                        for (var j in columns) {
+                            if (values.hasOwnProperty(j) && columns[j] !== null) {
                                 text = (values[j] != null) ? values[j].toString().toLowerCase() : "";
                                 if (searchFunction(text, searchArguments[i], options)) {
                                     foundArgument = true;
                                 }
                             }
                         }
-                        if(!foundArgument) found = false;
+                        if (!foundArgument)
+                            found = false;
                     }
                     if (found) {
                         item.found = true;
@@ -196,7 +199,7 @@ List.prototype.plugins.fuzzySearch = function(locals, options) {
             }
             return self.visibleItems;
         },
-        timeout;
+                timeout;
 
         return function() {
             var context = this, args = arguments;

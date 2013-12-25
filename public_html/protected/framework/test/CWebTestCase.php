@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file contains the CWebTestCase class.
  *
@@ -7,7 +8,6 @@
  * @copyright 2008-2013 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
-
 Yii::import('system.test.CTestCase');
 require_once('PHPUnit/Extensions/SeleniumTestCase.php');
 
@@ -25,6 +25,7 @@ require_once('PHPUnit/Extensions/SeleniumTestCase.php');
  */
 abstract class CWebTestCase extends PHPUnit_Extensions_SeleniumTestCase
 {
+
     /**
      * @var array a list of fixtures that should be loaded before each test method executes.
      * The array keys are fixture names, and the array values are either AR class names
@@ -103,4 +104,5 @@ abstract class CWebTestCase extends PHPUnit_Extensions_SeleniumTestCase
         if (is_array($this->fixtures))
             $this->getFixtureManager()->load($this->fixtures);
     }
+
 }

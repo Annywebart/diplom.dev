@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CStringValidator class file.
  *
@@ -32,31 +33,38 @@
  */
 class CStringValidator extends CValidator
 {
+
     /**
      * @var integer maximum length. Defaults to null, meaning no maximum limit.
      */
     public $max;
+
     /**
      * @var integer minimum length. Defaults to null, meaning no minimum limit.
      */
     public $min;
+
     /**
      * @var integer exact length. Defaults to null, meaning no exact length limit.
      */
     public $is;
+
     /**
      * @var string user-defined error message used when the value is too short.
      */
     public $tooShort;
+
     /**
      * @var string user-defined error message used when the value is too long.
      */
     public $tooLong;
+
     /**
      * @var boolean whether the attribute value can be null or empty. Defaults to true,
      * meaning that if the attribute is empty, it is considered valid.
      */
     public $allowEmpty = true;
+
     /**
      * @var string the encoding of the string value to be validated (e.g. 'UTF-8').
      * This property is used only when mbstring PHP extension is enabled.
@@ -171,5 +179,5 @@ if(jQuery.trim(value)!='') {
 
         return $js;
     }
-}
 
+}

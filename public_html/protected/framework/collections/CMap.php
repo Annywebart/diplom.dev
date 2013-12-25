@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file contains classes implementing Map feature.
  *
@@ -34,10 +35,12 @@
  */
 class CMap extends CComponent implements IteratorAggregate, ArrayAccess, Countable
 {
+
     /**
      * @var array internal data storage
      */
     private $_d = array();
+
     /**
      * @var boolean whether this list is read-only
      */
@@ -321,4 +324,5 @@ class CMap extends CComponent implements IteratorAggregate, ArrayAccess, Countab
     {
         $this->remove($offset);
     }
+
 }

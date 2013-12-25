@@ -2,6 +2,7 @@
 
 class m131207_211732_create_table_students extends CDbMigration
 {
+
     public function up()
     {
         $this->execute("

@@ -1,31 +1,32 @@
-<?php
+< ?php
 
-/** This file is part of KCFinder project
-  *
-  *      @desc Miscellaneous functionality
-  *   @package KCFinder
-  *   @version 2.51
-  *    @author Pavel Tzonkov <pavelc@users.sourceforge.net>
-  * @copyright 2010, 2011 KCFinder Project
-  *   @license http://www.opensource.org/licenses/gpl-2.0.php GPLv2
-  *   @license http://www.opensource.org/licenses/lgpl-2.1.php LGPLv2
-  *      @link http://kcfinder.sunhater.com
-  */?>
-
-browser.drag = function(ev, dd) {
-    var top = dd.offsetY,
-        left = dd.offsetX;
-    if (top < 0) top = 0;
-    if (left < 0) left = 0;
-    if (top + $(this).outerHeight() > $(window).height())
-        top = $(window).height() - $(this).outerHeight();
-    if (left + $(this).outerWidth() > $(window).width())
-        left = $(window).width() - $(this).outerWidth();
-    $(this).css({
-        top: top,
-        left: left
-    });
-};
+        /** This file is part of KCFinder project
+         *
+         *      @desc Miscellaneous functionality
+         *   @package KCFinder
+         *   @version 2.51
+         *    @author Pavel Tzonkov <pavelc@users.sourceforge.net>
+         * @copyright 2010, 2011 KCFinder Project
+         *   @license http://www.opensource.org/licenses/gpl-2.0.php GPLv2
+         *   @license http://www.opensource.org/licenses/lgpl-2.1.php LGPLv2
+         *      @link http://kcfinder.sunhater.com
+         */? >
+        browser.drag = function(ev, dd) {
+            var top = dd.offsetY,
+                    left = dd.offsetX;
+            if (top < 0)
+                top = 0;
+            if (left < 0)
+                left = 0;
+            if (top + $(this).outerHeight() > $(window).height())
+                top = $(window).height() - $(this).outerHeight();
+            if (left + $(this).outerWidth() > $(window).width())
+                left = $(window).width() - $(this).outerWidth();
+            $(this).css({
+                top: top,
+                left: left
+            });
+        };
 
 browser.showDialog = function(e) {
     $('#dialog').css({left: 0, top: 0});
@@ -52,8 +53,10 @@ browser.showDialog = function(e) {
     if (e) {
         var left = e.pageX - parseInt($('#dialog').outerWidth() / 2);
         var top = e.pageY - parseInt($('#dialog').outerHeight() / 2);
-        if (left < 0) left = 0;
-        if (top < 0) top = 0;
+        if (left < 0)
+            left = 0;
+        if (top < 0)
+            top = 0;
         if (($('#dialog').outerWidth() + left) > $(window).width())
             left = $(window).width() - $('#dialog').outerWidth();
         if (($('#dialog').outerHeight() + top) > $(window).height())
@@ -100,7 +103,7 @@ browser.showAlert = function(shadow) {
     if (shadow)
         this.shadow();
     var left = parseInt(($(window).width() - $('#alert').outerWidth()) / 2),
-        top = parseInt(($(window).height() - $('#alert').outerHeight()) / 2);
+            top = parseInt(($(window).height() - $('#alert').outerHeight()) / 2);
     var wheight = $(window).height();
     if (top < 0)
         top = 0;
@@ -200,12 +203,12 @@ browser.showMenu = function(e) {
 
 browser.fileNameDialog = function(e, post, inputName, inputValue, url, labels, callBack, selectAll) {
     var html = '<form method="post" action="javascript:;">' +
-        '<div class="box">' +
-        '<input name="' + inputName + '" type="text" /><br />' +
-        '<div style="text-align:right">' +
-        '<input type="submit" value="' + _.htmlValue(this.label("OK")) + '" /> ' +
-        '<input type="button" value="' + _.htmlValue(this.label("Cancel")) + '" onclick="browser.hideDialog(); browser.hideAlert(); return false" />' +
-    '</div></div></form>';
+            '<div class="box">' +
+            '<input name="' + inputName + '" type="text" /><br />' +
+            '<div style="text-align:right">' +
+            '<input type="submit" value="' + _.htmlValue(this.label("OK")) + '" /> ' +
+            '<input type="button" value="' + _.htmlValue(this.label("Cancel")) + '" onclick="browser.hideDialog(); browser.hideAlert(); return false" />' +
+            '</div></div></form>';
     $('#dialog').html(html);
     $('#dialog').data('title', this.label(labels.title));
     $('#dialog input[name="' + inputName + '"]').attr('value', inputValue);
@@ -239,7 +242,8 @@ browser.fileNameDialog = function(e, post, inputName, inputValue, url, labels, c
             success: function(data) {
                 if (browser.check4errors(data, false))
                     return;
-                if (callBack) callBack(data);
+                if (callBack)
+                    callBack(data);
                 browser.hideDialog();
             },
             error: function() {
@@ -255,7 +259,7 @@ browser.fileNameDialog = function(e, post, inputName, inputValue, url, labels, c
     });
     var field = $('#dialog input[type="text"]');
     var value = field.attr('value');
-    if (!selectAll && /^(.+)\.[^\.]+$/ .test(value)) {
+    if (!selectAll && /^(.+)\.[^\.]+$/.test(value)) {
         value = value.replace(/^(.+)\.[^\.]+$/, "$1");
         _.selection(field.get(0), 0, value.length);
     } else {
@@ -273,7 +277,8 @@ browser.orderFiles = function(callBack, selected) {
 
     browser.files = browser.files.sort(function(a, b) {
         var a1, b1, arr;
-        if (!order) order = 'name';
+        if (!order)
+            order = 'name';
 
         if (order == 'date') {
             a1 = a.mtime;
@@ -288,8 +293,10 @@ browser.orderFiles = function(callBack, selected) {
             eval('a1 = a.' + order + '.toLowerCase(); b1 = b.' + order + '.toLowerCase();');
 
         if ((order == 'size') || (order == 'date')) {
-            if (a1 < b1) return desc ? 1 : -1;
-            if (a1 > b1) return desc ? -1 : 1;
+            if (a1 < b1)
+                return desc ? 1 : -1;
+            if (a1 > b1)
+                return desc ? -1 : 1;
         }
 
         if (a1 == b1) {
@@ -302,7 +309,8 @@ browser.orderFiles = function(callBack, selected) {
 
         arr = [a1, b1];
         arr = arr.sort();
-        if (arr[0] == a1) return desc ? 1 : -1;
+        if (arr[0] == a1)
+            return desc ? 1 : -1;
         return desc ? -1 : 1;
     });
 

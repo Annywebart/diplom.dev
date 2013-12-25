@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CDummyCache class file.
  *
@@ -22,6 +23,7 @@
  */
 class CDummyCache extends CApplicationComponent implements ICache, ArrayAccess
 {
+
     /**
      * @var string a string prefixed to every cache key so that it is unique. Defaults to {@link CApplication::getId() application ID}.
      */
@@ -149,6 +151,7 @@ class CDummyCache extends CApplicationComponent implements ICache, ArrayAccess
      */
     public function offsetSet($id, $value)
     {
+        
     }
 
     /**
@@ -159,5 +162,7 @@ class CDummyCache extends CApplicationComponent implements ICache, ArrayAccess
      */
     public function offsetUnset($id)
     {
+        
     }
+
 }

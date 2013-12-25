@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Message translations.
  *
@@ -34,5 +35,4 @@ return array(
     'View' => 'Преглед',
     '{class} must specify "model" and "attribute" or "name" property values.' => '{class} трябва да има отбелязани "model" или "attribute" или "name" свойства.',
 );
-
 ?>

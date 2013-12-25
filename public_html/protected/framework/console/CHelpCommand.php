@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CHelpCommand class file.
  *
@@ -29,6 +30,7 @@
  */
 class CHelpCommand extends CConsoleCommand
 {
+
     /**
      * Execute the action.
      * @param array $args command line parameters specific for this command
@@ -68,4 +70,5 @@ class CHelpCommand extends CConsoleCommand
     {
         return parent::getHelp() . ' [command-name]';
     }
+
 }

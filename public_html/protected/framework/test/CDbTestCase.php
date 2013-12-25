@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file contains the CDbTestCase class.
  *
@@ -7,7 +8,6 @@
  * @copyright 2008-2013 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
-
 Yii::import('system.test.CTestCase');
 
 /**
@@ -38,6 +38,7 @@ Yii::import('system.test.CTestCase');
  */
 abstract class CDbTestCase extends CTestCase
 {
+
     /**
      * @var array a list of fixtures that should be loaded before each test method executes.
      * The array keys are fixture names, and the array values are either AR class names
@@ -117,4 +118,5 @@ abstract class CDbTestCase extends CTestCase
         if (is_array($this->fixtures))
             $this->getFixtureManager()->load($this->fixtures);
     }
+
 }

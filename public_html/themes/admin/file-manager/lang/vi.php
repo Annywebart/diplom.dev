@@ -1,19 +1,15 @@
 <?php
 
 /** vi localization file for KCFinder
-  * Tran Van Quyet - HQV ltd
-  */
-
+ * Tran Van Quyet - HQV ltd
+ */
 $lang = array(
-
-    '_locale' => "vi_VN.UTF-8",  // UNIX localization code
-    '_charset' => "utf-8",       // Browser charset
-
+    '_locale' => "vi_VN.UTF-8", // UNIX localization code
+    '_charset' => "utf-8", // Browser charset
     // Date time formats. See http://www.php.net/manual/en/function.strftime.php
     '_dateTimeFull' => "%A, %e %B, %Y %H:%M",
     '_dateTimeMid' => "%a %e %b %Y %H:%M",
     '_dateTimeSmall' => "%d.%m.%Y %H:%M",
-
     "You don't have permissions to upload files." => "Bạn không có quyền tải lên",
     "You don't have permissions to browse server." => "Bạn không có quyền truy cập",
     "Cannot move uploaded file to target folder." => "Không thể tải lên thư mục đích",
@@ -123,5 +119,4 @@ $lang = array(
     "Uploading file {number} of {count}... {progress}" => "Đang tải tập tin thứ {number} của {count}... {progress}",
     "Failed to upload {filename}!" => "Tải lên thất bại {filename}!",
 );
-
 ?>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CRegularExpressionValidator class file.
  *
@@ -18,20 +19,23 @@
  */
 class CRegularExpressionValidator extends CValidator
 {
+
     /**
      * @var string the regular expression to be matched with
      */
     public $pattern;
+
     /**
      * @var boolean whether the attribute value can be null or empty. Defaults to true,
      * meaning that if the attribute is empty, it is considered valid.
      */
     public $allowEmpty = true;
+
     /**
      * @var boolean whether to invert the validation logic. Defaults to false. If set to true,
      * the regular expression defined via {@link pattern} should NOT match the attribute value.
      * @since 1.1.5
-     **/
+     * */
     public $not = false;
 
     /**
@@ -50,8 +54,8 @@ class CRegularExpressionValidator extends CValidator
             throw new CException(Yii::t('yii', 'The "pattern" property must be specified with a valid regular expression.'));
         // reason of array checking explained here: https://github.com/yiisoft/yii/issues/1955
         if (is_array($value) ||
-            (!$this->not && !preg_match($this->pattern, $value)) ||
-            ($this->not && preg_match($this->pattern, $value))
+                (!$this->not && !preg_match($this->pattern, $value)) ||
+                ($this->not && preg_match($this->pattern, $value))
         ) {
             $message = $this->message !== null ? $this->message : Yii::t('yii', '{attribute} is invalid.');
             $this->addError($object, $attribute, $message);
@@ -95,4 +99,5 @@ if(" . ($this->allowEmpty ? "jQuery.trim(value)!='' && " : '') . ($this->not ? '
 }
 ";
     }
+
 }

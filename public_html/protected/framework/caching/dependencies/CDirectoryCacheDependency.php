@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CDirectoryCacheDependency class file.
  *
@@ -30,17 +31,20 @@
  */
 class CDirectoryCacheDependency extends CCacheDependency
 {
+
     /**
      * @var string the directory whose change is used to determine if the dependency has been changed.
      * If any of the files under the directory is changed, the dependency is considered as changed.
      */
     public $directory;
+
     /**
      * @var integer the depth of the subdirectories to be recursively checked.
      * If the value is less than 0, it means unlimited depth.
      * If the value is 0, it means checking the files directly under the specified directory.
      */
     public $recursiveLevel = -1;
+
     /**
      * @var string the regular expression matching valid file/directory names.
      * Only the matching files or directories will be checked for changes.
@@ -82,8 +86,7 @@ class CDirectoryCacheDependency extends CCacheDependency
     protected function generateTimestamps($directory, $level = 0)
     {
         if (($dir = @opendir($directory)) === false)
-            throw new CException(Yii::t('yii', '"{path}" is not a valid directory.',
-                array('{path}' => $directory)));
+            throw new CException(Yii::t('yii', '"{path}" is not a valid directory.', array('{path}' => $directory)));
         $timestamps = array();
         while (($file = readdir($dir)) !== false) {
             $path = $directory . DIRECTORY_SEPARATOR . $file;
@@ -128,4 +131,5 @@ class CDirectoryCacheDependency extends CCacheDependency
     {
         return true;
     }
+
 }

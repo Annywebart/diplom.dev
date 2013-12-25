@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CLogRouter class file.
  *
@@ -51,6 +52,7 @@
  */
 class CLogRouter extends CApplicationComponent
 {
+
     private $_routes = array();
 
     /**
@@ -120,4 +122,5 @@ class CLogRouter extends CApplicationComponent
                 $route->collectLogs($logger, true);
         }
     }
+
 }

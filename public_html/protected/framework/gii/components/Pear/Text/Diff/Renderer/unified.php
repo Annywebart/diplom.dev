@@ -1,4 +1,5 @@
 <?php
+
 /**
  * "Unified" diff renderer.
  *
@@ -14,14 +15,14 @@
  * @author  Ciprian Popovici
  * @package Text_Diff
  */
-
 /** Text_Diff_Renderer */
 require_once 'Text/Diff/Renderer.php';
 
 /**
  * @package Text_Diff
  */
-class Text_Diff_Renderer_unified extends Text_Diff_Renderer {
+class Text_Diff_Renderer_unified extends Text_Diff_Renderer
+{
 
     /**
      * Number of leading context "lines" to preserve.

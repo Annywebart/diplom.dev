@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CConsoleCommandBehavior class file.
  *
@@ -19,6 +20,7 @@
  */
 class CConsoleCommandBehavior extends CBehavior
 {
+
     /**
      * Declares events and the corresponding event handler methods.
      * The default implementation returns 'onAfterConstruct', 'onBeforeValidate' and 'onAfterValidate' events and handlers.
@@ -41,6 +43,7 @@ class CConsoleCommandBehavior extends CBehavior
      */
     protected function beforeAction($event)
     {
+        
     }
 
     /**
@@ -50,5 +53,7 @@ class CConsoleCommandBehavior extends CBehavior
      */
     protected function afterAction($event)
     {
+        
     }
+
 }

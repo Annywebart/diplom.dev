@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CPgsqlTable class file.
  *
@@ -17,8 +18,10 @@
  */
 class CPgsqlTableSchema extends CDbTableSchema
 {
-	/**
-	 * @var string name of the schema that this table belongs to.
-	 */
-	public $schemaName;
+
+    /**
+     * @var string name of the schema that this table belongs to.
+     */
+    public $schemaName;
+
 }

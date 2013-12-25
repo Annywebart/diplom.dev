@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CEmailLogRoute class file.
  *
@@ -26,24 +27,29 @@
  */
 class CEmailLogRoute extends CLogRoute
 {
+
     /**
      * @var boolean set this property to true value in case log data you're going to send through emails contains
      * non-latin or UTF-8 characters. Emails would be UTF-8 encoded.
      * @since 1.1.13
      */
     public $utf8 = false;
+
     /**
      * @var array list of destination email addresses.
      */
     private $_email = array();
+
     /**
      * @var string email subject
      */
     private $_subject;
+
     /**
      * @var string email sent from address
      */
     private $_from;
+
     /**
      * @var array list of additional headers to use when sending an email.
      */
@@ -167,4 +173,5 @@ class CEmailLogRoute extends CLogRoute
         else
             $this->_headers = preg_split('/\r\n|\n/', $value, -1, PREG_SPLIT_NO_EMPTY);
     }
+
 }

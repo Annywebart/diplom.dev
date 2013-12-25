@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CGlobalStateCacheDependency class file.
  *
@@ -22,6 +23,7 @@
  */
 class CGlobalStateCacheDependency extends CCacheDependency
 {
+
     /**
      * @var string the name of the global state whose value is to check
      * if the dependency has changed.
@@ -51,4 +53,5 @@ class CGlobalStateCacheDependency extends CCacheDependency
         else
             throw new CException(Yii::t('yii', 'CGlobalStateCacheDependency.stateName cannot be empty.'));
     }
+
 }

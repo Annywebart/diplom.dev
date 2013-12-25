@@ -1,4 +1,5 @@
 <?php
+
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 /**
  * Console renderer
@@ -19,14 +20,12 @@
  * @version    CVS: $Id: Console.php,v 1.1 2007/06/03 02:37:08 ssttoo Exp $
  * @link       http://pear.php.net/package/Text_Highlighter
  */
-
 /**
  * @ignore
  */
-
 require_once dirname(__FILE__) . '/../Renderer.php';
 
-define ('HL_CONSOLE_DEFCOLOR', "\033[0m");
+define('HL_CONSOLE_DEFCOLOR', "\033[0m");
 
 /**
  * Console renderer
@@ -48,11 +47,9 @@ define ('HL_CONSOLE_DEFCOLOR', "\033[0m");
  * @version    Release: 0.7.1
  * @link       http://pear.php.net/package/Text_Highlighter
  */
-
 class Text_Highlighter_Renderer_Console extends Text_Highlighter_Renderer
 {
-
-    /**#@+
+    /*     * #@+
      * @access private
      */
 
@@ -84,10 +81,8 @@ class Text_Highlighter_Renderer_Console extends Text_Highlighter_Renderer
      */
     var $_output = '';
 
-    /**#@-*/
-
+    /*     * #@- */
     var $_colors = array();
-
     var $_defColors = array(
         'default' => "\033[0m",
         'inlinetags' => "\033[31m",
@@ -111,7 +106,6 @@ class Text_Highlighter_Renderer_Console extends Text_Highlighter_Renderer
         return rtrim($str);
     }
 
-
     /**
      * Resets renderer state
      *
@@ -125,7 +119,7 @@ class Text_Highlighter_Renderer_Console extends Text_Highlighter_Renderer
     {
         $this->_lastClass = '';
         if (isset($this->_options['numbers'])) {
-            $this->_numbers = (bool)$this->_options['numbers'];
+            $this->_numbers = (bool) $this->_options['numbers'];
         } else {
             $this->_numbers = false;
         }
@@ -141,7 +135,6 @@ class Text_Highlighter_Renderer_Console extends Text_Highlighter_Renderer
         }
         $this->_output = '';
     }
-
 
     /**
      * Accepts next token
@@ -194,6 +187,7 @@ class Text_Highlighter_Renderer_Console extends Text_Highlighter_Renderer
     {
         return $this->_output;
     }
+
 }
 
 /*
@@ -203,5 +197,4 @@ class Text_Highlighter_Renderer_Console extends Text_Highlighter_Renderer
  * c-hanging-comment-ender-p: nil
  * End:
  */
-
 ?>

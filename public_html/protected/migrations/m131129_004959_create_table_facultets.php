@@ -2,6 +2,7 @@
 
 class m131129_004959_create_table_facultets extends CDbMigration
 {
+
     public function up()
     {
         $this->execute("
@@ -22,6 +23,5 @@ class m131129_004959_create_table_facultets extends CDbMigration
     {
         $this->execute('DROP TABLE `Facultets`');
     }
-
 
 }

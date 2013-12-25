@@ -1,22 +1,21 @@
-<?php
+< ?php
 
-/** This file is part of KCFinder project
-  *
-  *      @desc File related functionality
-  *   @package KCFinder
-  *   @version 2.51
-  *    @author Pavel Tzonkov <pavelc@users.sourceforge.net>
-  * @copyright 2010, 2011 KCFinder Project
-  *   @license http://www.opensource.org/licenses/gpl-2.0.php GPLv2
-  *   @license http://www.opensource.org/licenses/lgpl-2.1.php LGPLv2
-  *      @link http://kcfinder.sunhater.com
-  */?>
-
-is_touch_device = ('ontouchstart' in document.documentElement);
+        /** This file is part of KCFinder project
+         *
+         *      @desc File related functionality
+         *   @package KCFinder
+         *   @version 2.51
+         *    @author Pavel Tzonkov <pavelc@users.sourceforge.net>
+         * @copyright 2010, 2011 KCFinder Project
+         *   @license http://www.opensource.org/licenses/gpl-2.0.php GPLv2
+         *   @license http://www.opensource.org/licenses/lgpl-2.1.php LGPLv2
+         *      @link http://kcfinder.sunhater.com
+         */? >
+        is_touch_device = ('ontouchstart' in document.documentElement);
 
 browser.initFiles = function() {
-    
-	$(document).unbind('keydown');
+
+    $(document).unbind('keydown');
     $(document).keydown(function(e) {
         return !browser.selectAll(e);
     });
@@ -27,7 +26,7 @@ browser.initFiles = function() {
     $('.file').unbind();
     $('.file').click(function(e) {
         _.unselect();
-        if(!is_touch_device) {
+        if (!is_touch_device) {
             browser.selectFile($(this), e);
         } else {
             e.preventDefault();
@@ -35,12 +34,13 @@ browser.initFiles = function() {
             window.open(fileURL);
         }
     });
-    if(!is_touch_device) {
+    if (!is_touch_device) {
         $('.file').rightClick(function(e) {
             _.unselect();
             browser.menuFile($(this), e);
         });
-    };
+    }
+    ;
     $('.file').dblclick(function() {
         _.unselect();
         browser.returnFile($(this));
@@ -53,7 +53,7 @@ browser.initFiles = function() {
     });
     $.each(this.shows, function(i, val) {
         var display = (_.kuki.get('show' + val) == 'off')
-            ? 'none' : 'block';
+                ? 'none' : 'block';
         $('#files .file div.' + val).css('display', display);
     });
     this.statusDir();
@@ -70,7 +70,8 @@ browser.showFiles = function(callBack, selected) {
             });
             stamp = _.md5(stamp.join('|'));
             if (_.kuki.get('view') == 'list') {
-                if (!i) html += '<table summary="list">';
+                if (!i)
+                    html += '<table summary="list">';
                 var icon = _.getFileExtension(file.name);
                 if (file.thumb)
                     icon = '.image';
@@ -78,11 +79,12 @@ browser.showFiles = function(callBack, selected) {
                     icon = '.';
                 icon = 'themes/' + browser.theme + '/img/files/small/' + icon + '.png';
                 html += '<tr class="file">' +
-                    '<td class="name" style="background-image:url(' + icon + ')">' + _.htmlData(file.name) + '</td>' +
-                    '<td class="time">' + file.date + '</td>' +
-                    '<td class="size">' + browser.humanSize(file.size) + '</td>' +
-                '</tr>';
-                if (i == browser.files.length - 1) html += '</table>';
+                        '<td class="name" style="background-image:url(' + icon + ')">' + _.htmlData(file.name) + '</td>' +
+                        '<td class="time">' + file.date + '</td>' +
+                        '<td class="size">' + browser.humanSize(file.size) + '</td>' +
+                        '</tr>';
+                if (i == browser.files.length - 1)
+                    html += '</table>';
             } else {
                 if (file.thumb)
                     var icon = browser.baseGetData('thumb') + '&file=' + encodeURIComponent(file.name) + '&dir=' + encodeURIComponent(browser.dir) + '&stamp=' + stamp;
@@ -91,15 +93,16 @@ browser.showFiles = function(callBack, selected) {
                     icon = _.escapeDirs(icon).replace(/\'/g, "%27");
                 } else {
                     var icon = file.bigIcon ? _.getFileExtension(file.name) : '.';
-                    if (!icon.length) icon = '.';
+                    if (!icon.length)
+                        icon = '.';
                     icon = 'themes/' + browser.theme + '/img/files/big/' + icon + '.png';
                 }
                 html += '<div class="file">' +
-                    '<div class="thumb" style="background-image:url(\'' + icon + '\')" ></div>' +
-                    '<div class="name">' + _.htmlData(file.name) + '</div>' +
-                    '<div class="time">' + file.date + '</div>' +
-                    '<div class="size">' + browser.humanSize(file.size) + '</div>' +
-                '</div>';
+                        '<div class="thumb" style="background-image:url(\'' + icon + '\')" ></div>' +
+                        '<div class="name">' + _.htmlData(file.name) + '</div>' +
+                        '<div class="time">' + file.date + '</div>' +
+                        '<div class="size">' + browser.humanSize(file.size) + '</div>' +
+                        '</div>';
             }
         });
         $('#files').html('<div>' + html + '<div>');
@@ -107,12 +110,13 @@ browser.showFiles = function(callBack, selected) {
             var item = $('#files .file').get(i);
             $(item).data(file);
             if (_.inArray(file.name, selected) ||
-                ((typeof selected != 'undefined') && !selected.push && (file.name == selected))
-            )
+                    ((typeof selected != 'undefined') && !selected.push && (file.name == selected))
+                    )
                 $(item).addClass('selected');
         });
-        $('#files > div').css({opacity:'', filter:''});
-        if (callBack) callBack();
+        $('#files > div').css({opacity: '', filter: ''});
+        if (callBack)
+            callBack();
         browser.initFiles();
     }, 200);
 };
@@ -167,7 +171,7 @@ browser.selectAll = function(e) {
 browser.returnFile = function(file) {
 
     var fileURL = file.substr
-        ? file : browser.uploadURL + '/' + browser.dir + '/' + file.data('name');
+            ? file : browser.uploadURL + '/' + browser.dir + '/' + file.data('name');
     fileURL = _.escapeDirs(fileURL);
 
     if (this.opener.CKEditor) {
@@ -175,14 +179,15 @@ browser.returnFile = function(file) {
         window.close();
 
     } else if (this.opener.FCKeditor) {
-        window.opener.SetUrl(fileURL) ;
-        window.close() ;
+        window.opener.SetUrl(fileURL);
+        window.close();
 
     } else if (this.opener.TinyMCE) {
         var win = tinyMCEPopup.getWindowArg('window');
         win.document.getElementById(tinyMCEPopup.getWindowArg('input')).value = fileURL;
-        if (win.getImageData) win.getImageData();
-        if (typeof(win.ImageDialog) != "undefined") {
+        if (win.getImageData)
+            win.getImageData();
+        if (typeof (win.ImageDialog) != "undefined") {
             if (win.ImageDialog.getImageData)
                 win.ImageDialog.getImageData();
             if (win.ImageDialog.showPreviewImage)
@@ -228,7 +233,8 @@ browser.returnFiles = function(files) {
             rfiles[i] = _.escapeDirs(rfiles[i]);
         });
         this.opener.callBackMultiple(rfiles);
-        if (window.opener) window.close()
+        if (window.opener)
+            window.close()
     }
 };
 
@@ -243,7 +249,8 @@ browser.returnThumbnails = function(files) {
             }
         });
         this.opener.callBackMultiple(rfiles);
-        if (window.opener) window.close()
+        if (window.opener)
+            window.close()
     }
 };
 
@@ -259,29 +266,33 @@ browser.menuFile = function(file, e) {
         var cdata;
         $.each(files, function(i, cfile) {
             cdata = $(cfile).data();
-            if (cdata.thumb) thumb = true;
-            if (!data.writable) notWritable++;
+            if (cdata.thumb)
+                thumb = true;
+            if (!data.writable)
+                notWritable++;
         });
         if (this.opener.callBackMultiple) {
             html += '<a href="kcact:pick">' + this.label("Select") + '</a>';
-            if (thumb) html +=
-                '<a href="kcact:pick_thumb">' + this.label("Select Thumbnails") + '</a>';
+            if (thumb)
+                html +=
+                        '<a href="kcact:pick_thumb">' + this.label("Select Thumbnails") + '</a>';
         }
         if (data.thumb || data.smallThumb || this.support.zip) {
             html += (html.length ? '<div class="delimiter"></div>' : '');
             if (data.thumb || data.smallThumb)
-                html +='<a href="kcact:view">' + this.label("View") + '</a>';
-            if (this.support.zip) html += (html.length ? '<div class="delimiter"></div>' : '') +
-                '<a href="kcact:download">' + this.label("Download") + '</a>';
+                html += '<a href="kcact:view">' + this.label("View") + '</a>';
+            if (this.support.zip)
+                html += (html.length ? '<div class="delimiter"></div>' : '') +
+                        '<a href="kcact:download">' + this.label("Download") + '</a>';
         }
 
         if (this.access.files.copy || this.access.files.move)
             html += (html.length ? '<div class="delimiter"></div>' : '') +
-                '<a href="kcact:clpbrdadd">' + this.label("Add to Clipboard") + '</a>';
+                    '<a href="kcact:clpbrdadd">' + this.label("Add to Clipboard") + '</a>';
         if (this.access.files['delete'])
             html += (html.length ? '<div class="delimiter"></div>' : '') +
-                '<a href="kcact:rm"' + ((notWritable == files.length) ? ' class="denied"' : '') +
-                '>' + this.label("Delete") + '</a>';
+                    '<a href="kcact:rm"' + ((notWritable == files.length) ? ' class="denied"' : '') +
+                    '>' + this.label("Delete") + '</a>';
 
         if (html.length) {
             html = '<div class="menu">' + html + '</div>';
@@ -308,7 +319,7 @@ browser.menuFile = function(file, e) {
             $.each(files, function(i, cfile) {
                 pfiles[i] = $(cfile).data('name');
             });
-            browser.post(browser.baseGetData('downloadSelected'), {dir:browser.dir, files:pfiles});
+            browser.post(browser.baseGetData('downloadSelected'), {dir: browser.dir, files: pfiles});
             return false;
         });
 
@@ -320,8 +331,8 @@ browser.menuFile = function(file, e) {
                 var failed = false;
                 for (i = 0; i < browser.clipboard.length; i++)
                     if ((browser.clipboard[i].name == cdata.name) &&
-                        (browser.clipboard[i].dir == browser.dir)
-                    ) {
+                            (browser.clipboard[i].dir == browser.dir)
+                            ) {
                         failed = true
                         msg += cdata.name + ": " + browser.label("This file is already added to the Clipboard.") + "\n";
                         break;
@@ -333,12 +344,14 @@ browser.menuFile = function(file, e) {
                 }
             });
             browser.initClipboard();
-            if (msg.length) browser.alert(msg.substr(0, msg.length - 1));
+            if (msg.length)
+                browser.alert(msg.substr(0, msg.length - 1));
             return false;
         });
 
         $('.menu a[href="kcact:rm"]').click(function() {
-            if ($(this).hasClass('denied')) return false;
+            if ($(this).hasClass('denied'))
+                return false;
             browser.hideDialog();
             var failed = 0;
             var dfiles = [];
@@ -360,15 +373,17 @@ browser.menuFile = function(file, e) {
                     type: 'POST',
                     dataType: 'json',
                     url: browser.baseGetData('rm_cbd'),
-                    data: {files:dfiles},
+                    data: {files: dfiles},
                     async: false,
                     success: function(data) {
-                        if (callBack) callBack();
+                        if (callBack)
+                            callBack();
                         browser.check4errors(data);
                         browser.refresh();
                     },
                     error: function() {
-                        if (callBack) callBack();
+                        if (callBack)
+                            callBack();
                         $('#files > div').css({
                             opacity: '',
                             filter: ''
@@ -380,15 +395,15 @@ browser.menuFile = function(file, e) {
 
             if (failed)
                 browser.confirm(
-                    browser.label("{count} selected files are not removable. Do you want to delete the rest?", {count:failed}),
-                    go
-                )
+                        browser.label("{count} selected files are not removable. Do you want to delete the rest?", {count: failed}),
+                go
+                        )
 
             else
                 browser.confirm(
-                    browser.label("Are you sure you want to delete all selected files?"),
-                    go
-                );
+                        browser.label("Are you sure you want to delete all selected files?"),
+                        go
+                        );
 
             return false;
         });
@@ -400,28 +415,29 @@ browser.menuFile = function(file, e) {
         $('#fileinfo').html(data.name + ' (' + this.humanSize(data.size) + ', ' + data.date + ')');
         if (this.opener.callBack || this.opener.callBackMultiple) {
             html += '<a href="kcact:pick">' + this.label("Select") + '</a>';
-            if (data.thumb) html +=
-                '<a href="kcact:pick_thumb">' + this.label("Select Thumbnail") + '</a>';
+            if (data.thumb)
+                html +=
+                        '<a href="kcact:pick_thumb">' + this.label("Select Thumbnail") + '</a>';
             html += '<div class="delimiter"></div>';
         }
 
         if (data.thumb || data.smallThumb)
-            html +='<a href="kcact:view">' + this.label("View") + '</a>';
+            html += '<a href="kcact:view">' + this.label("View") + '</a>';
 
         html +=
-            '<a href="kcact:download">' + this.label("Download") + '</a>';
+                '<a href="kcact:download">' + this.label("Download") + '</a>';
 
         if (this.access.files.copy || this.access.files.move)
             html += '<div class="delimiter"></div>' +
-                '<a href="kcact:clpbrdadd">' + this.label("Add to Clipboard") + '</a>';
+                    '<a href="kcact:clpbrdadd">' + this.label("Add to Clipboard") + '</a>';
         if (this.access.files.rename || this.access.files['delete'])
             html += '<div class="delimiter"></div>';
         if (this.access.files.rename)
             html += '<a href="kcact:mv"' + (!data.writable ? ' class="denied"' : '') + '>' +
-                this.label("Rename...") + '</a>';
+                    this.label("Rename...") + '</a>';
         if (this.access.files['delete'])
             html += '<a href="kcact:rm"' + (!data.writable ? ' class="denied"' : '') + '>' +
-                this.label("Delete") + '</a>';
+                    this.label("Delete") + '</a>';
         html += '</div>';
 
         $('#dialog').html(html);
@@ -442,9 +458,9 @@ browser.menuFile = function(file, e) {
 
         $('.menu a[href="kcact:download"]').click(function() {
             var html = '<form id="downloadForm" method="post" action="' + browser.baseGetData('download') + '">' +
-                '<input type="hidden" name="dir" />' +
-                '<input type="hidden" name="file" />' +
-            '</form>';
+                    '<input type="hidden" name="dir" />' +
+                    '<input type="hidden" name="file" />' +
+                    '</form>';
             $('#dialog').html(html);
             $('#downloadForm input').get(0).value = browser.dir;
             $('#downloadForm input').get(1).value = data.name;
@@ -455,8 +471,8 @@ browser.menuFile = function(file, e) {
         $('.menu a[href="kcact:clpbrdadd"]').click(function() {
             for (i = 0; i < browser.clipboard.length; i++)
                 if ((browser.clipboard[i].name == data.name) &&
-                    (browser.clipboard[i].dir == browser.dir)
-                ) {
+                        (browser.clipboard[i].dir == browser.dir)
+                        ) {
                     browser.hideDialog();
                     browser.alert(browser.label("This file is already added to the Clipboard."));
                     return false;
@@ -470,46 +486,50 @@ browser.menuFile = function(file, e) {
         });
 
         $('.menu a[href="kcact:mv"]').click(function(e) {
-            if (!data.writable) return false;
+            if (!data.writable)
+                return false;
             browser.fileNameDialog(
-                e, {dir: browser.dir, file: data.name},
-                'newName', data.name, browser.baseGetData('rename'), {
-                    title: "New file name:",
-                    errEmpty: "Please enter new file name.",
-                    errSlash: "Unallowable characters in file name.",
-                    errDot: "File name shouldn't begins with '.'"
-                },
-                function() {
-                    browser.refresh();
-                }
+                    e, {dir: browser.dir, file: data.name},
+            'newName', data.name, browser.baseGetData('rename'), {
+                title: "New file name:",
+                errEmpty: "Please enter new file name.",
+                errSlash: "Unallowable characters in file name.",
+                errDot: "File name shouldn't begins with '.'"
+            },
+            function() {
+                browser.refresh();
+            }
             );
             return false;
         });
 
         $('.menu a[href="kcact:rm"]').click(function() {
-            if (!data.writable) return false;
+            if (!data.writable)
+                return false;
             browser.hideDialog();
             browser.confirm(browser.label("Are you sure you want to delete this file?"),
-                function(callBack) {
-                    $.ajax({
-                        type: 'POST',
-                        dataType: 'json',
-                        url: browser.baseGetData('delete'),
-                        data: {dir:browser.dir, file:data.name},
-                        async: false,
-                        success: function(data) {
-                            if (callBack) callBack();
-                            browser.clearClipboard();
-                            if (browser.check4errors(data))
-                                return;
-                            browser.refresh();
-                        },
-                        error: function() {
-                            if (callBack) callBack();
-                            browser.alert(browser.label("Unknown error."));
-                        }
-                    });
-                }
+                    function(callBack) {
+                        $.ajax({
+                            type: 'POST',
+                            dataType: 'json',
+                            url: browser.baseGetData('delete'),
+                            data: {dir: browser.dir, file: data.name},
+                            async: false,
+                            success: function(data) {
+                                if (callBack)
+                                    callBack();
+                                browser.clearClipboard();
+                                if (browser.check4errors(data))
+                                    return;
+                                browser.refresh();
+                            },
+                            error: function() {
+                                if (callBack)
+                                    callBack();
+                                browser.alert(browser.label("Unknown error."));
+                            }
+                        });
+                    }
             );
             return false;
         });
@@ -520,7 +540,7 @@ browser.menuFile = function(file, e) {
         var ts = new Date().getTime();
         var showImage = function(data) {
             url = _.escapeDirs(browser.uploadURL + '/' + browser.dir + '/' + data.name) + '?ts=' + ts,
-            $('#loading').html(browser.label("Loading image..."));
+                    $('#loading').html(browser.label("Loading image..."));
             $('#loading').css('display', 'inline');
             var img = new Image();
             img.src = url;
@@ -585,15 +605,15 @@ browser.menuFile = function(file, e) {
                                     if (images.length > 1) {
                                         if (!browser.lock && (e.keyCode == 37)) {
                                             var nimg = i
-                                                ? images[i - 1]
-                                                : images[images.length - 1];
+                                                    ? images[i - 1]
+                                                    : images[images.length - 1];
                                             browser.lock = true;
                                             showImage(nimg);
                                         }
                                         if (!browser.lock && (e.keyCode == 39)) {
                                             var nimg = (i >= images.length - 1)
-                                                ? images[0]
-                                                : images[i + 1];
+                                                    ? images[0]
+                                                    : images[i + 1];
                                             browser.lock = true;
                                             showImage(nimg);
                                         }

@@ -1,4 +1,5 @@
 <?php
+
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 /**
  * Abstract base class for Highlighter renderers
@@ -32,9 +33,9 @@
  * @link       http://pear.php.net/package/Text_Highlighter
  * @abstract
  */
-
 class Text_Highlighter_Renderer
 {
+
     /**
      * Renderer options
      *
@@ -148,5 +149,4 @@ class Text_Highlighter_Renderer
  * c-hanging-comment-ender-p: nil
  * End:
  */
-
 ?>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CChainedCacheDependency class file.
  *
@@ -27,6 +28,7 @@
  */
 class CChainedCacheDependency extends CComponent implements ICacheDependency
 {
+
     private $_dependencies = null;
 
     /**
@@ -91,4 +93,5 @@ class CChainedCacheDependency extends CComponent implements ICacheDependency
         }
         return false;
     }
+
 }

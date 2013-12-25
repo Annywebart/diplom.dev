@@ -1,33 +1,33 @@
 @import url("http://fonts.googleapis.com/css?family=Molengo&v1");
 
 .smoke-base { 
-	background: none; 
+    background: none; 
 }
 
 .smoke-base .dialog {
-	top:auto;
-	left:auto;
-	right:0;
-  bottom: 0;
-  width: auto;
+    top:auto;
+    left:auto;
+    right:0;
+    bottom: 0;
+    width: auto;
 }
 
 .smoke-base .dialog-inner { 
-	padding: 15px 20px;
+    padding: 15px 20px;
 }
 
 .smoke {
-		font-family: 'Molengo', arial, serif;
+    font-family: 'Molengo', arial, serif;
     text-transform: none;
-		color:#333;
-		font-weight: normal;
+    color:#333;
+    font-weight: normal;
     background-color: rgba(255,255,255,.75);
     font-size:30px;
-		border-radius: 0;
+    border-radius: 0;
 }
 .dialog-buttons {
-	margin: 10px 0 0 0;
-	text-align:right;
+    margin: 10px 0 0 0;
+    text-align:right;
 }
 
 .dialog-buttons button {
@@ -41,6 +41,6 @@
 }
 
 button.cancel { 
-	background-color: #666; 
-	color:#eee;
+    background-color: #666; 
+    color:#eee;
 }

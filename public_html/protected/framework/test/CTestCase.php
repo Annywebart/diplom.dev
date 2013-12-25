@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file contains the CTestCase class.
  *
@@ -7,7 +8,6 @@
  * @copyright 2008-2013 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
-
 require_once('PHPUnit/Runner/Version.php');
 require_once('PHPUnit/Util/Filesystem.php'); // workaround for PHPUnit <= 3.6.11
 
@@ -29,4 +29,5 @@ if (in_array('phpunit_autoload', spl_autoload_functions())) { // PHPUnit >= 3.7 
  */
 abstract class CTestCase extends PHPUnit_Framework_TestCase
 {
+    
 }

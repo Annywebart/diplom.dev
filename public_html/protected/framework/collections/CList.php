@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file contains classes implementing list feature.
  *
@@ -37,14 +38,17 @@
  */
 class CList extends CComponent implements IteratorAggregate, ArrayAccess, Countable
 {
+
     /**
      * @var array internal data storage
      */
     private $_d = array();
+
     /**
      * @var integer number of items
      */
     private $_c = 0;
+
     /**
      * @var boolean whether this list is read-only
      */
@@ -123,8 +127,7 @@ class CList extends CComponent implements IteratorAggregate, ArrayAccess, Counta
         elseif ($index >= 0 && $index < $this->_c) // in case the value is null
             return $this->_d[$index];
         else
-            throw new CException(Yii::t('yii', 'List index "{index}" is out of bound.',
-                array('{index}' => $index)));
+            throw new CException(Yii::t('yii', 'List index "{index}" is out of bound.', array('{index}' => $index)));
     }
 
     /**
@@ -155,8 +158,7 @@ class CList extends CComponent implements IteratorAggregate, ArrayAccess, Counta
                 array_splice($this->_d, $index, 0, array($item));
                 $this->_c++;
             } else
-                throw new CException(Yii::t('yii', 'List index "{index}" is out of bound.',
-                    array('{index}' => $index)));
+                throw new CException(Yii::t('yii', 'List index "{index}" is out of bound.', array('{index}' => $index)));
         } else
             throw new CException(Yii::t('yii', 'The list is read only.'));
     }
@@ -197,8 +199,7 @@ class CList extends CComponent implements IteratorAggregate, ArrayAccess, Counta
                     return $item;
                 }
             } else
-                throw new CException(Yii::t('yii', 'List index "{index}" is out of bound.',
-                    array('{index}' => $index)));
+                throw new CException(Yii::t('yii', 'List index "{index}" is out of bound.', array('{index}' => $index)));
         } else
             throw new CException(Yii::t('yii', 'The list is read only.'));
     }
@@ -325,5 +326,5 @@ class CList extends CComponent implements IteratorAggregate, ArrayAccess, Counta
     {
         $this->removeAt($offset);
     }
-}
 
+}

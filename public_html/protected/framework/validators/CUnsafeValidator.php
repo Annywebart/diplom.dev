@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CUnsafeValidator class file.
  *
@@ -17,6 +18,7 @@
  */
 class CUnsafeValidator extends CValidator
 {
+
     /**
      * @var boolean whether attributes listed with this validator should be considered safe for massive assignment.
      * Defaults to false.
@@ -33,6 +35,7 @@ class CUnsafeValidator extends CValidator
      */
     protected function validateAttribute($object, $attribute)
     {
+        
     }
-}
 
+}

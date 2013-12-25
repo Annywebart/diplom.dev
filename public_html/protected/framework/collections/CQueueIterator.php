@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CQueueIterator class file.
  *
@@ -19,14 +20,17 @@
  */
 class CQueueIterator implements Iterator
 {
+
     /**
      * @var array the data to be iterated through
      */
     private $_d;
+
     /**
      * @var integer index of the current item
      */
     private $_i;
+
     /**
      * @var integer count of the data items
      */
@@ -38,7 +42,7 @@ class CQueueIterator implements Iterator
      */
     public function __construct(&$data)
     {
-        $this->_d =& $data;
+        $this->_d = & $data;
         $this->_i = 0;
         $this->_c = count($this->_d);
     }
@@ -90,4 +94,5 @@ class CQueueIterator implements Iterator
     {
         return $this->_i < $this->_c;
     }
+
 }

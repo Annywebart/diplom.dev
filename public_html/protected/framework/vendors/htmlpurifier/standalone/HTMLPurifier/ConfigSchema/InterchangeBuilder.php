@@ -22,7 +22,8 @@ class HTMLPurifier_ConfigSchema_InterchangeBuilder
 
     public function buildDir($interchange, $dir = null)
     {
-        if (!$dir) $dir = HTMLPURIFIER_PREFIX . '/HTMLPurifier/ConfigSchema/schema';
+        if (!$dir)
+            $dir = HTMLPURIFIER_PREFIX . '/HTMLPurifier/ConfigSchema/schema';
         if (file_exists($dir . '/info.ini')) {
             $info = parse_ini_file($dir . '/info.ini');
             $interchange->name = $info['name'];
@@ -50,8 +51,7 @@ class HTMLPurifier_ConfigSchema_InterchangeBuilder
     {
         $parser = new HTMLPurifier_StringHashParser();
         $this->build(
-            $interchange,
-            new HTMLPurifier_StringHash($parser->parseFile($file))
+                $interchange, new HTMLPurifier_StringHash($parser->parseFile($file))
         );
     }
 
@@ -90,7 +90,8 @@ class HTMLPurifier_ConfigSchema_InterchangeBuilder
 
         if (isset($hash['TYPE'])) {
             $type = explode('/', $hash->offsetGet('TYPE'));
-            if (isset($type[1])) $directive->typeAllowsNull = true;
+            if (isset($type[1]))
+                $directive->typeAllowsNull = true;
             $directive->type = $type[0];
         } else {
             throw new HTMLPurifier_ConfigSchema_Exception("TYPE in directive hash '$id' not defined");
@@ -157,7 +158,8 @@ class HTMLPurifier_ConfigSchema_InterchangeBuilder
     protected function lookup($array)
     {
         $ret = array();
-        foreach ($array as $val) $ret[$val] = true;
+        foreach ($array as $val)
+            $ret[$val] = true;
         return $ret;
     }
 

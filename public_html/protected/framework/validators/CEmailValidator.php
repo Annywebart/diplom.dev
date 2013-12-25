@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CEmailValidator class file.
  *
@@ -17,22 +18,26 @@
  */
 class CEmailValidator extends CValidator
 {
+
     /**
      * @var string the regular expression used to validate the attribute value.
      * @see http://www.regular-expressions.info/email.html
      */
     public $pattern = '/^[a-zA-Z0-9!#$%&\'*+\\/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&\'*+\\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/';
+
     /**
      * @var string the regular expression used to validate email addresses with the name part.
      * This property is used only when {@link allowName} is true.
      * @see allowName
      */
     public $fullPattern = '/^[^@]*<[a-zA-Z0-9!#$%&\'*+\\/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&\'*+\\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?>$/';
+
     /**
      * @var boolean whether to allow name in the email address (e.g. "Qiang Xue <qiang.xue@gmail.com>"). Defaults to false.
      * @see fullPattern
      */
     public $allowName = false;
+
     /**
      * @var boolean whether to check the MX record for the email address.
      * Defaults to false. To enable it, you need to make sure the PHP function 'checkdnsrr'
@@ -40,6 +45,7 @@ class CEmailValidator extends CValidator
      * Please note that this check may fail due to temporary problems even if email is deliverable.
      */
     public $checkMX = false;
+
     /**
      * @var boolean whether to check port 25 for the email address.
      * Defaults to false. To enable it, ensure that the PHP functions 'dns_get_record' and
@@ -47,11 +53,13 @@ class CEmailValidator extends CValidator
      * Please note that this check may fail due to temporary problems even if email is deliverable.
      */
     public $checkPort = false;
+
     /**
      * @var boolean whether the attribute value can be null or empty. Defaults to true,
      * meaning that if the attribute is empty, it is considered valid.
      */
     public $allowEmpty = true;
+
     /**
      * @var boolean whether validation process should care about IDN (internationalized domain names). Default
      * value is false which means that validation of emails containing IDN will always fail.
@@ -194,4 +202,5 @@ if(" . ($this->allowEmpty ? "jQuery.trim(value)!='' && " : '') . $condition . ")
         }
         return $value;
     }
+
 }

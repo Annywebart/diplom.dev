@@ -11,7 +11,7 @@ class HTMLPurifier_Printer_HTMLDefinition extends HTMLPurifier_Printer
     public function render($config)
     {
         $ret = '';
-        $this->config =& $config;
+        $this->config = & $config;
 
         $this->def = $config->getHTMLDefinition();
 
@@ -43,7 +43,6 @@ class HTMLPurifier_Printer_HTMLDefinition extends HTMLPurifier_Printer
         $ret .= $this->end('table');
         return $ret;
     }
-
 
     /**
      * Renders environment table, which is miscellaneous info
@@ -197,24 +196,19 @@ class HTMLPurifier_Printer_HTMLDefinition extends HTMLPurifier_Printer
 
         if ($def->type == 'chameleon') {
 
-            $ret .= $this->element('td',
-                '<em>Block</em>: ' .
-                $this->escape($this->listifyTagLookup($def->block->elements)), 0, 0);
+            $ret .= $this->element('td', '<em>Block</em>: ' .
+                    $this->escape($this->listifyTagLookup($def->block->elements)), 0, 0);
             $ret .= $this->end('tr');
             $ret .= $this->start('tr');
-            $ret .= $this->element('td',
-                '<em>Inline</em>: ' .
-                $this->escape($this->listifyTagLookup($def->inline->elements)), 0, 0);
-
+            $ret .= $this->element('td', '<em>Inline</em>: ' .
+                    $this->escape($this->listifyTagLookup($def->inline->elements)), 0, 0);
         } elseif ($def->type == 'custom') {
 
             $ret .= $this->element('td', '<em>' . ucfirst($def->type) . '</em>: ' .
-                $def->dtd_regex);
-
+                    $def->dtd_regex);
         } else {
-            $ret .= $this->element('td',
-                '<em>' . ucfirst($def->type) . '</em>: ' .
-                $this->escape($this->listifyTagLookup($elements)), 0, 0);
+            $ret .= $this->element('td', '<em>' . ucfirst($def->type) . '</em>: ' .
+                    $this->escape($this->listifyTagLookup($elements)), 0, 0);
         }
         $ret .= $this->end('tr');
         return $ret;
@@ -229,7 +223,8 @@ class HTMLPurifier_Printer_HTMLDefinition extends HTMLPurifier_Printer
         ksort($array);
         $list = array();
         foreach ($array as $name => $discard) {
-            if ($name !== '#PCDATA' && !isset($this->def->info[$name])) continue;
+            if ($name !== '#PCDATA' && !isset($this->def->info[$name]))
+                continue;
             $list[] = $name;
         }
         return $this->listify($list);
@@ -259,7 +254,8 @@ class HTMLPurifier_Printer_HTMLDefinition extends HTMLPurifier_Printer
         ksort($array);
         $list = array();
         foreach ($array as $name => $obj) {
-            if ($obj === false) continue;
+            if ($obj === false)
+                continue;
             $list[] = "$name&nbsp;=&nbsp;<i>" . $this->getClass($obj, 'AttrDef_') . '</i>';
         }
         return $this->listify($list);

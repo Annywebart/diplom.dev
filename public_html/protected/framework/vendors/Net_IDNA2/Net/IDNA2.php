@@ -21,7 +21,6 @@
 // | USA.                                                                 |
 // +----------------------------------------------------------------------+
 //
-
 // }}}
 require_once dirname(__FILE__) . '/IDNA2/Exception.php';
 require_once dirname(__FILE__) . '/IDNA2/Exception/Nameprep.php';
@@ -57,6 +56,7 @@ require_once dirname(__FILE__) . '/IDNA2/Exception/Nameprep.php';
  */
 class Net_IDNA2
 {
+
     // {{{ npdata
     /**
      * These Unicode codepoints are
@@ -2047,7 +2047,6 @@ class Net_IDNA2
         0x345 => 240
     );
     // }}}
-
     // {{{ properties
     /**
      * @var string
@@ -2219,8 +2218,6 @@ class Net_IDNA2
     private static $_mb_string_overload = null;
 
     // }}}
-
-
     // {{{ constructor
     /**
      * Constructor
@@ -2240,13 +2237,11 @@ class Net_IDNA2
 
         // populate mbstring overloading cache if not set
         if (self::$_mb_string_overload === null) {
-            self::$_mb_string_overload = (extension_loaded('mbstring')
-                && (ini_get('mbstring.func_overload') & 0x02) === 0x02);
+            self::$_mb_string_overload = (extension_loaded('mbstring') && (ini_get('mbstring.func_overload') & 0x02) === 0x02);
         }
     }
 
     // }}}
-
 
     /**
      * Sets a new option value. Available options and values:
@@ -2341,7 +2336,8 @@ class Net_IDNA2
         }
 
         // No input, no output, what else did you expect?
-        if (empty($decoded)) return '';
+        if (empty($decoded))
+            return '';
 
         // Anchors for iteration
         $last_begin = 0;
@@ -2357,7 +2353,6 @@ class Net_IDNA2
                     $decoded[$k] = 0x2E;
                 // It's right, no break here
                 // The codepoints above have to be converted to dots anyway
-
                 // Stumbling across an anchoring character
                 case 0x2E:
                 case 0x2F:
@@ -2439,7 +2434,8 @@ class Net_IDNA2
             $arr = explode('.', $input);
             foreach ($arr as $k => $v) {
                 $conv = $this->_decode($v);
-                if ($conv) $arr[$k] = $conv;
+                if ($conv)
+                    $arr[$k] = $conv;
             }
             $return = $email_pref . '@' . join('.', $arr);
         } elseif (preg_match('![:\./]!', $input)) { // Or a complete domain name (with or without paths / parameters)
@@ -2453,7 +2449,8 @@ class Net_IDNA2
                 $arr = explode('.', $parsed['host']);
                 foreach ($arr as $k => $v) {
                     $conv = $this->_decode($v);
-                    if ($conv) $arr[$k] = $conv;
+                    if ($conv)
+                        $arr[$k] = $conv;
                 }
                 $parsed['host'] = join('.', $arr);
                 if (isset($parsed['scheme'])) {
@@ -2464,7 +2461,8 @@ class Net_IDNA2
                 $arr = explode('.', $input);
                 foreach ($arr as $k => $v) {
                     $conv = $this->_decode($v);
-                    if ($conv) $arr[$k] = $conv;
+                    if ($conv)
+                        $arr[$k] = $conv;
                 }
                 $return = join('.', $arr);
             }
@@ -2487,7 +2485,6 @@ class Net_IDNA2
                 throw new InvalidArgumentException('Unsupported output format');
         }
     }
-
 
     // {{{ private
     /**
@@ -2583,10 +2580,7 @@ class Net_IDNA2
         for ($i = 0; $i < $deco_len; ++$i) {
             $test = $decoded[$i];
             // Will match [0-9a-zA-Z-]
-            if ((0x2F < $test && $test < 0x40)
-                || (0x40 < $test && $test < 0x5B)
-                || (0x60 < $test && $test <= 0x7B)
-                || (0x2D == $test)
+            if ((0x2F < $test && $test < 0x40) || (0x40 < $test && $test < 0x5B) || (0x60 < $test && $test <= 0x7B) || (0x2D == $test)
             ) {
                 $encoded .= chr($decoded[$i]);
                 $codecount++;
@@ -2631,8 +2625,8 @@ class Net_IDNA2
                 } else if ($decoded[$i] == $cur_code) {
                     for ($q = $delta, $k = $this->_base; 1; $k += $this->_base) {
                         $t = ($k <= $bias) ?
-                            $this->_tmin :
-                            (($k >= $bias + $this->_tmax) ? $this->_tmax : $k - $bias);
+                                $this->_tmin :
+                                (($k >= $bias + $this->_tmax) ? $this->_tmax : $k - $bias);
 
                         if ($q < $t) {
                             break;
@@ -2706,19 +2700,19 @@ class Net_IDNA2
                 $idx += $digit * $w;
 
                 $t = ($k <= $bias) ?
-                    $this->_tmin :
-                    (($k >= $bias + $this->_tmax) ? $this->_tmax : ($k - $bias));
+                        $this->_tmin :
+                        (($k >= $bias + $this->_tmax) ? $this->_tmax : ($k - $bias));
 
                 if ($digit < $t) {
                     break;
                 }
 
-                $w = (int)($w * ($this->_base - $t));
+                $w = (int) ($w * ($this->_base - $t));
             }
 
             $bias = $this->_adapt($idx - $old_idx, $deco_len + 1, $is_first);
             $is_first = false;
-            $char += (int)($idx / ($deco_len + 1));
+            $char += (int) ($idx / ($deco_len + 1));
             $idx %= ($deco_len + 1);
 
             if ($deco_len > 0) {
@@ -2746,14 +2740,14 @@ class Net_IDNA2
      */
     private function _adapt($delta, $npoints, $is_first)
     {
-        $delta = (int)($is_first ? ($delta / $this->_damp) : ($delta / 2));
-        $delta += (int)($delta / $npoints);
+        $delta = (int) ($is_first ? ($delta / $this->_damp) : ($delta / 2));
+        $delta += (int) ($delta / $npoints);
 
         for ($k = 0; $delta > (($this->_base - $this->_tmin) * $this->_tmax) / 2; $k += $this->_base) {
-            $delta = (int)($delta / ($this->_base - $this->_tmin));
+            $delta = (int) ($delta / ($this->_base - $this->_tmin));
         }
 
-        return (int)($k + ($this->_base - $this->_tmin + 1) * $delta / ($delta + $this->_skew));
+        return (int) ($k + ($this->_base - $this->_tmin + 1) * $delta / ($delta + $this->_skew));
     }
 
     /**
@@ -2900,8 +2894,8 @@ class Net_IDNA2
 
         $result = array();
         $T = $this->_tbase + $sindex % $this->_tcount;
-        $result[] = (int)($this->_lbase + $sindex / $this->_ncount);
-        $result[] = (int)($this->_vbase + ($sindex % $this->_ncount) / $this->_tcount);
+        $result[] = (int) ($this->_lbase + $sindex / $this->_ncount);
+        $result[] = (int) ($this->_vbase + ($sindex % $this->_ncount) / $this->_tcount);
 
         if ($T != $this->_tbase) {
             $result[] = $T;
@@ -2945,7 +2939,6 @@ class Net_IDNA2
                     $last = ($this->_sbase + ($lindex * $this->_vcount + $vindex) * $this->_tcount);
                     $out_off = count($result) - 1;
                     $result[$out_off] = $last; // reset last
-
                     // discard char
                     continue;
                 }
@@ -2962,7 +2955,6 @@ class Net_IDNA2
                     $last += $tindex;
                     $out_off = count($result) - 1;
                     $result[$out_off] = $last; // reset last
-
                     // discard char
                     continue;
                 }
@@ -3147,7 +3139,7 @@ class Net_IDNA2
                     throw new UnexpectedValueException('This might be UTF-8, but I don\'t understand it at byte ' . $k);
                 }
                 if ('add' == $mode) {
-                    $output[$out_len] = (int)$v;
+                    $output[$out_len] = (int) $v;
                     ++$out_len;
                     continue;
                 }
@@ -3196,33 +3188,33 @@ class Net_IDNA2
             } else if ($v < 1 << 11) {
                 // 2 bytes
                 $output .= chr(192 + ($v >> 6))
-                    . chr(128 + ($v & 63));
+                        . chr(128 + ($v & 63));
             } else if ($v < 1 << 16) {
                 // 3 bytes
                 $output .= chr(224 + ($v >> 12))
-                    . chr(128 + (($v >> 6) & 63))
-                    . chr(128 + ($v & 63));
+                        . chr(128 + (($v >> 6) & 63))
+                        . chr(128 + ($v & 63));
             } else if ($v < 1 << 21) {
                 // 4 bytes
                 $output .= chr(240 + ($v >> 18))
-                    . chr(128 + (($v >> 12) & 63))
-                    . chr(128 + (($v >> 6) & 63))
-                    . chr(128 + ($v & 63));
+                        . chr(128 + (($v >> 12) & 63))
+                        . chr(128 + (($v >> 6) & 63))
+                        . chr(128 + ($v & 63));
             } else if ($v < 1 << 26) {
                 // 5 bytes
                 $output .= chr(248 + ($v >> 24))
-                    . chr(128 + (($v >> 18) & 63))
-                    . chr(128 + (($v >> 12) & 63))
-                    . chr(128 + (($v >> 6) & 63))
-                    . chr(128 + ($v & 63));
+                        . chr(128 + (($v >> 18) & 63))
+                        . chr(128 + (($v >> 12) & 63))
+                        . chr(128 + (($v >> 6) & 63))
+                        . chr(128 + ($v & 63));
             } else if ($v < 1 << 31) {
                 // 6 bytes
                 $output .= chr(252 + ($v >> 30))
-                    . chr(128 + (($v >> 24) & 63))
-                    . chr(128 + (($v >> 18) & 63))
-                    . chr(128 + (($v >> 12) & 63))
-                    . chr(128 + (($v >> 6) & 63))
-                    . chr(128 + ($v & 63));
+                        . chr(128 + (($v >> 24) & 63))
+                        . chr(128 + (($v >> 18) & 63))
+                        . chr(128 + (($v >> 12) & 63))
+                        . chr(128 + (($v >> 6) & 63))
+                        . chr(128 + ($v & 63));
             } else {
                 throw new UnexpectedValueException('Conversion from UCS-4 to UTF-8 failed: malformed input');
             }
@@ -3353,11 +3345,10 @@ class Net_IDNA2
         if (self::$_mb_string_overload) {
             return mb_strlen($string, '8bit');
         }
-        return strlen((binary)$string);
+        return strlen((binary) $string);
     }
 
     // }}}}
-
     // {{{ factory
     /**
      * Attempts to return a concrete IDNA instance for either php4 or php5.
@@ -3373,7 +3364,6 @@ class Net_IDNA2
     }
 
     // }}}
-
     // {{{ singleton
     /**
      * Attempts to return a concrete IDNA instance for either php4 or php5,
@@ -3399,6 +3389,7 @@ class Net_IDNA2
 
         return $instances[$signature];
     }
+
     // }}}
 }
 

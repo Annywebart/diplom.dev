@@ -1,4 +1,5 @@
-;(function($, window, undefined) {
+;
+(function($, window, undefined) {
 
     "use strict";
 
@@ -40,13 +41,13 @@
 
         if (this._parentHeight - this._offset > height && !this._frozen) {
             if (scrollTop >= this._start && scrollTop <= realStop) {
-                if(this.options.useFixed){
-                    this.element.css({'position':'fixed','top':0,'left':this.element.offset().left});
+                if (this.options.useFixed) {
+                    this.element.css({'position': 'fixed', 'top': 0, 'left': this.element.offset().left});
                 } else {
                     this.updateOffset(scrollTop - this._start);
                 }
             } else {
-                this.element.css({'position':'relative','left':0});
+                this.element.css({'position': 'relative', 'left': 0});
                 if (scrollTop < this._start) {
                     this.updateOffset(0);
                 } else if (scrollTop > realStop) {
@@ -101,8 +102,8 @@
             } else {
                 parent = self.parent();
             }
-            parent.css({'position':'relative'}); // Set parent position to relative
-            self.css({'position':'relative'}); // Set item position to relative
+            parent.css({'position': 'relative'}); // Set parent position to relative
+            self.css({'position': 'relative'}); // Set item position to relative
             var instance = self.data("stickyInstance");
 
             if (instance && options) {

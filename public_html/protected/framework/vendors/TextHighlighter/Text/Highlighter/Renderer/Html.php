@@ -1,4 +1,5 @@
 <?php
+
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 /**
  * HTML renderer
@@ -19,46 +20,43 @@
  * @version    CVS: $Id: Html.php,v 1.2 2007/06/29 06:56:34 ssttoo Exp $
  * @link       http://pear.php.net/package/Text_Highlighter
  */
-
 /**
  * @ignore
  */
-
 require_once dirname(__FILE__) . '/../Renderer.php';
 require_once dirname(__FILE__) . '/../Renderer/Array.php';
 
 // BC trick : only define constants if Text/Highlighter.php
 // is not yet included
 if (!defined('HL_NUMBERS_LI')) {
-    /**#@+
+    /*     * #@+
      * Constant for use with $options['numbers']
      */
     /**
      * use numbered list, deprecated, use HL_NUMBERS_OL instaed
      * @deprecated
      */
-    define ('HL_NUMBERS_LI', 1);
+    define('HL_NUMBERS_LI', 1);
     /**
      * Use 2-column table with line numbers in left column and code in  right column.
      */
-    define ('HL_NUMBERS_TABLE', 2);
-    /**#@-*/
+    define('HL_NUMBERS_TABLE', 2);
+    /*     * #@- */
 }
 
 
-/**#@+
+/* * #@+
  * Constant for use with $options['numbers']
  */
 /**
  * Use numbered list
  */
-define ('HL_NUMBERS_OL', 1);
+define('HL_NUMBERS_OL', 1);
 /**
  * Use non-numbered list
  */
-define ('HL_NUMBERS_UL', 3);
-/**#@-*/
-
+define('HL_NUMBERS_UL', 3);
+/* * #@- */
 
 /**
  * HTML renderer
@@ -126,11 +124,9 @@ define ('HL_NUMBERS_UL', 3);
  * @version    Release: 0.7.1
  * @link       http://pear.php.net/package/Text_Highlighter
  */
-
 class Text_Highlighter_Renderer_Html extends Text_Highlighter_Renderer_Array
 {
-
-    /**#@+
+    /*     * #@+
      * @access private
      */
 
@@ -208,7 +204,7 @@ class Text_Highlighter_Renderer_Html extends Text_Highlighter_Renderer_Array
      */
     var $_doclinks = array();
 
-    /**#@-*/
+    /*     * #@- */
 
     /**
      * Resets renderer state
@@ -223,11 +219,8 @@ class Text_Highlighter_Renderer_Html extends Text_Highlighter_Renderer_Array
     {
         $this->_output = '';
         if (isset($this->_options['numbers'])) {
-            $this->_numbers = (int)$this->_options['numbers'];
-            if ($this->_numbers != HL_NUMBERS_LI
-                && $this->_numbers != HL_NUMBERS_UL
-                && $this->_numbers != HL_NUMBERS_OL
-                && $this->_numbers != HL_NUMBERS_TABLE
+            $this->_numbers = (int) $this->_options['numbers'];
+            if ($this->_numbers != HL_NUMBERS_LI && $this->_numbers != HL_NUMBERS_UL && $this->_numbers != HL_NUMBERS_OL && $this->_numbers != HL_NUMBERS_TABLE
             ) {
                 $this->_numbers = 0;
             }
@@ -239,8 +232,8 @@ class Text_Highlighter_Renderer_Html extends Text_Highlighter_Renderer_Array
             $this->_numbers_start = intval($this->_options['numbers_start']);
         }
         if (isset($this->_options['doclinks']) &&
-            is_array($this->_options['doclinks']) &&
-            !empty($this->_options['doclinks']['url'])
+                is_array($this->_options['doclinks']) &&
+                !empty($this->_options['doclinks']['url'])
         ) {
 
             $this->_doclinks = $this->_options['doclinks']; // keys: url, target, elements array
@@ -256,9 +249,7 @@ class Text_Highlighter_Renderer_Html extends Text_Highlighter_Renderer_Array
             $this->_class_map = array_merge($this->_class_map, $this->_options['class_map']);
         }
         $this->_htmlspecialchars = true;
-
     }
-
 
     /**
      * Given a CSS class name, returns the class name
@@ -297,9 +288,9 @@ class Text_Highlighter_Renderer_Html extends Text_Highlighter_Renderer_Array
         $numbers_li = false;
 
         if (
-            $this->_numbers == HL_NUMBERS_LI ||
-            $this->_numbers == HL_NUMBERS_UL ||
-            $this->_numbers == HL_NUMBERS_OL
+                $this->_numbers == HL_NUMBERS_LI ||
+                $this->_numbers == HL_NUMBERS_UL ||
+                $this->_numbers == HL_NUMBERS_OL
         ) {
             $numbers_li = true;
         }
@@ -344,8 +335,8 @@ class Text_Highlighter_Renderer_Html extends Text_Highlighter_Renderer_Array
 
 
             $this->_output = '<' . $list_tag . $start
-                . ' ' . $this->_getStyling('main', false) . '>'
-                . $this->_output . '</' . $list_tag . '>';
+                    . ' ' . $this->_getStyling('main', false) . '>'
+                    . $this->_output . '</' . $list_tag . '>';
 
             // render a table
         } else if ($this->_numbers == HL_NUMBERS_TABLE) {
@@ -363,17 +354,16 @@ class Text_Highlighter_Renderer_Html extends Text_Highlighter_Renderer_Array
                 $numbers .= ($start_number + $i) . "\n";
             }
             $this->_output = '<table ' . $this->_getStyling('table', false) . ' width="100%"><tr>' .
-                '<td ' . $this->_getStyling('gutter', false) . ' align="right" valign="top">' .
-                '<pre>' . $numbers . '</pre></td><td ' . $this->_getStyling('main', false) .
-                ' valign="top"><pre>' .
-                $html_output . '</pre></td></tr></table>';
+                    '<td ' . $this->_getStyling('gutter', false) . ' align="right" valign="top">' .
+                    '<pre>' . $numbers . '</pre></td><td ' . $this->_getStyling('main', false) .
+                    ' valign="top"><pre>' .
+                    $html_output . '</pre></td></tr></table>';
         }
         if (!$this->_numbers) {
             $this->_output = '<pre>' . $html_output . '</pre>';
         }
         $this->_output = '<div ' . $this->_getStyling('main', false) . '>' . $this->_output . '</div>';
     }
-
 
     /**
      * Provides additional formatting to a keyword
@@ -387,8 +377,8 @@ class Text_Highlighter_Renderer_Html extends Text_Highlighter_Renderer_Array
     {
         // links to online documentation
         if (!empty($this->_doclinks) &&
-            !empty($this->_doclinks['url']) &&
-            in_array($key, $this->_doclinks['elements'])
+                !empty($this->_doclinks['url']) &&
+                in_array($key, $this->_doclinks['elements'])
         ) {
 
             $link = '<a href="' . sprintf($this->_doclinks['url'], $content) . '"';
@@ -400,7 +390,6 @@ class Text_Highlighter_Renderer_Html extends Text_Highlighter_Renderer_Array
             $link .= '</a>';
 
             $content = $link;
-
         }
 
         return $content;
@@ -419,12 +408,12 @@ class Text_Highlighter_Renderer_Html extends Text_Highlighter_Renderer_Array
     {
         $attrib = '';
         if (!empty($this->_style_map) &&
-            !empty($this->_style_map[$class])
+                !empty($this->_style_map[$class])
         ) {
             $attrib = 'style="' . $this->_style_map[$class] . '"';
         }
         if (!empty($this->_class_map) &&
-            !empty($this->_class_map[$class])
+                !empty($this->_class_map[$class])
         ) {
             if ($attrib) {
                 $attrib .= ' ';
@@ -438,8 +427,8 @@ class Text_Highlighter_Renderer_Html extends Text_Highlighter_Renderer_Array
         } else {
             return $attrib;
         }
-
     }
+
 }
 
 /*
@@ -449,5 +438,4 @@ class Text_Highlighter_Renderer_Html extends Text_Highlighter_Renderer_Array
  * c-hanging-comment-ender-p: nil
  * End:
  */
-
 ?>

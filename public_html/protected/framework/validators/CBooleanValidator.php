@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CBooleanValidator class file.
  *
@@ -25,20 +26,24 @@
  */
 class CBooleanValidator extends CValidator
 {
+
     /**
      * @var mixed the value representing true status. Defaults to '1'.
      */
     public $trueValue = '1';
+
     /**
      * @var mixed the value representing false status. Defaults to '0'.
      */
     public $falseValue = '0';
+
     /**
      * @var boolean whether the comparison to {@link trueValue} and {@link falseValue} is strict.
      * When this is true, the attribute value and type must both match those of {@link trueValue} or {@link falseValue}.
      * Defaults to false, meaning only the value needs to be matched.
      */
     public $strict = false;
+
     /**
      * @var boolean whether the attribute value can be null or empty. Defaults to true,
      * meaning that if the attribute is empty, it is considered valid.
@@ -56,8 +61,7 @@ class CBooleanValidator extends CValidator
         $value = $object->$attribute;
         if ($this->allowEmpty && $this->isEmpty($value))
             return;
-        if (!$this->strict && $value != $this->trueValue && $value != $this->falseValue
-            || $this->strict && $value !== $this->trueValue && $value !== $this->falseValue
+        if (!$this->strict && $value != $this->trueValue && $value != $this->falseValue || $this->strict && $value !== $this->trueValue && $value !== $this->falseValue
         ) {
             $message = $this->message !== null ? $this->message : Yii::t('yii', '{attribute} must be either {true} or {false}.');
             $this->addError($object, $attribute, $message, array(
@@ -89,4 +93,5 @@ if(" . ($this->allowEmpty ? "jQuery.trim(value)!='' && " : '') . "value!=" . CJS
 }
 ";
     }
+
 }

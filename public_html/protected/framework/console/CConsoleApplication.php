@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CConsoleApplication class file.
  *
@@ -46,6 +47,7 @@
  */
 class CConsoleApplication extends CApplication
 {
+
     /**
      * @var array mapping from command name to command configurations.
      * Each command configuration can be either a string or an array.
@@ -65,7 +67,6 @@ class CConsoleApplication extends CApplication
      * </pre>
      */
     public $commandMap = array();
-
     private $_commandPath;
     private $_runner;
 
@@ -163,8 +164,7 @@ class CConsoleApplication extends CApplication
     public function setCommandPath($value)
     {
         if (($this->_commandPath = realpath($value)) === false || !is_dir($this->_commandPath))
-            throw new CException(Yii::t('yii', 'The command path "{path}" is not a valid directory.',
-                array('{path}' => $value)));
+            throw new CException(Yii::t('yii', 'The command path "{path}" is not a valid directory.', array('{path}' => $value)));
     }
 
     /**
@@ -196,4 +196,5 @@ class CConsoleApplication extends CApplication
     {
         $this->getCommandRunner()->setCommand($value);
     }
+
 }

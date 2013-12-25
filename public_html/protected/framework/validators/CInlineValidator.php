@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CInlineValidator class file.
  *
@@ -17,14 +18,17 @@
  */
 class CInlineValidator extends CValidator
 {
+
     /**
      * @var string the name of the validation method defined in the active record class
      */
     public $method;
+
     /**
      * @var array additional parameters that are passed to the validation method
      */
     public $params;
+
     /**
      * @var string the name of the method that returns the client validation code (See {@link clientValidateAttribute}).
      */
@@ -78,4 +82,5 @@ class CInlineValidator extends CValidator
             return $object->$method($attribute, $this->params);
         }
     }
+
 }

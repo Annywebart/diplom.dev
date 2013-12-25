@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CMarkdownParser class file.
  *
@@ -7,7 +8,6 @@
  * @copyright 2008-2013 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
-
 require_once(Yii::getPathOfAlias('system.vendors.markdown.markdown') . '.php');
 if (!class_exists('HTMLPurifier_Bootstrap', false)) {
     require_once(Yii::getPathOfAlias('system.vendors.htmlpurifier') . DIRECTORY_SEPARATOR . 'HTMLPurifier.standalone.php');
@@ -48,11 +48,13 @@ if (!class_exists('HTMLPurifier_Bootstrap', false)) {
  */
 class CMarkdownParser extends MarkdownExtra_Parser
 {
+
     /**
      * @var string the css class for the div element containing
      * the code block that is highlighted. Defaults to 'hl-code'.
      */
     public $highlightCssClass = 'hl-code';
+
     /**
      * @var mixed the options to be passed to {@link http://htmlpurifier.org HTML Purifier}.
      * This can be a HTMLPurifier_Config object,  an array of directives (Namespace.Directive => Value)
@@ -201,4 +203,5 @@ class CMarkdownParser extends MarkdownExtra_Parser
         else
             return $defaultValue;
     }
+
 }

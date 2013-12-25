@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CLocalizedFormatter class file.
  *
@@ -35,12 +36,15 @@
  */
 class CLocalizedFormatter extends CFormatter
 {
+
     private $_locale;
+
     /**
      * @var string the width of the date pattern. It can be 'full', 'long', 'medium' and 'short'. Defaults to 'medium'.
      * @see CDateFormatter::formatDateTime()
      */
     public $dateFormat = 'medium';
+
     /**
      * @var string the width of the time pattern. It can be 'full', 'long', 'medium' and 'short'. Defaults to 'medium'.
      * @see CDateFormatter::formatDateTime()
@@ -128,4 +132,5 @@ class CLocalizedFormatter extends CFormatter
     {
         return $this->getLocale()->numberFormatter->formatDecimal($value);
     }
+
 }

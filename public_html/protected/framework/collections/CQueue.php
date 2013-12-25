@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file contains classes implementing the queue feature.
  *
@@ -31,11 +32,13 @@
  */
 class CQueue extends CComponent implements IteratorAggregate, Countable
 {
+
     /**
      * internal data storage
      * @var array
      */
     private $_d = array();
+
     /**
      * number of items
      * @var integer
@@ -164,4 +167,5 @@ class CQueue extends CComponent implements IteratorAggregate, Countable
     {
         return $this->getCount();
     }
+
 }

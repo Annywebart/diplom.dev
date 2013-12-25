@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CDateValidator class file.
  *
@@ -21,6 +22,7 @@
  */
 class CDateValidator extends CValidator
 {
+
     /**
      * @var mixed the format pattern that the date value should follow.
      * This can be either a string or an array representing multiple formats.
@@ -28,11 +30,13 @@ class CDateValidator extends CValidator
      * about how to specify a date format.
      */
     public $format = 'MM/dd/yyyy';
+
     /**
      * @var boolean whether the attribute value can be null or empty. Defaults to true,
      * meaning that if the attribute is empty, it is considered valid.
      */
     public $allowEmpty = true;
+
     /**
      * @var string the name of the attribute to receive the parsing result.
      * When this property is not null and the validation is successful, the named attribute will
@@ -73,5 +77,5 @@ class CDateValidator extends CValidator
             $this->addError($object, $attribute, $message);
         }
     }
-}
 
+}

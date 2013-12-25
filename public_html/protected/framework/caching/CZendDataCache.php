@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CZendDataCache class file
  *
@@ -21,6 +22,7 @@
  */
 class CZendDataCache extends CCache
 {
+
     /**
      * Initializes this application component.
      * This method is required by the {@link IApplicationComponent} interface.
@@ -95,4 +97,5 @@ class CZendDataCache extends CCache
     {
         return zend_shm_cache_clear();
     }
+
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * General API for generating and formatting diffs - the differences between
  * two sequences of strings.
@@ -17,7 +18,8 @@
  * @package Text_Diff
  * @author  Geoffrey T. Dairiki <dairiki@dairiki.org>
  */
-class Text_Diff {
+class Text_Diff
+{
 
     /**
      * Array of changes.
@@ -77,7 +79,7 @@ class Text_Diff {
         $count = 0;
         foreach ($this->_edits as $edit) {
             if (is_a($edit, 'Text_Diff_Op_add') ||
-                is_a($edit, 'Text_Diff_Op_change')) {
+                    is_a($edit, 'Text_Diff_Op_change')) {
                 $count += $edit->nfinal();
             }
         }
@@ -97,7 +99,7 @@ class Text_Diff {
         $count = 0;
         foreach ($this->_edits as $edit) {
             if (is_a($edit, 'Text_Diff_Op_delete') ||
-                is_a($edit, 'Text_Diff_Op_change')) {
+                    is_a($edit, 'Text_Diff_Op_change')) {
                 $count += $edit->norig();
             }
         }
@@ -226,7 +228,7 @@ class Text_Diff {
     function _getTempDir()
     {
         $tmp_locations = array('/tmp', '/var/tmp', 'c:\WUTemp', 'c:\temp',
-                               'c:\windows\temp', 'c:\winnt\temp');
+            'c:\windows\temp', 'c:\winnt\temp');
 
         /* Try PHP's upload_tmp_dir directive. */
         $tmp = ini_get('upload_tmp_dir');
@@ -289,7 +291,8 @@ class Text_Diff {
  * @package Text_Diff
  * @author  Geoffrey T. Dairiki <dairiki@dairiki.org>
  */
-class Text_MappedDiff extends Text_Diff {
+class Text_MappedDiff extends Text_Diff
+{
 
     /**
      * Computes a diff between sequences of strings.
@@ -307,8 +310,7 @@ class Text_MappedDiff extends Text_Diff {
      * @param array $mapped_to_lines    This array should have the same number
      *                                  of elements as $to_lines.
      */
-    function Text_MappedDiff($from_lines, $to_lines,
-                             $mapped_from_lines, $mapped_to_lines)
+    function Text_MappedDiff($from_lines, $to_lines, $mapped_from_lines, $mapped_to_lines)
     {
         assert(count($from_lines) == count($mapped_from_lines));
         assert(count($to_lines) == count($mapped_to_lines));
@@ -339,7 +341,8 @@ class Text_MappedDiff extends Text_Diff {
  *
  * @access private
  */
-class Text_Diff_Op {
+class Text_Diff_Op
+{
 
     var $orig;
     var $final;
@@ -367,7 +370,8 @@ class Text_Diff_Op {
  *
  * @access private
  */
-class Text_Diff_Op_copy extends Text_Diff_Op {
+class Text_Diff_Op_copy extends Text_Diff_Op
+{
 
     function Text_Diff_Op_copy($orig, $final = false)
     {
@@ -392,7 +396,8 @@ class Text_Diff_Op_copy extends Text_Diff_Op {
  *
  * @access private
  */
-class Text_Diff_Op_delete extends Text_Diff_Op {
+class Text_Diff_Op_delete extends Text_Diff_Op
+{
 
     function Text_Diff_Op_delete($lines)
     {
@@ -414,7 +419,8 @@ class Text_Diff_Op_delete extends Text_Diff_Op {
  *
  * @access private
  */
-class Text_Diff_Op_add extends Text_Diff_Op {
+class Text_Diff_Op_add extends Text_Diff_Op
+{
 
     function Text_Diff_Op_add($lines)
     {
@@ -436,7 +442,8 @@ class Text_Diff_Op_add extends Text_Diff_Op {
  *
  * @access private
  */
-class Text_Diff_Op_change extends Text_Diff_Op {
+class Text_Diff_Op_change extends Text_Diff_Op
+{
 
     function Text_Diff_Op_change($orig, $final)
     {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file contains classes implementing attribute collection feature.
  *
@@ -7,7 +8,6 @@
  * @copyright 2008-2013 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
-
 
 /**
  * CAttributeCollection implements a collection for storing attribute names and values.
@@ -30,6 +30,7 @@
  */
 class CAttributeCollection extends CMap
 {
+
     /**
      * @var boolean whether the keys are case-sensitive. Defaults to false.
      */
@@ -209,4 +210,5 @@ class CAttributeCollection extends CMap
         }
         parent::mergeWith($data, $recursive);
     }
+
 }

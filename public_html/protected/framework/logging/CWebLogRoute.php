@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CWebLogRoute class file.
  *
@@ -20,16 +21,19 @@
  */
 class CWebLogRoute extends CLogRoute
 {
+
     /**
      * @var boolean whether the log should be displayed in FireBug instead of browser window. Defaults to false.
      */
     public $showInFireBug = false;
+
     /**
      * @var boolean whether the log should be ignored in FireBug for ajax calls. Defaults to true.
      * This option should be used carefully, because an ajax call returns all output as a result data.
      * For example if the ajax call expects a json type result any output from the logger will cause ajax call to fail.
      */
     public $ignoreAjaxInFireBug = true;
+
     /**
      * @var boolean whether the log should be ignored in FireBug for Flash/Flex calls. Defaults to true.
      * This option should be used carefully, because an Flash/Flex call returns all output as a result data.
@@ -37,6 +41,7 @@ class CWebLogRoute extends CLogRoute
      * @since 1.1.11
      */
     public $ignoreFlashInFireBug = true;
+
     /**
      * @var boolean whether the log should be collapsed by default in Firebug. Defaults to false.
      * @since 1.1.13.
@@ -79,4 +84,5 @@ class CWebLogRoute extends CLogRoute
         $viewFile = YII_PATH . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . $view . '.php';
         include($app->findLocalizedFile($viewFile, 'en'));
     }
+
 }

@@ -6,17 +6,17 @@
 .dynatree-has-children span.dynatree-icon
 {
     background-position: 0 0;
-	background-image: url("doc_with_children.gif");
+    background-image: url("doc_with_children.gif");
 }
 
 .dynatree-ico-cf span.dynatree-icon  /* Collapsed Folder */
 {
-	background-image: url("folder_docs.gif");
+    background-image: url("folder_docs.gif");
 }
 
 .dynatree-ico-ef span.dynatree-icon  /* Expanded Folder */
 {
-	background-image: url("folder_images.gif");
+    background-image: url("folder_images.gif");
 }
 
 
@@ -26,20 +26,20 @@
 
 span.dynatree-has-children a
 {
-	font-style: oblique;
+    font-style: oblique;
 }
 
 span.dynatree-selected a
 {
-	color: green;
-	font-style: italic;
+    color: green;
+    font-style: italic;
 }
 
 span.dynatree-active a,
 span.dynatree-active a:hover
 {
-	border: 1px solid maroon;
-	background-color: #FAD8F0 !important; /* reddish */
+    border: 1px solid maroon;
+    background-color: #FAD8F0 !important; /* reddish */
 }
 
 
@@ -49,23 +49,23 @@ span.dynatree-active a:hover
 
 span.custom1 a
 {
-	background-color: #ffffbb;
-	color: maroon;
+    background-color: #ffffbb;
+    color: maroon;
 }
 span.custom1 span.dynatree-icon
 {
     background-position: 0 0;
-	background-image: url("customDoc2.gif");
+    background-image: url("customDoc2.gif");
 }
 
 span.custom2 a
 {
-	font-weight: bold;
-	background-color: silver;
-	color: navy;
+    font-weight: bold;
+    background-color: silver;
+    color: navy;
 }
 span.custom2 span.dynatree-icon
 {
     background-position: 0 0;
-	background-image: url("folder_page.gif");
+    background-image: url("folder_page.gif");
 }

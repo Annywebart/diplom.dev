@@ -1,19 +1,15 @@
 <?php
 
 /** Spanish localization file for KCFinder
-  * Type some credits if you want
-  */
-
+ * Type some credits if you want
+ */
 $lang = array(
-
-    '_locale' => "es_ES.UTF-8",  // UNIX localization code
-    '_charset' => "utf-8",       // Browser charset
-
+    '_locale' => "es_ES.UTF-8", // UNIX localization code
+    '_charset' => "utf-8", // Browser charset
     // Date time formats. See http://www.php.net/manual/en/function.strftime.php
     '_dateTimeFull' => "%A, %e %B, %Y %H:%M",
     '_dateTimeMid' => "%a %e %b %Y %H:%M",
     '_dateTimeSmall' => "%d.%m.%Y %H:%M",
-
     "You don't have permissions to upload files." => "No tiene permiso para subir archivos.",
     "You don't have permissions to browse server." => "No tiene permiso para visualizar archivos.",
     "Cannot move uploaded file to target folder." => "No puede mover archivos al directorio de destino.",
@@ -123,5 +119,4 @@ $lang = array(
     "Uploading file {number} of {count}... {progress}" => "Cargando archivo {number} de {count}... {progress}",
     "Failed to upload {filename}!" => "¡No se pudo cargar el archivo {filename}!",
 );
-
 ?>
