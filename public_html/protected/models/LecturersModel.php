@@ -1,21 +1,24 @@
 <?php
 
 /**
- * This is the model class for table "Students".
+ * This is the model class for table "Lecturers".
  *
- * The followings are the available columns in table 'Students':
+ * The followings are the available columns in table 'Lecturers':
  * @property integer $id
- * @property integer $idGroup
+ * @property integer $idDepartment
  * @property string $firstName
  * @property string $lastName
+ * @property string $fatherName
  * @property integer $gender
- * @property string $dob
- * @property integer $isFree
+ * @property string $scientificDegree
  *
  * The followings are the available model relations:
- * @property Groups $idGroup0
+ * @property Departments[] $departments
+ * @property Facultets[] $facultets
+ * @property Departments $idDepartment0
+ * @property Timetable[] $timetables
  */
-class StudentsModel extends CActiveRecord
+class LecturersModel extends CActiveRecord
 {
 
     /**
@@ -23,7 +26,7 @@ class StudentsModel extends CActiveRecord
      */
     public function tableName()
     {
-        return 'Students';
+        return 'Lecturers';
     }
 
     /**
@@ -31,15 +34,16 @@ class StudentsModel extends CActiveRecord
      */
     public function rules()
     {
-        // NOTE: you should only define rules for those attributes that
-        // will receive user inputs.
+// NOTE: you should only define rules for those attributes that
+// will receive user inputs.
         return array(
-            array('idGroup, firstName, lastName, gender, dob, isFree', 'required'),
-            array('idGroup, gender', 'numerical', 'integerOnly' => true),
-            array('firstName, lastName', 'length', 'max' => 50),
-            // The following rule is used by search().
-            // @todo Please remove those attributes that should not be searched.
-            array('id, idGroup, firstName, lastName, gender, dob, isFree', 'safe', 'on' => 'search'),
+            array('idDepartment, firstName, lastName, fatherName, gender', 'required'),
+            array('idDepartment, gender', 'numerical', 'integerOnly' => true),
+            array('firstName, lastName, fatherName', 'length', 'max' => 100),
+            array('scientificDegree', 'length', 'max' => 200),
+// The following rule is used by search().
+// @todo Please remove those attributes that should not be searched.
+            array('id, idDepartment, firstName, lastName, fatherName, gender, scientificDegree', 'safe', 'on' => 'search'),
         );
     }
 
@@ -48,10 +52,13 @@ class StudentsModel extends CActiveRecord
      */
     public function relations()
     {
-        // NOTE: you may need to adjust the relation name and the related
-        // class name for the relations automatically generated below.
+// NOTE: you may need to adjust the relation name and the related
+// class name for the relations automatically generated below.
         return array(
-            'idGroup0' => array(self::BELONGS_TO, 'Groups', 'idGroup'),
+            'departments' => array(self::HAS_MANY, 'DepartmentsModel', 'headDepartment'),
+            'facultets' => array(self::HAS_MANY, 'FacultetsModel', 'headFacultet'),
+            'idDepartment0' => array(self::BELONGS_TO, 'DepartmentsModel', 'idDepartment'),
+            'timetables' => array(self::HAS_MANY, 'TimetableModel', 'idLecturers'),
         );
     }
 
@@ -62,12 +69,12 @@ class StudentsModel extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'idGroup' => 'Id Group',
+            'idDepartment' => 'Id Department',
             'firstName' => 'First Name',
             'lastName' => 'Last Name',
+            'fatherName' => 'Father Name',
             'gender' => 'Gender',
-            'dob' => 'Dob',
-            'isFree' => 'Is Free',
+            'scientificDegree' => 'Scientific Degree',
         );
     }
 
@@ -85,17 +92,17 @@ class StudentsModel extends CActiveRecord
      */
     public function search()
     {
-        // @todo Please modify the following code to remove attributes that should not be searched.
+// @todo Please modify the following code to remove attributes that should not be searched.
 
         $criteria = new CDbCriteria;
 
         $criteria->compare('id', $this->id);
-        $criteria->compare('idGroup', $this->idGroup);
+        $criteria->compare('idDepartment', $this->idDepartment);
         $criteria->compare('firstName', $this->firstName, true);
         $criteria->compare('lastName', $this->lastName, true);
+        $criteria->compare('fatherName', $this->fatherName, true);
         $criteria->compare('gender', $this->gender);
-        $criteria->compare('dob', $this->dob, true);
-        $criteria->compare('isFree', $this->isFree, true);
+        $criteria->compare('scientificDegree', $this->scientificDegree, true);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
@@ -106,7 +113,7 @@ class StudentsModel extends CActiveRecord
      * Returns the static model of the specified AR class.
      * Please note that you should have this exact method in all your CActiveRecord descendants!
      * @param string $className active record class name.
-     * @return StudentsModel the static model class
+     * @return LecturersModel the static model class
      */
     public static function model($className = __CLASS__)
     {

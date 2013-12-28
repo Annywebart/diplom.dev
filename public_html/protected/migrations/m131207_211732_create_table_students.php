@@ -12,7 +12,8 @@ class m131207_211732_create_table_students extends CDbMigration
                   `firstName` VARCHAR(50) NOT NULL ,
                   `lastName` VARCHAR(50) NOT NULL ,
                   `gender` TINYINT(1) NOT NULL ,
-                  `dob` DATETIME NOT NULL ,
+                  `dob` DATE NOT NULL ,
+                  `isFree` TINYINT(1) NOT NULL ,
                   PRIMARY KEY (`id`)
                     )
                     ENGINE = InnoDB
@@ -23,7 +24,7 @@ class m131207_211732_create_table_students extends CDbMigration
 
     public function down()
     {
-        $this->execute('DROP TABLE `Groups`');
+        $this->execute('DROP TABLE `Students`');
     }
 
 }

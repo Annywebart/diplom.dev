@@ -1,20 +1,18 @@
 <?php
 
 /**
- * This is the model class for table "Specialities".
+ * This is the model class for table "Corpuses".
  *
- * The followings are the available columns in table 'Specialities':
+ * The followings are the available columns in table 'Corpuses':
  * @property integer $id
- * @property integer $idFacultet
- * @property string $idDepartment
- * @property string $code
+ * @property string $title
  * @property string $description
  *
  * The followings are the available model relations:
- * @property Groups[] $groups
- * @property Facultets $idFacultet0
+ * @property Departments[] $departments
+ * @property Timetable[] $timetables
  */
-class SpecialitiesModel extends CActiveRecord
+class CorpusesModel extends CActiveRecord
 {
 
     /**
@@ -22,7 +20,7 @@ class SpecialitiesModel extends CActiveRecord
      */
     public function tableName()
     {
-        return 'Specialities';
+        return 'Corpuses';
     }
 
     /**
@@ -30,16 +28,15 @@ class SpecialitiesModel extends CActiveRecord
      */
     public function rules()
     {
-        // NOTE: you should only define rules for those attributes that
-        // will receive user inputs.
+// NOTE: you should only define rules for those attributes that
+// will receive user inputs.
         return array(
-            array('idFacultet, idDepartment, code', 'required'),
-            array('idFacultet', 'numerical', 'integerOnly' => true),
-            array('code', 'length', 'max' => 10),
+            array('title', 'required'),
+            array('title', 'length', 'max' => 200),
             array('description', 'safe'),
-            // The following rule is used by search().
-            // @todo Please remove those attributes that should not be searched.
-            array('id, idFacultet, idDepartment, code, description', 'safe', 'on' => 'search'),
+// The following rule is used by search().
+// @todo Please remove those attributes that should not be searched.
+            array('id, title, description', 'safe', 'on' => 'search'),
         );
     }
 
@@ -48,11 +45,11 @@ class SpecialitiesModel extends CActiveRecord
      */
     public function relations()
     {
-        // NOTE: you may need to adjust the relation name and the related
-        // class name for the relations automatically generated below.
+// NOTE: you may need to adjust the relation name and the related
+// class name for the relations automatically generated below.
         return array(
-            'groups' => array(self::HAS_MANY, 'Groups', 'idSpeciality'),
-            'idFacultet0' => array(self::BELONGS_TO, 'Facultets', 'idFacultet'),
+            'departments' => array(self::HAS_MANY, 'DepartmentsModel', 'idCorpus'),
+            'timetables' => array(self::HAS_MANY, 'TimetableModel', 'idCorpus'),
         );
     }
 
@@ -63,9 +60,7 @@ class SpecialitiesModel extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'idFacultet' => 'Id Facultet',
-            'idDepartment' => 'Id Department',
-            'code' => 'Code',
+            'title' => 'Title',
             'description' => 'Description',
         );
     }
@@ -84,13 +79,12 @@ class SpecialitiesModel extends CActiveRecord
      */
     public function search()
     {
-        // @todo Please modify the following code to remove attributes that should not be searched.
+// @todo Please modify the following code to remove attributes that should not be searched.
 
         $criteria = new CDbCriteria;
 
         $criteria->compare('id', $this->id);
-        $criteria->compare('idFacultet', $this->idFacultet);
-        $criteria->compare('code', $this->code, true);
+        $criteria->compare('title', $this->title, true);
         $criteria->compare('description', $this->description, true);
 
         return new CActiveDataProvider($this, array(
@@ -102,7 +96,7 @@ class SpecialitiesModel extends CActiveRecord
      * Returns the static model of the specified AR class.
      * Please note that you should have this exact method in all your CActiveRecord descendants!
      * @param string $className active record class name.
-     * @return SpecialitiesModel the static model class
+     * @return CorpusesModel the static model class
      */
     public static function model($className = __CLASS__)
     {

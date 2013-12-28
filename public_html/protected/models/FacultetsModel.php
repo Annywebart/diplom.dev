@@ -8,6 +8,7 @@
  * @property string $title
  * @property string $code
  * @property string $description
+ * @property integer headFacultet
  *
  * The followings are the available model relations:
  * @property Specialities[] $specialities
@@ -34,10 +35,10 @@ class FacultetsModel extends CActiveRecord
             array('title, code', 'required'),
             array('title', 'length', 'max' => 200),
             array('code', 'length', 'max' => 10),
-            array('description', 'safe'),
+            array('description, headFacultet', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('id, title, code, description', 'safe', 'on' => 'search'),
+            array('id, title, code, description, headFacultet', 'safe', 'on' => 'search'),
         );
     }
 
@@ -63,6 +64,7 @@ class FacultetsModel extends CActiveRecord
             'title' => 'Title',
             'code' => 'Code',
             'description' => 'Description',
+            'headFacultet' => 'Head Facultet',
         );
     }
 
@@ -88,6 +90,7 @@ class FacultetsModel extends CActiveRecord
         $criteria->compare('title', $this->title, true);
         $criteria->compare('code', $this->code, true);
         $criteria->compare('description', $this->description, true);
+        $criteria->compare('headFacultet', $this->headFacultet, true);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,

@@ -1,17 +1,19 @@
 <?php
 
-class m131129_004959_create_table_facultets extends CDbMigration
+class m131228_143009_create_table_departments extends CDbMigration
 {
 
     public function up()
     {
         $this->execute("
-            CREATE  TABLE IF NOT EXISTS `Facultets` (
+            CREATE  TABLE IF NOT EXISTS `Departments` (
                   `id` INT NOT NULL AUTO_INCREMENT,
+                  `idFacultet` INT NOT NULL ,
                   `title` VARCHAR(200) NOT NULL ,
-                  `code` VARCHAR(10) NOT NULL ,
-                  `description` TEXT ,
-                  `headFacultet` INT NOT NULL ,
+                  `description` TEXT DEFAULT NULL ,
+                  `headDepartment` INT NOT NULL ,
+                  `idCorpus` INT NOT NULL ,
+                  `idClassroom` INT NOT NULL ,
                   PRIMARY KEY (`id`)
                     )
                     ENGINE = InnoDB
@@ -22,7 +24,7 @@ class m131129_004959_create_table_facultets extends CDbMigration
 
     public function down()
     {
-        $this->execute('DROP TABLE `Facultets`');
+        $this->execute('DROP TABLE `Departments`');
     }
 
 }
