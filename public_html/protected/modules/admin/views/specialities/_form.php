@@ -26,6 +26,12 @@
         <?php echo $form->textField($model, 'idFacultet'); ?>
         <?php echo $form->error($model, 'idFacultet'); ?>
     </div>
+    
+    <div class="row">
+        <?php echo $form->labelEx($model, 'idDepartment'); ?>
+        <?php echo $form->textField($model, 'idDepartment'); ?>
+        <?php echo $form->error($model, 'idDepartment'); ?>
+    </div>
 
     <div class="row">
         <?php echo $form->labelEx($model, 'code'); ?>

@@ -20,37 +20,43 @@ $('.search-form form').submit(function(){
 });
 ");
 ?>
-<div class="row-fluid">
-    <div class="span12 tac">
-        <h1>Факультеты</h1>
-        <?php echo CHtml::link('Создать', Yii::app()->createAbsoluteUrl('admin/facultets/create'))?>       
-        <?php
-        $this->widget('zii.widgets.grid.CGridView', array(
-            'id' => 'facultets-model-grid',
-            'dataProvider' => $model->search(),
-            'filter' => $model,
-            'columns' => array(
-                'title',
-                'code',
-                'description',
-                array(
-                    'class' => 'CButtonColumn',
+
+<h1>Факультеты</h1>
+<?php echo CHtml::link('Создать', Yii::app()->createAbsoluteUrl('admin/facultets/create')) ?>       
+
+<?php
+$this->widget('bootstrap.widgets.TbExtendedGridView', array(
+    'filter' => $model,
+    'type' => 'striped bordered',
+    'dataProvider' => $model->search(),
+    'template' => "{items}\n{extendedSummary}",
+    'columns' => array(
+        'title',
+        'code',
+        'description',
+        'idCorpus',
+        'idClassroom',
+        array(
+            'class' => 'bootstrap.widgets.TbButtonColumn',
+        ),
+    ),
+    'extendedSummary' => array(
+        'title' => 'Expertise',
+        'columns' => array(
+            'language' => array(
+                'label' => 'Total Expertise',
+                'types' => array(
+                    'CSS' => array('label' => 'Css'),
+                    'JavaScript' => array('label' => 'Js'),
+                    'HTML' => array('label' => 'html')
                 ),
-            ),
-        ));
-        ?>
-    </div>
-</div>
-<div class="row-fluid">
-    <div class="span5">
-
-        <div id="fl_2" style="height:200px;width:80%;margin:50px auto 0"></div>
-    </div>
-    <div class="span7">
-        <div class="heading clearfix">
-
-        </div>
-        <div id="fl_1" style="height:270px;width:100%;margin:15px auto 0"></div>
-    </div>
-</div>
-
+                'class' => 'TbPercentOfTypeGooglePieOperation',
+            )
+        )
+    ),
+    'extendedSummaryOptions' => array(
+        'class' => 'well pull-right',
+        'style' => 'width:300px'
+    ),
+));
+?>

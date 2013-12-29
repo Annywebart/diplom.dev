@@ -57,10 +57,10 @@ class DepartmentsModel extends CActiveRecord
 // NOTE: you may need to adjust the relation name and the related
 // class name for the relations automatically generated below.
         return array(
-            'headDepartment0' => array(self::BELONGS_TO, 'LecturersModel', 'headDepartment'),
-            'idFacultet0' => array(self::BELONGS_TO, 'FacultetsModel', 'idFacultet'),
-            'idCorpus0' => array(self::BELONGS_TO, 'CorpusesModel', 'idCorpus'),
-            'idClassroom0' => array(self::BELONGS_TO, 'ClassroomsModel', 'idClassroom'),
+            'headDepartment' => array(self::BELONGS_TO, 'LecturersModel', 'headDepartment'),
+            'facultet' => array(self::BELONGS_TO, 'FacultetsModel', 'idFacultet'),
+            'corpus' => array(self::BELONGS_TO, 'CorpusesModel', 'idCorpus'),
+            'classroom' => array(self::BELONGS_TO, 'ClassroomsModel', 'idClassroom'),
             'lecturers' => array(self::HAS_MANY, 'LecturersModel', 'idDepartment'),
             'specialities' => array(self::HAS_MANY, 'SpecialitiesModel', 'idDepartment'),
         );

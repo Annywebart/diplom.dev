@@ -65,7 +65,7 @@ class SpecialitiesController extends AdminController
         if (isset($_POST['SpecialitiesModel'])) {
             $model->attributes = $_POST['SpecialitiesModel'];
             if ($model->save())
-                $this->redirect(array('view', 'id' => $model->id));
+                $this->redirect(array('admin'));
         }
 
         $this->render('create', array(
@@ -88,7 +88,7 @@ class SpecialitiesController extends AdminController
         if (isset($_POST['SpecialitiesModel'])) {
             $model->attributes = $_POST['SpecialitiesModel'];
             if ($model->save())
-                $this->redirect(array('view', 'id' => $model->id));
+                $this->redirect(array('admin'));
         }
 
         $this->render('update', array(

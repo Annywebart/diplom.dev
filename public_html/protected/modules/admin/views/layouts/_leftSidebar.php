@@ -1,5 +1,3 @@
-<a href="javascript:void(0)" class="sidebar_switch on_switch ttip_r" title="Hide Sidebar">Sidebar switch</a>
-
 <div class="sidebar">
 
     <div class="antiScroll">
@@ -66,19 +64,6 @@
                                         <!--                                                    <li class="divider"></li>
                                                                                             <li><a href="javascript:void(0)">Help</a></li>-->
                                     </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-group">
-                            <div class="accordion-heading">
-                                <a href="#collapse7" data-parent="#side_accordion" data-toggle="collapse"
-                                   class="accordion-toggle">
-                                    <i class="icon-th"></i> Сейчас
-                                </a>
-                            </div>
-                            <div class="accordion-body collapse in" id="collapse7">
-                                <div class="accordion-inner">
-                                    <?php $this->widget('application.widgets.nowWidget.NowWidget'); ?>
                                 </div>
                             </div>
                         </div>

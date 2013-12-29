@@ -51,6 +51,12 @@
         <?php echo $form->error($model, 'dob'); ?>
     </div>
 
+    <div class="row">
+        <?php echo $form->labelEx($model, 'isFree'); ?>
+        <?php echo $form->textField($model, 'isFree'); ?>
+        <?php echo $form->error($model, 'isFree'); ?>
+    </div>
+    
     <div class="row buttons">
         <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
     </div>

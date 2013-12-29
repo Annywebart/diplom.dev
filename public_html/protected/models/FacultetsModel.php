@@ -9,6 +9,8 @@
  * @property string $code
  * @property string $description
  * @property integer headFacultet
+ * @property integer $idCorpus
+ * @property integer $idClassroom
  *
  * The followings are the available model relations:
  * @property Specialities[] $specialities
@@ -32,13 +34,14 @@ class FacultetsModel extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('title, code', 'required'),
+            array('title, code, idCorpus, idClassroom', 'required'),
+            array('headFacultet, idCorpus, idClassroom', 'numerical', 'integerOnly' => true),
             array('title', 'length', 'max' => 200),
             array('code', 'length', 'max' => 10),
             array('description, headFacultet', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('id, title, code, description, headFacultet', 'safe', 'on' => 'search'),
+            array('id, title, code, description, headFacultet, idCorpus, idClassroom', 'safe', 'on' => 'search'),
         );
     }
 
@@ -51,6 +54,8 @@ class FacultetsModel extends CActiveRecord
         // class name for the relations automatically generated below.
         return array(
             'specialities' => array(self::HAS_MANY, 'Specialities', 'idFacultet'),
+            'corpus' => array(self::BELONGS_TO, 'CorpusesModel', 'idCorpus'),
+            'classroom' => array(self::BELONGS_TO, 'ClassroomsModel', 'idClassroom'),
         );
     }
 
@@ -65,6 +70,8 @@ class FacultetsModel extends CActiveRecord
             'code' => 'Code',
             'description' => 'Description',
             'headFacultet' => 'Head Facultet',
+            'idCorpus' => 'Id Corpus',
+            'idClassroom' => 'Id Classroom',
         );
     }
 
@@ -91,6 +98,8 @@ class FacultetsModel extends CActiveRecord
         $criteria->compare('code', $this->code, true);
         $criteria->compare('description', $this->description, true);
         $criteria->compare('headFacultet', $this->headFacultet, true);
+        $criteria->compare('idCorpus', $this->idCorpus);
+        $criteria->compare('idClassroom', $this->idClassroom);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,

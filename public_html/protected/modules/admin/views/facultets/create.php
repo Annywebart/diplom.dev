@@ -1,35 +1,20 @@
-<div class="row-fluid">
-    <div class="span12 tac">
-        <?php
-        /* @var $this FacultetsController */
-        /* @var $model FacultetsModel */
 
-        $this->breadcrumbs = array(
-            'Facultets Models' => array('index'),
-            'Create',
-        );
+<?php
+/* @var $this FacultetsController */
+/* @var $model FacultetsModel */
 
-        $this->menu = array(
-            array('label' => 'List FacultetsModel', 'url' => array('index')),
-            array('label' => 'Manage FacultetsModel', 'url' => array('admin')),
-        );
-        ?>
+$this->breadcrumbs = array(
+    'Facultets Models' => array('index'),
+    'Create',
+);
 
-        <h1>Создать факультет</h1>
+$this->menu = array(
+    array('label' => 'List FacultetsModel', 'url' => array('index')),
+    array('label' => 'Manage FacultetsModel', 'url' => array('admin')),
+);
+?>
 
-        <?php $this->renderPartial('_form', array('model' => $model)); ?>
+<h1>Создать факультет</h1>
 
-    </div>
-</div>
-<div class="row-fluid">
-    <div class="span5">
+<?php $this->renderPartial('_form', array('model' => $model)); ?>
 
-        <div id="fl_2" style="height:200px;width:80%;margin:50px auto 0"></div>
-    </div>
-    <div class="span7">
-        <div class="heading clearfix">
-
-        </div>
-        <div id="fl_1" style="height:270px;width:100%;margin:15px auto 0"></div>
-    </div>
-</div>

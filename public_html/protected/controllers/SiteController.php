@@ -92,8 +92,12 @@ class SiteController extends Controller
             if ($model->validate() && $model->login())
                 $this->redirect('admin/default');
         }
-        // display the login form
-        $this->render('login', array('model' => $model));
+        if (NULL == Yii::app()->user->getId()) {
+            // display the login form
+            $this->render('login', array('model' => $model));
+        } else {
+            $this->redirect(Yii::app()->createAbsoluteUrl('admin/default'));
+        }
     }
 
     /**

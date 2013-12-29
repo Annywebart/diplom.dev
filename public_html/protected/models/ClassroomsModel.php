@@ -51,7 +51,7 @@ class ClassroomsModel extends CActiveRecord
 // NOTE: you may need to adjust the relation name and the related
 // class name for the relations automatically generated below.
         return array(
-            'idCorpus0' => array(self::BELONGS_TO, 'GroupsModel', 'idCorpus'),
+            'corpus' => array(self::BELONGS_TO, 'CorpusesModel', 'idCorpus'),
             'departments' => array(self::HAS_MANY, 'DepartmentsModel', 'idClassroom'),
             'timetables' => array(self::HAS_MANY, 'TimetableModel', 'idClassroom'),
         );
