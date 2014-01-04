@@ -66,12 +66,12 @@ class FacultetsModel extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'title' => 'Title',
-            'code' => 'Code',
-            'description' => 'Description',
-            'headFacultet' => 'Head Facultet',
-            'idCorpus' => 'Id Corpus',
-            'idClassroom' => 'Id Classroom',
+            'title' => 'Название факультета',
+            'code' => 'Сокращение',
+            'description' => 'Описание',
+            'headFacultet' => 'Декан факультета',
+            'idCorpus' => 'Корпус',
+            'idClassroom' => 'Деканат',
         );
     }
 

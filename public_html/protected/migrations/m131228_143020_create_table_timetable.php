@@ -12,7 +12,7 @@ class m131228_143020_create_table_timetable extends CDbMigration
                   `week` TINYINT(1) NOT NULL ,
                   `dayOfWeek` TINYINT(1) NOT NULL ,
                   `idGroup` INT NOT NULL ,
-                  `idLecturers` INT NOT NULL ,
+                  `idLecturer` INT NOT NULL ,
                   `title` VARCHAR(200) DEFAULT NULL ,
                   `idCorpus` INT NOT NULL ,
                   `idClassroom` INT NOT NULL ,

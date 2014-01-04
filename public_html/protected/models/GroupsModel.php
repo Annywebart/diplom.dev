@@ -60,8 +60,8 @@ class GroupsModel extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'idSpeciality' => 'Id Speciality',
-            'title' => 'Title',
+            'idSpeciality' => 'Специальность',
+            'title' => 'Группа',
         );
     }
 

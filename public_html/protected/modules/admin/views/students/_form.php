@@ -56,9 +56,9 @@
         <?php echo $form->textField($model, 'isFree'); ?>
         <?php echo $form->error($model, 'isFree'); ?>
     </div>
-    
+
     <div class="row buttons">
-        <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+        <?php echo CHtml::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить', array('class' => 'btn btn-info')); ?>
     </div>
 
     <?php $this->endWidget(); ?>

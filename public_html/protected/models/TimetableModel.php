@@ -9,7 +9,7 @@
  * @property integer $week
  * @property integer $dayOfWeek
  * @property integer $idGroup
- * @property integer $idLecturers
+ * @property integer $idLecturer
  * @property string $title
  * @property integer $idCorpus
  * @property integer $idClassroom
@@ -19,7 +19,7 @@
  * @property Classrooms $idClassroom0
  * @property Lessons $idLesson0
  * @property Groups $idGroup0
- * @property Lecturers $idLecturers0
+ * @property Lecturer $idLecturer0
  * @property Corpuses $idCorpus0
  */
 class TimetableModel extends CActiveRecord
@@ -41,13 +41,13 @@ class TimetableModel extends CActiveRecord
 // NOTE: you should only define rules for those attributes that
 // will receive user inputs.
         return array(
-            array('idLesson, week, dayOfWeek, idGroup, idLecturers, idCorpus, idClassroom', 'required'),
-            array('idLesson, week, dayOfWeek, idGroup, idLecturers, idCorpus, idClassroom', 'numerical', 'integerOnly' => true),
+            array('idLesson, week, dayOfWeek, idGroup, idLecturer, idCorpus, idClassroom', 'required'),
+            array('idLesson, week, dayOfWeek, idGroup, idLecturer, idCorpus, idClassroom', 'numerical', 'integerOnly' => true),
             array('title', 'length', 'max' => 200),
             array('shortTitle', 'length', 'max' => 50),
 // The following rule is used by search().
 // @todo Please remove those attributes that should not be searched.
-            array('id, idLesson, week, dayOfWeek, idGroup, idLecturers, title, idCorpus, idClassroom, shortTitle', 'safe', 'on' => 'search'),
+            array('id, idLesson, week, dayOfWeek, idGroup, idLecturer, title, idCorpus, idClassroom, shortTitle', 'safe', 'on' => 'search'),
         );
     }
 
@@ -62,7 +62,7 @@ class TimetableModel extends CActiveRecord
             'idClassroom0' => array(self::BELONGS_TO, 'ClassroomsModel', 'idClassroom'),
             'idLesson0' => array(self::BELONGS_TO, 'LessonsModel', 'idLesson'),
             'idGroup0' => array(self::BELONGS_TO, 'GroupsModel', 'idGroup'),
-            'idLecturers0' => array(self::BELONGS_TO, 'LecturersModel', 'idLecturers'),
+            'idLecturer0' => array(self::BELONGS_TO, 'LecturerModel', 'idLecturer'),
             'idCorpus0' => array(self::BELONGS_TO, 'CorpusesModel', 'idCorpus'),
         );
     }
@@ -74,15 +74,15 @@ class TimetableModel extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'idLesson' => 'Id Lesson',
-            'week' => 'Week',
-            'dayOfWeek' => 'Day Of Week',
-            'idGroup' => 'Id Group',
-            'idLecturers' => 'Id Lecturers',
-            'title' => 'Title',
-            'idCorpus' => 'Id Corpus',
-            'idClassroom' => 'Id Classroom',
-            'shortTitle' => 'Short Title',
+            'idLesson' => 'Пара',
+            'week' => 'Неделя',
+            'dayOfWeek' => 'День недели',
+            'idGroup' => 'Группа',
+            'idLecturer' => 'Преподаватель',
+            'title' => 'Название пары',
+            'idCorpus' => 'Корпус',
+            'idClassroom' => 'Аудитория',
+            'shortTitle' => 'Краткое название',
         );
     }
 
@@ -109,7 +109,7 @@ class TimetableModel extends CActiveRecord
         $criteria->compare('week', $this->week);
         $criteria->compare('dayOfWeek', $this->dayOfWeek);
         $criteria->compare('idGroup', $this->idGroup);
-        $criteria->compare('idLecturers', $this->idLecturers);
+        $criteria->compare('idLecturer', $this->idLecturer);
         $criteria->compare('title', $this->title, true);
         $criteria->compare('idCorpus', $this->idCorpus);
         $criteria->compare('idClassroom', $this->idClassroom);

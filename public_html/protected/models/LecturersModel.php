@@ -69,12 +69,12 @@ class LecturersModel extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'idDepartment' => 'Id Department',
-            'firstName' => 'First Name',
-            'lastName' => 'Last Name',
-            'fatherName' => 'Father Name',
-            'gender' => 'Gender',
-            'scientificDegree' => 'Scientific Degree',
+            'idDepartment' => 'Кафедра',
+            'firstName' => 'Имя',
+            'lastName' => 'Фамилия',
+            'fatherName' => 'Отчество',
+            'gender' => 'Пол',
+            'scientificDegree' => 'Учёная степень',
         );
     }
 

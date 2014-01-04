@@ -26,7 +26,7 @@
         <?php echo $form->textField($model, 'idFacultet'); ?>
         <?php echo $form->error($model, 'idFacultet'); ?>
     </div>
-    
+
     <div class="row">
         <?php echo $form->labelEx($model, 'idDepartment'); ?>
         <?php echo $form->textField($model, 'idDepartment'); ?>
@@ -46,7 +46,7 @@
     </div>
 
     <div class="row buttons">
-        <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+        <?php echo CHtml::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить', array('class' => 'btn btn-info')); ?>
     </div>
 
     <?php $this->endWidget(); ?>

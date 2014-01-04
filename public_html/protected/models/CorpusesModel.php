@@ -60,8 +60,8 @@ class CorpusesModel extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'title' => 'Title',
-            'description' => 'Description',
+            'title' => 'Название корпуса',
+            'description' => 'Описание',
         );
     }
 

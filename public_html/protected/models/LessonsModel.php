@@ -6,13 +6,13 @@
  * The followings are the available columns in table 'Lessons':
  * @property integer $id
  * @property string $timeStart
- * @property string $timeEnt
+ * @property string $timeEnd
  * @property string $title
  *
  * The followings are the available model relations:
  * @property Timetable[] $timetables
  */
-class Lessons extends CActiveRecord
+class LessonsModel extends CActiveRecord
 {
 
     /**
@@ -31,11 +31,11 @@ class Lessons extends CActiveRecord
 // NOTE: you should only define rules for those attributes that
 // will receive user inputs.
         return array(
-            array('timeStart, timeEnt', 'required'),
+            array('timeStart, timeEnd', 'required'),
             array('title', 'length', 'max' => 50),
 // The following rule is used by search().
 // @todo Please remove those attributes that should not be searched.
-            array('id, timeStart, timeEnt, title', 'safe', 'on' => 'search'),
+            array('id, timeStart, timeEnd, title', 'safe', 'on' => 'search'),
         );
     }
 
@@ -58,9 +58,9 @@ class Lessons extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'timeStart' => 'Time Start',
-            'timeEnt' => 'Time Ent',
-            'title' => 'Title',
+            'timeStart' => 'Начало пары',
+            'timeEnd' => 'Конец пары',
+            'title' => 'Пара',
         );
     }
 
@@ -84,7 +84,7 @@ class Lessons extends CActiveRecord
 
         $criteria->compare('id', $this->id);
         $criteria->compare('timeStart', $this->timeStart, true);
-        $criteria->compare('timeEnt', $this->timeEnt, true);
+        $criteria->compare('timeEnd', $this->timeEnd, true);
         $criteria->compare('title', $this->title, true);
 
         return new CActiveDataProvider($this, array(

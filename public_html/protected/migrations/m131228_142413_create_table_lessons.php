@@ -9,7 +9,7 @@ class m131228_142413_create_table_lessons extends CDbMigration
             CREATE  TABLE IF NOT EXISTS `Lessons` (
                   `id` INT NOT NULL AUTO_INCREMENT,
                   `timeStart` TIME NOT NULL ,
-                  `timeEnt` TIME NOT NULL ,
+                  `timeEnd` TIME NOT NULL ,
                   `title` VARCHAR(50) DEFAULT NULL ,
                   PRIMARY KEY (`id`)
                     )

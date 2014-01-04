@@ -64,11 +64,11 @@ class SpecialitiesModel extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'idFacultet' => 'Id Facultet',
-            'idDepartment' => 'Id Department',
-            'code' => 'Code',
-            'title' => 'Title',
-            'description' => 'Description',
+            'idFacultet' => 'Факультет',
+            'idDepartment' => 'Кафедра',
+            'code' => 'Код',
+            'title' => 'Название специальности',
+            'description' => 'Описание',
         );
     }
 

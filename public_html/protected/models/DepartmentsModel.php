@@ -39,13 +39,13 @@ class DepartmentsModel extends CActiveRecord
 // NOTE: you should only define rules for those attributes that
 // will receive user inputs.
         return array(
-            array('idFacultet, title, headDepartment, idCorpus, idClassroom', 'required'),
+            array('idFacultet, title, shortTitle, headDepartment, idCorpus, idClassroom', 'required'),
             array('idFacultet, headDepartment, idCorpus, idClassroom', 'numerical', 'integerOnly' => true),
             array('title', 'length', 'max' => 200),
             array('description', 'safe'),
 // The following rule is used by search().
 // @todo Please remove those attributes that should not be searched.
-            array('id, idFacultet, title, description, headDepartment, idCorpus, idClassroom', 'safe', 'on' => 'search'),
+            array('id, idFacultet, title, shortTitle, description, headDepartment, idCorpus, idClassroom', 'safe', 'on' => 'search'),
         );
     }
 
@@ -73,12 +73,13 @@ class DepartmentsModel extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'idFacultet' => 'Id Facultet',
-            'title' => 'Title',
-            'description' => 'Description',
-            'headDepartment' => 'Head Department',
-            'idCorpus' => 'Id Corpus',
-            'idClassroom' => 'Id Classroom',
+            'idFacultet' => 'Факультет',
+            'title' => 'Название кафедры',
+            'shortTitle' => 'Сокращение',
+            'description' => 'Описание',
+            'headDepartment' => 'Заведующий кафедры',
+            'idCorpus' => 'Корпус',
+            'idClassroom' => 'Аудитория',
         );
     }
 
@@ -103,6 +104,7 @@ class DepartmentsModel extends CActiveRecord
         $criteria->compare('id', $this->id);
         $criteria->compare('idFacultet', $this->idFacultet);
         $criteria->compare('title', $this->title, true);
+        $criteria->compare('shortTitle', $this->shortTitle, true);
         $criteria->compare('description', $this->description, true);
         $criteria->compare('headDepartment', $this->headDepartment);
         $criteria->compare('idCorpus', $this->idCorpus);

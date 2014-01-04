@@ -62,12 +62,12 @@ class StudentsModel extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'idGroup' => 'Id Group',
-            'firstName' => 'First Name',
-            'lastName' => 'Last Name',
-            'gender' => 'Gender',
-            'dob' => 'Dob',
-            'isFree' => 'Is Free',
+            'idGroup' => 'Группа',
+            'firstName' => 'Имя',
+            'lastName' => 'Фамилия',
+            'gender' => 'Пол',
+            'dob' => 'Дата рождения',
+            'isFree' => 'Бюджет/Контракт',
         );
     }
 

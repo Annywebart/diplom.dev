@@ -64,11 +64,11 @@ class ClassroomsModel extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'idCorpus' => 'Id Corpus',
-            'number' => 'Number',
-            'level' => 'Level',
-            'type' => 'Type',
-            'seats' => 'Seats',
+            'idCorpus' => 'Корпус',
+            'number' => 'Номер аудитории',
+            'level' => 'Этаж',
+            'type' => 'Тип',
+            'seats' => 'Количество мест',
         );
     }
 

@@ -14,6 +14,22 @@
 
                         <div class="accordion-group">
                             <div class="accordion-heading">
+                                <a href="#collapseFirst" data-parent="#side_accordion" data-toggle="collapse"
+                                   class="accordion-toggle">
+                                    <i class="icon-folder-close"></i> Расписание
+                                </a>
+                            </div>
+                            <div class="accordion-body collapse" id="collapseFirst">
+                                <div class="accordion-inner">
+                                    <ul class="nav nav-list">
+                                        <li><?php echo CHtml::link('Расписание', Yii::app()->createAbsoluteUrl('admin/timetable/admin')) ?></li>
+                                        <li><?php echo CHtml::link('Пары', Yii::app()->createAbsoluteUrl('admin/lessons/admin')) ?></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
                                 <a href="#collapseOne" data-parent="#side_accordion" data-toggle="collapse"
                                    class="accordion-toggle">
                                     <i class="icon-folder-close"></i> Структура
@@ -22,10 +38,26 @@
                             <div class="accordion-body collapse" id="collapseOne">
                                 <div class="accordion-inner">
                                     <ul class="nav nav-list">
-                                        <li><?php echo CHtml::link('Факультеты', Yii::app()->createAbsoluteUrl('admin/facultets/admin'))?></li>
-                                        <li><?php echo CHtml::link('Кафедры', '')?></li>
-                                        <li><?php echo CHtml::link('Специальности', Yii::app()->createAbsoluteUrl('admin/specialities/admin'))?></li>
-                                        <li><?php echo CHtml::link('Группы', Yii::app()->createAbsoluteUrl('admin/groups/admin'))?></li>
+                                        <li><?php echo CHtml::link('Факультеты', Yii::app()->createAbsoluteUrl('admin/facultets/admin')) ?></li>
+                                        <li><?php echo CHtml::link('Кафедры', Yii::app()->createAbsoluteUrl('admin/departments/admin')) ?></li>
+                                        <li><?php echo CHtml::link('Специальности', Yii::app()->createAbsoluteUrl('admin/specialities/admin')) ?></li>
+                                        <li><?php echo CHtml::link('Группы', Yii::app()->createAbsoluteUrl('admin/groups/admin')) ?></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a href="#collapseTwo" data-parent="#side_accordion" data-toggle="collapse"
+                                   class="accordion-toggle">
+                                    <i class="icon-user"></i> Корпуса
+                                </a>
+                            </div>
+                            <div class="accordion-body collapse" id="collapseTwo">
+                                <div class="accordion-inner">
+                                    <ul class="nav nav-list">
+                                        <li><?php echo CHtml::link('Корпуса', Yii::app()->createAbsoluteUrl('admin/corpuses/admin')) ?></li>
+                                        <li><?php echo CHtml::link('Аудитории', Yii::app()->createAbsoluteUrl('admin/classrooms/admin')) ?></li>
                                     </ul>
                                 </div>
                             </div>
@@ -40,8 +72,8 @@
                             <div class="accordion-body collapse" id="collapseThree">
                                 <div class="accordion-inner">
                                     <ul class="nav nav-list">
-                                        <li><a href="javascript:void(0)">Преподаватели</a></li>
-                                        <li><a href="javascript:void(0)">Студенты</a></li>
+                                        <li><?php echo CHtml::link('Преподаватели', Yii::app()->createAbsoluteUrl('admin/lecturers/admin')) ?></li>
+                                        <li><?php echo CHtml::link('Студенты', Yii::app()->createAbsoluteUrl('admin/students/admin')) ?></li>
                                     </ul>
                                 </div>
                             </div>

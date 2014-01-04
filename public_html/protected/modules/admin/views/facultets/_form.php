@@ -38,13 +38,13 @@
         <?php echo $form->textArea($model, 'description', array('rows' => 6, 'cols' => 50)); ?>
         <?php echo $form->error($model, 'description'); ?>
     </div>
-    
+
     <div class="row">
         <?php echo $form->labelEx($model, 'idCorpus'); ?>
         <?php echo $form->textArea($model, 'idCorpus', array('rows' => 6, 'cols' => 50)); ?>
         <?php echo $form->error($model, 'idCorpus'); ?>
     </div>
-    
+
     <div class="row">
         <?php echo $form->labelEx($model, 'idClassroom'); ?>
         <?php echo $form->textArea($model, 'idClassroom', array('rows' => 6, 'cols' => 50)); ?>
@@ -52,7 +52,7 @@
     </div>
 
     <div class="row buttons">
-        <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+        <?php echo CHtml::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить', array('class' => 'btn btn-info')); ?>
     </div>
 
     <?php $this->endWidget(); ?>

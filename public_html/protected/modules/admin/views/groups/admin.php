@@ -6,33 +6,15 @@ $this->breadcrumbs = array(
     'Groups Models' => array('index'),
     'Manage',
 );
-
-$this->menu = array(
-    array('label' => 'List GroupsModel', 'url' => array('index')),
-    array('label' => 'Create GroupsModel', 'url' => array('create')),
-);
-
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-$('.search-form').toggle();
-return false;
-});
-$('.search-form form').submit(function(){
-$('#groups-model-grid').yiiGridView('update', {
-data: $(this).serialize()
-});
-return false;
-});
-");
 ?>
 
 <h1>Группы</h1>
-<?php echo CHtml::link('Создать', Yii::app()->createAbsoluteUrl('admin/groups/create')) ?>   
-
+<?php echo CHtml::link('<i class="icon-plus"></i> Создать', Yii::app()->createAbsoluteUrl('admin/groups/create'), array('class' => 'btn pull-right')) ?>       
+<div class="clearfix"></div>
 <?php
 $this->widget('bootstrap.widgets.TbExtendedGridView', array(
     'filter' => $model,
-    'type' => 'striped bordered',
+    'type' => 'striped',
     'dataProvider' => $model->search(),
     'template' => "{items}\n{extendedSummary}",
     'columns' => array(
@@ -60,5 +42,5 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
 ));
 ?>
 
-   
+
 

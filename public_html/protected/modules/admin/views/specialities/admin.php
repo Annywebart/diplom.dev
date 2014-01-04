@@ -6,33 +6,15 @@ $this->breadcrumbs = array(
     'Specialities Models' => array('index'),
     'Manage',
 );
-
-$this->menu = array(
-    array('label' => 'List SpecialitiesModel', 'url' => array('index')),
-    array('label' => 'Create SpecialitiesModel', 'url' => array('create')),
-);
-
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-$('.search-form').toggle();
-return false;
-});
-$('.search-form form').submit(function(){
-$('#specialities-model-grid').yiiGridView('update', {
-data: $(this).serialize()
-});
-return false;
-});
-");
 ?>
 
 <h1>Специальности</h1>
-<?php echo CHtml::link('Создать', Yii::app()->createAbsoluteUrl('admin/specialities/create')) ?>   
-
+<?php echo CHtml::link('<i class="icon-plus"></i> Создать', Yii::app()->createAbsoluteUrl('admin/specialities/create'), array('class' => 'btn pull-right')) ?>       
+<div class="clearfix"></div>
 <?php
 $this->widget('bootstrap.widgets.TbExtendedGridView', array(
     'filter' => $model,
-    'type' => 'striped bordered',
+    'type' => 'striped',
     'dataProvider' => $model->search(),
     'template' => "{items}\n{extendedSummary}",
     'columns' => array(
