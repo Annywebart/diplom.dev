@@ -10,6 +10,17 @@
         <?php Yii::app()->clientScript->registerCoreScript('jquery'); ?>
         <!-- Le styles -->
         <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/adminstyle.css" rel="stylesheet">
+
+        <!--Clock-->   
+        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/clock/styles.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/clock/jquery.tzineClock/jquery.tzineClock.css" />
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/clock/jquery.tzineClock/jquery.tzineClock.js"></script>
+
+        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/clock/script.js"></script>
+        <!--Clock-->   
+        
         <style>
             body {
                 padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */

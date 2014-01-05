@@ -3,16 +3,16 @@
         <?php echo DateHelper::getDayOfWeek(); ?>
     </div>   
     <div class="day">
-        <?php echo date('j') ?>
+        <?php echo date("j") ?>
     </div> 
     <div class="month-year">
         <?php echo DateHelper::getMonth(); ?>,
-        <?php echo date('Y') ?>
+        <?php echo date("Y") ?>
     </div>
     <div class="time">
-        <?php echo date('H:i') ?>
+        <?php echo date("H:i:s") ?>
     </div>
-
+    <div id="fancyClock"></div>
     <div class="lesson">
         <?php echo $lesson; ?>
     </div>
