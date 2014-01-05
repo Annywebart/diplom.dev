@@ -6,7 +6,9 @@
  * The followings are the available columns in table 'Corpuses':
  * @property integer $id
  * @property string $title
+ * @property string $shortTitle
  * @property string $description
+ * @property int $levels
  *
  * The followings are the available model relations:
  * @property Departments[] $departments
@@ -33,10 +35,11 @@ class CorpusesModel extends CActiveRecord
         return array(
             array('title', 'required'),
             array('title', 'length', 'max' => 200),
-            array('description', 'safe'),
+            array('shortTitle', 'length', 'max' => 50),
+            array('description, levels', 'safe'),
 // The following rule is used by search().
 // @todo Please remove those attributes that should not be searched.
-            array('id, title, description', 'safe', 'on' => 'search'),
+            array('id, title, shortTitle, description, levels', 'safe', 'on' => 'search'),
         );
     }
 
@@ -61,7 +64,9 @@ class CorpusesModel extends CActiveRecord
         return array(
             'id' => 'ID',
             'title' => 'Название корпуса',
+            'shortTitle' => 'Краткое название',
             'description' => 'Описание',
+            'levels' => 'Количество этажей',
         );
     }
 
@@ -85,7 +90,9 @@ class CorpusesModel extends CActiveRecord
 
         $criteria->compare('id', $this->id);
         $criteria->compare('title', $this->title, true);
+        $criteria->compare('shortTitle', $this->shortTitle, true);
         $criteria->compare('description', $this->description, true);
+        $criteria->compare('levels', $this->levels, true);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
@@ -102,5 +109,27 @@ class CorpusesModel extends CActiveRecord
     {
         return parent::model($className);
     }
-
+    
+    /**
+     * Get list of corpuses
+     * 
+     * @return array Array with corpuses
+     */
+    public static function getCorpusesList()
+    {
+        return CHtml::listData(CorpusesModel::model()->findAll(), 'id', 'title');
+    }
+    
+    /**
+     * Get auditories of the selected corpus
+     * 
+     */
+    public static function dynamicClassrooms($idCorpus)
+    {
+        $model = ClassroomsModel::model()->findAll('idCorpus=:idCorpus', array(':idCorpus' => $idCorpus));
+        echo CHtml::tag('option', array('value' => ''), '', true);
+        foreach ($model as $item) {
+            echo CHtml::tag('option', array('value' => $item->id), CHtml::encode($item->number), true);
+        }
+    }
 }

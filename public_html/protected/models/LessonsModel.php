@@ -57,7 +57,7 @@ class LessonsModel extends CActiveRecord
     public function attributeLabels()
     {
         return array(
-            'id' => 'ID',
+            'id' => 'Номер',
             'timeStart' => 'Начало пары',
             'timeEnd' => 'Конец пары',
             'title' => 'Пара',
@@ -101,6 +101,16 @@ class LessonsModel extends CActiveRecord
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
+    }
+
+    /**
+     * Get list of lessons
+     * 
+     * @return array Array with lessons
+     */
+    public static function getLessonsList()
+    {
+        return CHtml::listData(LessonsModel::model()->findAll(), 'id', 'title');
     }
 
 }

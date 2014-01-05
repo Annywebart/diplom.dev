@@ -15,6 +15,7 @@ return array(
     // autoloading model and component classes
     'import' => array(
         'application.models.*',
+        'application.models.EnumerableModels.*',
         'application.components.*',
         'application.extensions.*',
         'application.helpers.*',

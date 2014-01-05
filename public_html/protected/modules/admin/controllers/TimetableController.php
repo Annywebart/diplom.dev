@@ -33,7 +33,7 @@ class TimetableController extends AdminController
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update'),
+                'actions' => array('create', 'update', 'dynamicClassrooms'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -167,6 +167,16 @@ class TimetableController extends AdminController
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }
+    }
+
+    /**
+     * Get auditories of the selected corpus
+     * 
+     */
+    public function actionDynamicClassrooms()
+    {
+        $post = $_POST['TimetableModel'];
+        CorpusesModel::dynamicClassrooms($post['idCorpus']);
     }
 
 }

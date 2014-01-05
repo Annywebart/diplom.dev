@@ -16,6 +16,7 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
     'filter' => $model,
     'type' => 'striped',
     'dataProvider' => $model->search(),
+    'emptyText' => 'Результатов не найдено', 
     'template' => "{items}\n{extendedSummary}",
     'columns' => array(
         'title',

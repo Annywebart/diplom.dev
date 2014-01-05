@@ -11,18 +11,45 @@ $this->breadcrumbs = array(
 <h1>Пары</h1>
 
 <?php
-$this->widget('zii.widgets.grid.CGridView', array(
-    'id' => 'lessons-model-grid',
-    'dataProvider' => $model->search(),
+$this->widget('bootstrap.widgets.TbExtendedGridView', array(
     'filter' => $model,
+    'type' => 'striped',
+    'dataProvider' => $model->search(),
+    'emptyText' => 'Результатов не найдено',
+    'template' => "{items}\n{extendedSummary}",
     'columns' => array(
-        'id',
+//        'id',
+        'title',
         'timeStart',
         'timeEnd',
-        'title',
+//        array(
+//            'name' => 'timeEnd',
+//            'class' => 'bootstrap.widgets.TbEditableColumn',
+//            'editable' => array(
+//                'type' => 'time',
+//                'url' => '/admin/lessons/update'
+//            )
+//        ),
         array(
-            'class' => 'CButtonColumn',
+            'class' => 'bootstrap.widgets.TbButtonColumn',
+            'template' => '{update}',
         ),
     ),
+//    'chartOptions' => array(
+//        'data' => array(
+//            'series' => array(
+//                array(
+//                    'name' => 'Hours worked',
+//                    'attribute' => 'hours'
+//                )
+//            )
+//        ),
+//        'config' => array(
+//            'chart' => array(
+//                'width' => 800
+//            )
+//        )
+//    ),
 ));
 ?>
+

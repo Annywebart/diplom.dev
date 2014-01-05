@@ -17,13 +17,13 @@
     ));
     ?>
 
-    <p class="note">Fields with <span class="required">*</span> are required.</p>
+    <p class="note">Поля со звездочкой <span class="required">*</span> обязательны для заполнения</p>
 
     <?php echo $form->errorSummary($model); ?>
 
     <div class="row">
         <?php echo $form->labelEx($model, 'idGroup'); ?>
-        <?php echo $form->textField($model, 'idGroup'); ?>
+        <?php echo $form->dropdownList($model, 'idGroup', GroupsModel::getGroupsList(), array('empty' => '')); ?>
         <?php echo $form->error($model, 'idGroup'); ?>
     </div>
 
@@ -41,19 +41,29 @@
 
     <div class="row">
         <?php echo $form->labelEx($model, 'gender'); ?>
-        <?php echo $form->textField($model, 'gender'); ?>
+        <?php echo $form->dropDownList($model, 'gender', GenderModel::listData(), array('empty' => '')) ?>
         <?php echo $form->error($model, 'gender'); ?>
     </div>
 
     <div class="row">
         <?php echo $form->labelEx($model, 'dob'); ?>
-        <?php echo $form->textField($model, 'dob'); ?>
+        <?php
+        $this->widget(
+            'bootstrap.widgets.TbDatePicker', array(
+                'name' => 'dob',
+                 'options' => array(
+                     'language' => 'ru'
+                 )
+            )
+        );
+        ?>
         <?php echo $form->error($model, 'dob'); ?>
     </div>
 
     <div class="row">
-        <?php echo $form->labelEx($model, 'isFree'); ?>
-        <?php echo $form->textField($model, 'isFree'); ?>
+        <?php // echo $form->labelEx($model, 'isFree'); ?>
+        <?php // echo $form->dropDownList($model, 'isFree', StudentsModel::$isFree, array('empty' => '')) ?>
+        <?php echo $form->radioButtonList($model, 'isFree', StudentsModel::$isFree); ?>
         <?php echo $form->error($model, 'isFree'); ?>
     </div>
 
@@ -61,6 +71,6 @@
         <?php echo CHtml::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить', array('class' => 'btn btn-info')); ?>
     </div>
 
-    <?php $this->endWidget(); ?>
+<?php $this->endWidget(); ?>
 
 </div><!-- form -->

@@ -17,22 +17,30 @@
     ));
     ?>
 
-    <p class="note">Fields with <span class="required">*</span> are required.</p>
+    <p class="note">Поля со звездочкой <span class="required">*</span> обязательны для заполнения</p>
 
     <?php echo $form->errorSummary($model); ?>
 
     <div class="row">
         <?php echo $form->labelEx($model, 'idFacultet'); ?>
-        <?php echo $form->textField($model, 'idFacultet'); ?>
+        <?php
+        echo $form->dropDownList($model, 'idFacultet', FacultetsModel::getFacultetsList(), array(
+            'empty' => '',
+            'ajax' => array(
+                'type' => 'POST',
+                'url' => Yii::app()->createAbsoluteUrl('admin/facultets/dynamicDepartments'),
+                'update' => '#SpecialitiesModel_idDepartment',
+            )));
+        ?>
         <?php echo $form->error($model, 'idFacultet'); ?>
     </div>
 
     <div class="row">
         <?php echo $form->labelEx($model, 'idDepartment'); ?>
-        <?php echo $form->textField($model, 'idDepartment'); ?>
+        <?php echo $form->dropDownList($model, 'idDepartment', array()); ?>
         <?php echo $form->error($model, 'idDepartment'); ?>
     </div>
-
+   
     <div class="row">
         <?php echo $form->labelEx($model, 'code'); ?>
         <?php echo $form->textField($model, 'code', array('size' => 10, 'maxlength' => 10)); ?>

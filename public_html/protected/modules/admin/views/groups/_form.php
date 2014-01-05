@@ -17,13 +17,13 @@
     ));
     ?>
 
-    <p class="note">Fields with <span class="required">*</span> are required.</p>
+    <p class="note">Поля со звездочкой <span class="required">*</span> обязательны для заполнения</p>
 
     <?php echo $form->errorSummary($model); ?>
 
     <div class="row">
         <?php echo $form->labelEx($model, 'idSpeciality'); ?>
-        <?php echo $form->textField($model, 'idSpeciality'); ?>
+        <?php echo $form->dropDownList($model, 'idSpeciality', SpecialitiesModel::getSpecialitiesList()); ?>
         <?php echo $form->error($model, 'idSpeciality'); ?>
     </div>
 

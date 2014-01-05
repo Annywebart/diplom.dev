@@ -17,16 +17,28 @@
     ));
     ?>
 
-    <p class="note">Fields with <span class="required">*</span> are required.</p>
+    <p class="note">Поля со звездочкой <span class="required">*</span> обязательны для заполнения</p>
 
     <?php echo $form->errorSummary($model); ?>
 
     <div class="row">
         <?php echo $form->labelEx($model, 'idCorpus'); ?>
-        <?php echo $form->textField($model, 'idCorpus'); ?>
+        <?php echo $form->dropdownList($model, 'idCorpus', CorpusesModel::getCorpusesList(), array(
+            'empty' => '',
+            'ajax' => array(
+                'type' => 'POST',
+                'url' => Yii::app()->createAbsoluteUrl('admin/corpuses/dynamicLevels'),
+                'update' => '#ClassroomsModel_level',
+        ))); ?>
         <?php echo $form->error($model, 'idCorpus'); ?>
     </div>
 
+    <div class="row">
+        <?php echo $form->labelEx($model, 'level'); ?>
+        <?php echo $form->dropdownList($model, 'level', array()); ?>
+        <?php echo $form->error($model, 'level'); ?>
+    </div>
+    
     <div class="row">
         <?php echo $form->labelEx($model, 'number'); ?>
         <?php echo $form->textField($model, 'number'); ?>
@@ -34,14 +46,8 @@
     </div>
 
     <div class="row">
-        <?php echo $form->labelEx($model, 'level'); ?>
-        <?php echo $form->textField($model, 'level'); ?>
-        <?php echo $form->error($model, 'level'); ?>
-    </div>
-
-    <div class="row">
         <?php echo $form->labelEx($model, 'type'); ?>
-        <?php echo $form->textField($model, 'type'); ?>
+        <?php echo $form->dropdownList($model, 'type', ClassroomsModel::$classroomTypeList, array('empty' => '')); ?>
         <?php echo $form->error($model, 'type'); ?>
     </div>
 

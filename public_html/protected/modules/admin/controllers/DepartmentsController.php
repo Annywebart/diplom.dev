@@ -33,7 +33,7 @@ class DepartmentsController extends AdminController
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update'),
+                'actions' => array('create', 'update', 'dynamicClassrooms'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -169,4 +169,14 @@ class DepartmentsController extends AdminController
         }
     }
 
+    /**
+     * Get auditories of the selected corpus
+     * 
+     */
+    public function actionDynamicClassrooms()
+    {
+        $post = $_POST['DepartmentsModel'];
+        CorpusesModel::dynamicClassrooms($post['idCorpus']);
+    }
+    
 }

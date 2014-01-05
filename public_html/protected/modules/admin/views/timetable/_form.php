@@ -17,37 +17,37 @@
     ));
     ?>
 
-    <p class="note">Fields with <span class="required">*</span> are required.</p>
+    <p class="note">Поля со звездочкой <span class="required">*</span> обязательны для заполнения</p>
 
     <?php echo $form->errorSummary($model); ?>
 
     <div class="row">
         <?php echo $form->labelEx($model, 'idLesson'); ?>
-        <?php echo $form->textField($model, 'idLesson'); ?>
+        <?php echo $form->dropDownList($model, 'idLesson', LessonsModel::getLessonsList(), array('empty' => '')); ?>
         <?php echo $form->error($model, 'idLesson'); ?>
     </div>
 
     <div class="row">
         <?php echo $form->labelEx($model, 'week'); ?>
-        <?php echo $form->textField($model, 'week'); ?>
+        <?php echo $form->dropDownList($model, 'week', TimetableModel::$weekList); ?>
         <?php echo $form->error($model, 'week'); ?>
     </div>
 
     <div class="row">
         <?php echo $form->labelEx($model, 'dayOfWeek'); ?>
-        <?php echo $form->textField($model, 'dayOfWeek'); ?>
+        <?php echo $form->dropDownList($model, 'dayOfWeek', TimetableModel::$dayOfWeekList, array('empty' => '')); ?>
         <?php echo $form->error($model, 'dayOfWeek'); ?>
     </div>
 
     <div class="row">
         <?php echo $form->labelEx($model, 'idGroup'); ?>
-        <?php echo $form->textField($model, 'idGroup'); ?>
+        <?php echo $form->dropDownList($model, 'idGroup', GroupsModel::getGroupsList(), array('empty' => '')); ?>
         <?php echo $form->error($model, 'idGroup'); ?>
     </div>
 
     <div class="row">
         <?php echo $form->labelEx($model, 'idLecturer'); ?>
-        <?php echo $form->textField($model, 'idLecturer'); ?>
+        <?php echo $form->dropDownList($model, 'idLecturer', LecturersModel::getLecturersList(), array('empty' => '')); ?>
         <?php echo $form->error($model, 'idLecturer'); ?>
     </div>
 
@@ -58,27 +58,35 @@
     </div>
 
     <div class="row">
+        <?php echo $form->labelEx($model, 'shortTitle'); ?>
+        <?php echo $form->textField($model, 'shortTitle', array('size' => 50, 'maxlength' => 50)); ?>
+        <?php echo $form->error($model, 'shortTitle'); ?>
+    </div>
+
+    <div class="row">
         <?php echo $form->labelEx($model, 'idCorpus'); ?>
-        <?php echo $form->textField($model, 'idCorpus'); ?>
+        <?php
+        echo $form->dropDownList($model, 'idCorpus', CorpusesModel::getCorpusesList(), array(
+            'empty' => '',
+            'ajax' => array(
+                'type' => 'POST',
+                'url' => Yii::app()->createAbsoluteUrl('admin/timetable/dynamicClassrooms'),
+                'update' => '#TimetableModel_idClassroom',
+            )));
+        ?>
         <?php echo $form->error($model, 'idCorpus'); ?>
     </div>
 
     <div class="row">
         <?php echo $form->labelEx($model, 'idClassroom'); ?>
-        <?php echo $form->textField($model, 'idClassroom'); ?>
+        <?php echo $form->dropDownList($model, 'idClassroom', array()); ?>
         <?php echo $form->error($model, 'idClassroom'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->labelEx($model, 'shortTitle'); ?>
-        <?php echo $form->textField($model, 'shortTitle', array('size' => 50, 'maxlength' => 50)); ?>
-        <?php echo $form->error($model, 'shortTitle'); ?>
     </div>
 
     <div class="row buttons">
         <?php echo CHtml::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить', array('class' => 'btn btn-info')); ?>
     </div>
 
-    <?php $this->endWidget(); ?>
+<?php $this->endWidget(); ?>
 
 </div><!-- form -->

@@ -39,7 +39,7 @@ class DepartmentsModel extends CActiveRecord
 // NOTE: you should only define rules for those attributes that
 // will receive user inputs.
         return array(
-            array('idFacultet, title, shortTitle, headDepartment, idCorpus, idClassroom', 'required'),
+            array('idFacultet, title, shortTitle, idCorpus, idClassroom', 'required'),
             array('idFacultet, headDepartment, idCorpus, idClassroom', 'numerical', 'integerOnly' => true),
             array('title', 'length', 'max' => 200),
             array('description', 'safe'),
@@ -126,4 +126,14 @@ class DepartmentsModel extends CActiveRecord
         return parent::model($className);
     }
 
+    /**
+     * Get list of departments
+     * 
+     * @return array Array with departments
+     */
+    public static function getDepartmentsList()
+    {
+        return CHtml::listData(DepartmentsModel::model()->findAll(), 'id', 'title');
+    }
+    
 }

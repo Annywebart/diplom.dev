@@ -17,6 +17,13 @@
  */
 class StudentsModel extends CActiveRecord
 {
+    const PAID = 0;
+    const FREE = 1;
+    
+    public static $isFree = array(
+        self::PAID => 'Контракт',
+        self::FREE => 'Бюджет',
+    );
 
     /**
      * @return string the associated database table name

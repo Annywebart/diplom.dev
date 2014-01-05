@@ -111,5 +111,15 @@ class SpecialitiesModel extends CActiveRecord
     {
         return parent::model($className);
     }
+    
+    /**
+     * Get list of specialities
+     * 
+     * @return array Array with specialities
+     */
+    public static function getSpecialitiesList()
+    {
+        return CHtml::listData(SpecialitiesModel::model()->findAll(), 'id', 'title');
+    }
 
 }

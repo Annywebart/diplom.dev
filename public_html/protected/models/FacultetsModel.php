@@ -59,6 +59,18 @@ class FacultetsModel extends CActiveRecord
         );
     }
 
+    public function scopes()
+    {
+        return array(
+            'sortByCodeAsc' => array(
+                'order' => 'code ASC'
+            ),
+            'sortByCodeDesc' => array(
+                'order' => 'code DESC'
+            ),
+        );
+    }
+
     /**
      * @return array customized attribute labels (name=>label)
      */
@@ -115,6 +127,16 @@ class FacultetsModel extends CActiveRecord
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
+    }
+
+    /**
+     * Get list of facultets
+     * 
+     * @return array Array with facultets
+     */
+    public static function getFacultetsList()
+    {
+        return CHtml::listData(FacultetsModel::model()->sortByCodeAsc()->findAll(), 'id', 'code');
     }
 
 }

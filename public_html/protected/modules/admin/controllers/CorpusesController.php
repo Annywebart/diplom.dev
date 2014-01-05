@@ -33,7 +33,7 @@ class CorpusesController extends AdminController
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update'),
+                'actions' => array('create', 'update', 'dynamicLevels'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -166,6 +166,24 @@ class CorpusesController extends AdminController
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'corpuses-model-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
+        }
+    }
+
+    /**
+     * Get levels of the selected corpus
+     * 
+     */
+    public function actionDynamicLevels()
+    {
+        $post = $_POST['ClassroomsModel'];
+        if (!empty($post['idCorpus'])) {
+            $model = CorpusesModel::model()->find('id=:id', array('id' => $post['idCorpus']));
+            $rows = range(1, $model->levels);
+            $levelsArray = array_combine($rows, $rows);
+
+            foreach ($levelsArray as $item) {
+                echo CHtml::tag('option', array('value' => $item), CHtml::encode($item), true);
+            }
         }
     }
 

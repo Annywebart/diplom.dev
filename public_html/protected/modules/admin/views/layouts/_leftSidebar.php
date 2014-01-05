@@ -1,5 +1,4 @@
 <div class="sidebar">
-
     <div class="antiScroll">
         <div class="antiscroll-inner">
             <div class="antiscroll-content">

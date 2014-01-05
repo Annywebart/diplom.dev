@@ -17,13 +17,13 @@
     ));
     ?>
 
-    <p class="note">Fields with <span class="required">*</span> are required.</p>
+    <p class="note">Поля со звездочкой <span class="required">*</span> обязательны для заполнения</p>
 
     <?php echo $form->errorSummary($model); ?>
 
     <div class="row">
         <?php echo $form->labelEx($model, 'idDepartment'); ?>
-        <?php echo $form->textField($model, 'idDepartment'); ?>
+        <?php echo $form->dropDownList($model, 'idDepartment', DepartmentsModel::getDepartmentsList(), array('empty' => '')) ?>
         <?php echo $form->error($model, 'idDepartment'); ?>
     </div>
 
@@ -39,7 +39,7 @@
         <?php echo $form->error($model, 'lastName'); ?>
     </div>
 
-    <div class="row">
+    <div class="row"> 
         <?php echo $form->labelEx($model, 'fatherName'); ?>
         <?php echo $form->textField($model, 'fatherName', array('size' => 60, 'maxlength' => 100)); ?>
         <?php echo $form->error($model, 'fatherName'); ?>
@@ -47,7 +47,7 @@
 
     <div class="row">
         <?php echo $form->labelEx($model, 'gender'); ?>
-        <?php echo $form->textField($model, 'gender'); ?>
+        <?php echo $form->dropDownList($model, 'gender', GenderModel::listData(), array('empty' => '')) ?>
         <?php echo $form->error($model, 'gender'); ?>
     </div>
 
@@ -58,9 +58,9 @@
     </div>
 
     <div class="row buttons">
-        <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+        <?php echo CHtml::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить', array('class' => 'btn btn-info')); ?>
     </div>
 
     <?php $this->endWidget(); ?>
 
-</div><!-- form -->
+</div>

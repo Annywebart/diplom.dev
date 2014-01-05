@@ -17,7 +17,7 @@
     ));
     ?>
 
-    <p class="note">Fields with <span class="required">*</span> are required.</p>
+    <p class="note">Поля со звездочкой <span class="required">*</span> обязательны для заполнения</p>
 
     <?php echo $form->errorSummary($model); ?>
 
@@ -41,13 +41,21 @@
 
     <div class="row">
         <?php echo $form->labelEx($model, 'idCorpus'); ?>
-        <?php echo $form->textArea($model, 'idCorpus', array('rows' => 6, 'cols' => 50)); ?>
+        <?php
+        echo $form->dropDownList($model, 'idCorpus', CorpusesModel::getCorpusesList(), array(
+            'empty' => '',
+            'ajax' => array(
+                'type' => 'POST',
+                'url' => Yii::app()->createAbsoluteUrl('admin/facultets/dynamicClassrooms'),
+                'update' => '#FacultetsModel_idClassroom',
+            )));
+        ?>
         <?php echo $form->error($model, 'idCorpus'); ?>
     </div>
 
     <div class="row">
         <?php echo $form->labelEx($model, 'idClassroom'); ?>
-        <?php echo $form->textArea($model, 'idClassroom', array('rows' => 6, 'cols' => 50)); ?>
+        <?php echo $form->dropDownList($model, 'idClassroom', array()); ?>
         <?php echo $form->error($model, 'idClassroom'); ?>
     </div>
 

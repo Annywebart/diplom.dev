@@ -9,7 +9,9 @@ class m131228_142423_create_table_corpuses extends CDbMigration
             CREATE  TABLE IF NOT EXISTS `Corpuses` (
                   `id` INT NOT NULL AUTO_INCREMENT,
                   `title` VARCHAR(200) NOT NULL ,
+                  `shortTitle` VARCHAR(50) DEFAULT NULL,
                   `description` TEXT DEFAULT NULL ,
+                  `levels` TINTINT(2) DEFAULT 1,
                   PRIMARY KEY (`id`)
                     )
                     ENGINE = InnoDB

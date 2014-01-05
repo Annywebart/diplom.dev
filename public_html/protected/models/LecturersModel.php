@@ -120,4 +120,13 @@ class LecturersModel extends CActiveRecord
         return parent::model($className);
     }
 
+    /**
+     * Get list of lecturers
+     * 
+     * @return array Array with lecturers
+     */
+    public static function getLecturersList()
+    {
+        return CHtml::listData(LecturersModel::model()->findAll(), 'id', 'lastName');
+    }
 }

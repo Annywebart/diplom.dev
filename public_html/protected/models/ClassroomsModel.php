@@ -19,6 +19,23 @@
 class ClassroomsModel extends CActiveRecord
 {
 
+    const LECTURE_CLASSROOM = 1;
+    const NORMAL_CLASSROOM = 2;
+    const COMPUTER_CLASSROOM = 3;
+    const PRACTICAL_CLASSROOM = 4;
+    const DECANAT_ROOM = 5;
+    const DEPARTMENT_ROOM = 6;
+    
+    public static $classroomTypeList = array(
+        self::LECTURE_CLASSROOM => 'Лекционная аудитория',
+        self::NORMAL_CLASSROOM => 'Обычная аудитория',
+        self::COMPUTER_CLASSROOM => 'Компьютерная аудитория',
+        self::PRACTICAL_CLASSROOM => 'Лабораторный кабинет',
+        self::DECANAT_ROOM => 'Деканат',
+        self::DEPARTMENT_ROOM => 'Кафедра',
+    );
+
+    
     /**
      * @return string the associated database table name
      */

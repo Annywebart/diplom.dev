@@ -28,15 +28,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="brand" href="/admin/pages/admin">Project name</a>
+                    <a class="brand" href="/admin/default/index">Project name</a>
 
                     <div class="nav-collapse collapse">
                         <?php
                         $this->widget('zii.widgets.CMenu', array(
                             'htmlOptions' => array('class' => 'nav'),
                             'items' => array(
-                                array('label' => 'Страницы', 'url' => array('/admin/pages/admin')),
-                                array('label' => 'Выход (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest)
+//                                array('label' => 'Выход (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest)
                             ),
                         ));
                         ?>

@@ -103,4 +103,13 @@ class GroupsModel extends CActiveRecord
         return parent::model($className);
     }
 
+    /**
+     * Get list of groups
+     * 
+     * @return array Array with groups
+     */
+    public static function getGroupsList()
+    {
+        return CHtml::listData(GroupsModel::model()->findAll(), 'id', 'title');
+    }
 }

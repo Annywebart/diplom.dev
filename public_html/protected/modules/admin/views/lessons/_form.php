@@ -17,26 +17,42 @@
     ));
     ?>
 
-    <p class="note">Fields with <span class="required">*</span> are required.</p>
+    <p class="note">Поля со звездочкой <span class="required">*</span> обязательны для заполнения</p>
 
     <?php echo $form->errorSummary($model); ?>
 
     <div class="row">
+        <?php echo $form->labelEx($model, 'title'); ?>
+        <?php echo $form->textField($model, 'title', array('readonly' => true)); ?>
+        <?php echo $form->error($model, 'title'); ?>
+    </div>
+    
+    <div class="row">
         <?php echo $form->labelEx($model, 'timeStart'); ?>
-        <?php echo $form->textField($model, 'timeStart'); ?>
+        <?php $this->widget(
+                'bootstrap.widgets.TbTimePicker', array(
+                'name' => 'timeStart',
+                'value' => $model->timeStart,
+                'options' => array(
+                    'showMeridian' => false
+                ),    
+            ));
+        ?>
         <?php echo $form->error($model, 'timeStart'); ?>
     </div>
 
     <div class="row">
         <?php echo $form->labelEx($model, 'timeEnd'); ?>
-        <?php echo $form->textField($model, 'timeEnd'); ?>
+        <?php $this->widget(
+                'bootstrap.widgets.TbTimePicker', array(
+                'name' => 'timeEnd',
+                'value' => $model->timeEnd,
+                'options' => array(
+                    'showMeridian' => false
+                ), 
+            ));
+        ?>
         <?php echo $form->error($model, 'timeEnd'); ?>
-    </div>
-
-    <div class="row">
-        <?php echo $form->labelEx($model, 'title'); ?>
-        <?php echo $form->textField($model, 'title', array('size' => 50, 'maxlength' => 50)); ?>
-        <?php echo $form->error($model, 'title'); ?>
     </div>
 
     <div class="row buttons">
