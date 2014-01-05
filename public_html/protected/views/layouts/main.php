@@ -193,7 +193,7 @@
                             </a>
                         </li>
                     </ul>
-                    <?php $this->widget('application.widgets.nowWidget.NowWidget'); ?>
+                    <?php $this->widget('application.widgets.nowInfoWidget.NowInfoWidget'); ?>
                 </div>
             </nav>
             <!-- mobile navigation -->

@@ -8,6 +8,6 @@
     <?php echo $content; ?>
 </div>
 <div class="span2">
-    <?php $this->widget('application.widgets.nowWidget.NowWidget'); ?>
+    <?php $this->widget('application.widgets.nowInfoWidget.NowInfoWidget'); ?>
 </div>
 <?php $this->endContent(); ?>
