@@ -25,4 +25,11 @@ class Controller extends CController
      */
     public $breadcrumbs = array();
 
+    public function filters()
+    {
+        return array(
+            array('application.components.yiibooster.filters.BootstrapFilter - delete')
+        );
+    }
+    
 }

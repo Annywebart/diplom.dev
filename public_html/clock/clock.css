@@ -1,0 +1,63 @@
+/* Now Info Widget */
+#now-info {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+#now-info .day-of-week {
+    font-size: 26px;
+    line-height: 30px;
+}
+#now-info .day {
+    font-size: 70px;
+    line-height: 80px;
+}
+#now-info .month-year {
+    font-size: 26px;
+    line-height: 30px;
+}
+
+#now-info .time {
+    font-size: 50px;
+    line-height: 70px;
+}
+#now-info .lesson {
+    font-size: 28px;
+    line-height: 30px;
+    margin: 5px 0;
+}
+#now-info .week {
+    font-size: 26px;
+    line-height: 36px;
+    margin: 5px 0;
+}
+/* Clock */
+#fancyClock {
+    width: 100%;
+    clear: both;
+    display: inline-block;
+    text-align:center;
+}
+#site #now-info .day,
+#site #now-info .lesson {
+    color: #48AC2E;
+}
+#site #fancyClock {
+    margin-left: 15px;
+}
+#fancyClock .clock{
+    float:left;
+    font-size:50px;
+    line-height: 70px;
+}
+#fancyClock .clock .display {
+    box-shadow: 0 6px 4px -6px #444444;
+    padding: 0 5px;
+}
+.user_menu .dropdown-toggle {
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+} 
+.user_menu .user_avatar {
+    padding-right: 10px;
+}

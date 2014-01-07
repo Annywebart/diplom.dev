@@ -7,6 +7,7 @@
  * @property integer $id
  * @property integer $idFacultet
  * @property string $title
+ * @property string $shortTitle
  * @property string $description
  * @property integer $headDepartment
  * @property integer $idCorpus
@@ -135,5 +136,19 @@ class DepartmentsModel extends CActiveRecord
     {
         return CHtml::listData(DepartmentsModel::model()->findAll(), 'id', 'title');
     }
-    
+
+    /**
+     * Get title of the department
+     * 
+     * @return string
+     */
+    public static function getTitle()
+    {
+        if(isset($this->shortTitle)) {
+            return $this->shortTitle;
+        } else {
+            return $this->title;
+        }
+    }
+
 }

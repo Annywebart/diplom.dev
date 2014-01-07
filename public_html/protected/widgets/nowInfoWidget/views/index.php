@@ -9,14 +9,12 @@
         <?php echo DateHelper::getMonth(); ?>,
         <?php echo date("Y") ?>
     </div>
-    <div class="time">
-        <?php echo date("H:i:s") ?>
-    </div>
+    <hr />
     <div id="fancyClock"></div>
     <div class="lesson">
         <?php echo $lesson; ?>
     </div>
     <div class="week">
-        <?php echo DateHelper::getCurrentWeek(); ?>
+        <?php echo $currentWeek; ?>
     </div>
 </div>

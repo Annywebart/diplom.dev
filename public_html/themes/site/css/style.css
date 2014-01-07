@@ -175,10 +175,10 @@ input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked:
 /* top icon navigation */
 .top_ico_nav {list-style:none;margin:0;padding:0}
 .top_ico_nav li {float:left;margin-right:8px}
-.top_ico_nav li a {border:1px solid #e1e1e1;min-width:100px;height:78px;text-align:center;display:block;color:#333;padding:12px 5px 10px;background:#fff;position:relative}
+.top_ico_nav li a {border:1px solid #e1e1e1;min-width:100px;height:auto;text-align:center;display:block;color:#333;padding:7px 15px 5px 25px;background:#fff;position:relative}
 .top_ico_nav li a i {display:inline-block;line-height:30px}
 .top_ico_nav li a:hover,.top_ico_nav li.active a {background:#f8f8f8}
-.top_ico_nav li a span.menu_label {display:block;font-size:12px;font-weight:300;font-family: 'Roboto', sans-serif;padding-top:4px}
+.top_ico_nav li a span.menu_label {display:inline-block;font-size:16px;font-weight:300;font-family: 'Roboto', sans-serif;padding: 15px 10px 15px;}
 .top_ico_nav .label {position:absolute;right:-4px;top:-4px}
 
 /* side icon navigation */
@@ -245,7 +245,9 @@ input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked:
 #wrapper_all {min-height:100%;height:auto}
 #main_content_outer {width:100%;float:left}
 #main_content {margin:0 0 0 240px;min-height:1px}
-.main_section {margin-top:16px}
+.main_section {margin-top:16px;}
+
+.main_section_404 {background: url('/../../images/404.jpg'); height: 450px}
 
 /* sidebar */
 #sidebar {width:220px;float:left;margin:0 0 0 -100%;position:relative}
@@ -664,7 +666,7 @@ div.parsley-error .parsley-error-list {margin-top:5px}
 .form_settings .form-group + .form-group {border-top:1px dashed #e3e3e3;padding-top:15px}
 
 /* footer */   
-#footer_space {height: 120px;clear:both}
+#footer_space {height: 100px;clear:both}
 #footer {height:40px;line-height:40px;margin-top:-40px;position:relative;border-top:1px solid #e1e1e1;background:#f7f7f7}
 #footer ul {margin:0;padding:0;overflow:hidden}
 #footer li {list-style:none;display:inline-block;line-height:40px}

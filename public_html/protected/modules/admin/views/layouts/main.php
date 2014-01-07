@@ -12,12 +12,8 @@
         <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/adminstyle.css" rel="stylesheet">
 
         <!--Clock-->   
-        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/clock/styles.css" />
-        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/clock/jquery.tzineClock/jquery.tzineClock.css" />
-
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/clock/jquery.tzineClock/jquery.tzineClock.js"></script>
-
+        <link href="<?php echo Yii::app()->request->baseUrl; ?>/clock/clock.css" rel="stylesheet">
+        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/clock/jquery.tzineClock.js"></script>
         <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/clock/script.js"></script>
         <!--Clock-->   
         
@@ -28,7 +24,7 @@
         </style>
     </head>
 
-    <body>
+    <body id="admin">
 
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
@@ -60,14 +56,7 @@
                             </li>
                             <li class="divider-vertical hidden-phone hidden-tablet"></li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img
-                                        src="<?php echo Yii::app()->params['styleAdmin']; ?>/img/user_avatar.png" alt=""
-                                        class="user_avatar"/><?php echo Yii::app()->user->name; ?><b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="user_profile.html">Профиль</a></li>
-                                    <li class="divider"></li>
-                                    <li><?php echo CHtml::link('Выйти', Yii::app()->createAbsoluteUrl('site/logout')); ?></li>
-                                </ul>
+                                <?php $this->widget('application.widgets.authorizeWidget.AuthorizeWidget'); ?>
                             </li>
                         </ul>
                     </div>

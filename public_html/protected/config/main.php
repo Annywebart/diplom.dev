@@ -79,8 +79,6 @@ return array(
     'params' => array(
         // this is used in contact page
         'adminEmail' => 'webmaster@example.com',
-        'styleGeneral' => 'http://diplom.dev/themes/',
         'styleSite' => 'http://diplom.dev/themes/site/',
-        'styleAdmin' => 'http://diplom.dev/themes/admin/',
     ),
 );

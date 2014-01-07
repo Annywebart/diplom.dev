@@ -55,9 +55,9 @@ class LecturersModel extends CActiveRecord
 // NOTE: you may need to adjust the relation name and the related
 // class name for the relations automatically generated below.
         return array(
-            'departments' => array(self::HAS_MANY, 'DepartmentsModel', 'headDepartment'),
+            'headDepartment' => array(self::HAS_MANY, 'DepartmentsModel', 'headDepartment'),
             'facultets' => array(self::HAS_MANY, 'FacultetsModel', 'headFacultet'),
-            'idDepartment0' => array(self::BELONGS_TO, 'DepartmentsModel', 'idDepartment'),
+            'department' => array(self::BELONGS_TO, 'DepartmentsModel', 'idDepartment'),
             'timetables' => array(self::HAS_MANY, 'TimetableModel', 'idLecturers'),
         );
     }

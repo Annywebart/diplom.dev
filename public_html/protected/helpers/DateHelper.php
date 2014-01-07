@@ -6,29 +6,6 @@
  */
 class DateHelper
 {
-
-    /**
-     * Get current week
-     *
-     * @return string
-     *
-     */
-    public static function getCurrentWeek($startDate = '2014-01-01')
-    {
-        $startWeek = date('W', strtotime($startDate));
-        $weekOfYears = date('W', date('Y', strtotime($startDate)));
-        
-        $nowWeek = date('W');
-        
-        $week = $nowWeek - $startWeek;
-        
-        if(is_int($week)){
-            return '1-я неделя';
-        } else {
-            return '2-я неделя';
-        }
-        
-    }
     
     /**
      * Get current date

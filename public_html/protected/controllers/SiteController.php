@@ -39,10 +39,13 @@ class SiteController extends Controller
     public function actionError()
     {
         if ($error = Yii::app()->errorHandler->error) {
-            if (Yii::app()->request->isAjaxRequest)
+            if (Yii::app()->request->isAjaxRequest) {
                 echo $error['message'];
-            else
+            } elseif ($error['code'] == 404) {
+                $this->render('404', $error);
+            } else {
                 $this->render('error', $error);
+            }
         }
     }
 
@@ -76,7 +79,7 @@ class SiteController extends Controller
     public function actionLogin()
     {
         $this->layout = '//layouts/mainLight';
-        
+
         $model = new LoginForm;
 
         // if it is ajax validation request
@@ -107,6 +110,48 @@ class SiteController extends Controller
     {
         Yii::app()->user->logout();
         $this->redirect(Yii::app()->homeUrl);
+    }
+
+    public function actionRaspisanie()
+    {
+        $this->render('raspisanie');
+    }
+
+    public function actionPrepodavately()
+    {
+        $model = new LecturersModel('search');
+        $model->unsetAttributes();  // clear any default values
+        if (isset($_GET['LecturersModel']))
+            $model->attributes = $_GET['LecturersModel'];
+        
+        $this->render('prepodavately', array('model' => $model));
+    }
+
+    public function actionKorpusa()
+    {
+        $this->render('korpusa');
+    }
+
+    public function actionFakultety()
+    {
+        $model = new FacultetsModel('search');
+        $model->unsetAttributes();  // clear any default values
+        if (isset($_GET['FacultetsModel']))
+            $model->attributes = $_GET['FacultetsModel'];
+        
+        $this->render('fakultety', array('model' => $model));
+    }
+
+    public function actionPages($alias)
+    {
+        $model = PagesModel::model()->findByAttributes(array('alias' => $alias));
+        
+        if ($model === null) {
+            throw new CHttpException(404, 'The requested page does not exist.');
+            return false;
+        }
+        
+        $this->render('pages', array('model' => $model));
     }
 
 }

@@ -1,0 +1,30 @@
+.error_container .error404 {
+    position: relative;
+    font-size: 50px;
+    left: 190px;
+}
+.error_container .error404 span {
+    font-size: 200px;
+    margin: 0 15px;
+    color: #48AC2E;
+}
+
+.error_container .sorry {
+    position: relative;
+    font-size: 35px;
+    left: 300px;
+    
+}
+
+#grid-facultets .button-column {
+    width: 460px !important;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.button-column .btn {
+    float: left;
+    margin-left: 10px;
+}
+.btn {
+    cursor: pointer !important;
+}
