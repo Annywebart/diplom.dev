@@ -155,7 +155,7 @@
                             </a>
                         </li>
                         <li>             
-                            <a href="<?php echo Yii::app()->createAbsoluteUrl('site/raspisanie'); ?>">
+                            <a href="<?php echo Yii::app()->createAbsoluteUrl('raspisanie/index'); ?>">
                                 <i class="icon-edit icon-2x"></i>
                                 <span class="menu_label">Расписание</span>
                             </a>

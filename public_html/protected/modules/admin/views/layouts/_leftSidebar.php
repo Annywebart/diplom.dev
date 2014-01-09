@@ -81,10 +81,26 @@
                             <div class="accordion-heading">
                                 <a href="#collapseFour" data-parent="#side_accordion" data-toggle="collapse"
                                    class="accordion-toggle">
-                                    <i class="icon-cog"></i> Настройки
+                                    <i class="icon-signal"></i> Статистика
                                 </a>
                             </div>
                             <div class="accordion-body collapse" id="collapseFour">
+                                <div class="accordion-inner">
+                                    <ul class="nav nav-list">
+                                        <li><?php echo CHtml::link('Общая статистика', Yii::app()->createAbsoluteUrl('admin/basicStatistics/index')) ?></li>
+                                        <li><?php echo CHtml::link('Подробная статистика', Yii::app()->createAbsoluteUrl('admin/detailStatistics/index')) ?></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a href="#collapseFive" data-parent="#side_accordion" data-toggle="collapse"
+                                   class="accordion-toggle">
+                                    <i class="icon-cog"></i> Настройки
+                                </a>
+                            </div>
+                            <div class="accordion-body collapse" id="collapseFive">
                                 <div class="accordion-inner">
                                     <ul class="nav nav-list">
                                         <li class="nav-header">Личные</li>
@@ -103,7 +119,7 @@
                     <div class="push"></div>
                 </div>
 
-                <div class="sidebar_info">
+<!--                <div class="sidebar_info">
                     <ul class="unstyled">
                         <li>
                             <span class="act act-danger">65</span>
@@ -114,7 +130,7 @@
                             <strong>Пользователи он-лайн</strong>
                         </li>
                     </ul>
-                </div>
+                </div>-->
 
             </div>
         </div>

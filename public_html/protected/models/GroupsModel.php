@@ -48,8 +48,8 @@ class GroupsModel extends CActiveRecord
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
         return array(
-            'idSpeciality0' => array(self::BELONGS_TO, 'Specialities', 'idSpeciality'),
-            'students' => array(self::HAS_MANY, 'Students', 'idGroup'),
+            'speciality' => array(self::BELONGS_TO, 'SpecialitiesModel', 'idSpeciality'),
+            'students' => array(self::HAS_MANY, 'StudentsModel', 'idGroup'),
         );
     }
 

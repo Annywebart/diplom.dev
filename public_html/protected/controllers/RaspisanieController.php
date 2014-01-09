@@ -1,6 +1,6 @@
 <?php
 
-class FacultetsController extends Controller
+class RaspisanieController extends Controller
 {
 
     /**
@@ -40,33 +40,24 @@ class FacultetsController extends Controller
 
     public function actionIndex()
     {
-        $model = new FacultetsModel('search');
-        $model->unsetAttributes();  // clear any default values
-        if (isset($_GET['FacultetsModel']))
-            $model->attributes = $_GET['FacultetsModel'];
-
-        $this->render('index', array('model' => $model));
+        $this->render('index', array(
+            'facultets' => FacultetsModel::getFacultetsByLetter(),
+        ));
     }
-    
-    public function actionView($id)
-    {
-        $model = FacultetsModel::model()->find('id=:id', array(':id' => $id));
 
-        $this->render('view', array('model' => $model));
+    public function actionFacultet($id)
+    {
+        $this->render('facultet', array(
+            'specialities' => SpecialitiesModel::model()->findAll('idFacultet=:id', array(':id' => $id)),
+         ));
     }
-    
-    public function actionKafedry($id)
-    {
-        $model = DepartmentsModel::model()->find('idFacultet=:id', array(':id' => $id));
 
-        $this->render('departments', array('model' => $model));
-    }
-    
-    public function actionSpecialnosti($id)
+    public function actionGroup($id)
     {
-        $model = SpecialitiesModel::model()->find('idFacultet=:id', array(':id' => $id));
-
-        $this->render('specialities', array('model' => $model));
+        $this->render('group', array(
+            'model' => TimetableModel::model()->findAll('idGroup=:id', array(':id' => $id)),
+            'lessons' => LessonsModel::model()->findAll(),
+        ));
     }
 
 }

@@ -28,8 +28,8 @@ class Controller extends CController
     public function filters()
     {
         return array(
-            array('application.components.yiibooster.filters.BootstrapFilter - delete')
+            array('application.components.yiibooster.filters.BootstrapFilter - delete'),
+            array('application.components.filters.UserLogFilter'),
         );
     }
-    
 }

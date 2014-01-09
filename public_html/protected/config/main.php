@@ -73,6 +73,9 @@ return array(
         'bootstrap' => array(
             'class' => 'application.components.yiibooster.components.Bootstrap',
         ),
+        'userLog' => array(
+            'class' => 'application.components.UserLogComponent',
+        ),
     ),
     // application-level parameters that can be accessed
     // using Yii::app()->params['paramName']

@@ -2,6 +2,7 @@
     position: relative;
     font-size: 50px;
     left: 190px;
+    width: 600px;
 }
 .error_container .error404 span {
     font-size: 200px;
@@ -13,7 +14,7 @@
     position: relative;
     font-size: 35px;
     left: 300px;
-    
+    width: 600px;
 }
 
 #grid-facultets .button-column {
@@ -27,4 +28,81 @@
 }
 .btn {
     cursor: pointer !important;
+}
+
+/* By letters */
+
+/* horisontal */
+/*#letter-container {
+    width: 100%;
+    height: 50px;
+    display: inline-block;
+    border-bottom: 1px solid #dddddd; 
+    box-sizing: content-box;
+        -moz-box-sizing: content-box;
+}
+#letter-container .letter,
+#letter-container .facultets {
+    float: left;
+}
+#letter-container .letter {
+    width: 10%;
+    text-align: center;
+    margin-top: 10px;
+}
+#letter-container .letter span {
+    font-size: 20px;
+}
+#letter-container .facultets {
+    width: 90%;
+    margin-top: 4px;
+}
+#letter-container .facultets a {
+    
+}*/
+
+/* vertical */
+#letter-container {
+    width: 10%;
+    height: 200px;
+    float: left;
+    border-right: 1px dashed #dddddd;
+    text-align: center;
+}
+#letter-container .letter {
+    margin: 10px 0;
+    padding: 0 0 5px;
+}
+#letter-container .letter span {
+    font-size: 20px;
+}
+#letter-container .facultets a {
+    margin: 5px 0;
+    width: 90%;
+}
+
+/* Groups of the facultets */
+
+#groups-conteiner {
+    padding: 0 15px;
+    display: inline-block;
+    box-sizing: content-box;
+      -moz-box-sizing: content-box;
+}
+#groups-conteiner .group{
+    background: none repeat scroll 0 0 #F7F7F7;
+    border: 1px solid #D3D3D3;
+    border-left: 3px solid #0892CD;
+    font: 100 20px/22px sans-serif;
+    padding: 10px 20px;
+
+}
+
+/* Timetable */
+
+#timetable-conteiner .day {
+    margin-bottom: 20px;
+}
+#timetable-conteiner .panel-body {
+    padding: 0px !important;
 }

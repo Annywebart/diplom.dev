@@ -53,7 +53,7 @@ class FacultetsModel extends CActiveRecord
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
         return array(
-            'specialities' => array(self::HAS_MANY, 'Specialities', 'idFacultet'),
+            'specialities' => array(self::HAS_MANY, 'SpecialitiesModel', 'idFacultet'),
             'corpus' => array(self::BELONGS_TO, 'CorpusesModel', 'idCorpus'),
             'classroom' => array(self::BELONGS_TO, 'ClassroomsModel', 'idClassroom'),
         );
@@ -137,6 +137,22 @@ class FacultetsModel extends CActiveRecord
     public static function getFacultetsList()
     {
         return CHtml::listData(FacultetsModel::model()->sortByCodeAsc()->findAll(), 'id', 'code');
+    }
+
+    /**
+     * Get list of facultets by letters of the alphabet
+     * 
+     * @return array Array with facultets
+     */
+    public static function getFacultetsByLetter()
+    {
+        $facultets = FacultetsModel::model()->findAll();
+        $letters = array();
+        foreach ($facultets as $item) {
+            $codeArray = preg_split('//u', $item->code, -1, PREG_SPLIT_NO_EMPTY);
+            $letters[$codeArray[0]][] = $item;
+        }
+        return $letters;
     }
 
 }

@@ -1,0 +1,11 @@
+#user-log-grid-index .table {
+    width: 60% !important;
+    float: left;
+}
+#user-log-grid-index #statistics {
+    width: 20% !important;
+    float: left;
+    margin-left: 20px; 
+    margin-top: -25px;
+    padding: 10px;
+}

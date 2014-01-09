@@ -52,8 +52,8 @@ class SpecialitiesModel extends CActiveRecord
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
         return array(
-            'groups' => array(self::HAS_MANY, 'Groups', 'idSpeciality'),
-            'idFacultet0' => array(self::BELONGS_TO, 'Facultets', 'idFacultet'),
+            'groups' => array(self::HAS_MANY, 'GroupsModel', 'idSpeciality'),
+            'facultet' => array(self::BELONGS_TO, 'FacultetsModel', 'idFacultet'),
         );
     }
 

@@ -9,6 +9,7 @@ class m131207_211115_create_table_groups extends CDbMigration
             CREATE  TABLE IF NOT EXISTS `Groups` (
                   `id` INT NOT NULL AUTO_INCREMENT,
                   `idSpeciality` INT NOT NULL ,
+                  `course` TINYINT(1) NOT NULL ,
                   `title` VARCHAR(10) NOT NULL ,
                   PRIMARY KEY (`id`)
                     )

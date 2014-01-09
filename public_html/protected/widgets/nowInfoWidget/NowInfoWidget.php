@@ -2,6 +2,7 @@
 
 class NowInfoWidget extends CWidget
 {
+    public $isHorisontal = false;
 
     public function run()
     {
@@ -34,6 +35,7 @@ class NowInfoWidget extends CWidget
         $this->render('index', array(
             'lesson' => $resultLesson,
             'currentWeek' => $this->getCurrentWeek(),
+            'style' => ($this->isHorisontal) ? 'horisontal' : 'vertical'
         ));
     }
 

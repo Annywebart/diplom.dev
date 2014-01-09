@@ -31,6 +31,59 @@
     line-height: 36px;
     margin: 5px 0;
 }
+
+#now-info {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+#now-info .horisontal .day {
+    font-size: 70px;
+    line-height: 40px;
+    float: left;
+    margin: 0 5px 0 10px;
+}
+#now-info .horisontal .month-year,
+#now-info .horisontal .day-of-week {
+    float: left;
+    margin: 8px 0 0 5px;
+}
+
+
+#now-info .horisontal .lesson {
+    font-size: 26px;
+    line-height: 36px;
+    margin: 5px;
+    float: left;
+    width: 65%;
+    text-align: center;
+}
+#now-info .horisontal .week {
+    font-size: 26px;
+    line-height: 36px;
+    margin: 5px;
+    float: right;
+    width: 30%;
+}
+#now-info .horisontal .first {
+    width: 30% !important;
+    float: left;
+}
+.horisontal #fancyClock {
+    width: 30% !important;
+    float: left;
+    margin: 0 !important;
+    clear: none;
+    padding-left: 60px; 
+}
+#now-info .horisontal .last {
+    width: 40% !important;
+    float: left;
+}
+.horisontal #fancyClock .clock {
+    line-height: 40px;
+}
+
 /* Clock */
 #fancyClock {
     width: 100%;
