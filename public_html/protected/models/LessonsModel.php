@@ -113,4 +113,24 @@ class LessonsModel extends CActiveRecord
         return CHtml::listData(LessonsModel::model()->findAll(), 'id', 'title');
     }
 
+    /**
+     * Get time of lessons
+     * 
+     * @return array Array with lessons
+     */
+    public static function getTime($id, $sepsrator = '')
+    {
+        $model = LessonsModel::model()->findByPk($id);
+        return '<span>' . date('H:i', strtotime($model->timeStart)) . '</span>' . $sepsrator . '<span>' . date('H:i', strtotime($model->timeEnd)) . '<span>';
+    }
+    
+    public static function isActiveNow($id, $dayOfWeek)
+    {
+        $model = LessonsModel::model()->findByPk($id);
+        if(date("w") == $dayOfWeek) {
+            if (date("H:i") >= $model->timeStart && date("H:i") <= $model->timeEnd) {
+                return true;
+            }
+        }
+    }
 }

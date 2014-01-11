@@ -6,6 +6,7 @@
  * The followings are the available columns in table 'Groups':
  * @property integer $id
  * @property integer $idSpeciality
+ * @property integer $course
  * @property string $title
  *
  * The followings are the available model relations:
@@ -31,12 +32,12 @@ class GroupsModel extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('idSpeciality, title', 'required'),
+            array('idSpeciality, course, title', 'required'),
             array('idSpeciality', 'numerical', 'integerOnly' => true),
             array('title', 'length', 'max' => 10),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('id, idSpeciality, title', 'safe', 'on' => 'search'),
+            array('id, idSpeciality, course, title', 'safe', 'on' => 'search'),
         );
     }
 
@@ -50,6 +51,7 @@ class GroupsModel extends CActiveRecord
         return array(
             'speciality' => array(self::BELONGS_TO, 'SpecialitiesModel', 'idSpeciality'),
             'students' => array(self::HAS_MANY, 'StudentsModel', 'idGroup'),
+            'timetable' => array(self::HAS_MANY, 'TimetableModel', 'idGroup'),
         );
     }
 
@@ -61,6 +63,7 @@ class GroupsModel extends CActiveRecord
         return array(
             'id' => 'ID',
             'idSpeciality' => 'Специальность',
+            'course' => 'Курс',
             'title' => 'Группа',
         );
     }
@@ -85,6 +88,7 @@ class GroupsModel extends CActiveRecord
 
         $criteria->compare('id', $this->id);
         $criteria->compare('idSpeciality', $this->idSpeciality);
+        $criteria->compare('course', $this->course);
         $criteria->compare('title', $this->title, true);
 
         return new CActiveDataProvider($this, array(
@@ -112,4 +116,5 @@ class GroupsModel extends CActiveRecord
     {
         return CHtml::listData(GroupsModel::model()->findAll(), 'id', 'title');
     }
+    
 }

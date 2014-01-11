@@ -48,7 +48,7 @@ class FacultetsController extends Controller
         $this->render('index', array('model' => $model));
     }
     
-    public function actionView($id)
+    public function actionInfo($id)
     {
         $model = FacultetsModel::model()->find('id=:id', array(':id' => $id));
 
@@ -57,8 +57,8 @@ class FacultetsController extends Controller
     
     public function actionKafedry($id)
     {
-        $model = DepartmentsModel::model()->find('idFacultet=:id', array(':id' => $id));
-
+        $model = FacultetsModel::model()->find('id=:id', array(':id' => $id));
+        
         $this->render('departments', array('model' => $model));
     }
     

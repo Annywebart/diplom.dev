@@ -38,6 +38,7 @@ return array(
         'urlManager' => array(
             'urlFormat' => 'path',
             'rules' => array(
+                '/'=>'site/index',
                 '/admin' => 'site/login',
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',

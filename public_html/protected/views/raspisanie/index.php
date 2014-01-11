@@ -1,8 +1,8 @@
 <section id="breadcrumbs">
     <div class="container">
         <ul>
-            <li><a href="#">Ebro Admin</a></li>
-            <li><span>Dashboard 1</span></li>						
+            <li><?php echo CHtml::link('Главная', '/') ; ?></li>
+            <li><span>Расписание</span></li>
         </ul>
     </div>
 </section>

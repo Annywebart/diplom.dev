@@ -24,34 +24,7 @@
  */
 class TimetableModel extends CActiveRecord
 {
-    const ALL_WEEK = 0;
-    const FIRST_WEEK = 1;
-    const SECOND_WEEK = 2;
 
-    public static $weekList = array(
-        self::ALL_WEEK => '',
-        self::FIRST_WEEK => '1-я неделя',
-        self::SECOND_WEEK => '2-я неделя',
-    );
-    
-    const SUNDAY = 0;
-    const MONDEY = 1;
-    const TUESDAY = 2;
-    const WEDNESDAY = 3;
-    const THURSDAY = 4;
-    const FRIDAY = 5;
-    const SATURDAY = 6;
-    
-    public static $dayOfWeekList = array(
-        self::MONDEY => 'Понедельник',
-        self::TUESDAY => 'Вторник',
-        self::WEDNESDAY => 'Среда',
-        self::THURSDAY => 'Четверг',
-        self::FRIDAY => 'Пятница',
-        self::SATURDAY => 'Суббота',
-        self::SUNDAY => 'Воскресенье',
-    );
-    
     /**
      * @return string the associated database table name
      */
@@ -86,11 +59,11 @@ class TimetableModel extends CActiveRecord
 // NOTE: you may need to adjust the relation name and the related
 // class name for the relations automatically generated below.
         return array(
-            'idClassroom0' => array(self::BELONGS_TO, 'ClassroomsModel', 'idClassroom'),
-            'idLesson0' => array(self::BELONGS_TO, 'LessonsModel', 'idLesson'),
-            'idGroup0' => array(self::BELONGS_TO, 'GroupsModel', 'idGroup'),
-            'idLecturer0' => array(self::BELONGS_TO, 'LecturerModel', 'idLecturer'),
-            'idCorpus0' => array(self::BELONGS_TO, 'CorpusesModel', 'idCorpus'),
+            'classroom' => array(self::BELONGS_TO, 'ClassroomsModel', 'idClassroom'),
+            'lesson' => array(self::BELONGS_TO, 'LessonsModel', 'idLesson'),
+            'group' => array(self::BELONGS_TO, 'GroupsModel', 'idGroup'),
+            'lecturer' => array(self::BELONGS_TO, 'LecturersModel', 'idLecturer'),
+            'corpus' => array(self::BELONGS_TO, 'CorpusesModel', 'idCorpus'),
         );
     }
 
@@ -157,5 +130,21 @@ class TimetableModel extends CActiveRecord
     {
         return parent::model($className);
     }
+
+    /**
+     * Get title of the lesson
+     * 
+     * @return string
+     */
+    public function getTitle()
+    {
+        if (isset($this->shortTitle)) {
+            return $this->shortTitle;
+        } else {
+            return $this->title;
+        }
+    }
+
+    
 
 }

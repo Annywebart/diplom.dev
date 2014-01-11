@@ -2,8 +2,8 @@
 <section id="breadcrumbs">
     <div class="container">
         <ul>
-            <li><a href="#">Ebro Admin</a></li>
-            <li><span>Dashboard 1</span></li>						
+            <li><?php echo CHtml::link('Главная', '/') ; ?></li>
+            <li><span>Факультеты</span></li>						
         </ul>
     </div>
 </section>
@@ -33,21 +33,21 @@
                                 'timetable' => array(
                                     'buttonText' => 'Информация о факультете',
                                     'label' => false,
-                                    'url' => 'array("facultets/view","id" => $data->id)',
+                                    'url' => 'array("facultets/info","id" => $data->id)',
 //                                        'imageUrl' => Yii::app()->params['styleSite'].'/images/icons/icon16-edit.png',
                                     'options' => array('class' => 'btn btn-default'),
                                 ),
                                 'specialities' => array(
                                     'buttonText' => 'Специальности',
                                     'label' => false,
-                                    'url' => 'array("facultets/specialities","id" => $data->id)',
+                                    'url' => 'array("facultets/specialnosti","id" => $data->id)',
 //                                        'imageUrl' => Yii::app()->params['styleSite'].'/images/icons/icon16-edit.png',
                                     'options' => array('class' => 'btn btn-default'),
                                 ),
                                 'departments' => array(
                                     'buttonText' => 'Кафедры',
                                     'label' => false,
-                                    'url' => 'array("facultets/departments","id" => $data->id)',
+                                    'url' => 'array("facultets/kafedry","id" => $data->id)',
 //                                        'imageUrl' => Yii::app()->params['styleSite'].'/images/icons/icon16-edit.png',
                                     'options' => array('class' => 'btn btn-default'),
                                 ),

@@ -106,3 +106,24 @@
 #timetable-conteiner .panel-body {
     padding: 0px !important;
 }
+
+#timetable-conteiner .table-striped tr {
+    border-top: 1px solid #DDDDDD;
+}
+#timetable-conteiner .table-striped .success{
+    border-color: #A3D48E;
+    background-color: #DFF0D8;
+}
+#timetable-conteiner .table-striped .success td:last-of-type{
+    
+}
+#timetable-conteiner .table-striped td:first-of-type {
+    padding-left: 8px;
+}
+#timetable-conteiner .table-striped td {
+    padding: 8px 3px;
+}
+#timetable-conteiner .table-striped td span {
+    float: left;
+    clear: both;
+}

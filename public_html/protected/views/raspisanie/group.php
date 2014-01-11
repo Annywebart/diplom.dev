@@ -1,8 +1,10 @@
 <section id="breadcrumbs">
     <div class="container">
         <ul>
-            <li><a href="#">Ebro Admin</a></li>
-            <li><span>Dashboard 1</span></li>						
+            <li><?php echo CHtml::link('Главная', '/'); ?></li>
+            <li><?php echo CHtml::link('Расписание', Yii::app()->createAbsoluteUrl('raspisanie/index')); ?></li>	
+            <li><?php echo CHtml::link('Факультет ' . $model->speciality->facultet->code, Yii::app()->createAbsoluteUrl('raspisanie/index')); ?></li>
+            <li><span>Группа <?php echo $model->title; ?></span></li>
         </ul>
     </div>
 </section>
@@ -26,275 +28,42 @@
         <div class="row">
             <div class="col-sm-12">
                 <div id="timetable-conteiner" class="row">
-                    <div class="day col-sm-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">Понедельник</h4>
-                            </div>
-                            <div class="panel-body">
-                                <?php // foreach ($lessons as $lesson): ?>
-                                <?php // echo $lesson->id ;?>
-                                <?php // endforeach;?>
-                                <table class="table table-striped">
-<!--                                    <thead>
-                                        <tr>
-                                            <th>id</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                        </tr>
-                                    </thead>-->
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Summer Throssell</td>
-                                            <td>summert@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Anthony Pound</td>
-                                            <td>anthonyp@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Erin Church</td>
-                                            <td>erinc@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Declan Pamphlett</td>
-                                            <td>declanp@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Declan Pamphlett</td>
-                                            <td>declanp@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Declan Pamphlett</td>
-                                            <td>declanp@example.com</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
 
+                    <?php foreach ($day as $key => $value): ?>
+                        <?php // var_dump($day) ; ?>
+                        <?php // var_dump($value) ;die; ?>
+                        <div class="day col-sm-4">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><?php echo DayOfWeekModel::$days[$key]; ?></h4>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                            <?php if (!empty($value)): ?>
+                                                <?php foreach ($value as $k => $v): ?>
+                                                    <tr class="<?php echo (LessonsModel::isActiveNow($k, $key) ? 'success' : '') ?>">
+                                                        <td><?php echo $k; ?></td>
+                                                        <td><?php echo LessonsModel::getTime($k); ?></td>
+                                                        <?php if (!empty($v)): ?>
+                                                            <td><?php echo $v->title; ?></td>
+                                                            <td><?php echo $v->lecturer->getFullName(); ?></td>
+                                                            <td><?php echo $v->classroom->number; ?></td>
+                                                            <td><?php echo $v->corpus->getTitle(); ?></td>
+                                                        <?php endif; ?>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            <?php else: ?>
+                                            <p>Пар нет</p>
+                                        <?php endif; ?>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div class="panel-footer"></div>
                             </div>
-                            <div class="panel-footer">Panel Footer</div>
                         </div>
-                    </div>
-                    <div class="day col-sm-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">Вторник</h4>
-                            </div>
-                            <div class="panel-body">
-                                <table class="table table-striped">
-<!--                                    <thead>
-                                        <tr>
-                                            <th>id</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                        </tr>
-                                    </thead>-->
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Summer Throssell</td>
-                                            <td>summert@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Anthony Pound</td>
-                                            <td>anthonyp@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Erin Church</td>
-                                            <td>erinc@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Declan Pamphlett</td>
-                                            <td>declanp@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Declan Pamphlett</td>
-                                            <td>declanp@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Declan Pamphlett</td>
-                                            <td>declanp@example.com</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="panel-footer">Panel Footer</div>
-                        </div>
-                    </div>
-                    <div class="day col-sm-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">Среда</h4>
-                            </div>
-                            <div class="panel-body">
-                                <table class="table table-striped">
-<!--                                    <thead>
-                                        <tr>
-                                            <th>id</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                        </tr>
-                                    </thead>-->
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Summer Throssell</td>
-                                            <td>summert@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Anthony Pound</td>
-                                            <td>anthonyp@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Erin Church</td>
-                                            <td>erinc@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Declan Pamphlett</td>
-                                            <td>declanp@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Declan Pamphlett</td>
-                                            <td>declanp@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Declan Pamphlett</td>
-                                            <td>declanp@example.com</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="panel-footer">Panel Footer</div>
-                        </div>
-                    </div>
-                    <div class="day col-sm-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">Четверг</h4>
-                            </div>
-                            <div class="panel-body">
-                                <table class="table table-striped">
-<!--                                    <thead>
-                                        <tr>
-                                            <th>id</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                        </tr>
-                                    </thead>-->
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Summer Throssell</td>
-                                            <td>summert@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Anthony Pound</td>
-                                            <td>anthonyp@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Erin Church</td>
-                                            <td>erinc@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Declan Pamphlett</td>
-                                            <td>declanp@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Declan Pamphlett</td>
-                                            <td>declanp@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Declan Pamphlett</td>
-                                            <td>declanp@example.com</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="panel-footer">Panel Footer</div>
-                        </div>
-                    </div>
-                    <div class="day col-sm-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">Пятница</h4>
-                            </div>
-                            <div class="panel-body">
-                                <table class="table table-striped">
-<!--                                    <thead>
-                                        <tr>
-                                            <th>id</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                        </tr>
-                                    </thead>-->
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Summer Throssell</td>
-                                            <td>summert@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Anthony Pound</td>
-                                            <td>anthonyp@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Erin Church</td>
-                                            <td>erinc@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Declan Pamphlett</td>
-                                            <td>declanp@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Declan Pamphlett</td>
-                                            <td>declanp@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Declan Pamphlett</td>
-                                            <td>declanp@example.com</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="panel-footer">Panel Footer</div>
-                        </div>
-                    </div>
-                    <div class="day col-sm-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">Суббота</h4>
-                            </div>
-                            <div class="panel-body">
-                            </div>
-                            <div class="panel-footer">Panel Footer</div>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
 
                 </div>
             </div>

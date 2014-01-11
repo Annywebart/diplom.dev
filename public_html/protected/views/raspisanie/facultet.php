@@ -1,8 +1,9 @@
 <section id="breadcrumbs">
     <div class="container">
         <ul>
-            <li><a href="#">Ebro Admin</a></li>
-            <li><span>Dashboard 1</span></li>						
+            <li><?php echo CHtml::link('Главная', '/') ; ?></li>
+            <li><?php echo CHtml::link('Расписание', Yii::app()->createAbsoluteUrl('raspisanie/index')) ; ?></li>	
+            <li><span>Факультет <?php echo $model->code; ?></span></li>
         </ul>
     </div>
 </section>
@@ -15,8 +16,8 @@
         <div class="row">
             <div class="col-sm-9">
                 <div id="groups-conteiner" class="row">
-                    <?php if (!empty($specialities)): ?>
-                        <?php foreach ($specialities as $speciality): ?>
+                    <?php if (!empty($model->specialities)): ?>
+                        <?php foreach ($model->specialities as $speciality): ?>
                             <?php if (!empty($speciality->groups)): ?>
                                 <?php foreach ($speciality->groups as $group): ?>
                                     <?php echo CHtml::link(

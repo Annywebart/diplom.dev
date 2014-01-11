@@ -48,15 +48,41 @@ class RaspisanieController extends Controller
     public function actionFacultet($id)
     {
         $this->render('facultet', array(
-            'specialities' => SpecialitiesModel::model()->findAll('idFacultet=:id', array(':id' => $id)),
-         ));
+            'model' => FacultetsModel::model()->find('id=:id', array(':id' => $id)),
+        ));
     }
 
     public function actionGroup($id)
     {
+        $model = GroupsModel::model()->find('id=:id', array(':id' => $id));
+        $lessons = LessonsModel::model()->findAll();
+
+        $day = array();
+        foreach (DayOfWeekModel::listData(true) as $key => $value) {
+            $day[$key] = NULL;
+
+            foreach ($lessons as $lesson) {
+                $day[$key][$lesson->id] = NULL;
+                foreach ($model->timetable as $item) {
+                    if ($item) {
+                        if ($key == $item->dayOfWeek) {
+                            if ($lesson->id == $item->idLesson) {
+                                $day[$key][$lesson->id] = $item;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+//        echo '<pre>';
+//        var_dump($day);
+//        die;
+
+
         $this->render('group', array(
-            'model' => TimetableModel::model()->findAll('idGroup=:id', array(':id' => $id)),
-            'lessons' => LessonsModel::model()->findAll(),
+            'model' => $model,
+            'day' => $day,
         ));
     }
 

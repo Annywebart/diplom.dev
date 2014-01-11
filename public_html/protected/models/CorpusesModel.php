@@ -132,4 +132,18 @@ class CorpusesModel extends CActiveRecord
             echo CHtml::tag('option', array('value' => $item->id), CHtml::encode($item->number), true);
         }
     }
+    
+    /**
+     * Get title of the corpus
+     * 
+     * @return string
+     */
+    public function getTitle()
+    {
+        if(isset($this->shortTitle)) {
+            return $this->shortTitle;
+        } else {
+            return $this->title;
+        }
+    }
 }

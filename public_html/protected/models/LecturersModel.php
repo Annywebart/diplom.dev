@@ -129,4 +129,18 @@ class LecturersModel extends CActiveRecord
     {
         return CHtml::listData(LecturersModel::model()->findAll(), 'id', 'lastName');
     }
+
+    /**
+     * Get full name
+     */
+    public function getFullName($isFull = false)
+    {
+        if (false == $isFull) {
+            $firstNameArray = preg_split('//u', $this->firstName, -1, PREG_SPLIT_NO_EMPTY);
+            $fatherNameArray = preg_split('//u', $this->fatherName, -1, PREG_SPLIT_NO_EMPTY);
+            return $this->lastName . ' ' . $firstNameArray[0] . '.' . $fatherNameArray[0] . '.';
+        }
+        return $this->lastName . ' ' . $this->firstName . ' ' . $this->fatherName;
+    }
+
 }

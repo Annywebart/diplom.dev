@@ -29,13 +29,13 @@
 
     <div class="row">
         <?php echo $form->labelEx($model, 'week'); ?>
-        <?php echo $form->dropDownList($model, 'week', TimetableModel::$weekList); ?>
+        <?php echo $form->dropDownList($model, 'week', WeekModel::listData()); ?>
         <?php echo $form->error($model, 'week'); ?>
     </div>
 
     <div class="row">
         <?php echo $form->labelEx($model, 'dayOfWeek'); ?>
-        <?php echo $form->dropDownList($model, 'dayOfWeek', TimetableModel::$dayOfWeekList, array('empty' => '')); ?>
+        <?php echo $form->dropDownList($model, 'dayOfWeek', DayOfWeekModel::listData(), array('empty' => '')); ?>
         <?php echo $form->error($model, 'dayOfWeek'); ?>
     </div>
 

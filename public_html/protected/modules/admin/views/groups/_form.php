@@ -26,6 +26,12 @@
         <?php echo $form->dropDownList($model, 'idSpeciality', SpecialitiesModel::getSpecialitiesList()); ?>
         <?php echo $form->error($model, 'idSpeciality'); ?>
     </div>
+    
+    <div class="row">
+        <?php echo $form->labelEx($model, 'course'); ?>
+        <?php echo $form->dropDownList($model, 'course', CoursesModel::listData(), array('empty' => '')); ?>
+        <?php echo $form->error($model, 'course'); ?>
+    </div>
 
     <div class="row">
         <?php echo $form->labelEx($model, 'title'); ?>

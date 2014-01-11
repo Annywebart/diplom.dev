@@ -20,6 +20,7 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
     'template' => "{items}\n{extendedSummary}",
     'columns' => array(
         'idSpeciality',
+        'course', 
         'title',
         array(
             'class' => 'bootstrap.widgets.TbButtonColumn',
