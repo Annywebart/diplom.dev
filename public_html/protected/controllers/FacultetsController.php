@@ -57,9 +57,24 @@ class FacultetsController extends Controller
     
     public function actionKafedry($id)
     {
-        $model = FacultetsModel::model()->find('id=:id', array(':id' => $id));
+        $dataProvider = new CActiveDataProvider('DepartmentsModel', array(
+            'criteria' => array(
+                'condition' => 'idFacultet=:id',
+                'params' => array(':id' => $id),
+            ),
+        ));
         
-        $this->render('departments', array('model' => $model));
+        $this->render('departments', array(
+            'model' => FacultetsModel::model()->find('id=:id', array(':id' => $id)),
+            'dataProvider' => $dataProvider,
+        ));
+    }
+    
+    public function actionKafedra($id)
+    {
+        $this->render('departmentInfo', array(
+            'model' => DepartmentsModel::model()->find('id=:id', array(':id' => $id)),
+        ));
     }
     
     public function actionSpecialnosti($id)

@@ -3,7 +3,8 @@
         <ul>
             <li><?php echo CHtml::link('Главная', '/'); ?></li>
             <li><?php echo CHtml::link('Факультеты', Yii::app()->createAbsoluteUrl('facultets/index')); ?></li>
-            <li><span>Кафедры факультета <?php echo $model->code; ?></span></li>						
+            <li><?php echo CHtml::link('Кафедры факультета ' . $model->facultet->code, Yii::app()->createAbsoluteUrl('facultets/kafedry', array('id' => $model->facultet->id))); ?></li>						
+            <li><span>Кафедра <?php echo $model->getTitle(); ?></span></li>
         </ul>
     </div>
 </section>
@@ -15,19 +16,15 @@
 
         <div class="row">
             <div class="col-sm-9">
-                <h2>Кафедры факультета <?php echo $model->code; ?></h2>
-                <?php
-                $this->widget('bootstrap.widgets.TbListView', array(
-                    'dataProvider' => $dataProvider,
-                    'template' => '{items}',
-                    'emptyText' => 'Результатов не найдено',
-                    'itemView' => '_department', // refers to the partial view named '_post'
-                    'sortableAttributes' => array(
-                        'title',
-                    ),
-                ));
-                ?>
-
+                <h2><?php echo $model->title; ?></h2>
+                <?php echo $model->description; ?>
+                <div class="hr margin-top-20"></div>
+                <h3>Выпускающие специальности</h3>
+                
+                <?php foreach ($model->specialities as $item): ?>
+                    <?php echo $item->code;?> - <?php echo $item->title;?><br />
+                <?php endforeach; ?>
+                
             </div>
             <div class="col-sm-3">
                 <div class="panel panel-default">

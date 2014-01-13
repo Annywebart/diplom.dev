@@ -41,7 +41,7 @@
 
     <div class="row">
         <?php echo $form->labelEx($model, 'headDepartment'); ?>
-        <?php echo $form->textField($model, 'headDepartment'); ?>
+        <?php echo $form->dropDownList($model, 'headDepartment', LecturersModel::getLecturersList(), array('empty' => '')); ?>
         <?php echo $form->error($model, 'headDepartment'); ?>
     </div>
 

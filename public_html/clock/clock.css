@@ -36,12 +36,12 @@
     font-size: 55px;
     line-height: 40px;
     float: left;
-    margin: 0 5px 0 10px;
+    margin: 0 5px 0 5px;
 }
 #now-info .horisontal .month-year,
 #now-info .horisontal .day-of-week {
     float: left;
-    margin: 8px 0 0 5px;
+    margin: 8px 0 0;
     font-size: 24px;
 }
 

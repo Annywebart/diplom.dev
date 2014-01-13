@@ -133,7 +133,7 @@ class LecturersModel extends CActiveRecord
     /**
      * Get full name
      */
-    public function getFullName($isFull = false)
+    public function getThisFullName($isFull = false)
     {
         if (false == $isFull) {
             $firstNameArray = preg_split('//u', $this->firstName, -1, PREG_SPLIT_NO_EMPTY);
@@ -141,6 +141,23 @@ class LecturersModel extends CActiveRecord
             return $this->lastName . ' ' . $firstNameArray[0] . '.' . $fatherNameArray[0] . '.';
         }
         return $this->lastName . ' ' . $this->firstName . ' ' . $this->fatherName;
+    }
+
+    /**
+     * Get full name
+     */
+    public static function getFullName($id = NULL, $isFull = false)
+    {
+        $model = LecturersModel::model()->findByPk($id);
+        
+        if (!empty($model)) {
+            if (false == $isFull) {
+                $firstNameArray = preg_split('//u', $model->firstName, -1, PREG_SPLIT_NO_EMPTY);
+                $fatherNameArray = preg_split('//u', $model->fatherName, -1, PREG_SPLIT_NO_EMPTY);
+                return $model->lastName . ' ' . $firstNameArray[0] . '.' . $fatherNameArray[0] . '.';
+            }
+            return $model->lastName . ' ' . $model->firstName . ' ' . $model->fatherName;
+        }
     }
 
 }

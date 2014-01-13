@@ -47,7 +47,7 @@
                                                         <td><?php echo LessonsModel::getTime($k); ?></td>
                                                         <?php if (!empty($v)): ?>
                                                             <td><?php echo $v->title; ?></td>
-                                                            <td><?php echo $v->lecturer->getFullName(); ?></td>
+                                                            <td><?php echo $v->lecturer->getThisFullName(); ?></td>
                                                             <td><?php echo $v->classroom->number; ?></td>
                                                             <td><?php echo $v->corpus->getTitle(); ?></td>
                                                         <?php endif; ?>
