@@ -1,4 +1,4 @@
-<section id="breadcrumbs">
+<!--<section id="breadcrumbs">
     <div class="container">
         <ul>
             <li><a href="#">Ebro Admin</a></li>
@@ -11,9 +11,9 @@
     <div id="main_content_outer" class="clearfix">
         <div id="main_content">
 
-            <!-- main content -->
+             main content 
 
-<!--            <div class="row">
+            <div class="row">
                 <div class="col-sm-3">
                     <div class="box_stat box_pos">
                         <img href="<?php echo Yii::app()->params['styleSite']; ?>/img/blank.png" alt="" class="img_ind">
@@ -46,9 +46,9 @@
                         <small>Orders (24h)</small>
                     </div>
                 </div>
-            </div>-->
+            </div>
 
-<!--            <div class="row">
+            <div class="row">
                 <div class="col-sm-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -110,9 +110,9 @@
                         </div>
                     </div>
                 </div>
-            </div>-->
+            </div>
 
-<!--            <div class="row">
+            <div class="row">
                 <div class="col-sm-6">
                     <div class="box_stat_circular">
                         <div class="box_stat_circular_a color_a">
@@ -207,7 +207,7 @@
                         </div>
                     </div>
                 </div>
-            </div>-->
+            </div>
 
             <div class="row">
                 <div class="col-sm-8">
@@ -335,4 +335,4 @@
             </li>
         </ul>				
     </nav>
-</section>
+</section>-->

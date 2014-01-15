@@ -79,7 +79,7 @@ class FacultetsController extends Controller
     
     public function actionSpecialnosti($id)
     {
-        $model = SpecialitiesModel::model()->find('idFacultet=:id', array(':id' => $id));
+        $model = FacultetsModel::model()->find('id=:id', array(':id' => $id));
 
         $this->render('specialities', array('model' => $model));
     }

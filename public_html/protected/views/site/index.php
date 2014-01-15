@@ -1,4 +1,4 @@
-<section id="breadcrumbs">
+<!--<section id="breadcrumbs">
     <div class="container">
         <ul>
             <li><a href="#">Ebro Admin</a></li>
@@ -10,7 +10,7 @@
 <section class="container clearfix main_section">
     <div id="main_content_outer" class="clearfix">
 
-        <!-- main content -->
+         main content 
 
         <div class="row">
             <div class="col-sm-9">
@@ -108,4 +108,4 @@
         </div>
     </div>
 
-</section>
+</section>-->

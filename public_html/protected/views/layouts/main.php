@@ -5,7 +5,6 @@
         <title>Ebro Admin Template v1.0</title>
 
         <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
         
         <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" rel="stylesheet">
 
@@ -63,7 +62,7 @@
                                         <span class="label label-danger">8</span>
                                         <i class="icon-comment-alt icon-2x"></i>
                                     </a>
-                                    <ul class="dropdown-menu">
+<!--                                    <ul class="dropdown-menu">
                                         <li>
                                             <div class="dropdown_heading">Комментарии</div>
                                             <div class="dropdown_content">
@@ -84,7 +83,7 @@
                                             </div>
                                             <div class="dropdown_footer"><a href="#" class="btn btn-sm btn-default">Показать все</a></div>
                                         </li>
-                                    </ul>
+                                    </ul>-->
                                 </div>
                                 <div class="notification_separator"></div>
                                 <div class="notification_dropdown dropdown">
@@ -136,12 +135,12 @@
                             <?php echo CHtml::link('Войти', Yii::app()->createAbsoluteUrl('site/login'), array('class' => 'btn btn-default pull-right')) ; ?>
                         <?php endif; ?>
                         
-                        <div class="col-xs-12 col-sm-pull-6 col-sm-4">
+<!--                        <div class="col-xs-12 col-sm-pull-6 col-sm-4">
                             <form class="main_search">
                                 <input type="text" id="search_query" name="search_query" class="typeahead form-control">
                                 <button type="submit" class="btn btn-primary btn-xs"><i class="icon-search icon-white"></i></button>
                             </form> 
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </header>						
@@ -202,9 +201,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-3">
-                        &copy; 2013 Your Company
+                        &copy; 2013 
                     </div>
-                    <div class="col-sm-8">
+<!--                    <div class="col-sm-8">
                         <ul>
                             <li><a href="#">Dashboard</a></li>
                             <li>&middot;</li>
@@ -217,7 +216,7 @@
                     </div>
                     <div class="col-sm-1 text-right">
                         <small class="text-muted">v1.0</small>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </footer>

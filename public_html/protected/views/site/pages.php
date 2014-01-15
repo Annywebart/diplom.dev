@@ -1,8 +1,8 @@
 <section id="breadcrumbs">
     <div class="container">
         <ul>
-            <li><a href="#">Ebro Admin</a></li>
-            <li><span>Dashboard 1</span></li>						
+            <li><a href="#">Главная</a></li>
+            <li><span>О сервисе</span></li>						
         </ul>
     </div>
 </section>
@@ -28,7 +28,7 @@
         </div>
     </div>
 
-    <nav id="sidebar">
+<!--    <nav id="sidebar">
         <div class="sepH_b">
             <a href="javascript:void(0)" id="text_nav_v_collapse" class="btn btn-default btn-xs">Collapse All</a>
             <a href="javascript:void(0)" id="text_nav_v_expand" class="btn btn-default btn-xs">Expand All</a>
@@ -55,5 +55,5 @@
                 </ul>
             </li>
         </ul>				
-    </nav>
+    </nav>-->
 </section>

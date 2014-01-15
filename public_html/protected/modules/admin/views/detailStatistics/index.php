@@ -48,37 +48,37 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
             'header' => 'Среднее время',
             'value' => '$data["meanTime"]',
         ),
-//        array(
-//            'class' => 'bootstrap.widgets.TbButtonColumn',
-//            'template' => '{view}{delete}',
-//            'buttons' => array(
-//                'view' => array(
-//                    'label' => 'View',
-//                    'url' => 'array("detailStatistics/view/", "sessionId" => $data["sessionId"])',
-//                ),
-//                'delete' => array(
-//                    'label' => 'Delete',
-//                    'url' => 'array("detailStatistics/delete/", "sessionId" => $data["sessionId"])',
-//                ),
-//            ),
-//        ),
-    ),
-    'chartOptions' => array(
-        'title' => 'Статистика посещений страниц',
-        'data' => array(
-            'series' => array(
-                array(
-                    'name' => 'pages',
-                    'attribute' => 'pages'
-                )
-            )
+        array(
+            'class' => 'bootstrap.widgets.TbButtonColumn',
+            'template' => '{view}{delete}',
+            'buttons' => array(
+                'view' => array(
+                    'label' => 'View',
+                    'url' => 'array("detailStatistics/view/", "sessionId" => $data["sessionId"])',
+                ),
+                'delete' => array(
+                    'label' => 'Delete',
+                    'url' => 'array("detailStatistics/delete/", "sessionId" => $data["sessionId"])',
+                ),
+            ),
         ),
-        'config' => array(
-            'chart' => array(
-                'width' => 800
-            )
-        )
     ),
+//    'chartOptions' => array(
+//        'title' => 'Статистика посещений страниц',
+//        'data' => array(
+//            'series' => array(
+//                array(
+//                    'name' => 'pages',
+//                    'attribute' => 'pages'
+//                )
+//            )
+//        ),
+//        'config' => array(
+//            'chart' => array(
+//                'width' => 800
+//            )
+//        )
+//    ),
     'extendedSummary' => array(
         'title' => 'Общая статистика',
         'columns' => array(

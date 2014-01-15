@@ -37,12 +37,13 @@ class DetailStatisticsController extends AdminController
                 )
                 ->from(UserLogsModel::model()->tableName())
                 ->group('sessionId')
-                ->order('entryTime')
+                ->order('entryTime DESC')
                 ->queryAll();
         $dataProvider = new CArrayDataProvider($result, array(
-            'pagination' => array(
-                'pageSize' => 10,
-            )
+//            'pagination' => array(
+//                'pageSize' => 10,
+//            )
+            'pagination' => false
         ));
         
         $this->render('index', array(
