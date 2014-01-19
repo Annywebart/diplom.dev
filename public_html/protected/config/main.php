@@ -19,6 +19,10 @@ return array(
         'application.components.*',
         'application.extensions.*',
         'application.helpers.*',
+        'application.extensions.eoauth.*',
+        'application.extensions.eoauth.lib.*',
+        'application.extensions.lightopenid.*',
+        'application.extensions.eauth.services.*',
     ),
     'modules' => array(
         'admin',
@@ -76,6 +80,48 @@ return array(
         ),
         'userLog' => array(
             'class' => 'application.components.UserLogComponent',
+        ),
+        'loid' => array(
+            'class' => 'application.extensions.lightopenid.loid',
+        ),
+        'eauth' => array(
+            'class' => 'application.extensions.eauth.EAuth',
+            'popup' => true, // Use the popup window instead of redirecting.
+            'services' => array(// You can change the providers and their classes.
+                'google' => array(
+                    'class' => 'GoogleOpenIDService',
+                ),
+//                'google' => array(
+//                    'class' => 'GoogleOAuthService',
+//                    'client_id' => '06dbd1dffc4e40a2b2ec9b3110807b5c',
+//                    'client_secret' => '401e8d05d9d04b5db0f2c35287cea337',
+//                    'title' => 'Google',
+//                ),
+                'yandex' => array(
+                    'class' => 'YandexOpenIDService',
+                ),
+//                'yandex' => array(
+//                    'class' => 'YandexOAuthService',
+//                    'client_id' => '06dbd1dffc4e40a2b2ec9b3110807b5c',
+//                    'client_secret' => '401e8d05d9d04b5db0f2c35287cea337',
+//                    'title' => 'Yandex',
+//                ),
+                'twitter' => array(
+                    'class' => 'TwitterOAuthService',
+                    'key' => 'karHs6jcyBEU0zAM5hBqEA',
+                    'secret' => 'OeCIVMBCSf0HA63ZJ9vDY4s3mCg22iM28baG3uiM',
+                ),
+                'facebook' => array(
+                    'class' => 'FacebookOAuthService',
+                    'client_id' => '222911084543615',
+                    'client_secret' => 'bf07cace383bc7b7a6664cdc70b41bd3',
+                ),
+                'vkontakte' => array(
+                    'class' => 'VKontakteOAuthService',
+                    'client_id' => '3935335',
+                    'client_secret' => 'M2Hqe6j26SJXRXYaodLP',
+                ),
+            ),
         ),
     ),
     // application-level parameters that can be accessed

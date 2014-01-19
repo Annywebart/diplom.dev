@@ -37,6 +37,10 @@
         <a href="#">Зарегистроваться</a>
         <?php $this->endWidget(); ?>
     </div>
+
+    <h2></h2>
+    <?php Yii::app()->eauth->renderWidget(); ?>
+
 </div>
 
 

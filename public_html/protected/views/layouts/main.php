@@ -56,7 +56,7 @@
                         </div>
                         
                         <?php if(!Yii::app()->user->isGuest):?>
-                            <div class="col-sm-push-4 col-sm-3 text-right hidden-xs">
+                            <div class="col-sm-push-4 col-sm-2 text-right hidden-xs">
                                 <div class="notification_dropdown dropdown">
                                     <a href="#" class="notification_icon dropdown-toggle" data-toggle="dropdown">
                                         <span class="label label-danger">8</span>
@@ -126,7 +126,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-xs-6 col-sm-push-4 col-sm-3">
+                            <div class="col-xs-6 col-sm-push-4 col-sm-4">
                                 <div class="pull-right dropdown">
                                     <?php $this->widget('application.widgets.authorizeWidget.AuthorizeWidget'); ?>
                                 </div>

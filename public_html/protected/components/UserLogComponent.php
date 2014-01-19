@@ -32,8 +32,9 @@ class UserLogComponent extends CApplicationComponent
                     $model->sessionId = $sessionId;
                     $model->userIp = Yii::app()->request->userHostAddress;
                     $model->userName = Yii::app()->user->getName();
-                    $model->browser = 'Firefox';
-                    $model->operatingSystem = 'Windows 7'; //переделать
+                    $model->browser = 'Opera';
+                    $model->operatingSystem = 'Linux'; //переделать
+                    $model->resolution = '1600x900'; //переделать
                     $model->entryTime = date('Y-m-d H:i:s');
                     $model->refererUrl = $pageUrl;  //переделать
                     $model->pageUrl = $pageUrl;

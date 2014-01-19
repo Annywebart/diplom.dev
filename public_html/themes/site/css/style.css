@@ -175,7 +175,7 @@ input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked:
 /* top icon navigation */
 .top_ico_nav {list-style:none;margin:0;padding:0}
 .top_ico_nav li {float:left;margin-right:8px}
-.top_ico_nav li a {border:1px solid #e1e1e1;min-width:100px;height:auto;text-align:center;display:block;color:#333;padding:7px 15px 5px 25px;background:#fff;position:relative}
+.top_ico_nav li a {border:1px solid #e1e1e1;min-width:100px;height:auto;text-align:center;display:block;color:#333;padding:7px 19px 5px 30px;background:#fff;position:relative}
 .top_ico_nav li a i {display:inline-block;line-height:30px}
 .top_ico_nav li a:hover,.top_ico_nav li.active a {background:#f8f8f8}
 .top_ico_nav li a span.menu_label {display:inline-block;font-size:16px;font-weight:300;font-family: 'Roboto', sans-serif;padding: 15px 10px 15px;}

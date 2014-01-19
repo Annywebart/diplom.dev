@@ -1,3 +1,6 @@
+#admin {
+    margin: 0 20px;
+}
 #user-log-grid-index .table {
     width: 60% !important;
     float: left;

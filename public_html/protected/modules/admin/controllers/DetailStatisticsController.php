@@ -4,6 +4,18 @@ class DetailStatisticsController extends AdminController
 {
 
     public $layout = '/layouts/column2';
+
+    /**
+     * @return array action filters
+     */
+    public function filters()
+    {
+        return array(
+            'accessControl', // perform access control for CRUD operations
+            'postOnly + delete', // we only allow deletion via POST request
+        );
+    }
+
     /**
      * Declares class-based actions.
      */
@@ -24,10 +36,33 @@ class DetailStatisticsController extends AdminController
     }
 
     /**
+     * Specifies the access control rules.
+     * This method is used by the 'accessControl' filter.
+     * @return array access control rules
+     */
+    public function accessRules()
+    {
+        return array(
+            array('allow', // allow admin user to perform 'admin' and 'delete' actions
+                'actions' => array('index', 'users', 'UsersView', 'pages', 'pagesView', 'usersDelete'),
+                'users' => array('admin'),
+            ),
+            array('deny', // deny all users
+                'users' => array('*'),
+            ),
+        );
+    }
+
+    public function actionIndex()
+    {
+        $this->render('index');
+    }
+
+    /**
      * This is the default 'index' action that is invoked
      * when an action is not explicitly requested by users.
      */
-    public function actionIndex()
+    public function actionUsers()
     {
         $result = Yii::app()->db->createCommand()
                 ->select('id, sessionId, entryTime, userIp, browser, userName, operatingSystem, 
@@ -45,8 +80,8 @@ class DetailStatisticsController extends AdminController
 //            )
             'pagination' => false
         ));
-        
-        $this->render('index', array(
+
+        $this->render('users', array(
             'dataProvider' => $dataProvider,
         ));
     }
@@ -54,7 +89,7 @@ class DetailStatisticsController extends AdminController
     /**
      * Table with user log
      */
-    public function actionView($sessionId)
+    public function actionUsersView($sessionId)
     {
         $criteria = new CDbCriteria;
 
@@ -65,8 +100,8 @@ class DetailStatisticsController extends AdminController
             'pagination' => false,
             'criteria' => $criteria,
         ));
-        
-        $this->render('view', array(
+
+        $this->render('usersView', array(
             'dataProvider' => $dataProvider,
         ));
     }
@@ -74,11 +109,41 @@ class DetailStatisticsController extends AdminController
     /**
      * Deleting session info
      */
-    public function actionDelete($sessionId)
+    public function actionUsersDelete($sessionId)
     {
         $model = UserLogsModel::model()->deleteAll('sessionId=:sessionId', array(':sessionId' => $sessionId));
         if (!isset($_GET['ajax']))
             $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+    }
+
+    /**
+     * This is the default 'index' action that is invoked
+     * when an action is not explicitly requested by users.
+     */
+    public function actionPages()
+    {
+        $result = Yii::app()->db->createCommand()
+                ->select('id, pageUrl, 
+                        COUNT(*) as users,
+                        SEC_TO_TIME(SUM(spentTime)/COUNT(pageUrl)) as meanTime,
+                        COUNT(spentTime) as failPercent,
+                        (COUNT(*) - COUNT(spentTime))*100/COUNT(*) as outPercent
+                        ')
+//                count(SEC_TO_TIME(spentTime)<"00:00:02") as failPercent
+                ->from(UserLogsModel::model()->tableName())
+                ->group('pageUrl')
+                ->order('users DESC')
+                ->queryAll();
+        $dataProvider = new CArrayDataProvider($result, array(
+//            'pagination' => array(
+//                'pageSize' => 10,
+//            )
+            'pagination' => false
+        ));
+
+        $this->render('pages', array(
+            'dataProvider' => $dataProvider,
+        ));
     }
 
     /**

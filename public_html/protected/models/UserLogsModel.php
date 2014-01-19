@@ -9,6 +9,7 @@
  * @property string $userIp
  * @property string $browser
  * @property string $operatingSystem
+ * @property string $resolution
  * @property string $userName
  * @property string $entryTime
  * @property string $spentTime
@@ -34,14 +35,14 @@ class UserLogsModel extends CActiveRecord
 // NOTE: you should only define rules for those attributes that
 // will receive user inputs.
         return array(
-            array('sessionId, userIp, browser, operatingSystem, userName, entryTime, refererUrl, pageUrl', 'required'),
+            array('sessionId, userIp, browser, operatingSystem, resolution, userName, entryTime, refererUrl, pageUrl', 'required'),
             array('sessionId, browser, userName', 'length', 'max' => 100),
             array('userIp, operatingSystem', 'length', 'max' => 25),
             array('refererUrl, pageUrl', 'length', 'max' => 200),
             array('spentTime', 'safe'),
 // The following rule is used by search().
 // @todo Please remove those attributes that should not be searched.
-            array('id, sessionId, userIp, browser, operatingSystem, userName, entryTime, spentTime, refererUrl, pageUrl', 'safe', 'on' => 'search'),
+            array('id, sessionId, userIp, browser, operatingSystem, resolution, userName, entryTime, spentTime, refererUrl, pageUrl', 'safe', 'on' => 'search'),
         );
     }
 
@@ -67,6 +68,7 @@ class UserLogsModel extends CActiveRecord
             'userIp' => 'Ip пользователя',
             'browser' => 'Браузер',
             'operatingSystem' => 'Операционная система',
+            'resolution' => 'Разрешение экрана',
             'userName' => 'Имя пользователя',
             'entryTime' => 'Начальное время',
             'spentTime' => 'Общее время',
@@ -98,6 +100,7 @@ class UserLogsModel extends CActiveRecord
         $criteria->compare('userIp', $this->userIp, true);
         $criteria->compare('browser', $this->browser, true);
         $criteria->compare('operatingSystem', $this->operatingSystem, true);
+        $criteria->compare('resolution', $this->resolution, true);
         $criteria->compare('userName', $this->userName, true);
         $criteria->compare('entryTime', $this->entryTime, true);
         $criteria->compare('spentTime', $this->spentTime, true);
@@ -118,6 +121,53 @@ class UserLogsModel extends CActiveRecord
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
+    }
+
+    /**
+     * Displaying percent "%"
+     */
+    public static function percent($value)
+    {
+        $valueArray = explode('.', $value);
+        if (0 < $valueArray[1]) {
+            return sprintf("%0.2f", $value) . '%';
+        } else {
+            return $valueArray[0] . '%';
+        }
+    }
+
+    public static function getMonth()
+    {
+        $monthName = array(
+            '01' => "Январь",
+            '02' => "Февраль",
+            '03' => "Март",
+            '04' => "Апрель",
+            '05' => "Май",
+            '06' => "Июнь",
+            '07' => "Июль",
+            '08' => "Август",
+            '09' => "Сентябрь",
+            '10' => "Октябрь",
+            '11' => "Ноябрь",
+            '12' => "Декабрь"
+        );
+
+        $date = new DateTime();
+
+        for ($i = 0; $i < 12; $i++) {
+            $dateInfo = $date->modify('-1 month');
+            $month[] = '\'' . $monthName[$date->format('m')] . '\'';
+        }
+        echo '<pre>';
+
+
+        $month = implode(', ', $month);
+
+//        var_dump($month);
+        $monthString = $month;
+        var_dump($monthString);
+        return $monthString;
     }
 
 }

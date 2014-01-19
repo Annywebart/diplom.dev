@@ -80,6 +80,47 @@ class SiteController extends Controller
     {
         $this->layout = '//layouts/mainLight';
 
+        // begin eauth
+        $service = Yii::app()->request->getQuery('service');
+        if (isset($service)) {
+            $authIdentity = Yii::app()->eauth->getIdentity($service);
+            $authIdentity->redirectUrl = Yii::app()->user->returnUrl;
+            $authIdentity->cancelUrl = $this->createAbsoluteUrl('site/login');
+
+            if ($authIdentity->authenticate()) {
+                $identity = new ServiceUserIdentity($authIdentity);
+
+                // successful entry
+                if ($identity->authenticate()) {
+                    Yii::app()->user->login($identity);
+                    // save the user's attributes in session
+                    $session = Yii::app()->session;
+                    $session['eauth_profile'] = $authIdentity->attributes;
+
+                    $model = UsersModel::model()->find('email=:email', array(':email' => $authIdentity->email));
+                    if (NULL == $model) {
+                        $userModel = new UsersModel;
+
+                        $userModel->firstName = $authIdentity->name;
+                        $userModel->lastName = $authIdentity->lastname;
+//                        $userModel->gender = $authIdentity->gender;
+                        $userModel->email = $authIdentity->email;
+                        $userModel->type = UserTypesModel::USER;
+                        $userModel->save();
+                    }
+                    // redirect with closing popup window 
+                    $authIdentity->redirect(Yii::app()->createAbsoluteUrl('site/index'));
+                } else {
+                    // close the popup window and redirect to cancelUrl
+                    $authIdentity->cancel();
+                }
+            }
+
+            // something went wrong, redirect to the login page
+            $this->redirect(array('site/login'));
+        }
+        // end eauth
+
         $model = new LoginForm;
 
         // if it is ajax validation request
@@ -123,7 +164,7 @@ class SiteController extends Controller
         $model->unsetAttributes();  // clear any default values
         if (isset($_GET['LecturersModel']))
             $model->attributes = $_GET['LecturersModel'];
-        
+
         $this->render('prepodavately', array('model' => $model));
     }
 
@@ -138,19 +179,19 @@ class SiteController extends Controller
         $model->unsetAttributes();  // clear any default values
         if (isset($_GET['FacultetsModel']))
             $model->attributes = $_GET['FacultetsModel'];
-        
+
         $this->render('fakultety', array('model' => $model));
     }
 
     public function actionPages($alias)
     {
         $model = PagesModel::model()->findByAttributes(array('alias' => $alias));
-        
+
         if ($model === null) {
             throw new CHttpException(404, 'The requested page does not exist.');
             return false;
         }
-        
+
         $this->render('pages', array('model' => $model));
     }
 

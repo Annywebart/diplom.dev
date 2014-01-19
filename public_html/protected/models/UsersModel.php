@@ -41,18 +41,18 @@ class UsersModel extends CActiveRecord
 // NOTE: you should only define rules for those attributes that
 // will receive user inputs.
         return array(
-            array('firstName, lastName, email, type, avatar, password, dateCreate', 'required'),
-            array('firstName, lastName, email, type', 'ext.validators.EmptyValidator', 'allowEmpty' => false),
+            array('firstName, email, type', 'required'),
+//            array('firstName, lastName, email, type', 'ext.validators.EmptyValidator', 'allowEmpty' => false),
             array('type', 'numerical', 'integerOnly' => true),
             array('lastLogin', 'safe'),
             array('firstName, lastName', 'length', 'max' => 50),
             array('email, avatar', 'length', 'max' => 100),
             array('password', 'length', 'max' => 200),
             array('lastLogin', 'safe'),
-            array('password', 'compare', 'compareAttribute' => 'confirm', 'allowEmpty' => false),
+//            array('password', 'compare', 'compareAttribute' => 'confirm', 'allowEmpty' => false),
             //array('email', 'email', 'message' => "The email isn't correct", 'allowEmpty' => false),
             array('email', 'unique', 'attributeName' => 'email'),
-            array('confirm', 'safe'),
+//            array('confirm', 'safe'),
 // The following rule is used by search().
 // @todo Please remove those attributes that should not be searched.
             array('id, firstName, lastName, email, type, avatar, password, lastLogin, dateCreate', 'safe', 'on' => 'search'),
@@ -166,52 +166,52 @@ class UsersModel extends CActiveRecord
     /**
      * Event for coco uploader
      */
-    public function onFileUploaded($fullFileName, $userdata, $results)
-    {
-        //Save to session
-        $this->onAfterFileUploaded($fullFileName, 'avatar');
-    }
+//    public function onFileUploaded($fullFileName, $userdata, $results)
+//    {
+//        //Save to session
+//        $this->onAfterFileUploaded($fullFileName, 'avatar');
+//    }
 
-    public function behaviors()
-    {
-        return array(
-            'CocoFileBehavior' => array(
-                'class' => 'application.models.behaviors.CocoFileBehavior',
-                'path' => Yii::getPathOfAlias('webroot') . '/uploads/',
-                'url' => Yii::app()->getBaseUrl(true) . '/uploads/',
-                'fields' => array('avatar'),
-                'primaryKey' => 'id',
-            )
-        );
-    }
+//    public function behaviors()
+//    {
+//        return array(
+//            'CocoFileBehavior' => array(
+//                'class' => 'application.models.behaviors.CocoFileBehavior',
+//                'path' => Yii::getPathOfAlias('webroot') . '/uploads/',
+//                'url' => Yii::app()->getBaseUrl(true) . '/uploads/',
+//                'fields' => array('avatar'),
+//                'primaryKey' => 'id',
+//            )
+//        );
+//    }
 
     /**
      * Action for encrypting raw password before updating user record
      */
-    public function beforeSave()
-    {
-        if (parent::beforeSave()) {
-            if (!$this->isNewRecord) {
-                if (empty($this->confirm) && empty($this->password)) {
-                    $this->password = $this->initialPassword;
-                } else {
-                    $this->password = MemberModel::encrypt($this->password);
-                }
-            } elseif ($this->isNewRecord && !empty($this->confirm)) {
-                $this->password = MemberModel::encrypt($this->password);
-            }
-        }
-        return true;
-    }
+//    public function beforeSave()
+//    {
+//        if (parent::beforeSave()) {
+//            if (!$this->isNewRecord) {
+//                if (empty($this->confirm) && empty($this->password)) {
+//                    $this->password = $this->initialPassword;
+//                } else {
+//                    $this->password = MemberModel::encrypt($this->password);
+//                }
+//            } elseif ($this->isNewRecord && !empty($this->confirm)) {
+//                $this->password = MemberModel::encrypt($this->password);
+//            }
+//        }
+//        return true;
+//    }
 
     /**
      * Clear password for empty field
      */
-    public function afterFind()
-    {
-        $this->initialPassword = $this->password;
-        $this->password = null;
-
-        parent::afterFind();
-    }
+//    public function afterFind()
+//    {
+//        $this->initialPassword = $this->password;
+//        $this->password = null;
+//
+//        parent::afterFind();
+//    }
 }
