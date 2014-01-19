@@ -1,3 +1,4 @@
+<h1>Общая статистика</h1>
 <ul class="nav nav-tabs">
     <li class="active">
         <a href="javascript:void(0)">Просмотры сайта</a>
@@ -11,14 +12,25 @@
 </ul>
 
 <div class="well well-small">
+    <b>За все время:</b>
     <table>
         <tr>
-            <td>Просмотров сайта:</td>
-            <td><?php echo $info['totalSiteViews']; ?></td>
-        </tr>
-        <tr>
-            <td>Просмотров страниц:</td>
-            <td><?php echo $info['totalPagesViews']; ?></td>
+            <td class="col">
+                <tr>
+                    <td>Количество посетителей:</td>
+                    <td><?php echo $info['totalSiteViews']; ?></td>
+                </tr>
+                <tr>
+                    <td>Просмотров страниц:</td>
+                    <td><?php echo $info['totalPagesViews']; ?></td>
+                </tr>
+            <td>
+            <td class="col">
+                <tr>
+                    <td>Один пользователь в среднем просматривает </td>
+                    <td><?php echo $info['totalPagesViews']/$info['totalSiteViews'] ?> страниц</td>
+                </tr>
+            </td>
         </tr>
     </table>
 </div>

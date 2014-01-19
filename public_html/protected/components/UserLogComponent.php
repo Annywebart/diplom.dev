@@ -19,6 +19,7 @@ class UserLogComponent extends CApplicationComponent
         
         if ('/index.php/js/jquery.min.js' !== $pageUrl && '/index.php/js/lib/parsley/parsley.min.js' !== $pageUrl) {
         
+            
             $criteria = new CDbCriteria();
             $criteria->condition = 'sessionId=:sessionId';
             $criteria->params = array('sessionId' => $sessionId);
@@ -51,6 +52,7 @@ class UserLogComponent extends CApplicationComponent
                 $model->userName = Yii::app()->user->getName();
                 $model->browser = 'Firefox';
                 $model->operatingSystem = 'Windows 7'; //переделать
+                $model->resolution = '1600x900'; //переделать
                 $model->entryTime = date('Y-m-d H:i:s');
                 $model->refererUrl = $pageUrl;  //переделать
                 $model->pageUrl = $pageUrl;

@@ -5,9 +5,9 @@
     function drawChart() {
         var dataBrowser = google.visualization.arrayToDataTable([
             ['Браузеры', 'Количество'],
-            <?php foreach ($browser as $item): ?>
-               ['<?php echo $item['browser']?>', <?php echo $item['browserCount']?>], 
-            <?php endforeach; ?>
+<?php foreach ($browser as $item): ?>
+                ['<?php echo $item['browser'] ?>', <?php echo $item['browserCount'] ?>],
+<?php endforeach; ?>
         ]);
 
         var optionsBrowser = {
@@ -17,9 +17,9 @@
 
         var dataOS = google.visualization.arrayToDataTable([
             ['Операционные системы', 'Количество'],
-            <?php foreach ($os as $item): ?>
-               ['<?php echo $item['operatingSystem']?>', <?php echo $item['osCount']?>], 
-            <?php endforeach; ?>
+<?php foreach ($os as $item): ?>
+                ['<?php echo $item['operatingSystem'] ?>', <?php echo $item['osCount'] ?>],
+<?php endforeach; ?>
         ]);
 
         var optionsOS = {
@@ -29,9 +29,9 @@
 
         var dataResolution = google.visualization.arrayToDataTable([
             ['Операционные системы', 'Количество'],
-            <?php foreach ($resolution as $item): ?>
-               ['<?php echo $item['resolution']?>', <?php echo $item['resolutionCount']?>], 
-            <?php endforeach; ?>
+<?php foreach ($resolution as $item): ?>
+                ['<?php echo $item['resolution'] ?>', <?php echo $item['resolutionCount'] ?>],
+<?php endforeach; ?>
         ]);
 
         var optionsResolution = {
@@ -51,7 +51,7 @@
     }
 </script>
 
-
+<h1>Общая статистика</h1>
 <ul class="nav nav-tabs">
     <li class="">
         <a href="<?php echo Yii::app()->createAbsoluteUrl('admin/basicStatistics/index'); ?>">Просмотры сайта</a>
@@ -64,8 +64,22 @@
     </li>
 </ul>
 
+<?php
+$this->widget(
+    'bootstrap.widgets.TbTabs', array(
+        'type' => 'pills',
+        'tabs' => array(
+            array('label' => 'Браузеры', 'active' => true, 'content' => '<div id="browser-chart" style="width: 900px; height: 500px;"></div>'),
+            array('label' => 'Операционные системы', 'content' => '<div id="os-chart" style="width: 900px; height: 500px;"></div>'),
+            array('label' => 'Разрешение экранов', 'content' => '<div id="resolution-chart" style="width: 900px; height: 500px;"></div>'),
+        ),
+    )
+);
+?>
+
+<!--
 <div id="browser-chart" style="width: 900px; height: 500px;"></div>
 
 <div id="os-chart" style="width: 900px; height: 500px;"></div>
 
-<div id="resolution-chart" style="width: 900px; height: 500px;"></div>
+<div id="resolution-chart" style="width: 900px; height: 500px;"></div>-->

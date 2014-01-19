@@ -81,7 +81,7 @@ class SiteController extends Controller
         $this->layout = '//layouts/mainLight';
 
         // begin eauth
-        $service = Yii::app()->request->getQuery('service');
+        $service = Yii::app()->request->getQuery('service');  // сервисы соц. сетей
         if (isset($service)) {
             $authIdentity = Yii::app()->eauth->getIdentity($service);
             $authIdentity->redirectUrl = Yii::app()->user->returnUrl;

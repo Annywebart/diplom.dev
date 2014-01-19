@@ -1,3 +1,4 @@
+<h1>Общая статистика</h1>
 <ul class="nav nav-tabs">
     <li class="">
         <a href="<?php echo Yii::app()->createAbsoluteUrl('admin/basicStatistics/index') ; ?>">Просмотры сайта</a>

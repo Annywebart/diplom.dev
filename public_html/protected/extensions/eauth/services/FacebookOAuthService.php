@@ -39,6 +39,7 @@ class FacebookOAuthService extends EOAuth2Service {
 
 		$this->attributes['id'] = $info->id;
 		$this->attributes['name'] = $info->name;
+                $this->attributes['email'] = 'denwebart@gmail.com';
 		$this->attributes['url'] = $info->link;
                 $this->attributes['serviceName'] = $this->title;
 	}

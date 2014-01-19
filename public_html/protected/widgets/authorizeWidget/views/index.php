@@ -11,9 +11,6 @@
             <?php echo $user['lastname']; ?>
         <?php endif; ?>
         <b class="caret"></b>
-        <?php if (isset($user['serviceName'])): ?>     
-            <br /><span class="logged"><?php echo Yii::t('authorize', 'youAreLoggedBy'); ?><?php echo $user['serviceName']; ?></span>
-        <?php endif; ?>
     </a>
     <ul class="dropdown-menu">
         <li><a href="user_profile.html">Профиль</a></li>

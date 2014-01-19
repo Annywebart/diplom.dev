@@ -1,12 +1,5 @@
 <?php
 
-/**
- * 
- * @link http://www.zfort.com/
- * @copyright Copyright &copy; 2000-2013 Zfort Group
- * @license http://www.zfort.com/terms-of-use
- */
-
 class UserLogFilter extends CFilter
 {
     protected function preFilter($filterChain)

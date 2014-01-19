@@ -42,8 +42,8 @@
 
         <?php echo $content; ?>
 
-        <script src="js/jquery.min.js"></script>
-        <script src="js/lib/parsley/parsley.min.js"></script>
+        <!--<script src="js/jquery.min.js"></script>-->
+        <!--<script src="js/lib/parsley/parsley.min.js"></script>-->
     </body>
 </html>
 

@@ -88,7 +88,7 @@
                                 <div class="accordion-inner">
                                     <ul class="nav nav-list">
                                         <li><?php echo CHtml::link('Общая статистика', Yii::app()->createAbsoluteUrl('admin/basicStatistics/index')) ?></li>
-                                        <li><?php echo CHtml::link('Подробная статистика', Yii::app()->createAbsoluteUrl('admin/detailStatistics/index')) ?></li>
+                                        <li><?php echo CHtml::link('Подробная статистика', Yii::app()->createAbsoluteUrl('admin/detailStatistics/users')) ?></li>
                                     </ul>
                                 </div>
                             </div>

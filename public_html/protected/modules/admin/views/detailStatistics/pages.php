@@ -1,16 +1,25 @@
+<h1>Подробная статистика</h1>
+<ul class="nav nav-tabs">
+    <li class="">
+        <a href="<?php echo Yii::app()->createAbsoluteUrl('admin/detailStatistics/users'); ?>">Информация о пользователях</a>
+    </li>
+    <li class="active">
+        <a href="javascript:void(0)">Просмотры страниц</a>
+    </li>
+</ul>
+
 <?php
-$this->widget(
-        'bootstrap.widgets.TbBreadcrumbs', array(
-        'homeLink' => false,
-        'links' => array(
-            'Главная' => Yii::app()->createAbsoluteUrl('admin/default/index'),
-            'Подробная статистика' => Yii::app()->createAbsoluteUrl('admin/detailStatistics/index'),
-            'Информация о страницах',
-)));
+//$this->widget(
+//        'bootstrap.widgets.TbBreadcrumbs', array(
+//        'homeLink' => false,
+//        'links' => array(
+//            'Главная' => Yii::app()->createAbsoluteUrl('admin/default/index'),
+//            'Подробная статистика' => Yii::app()->createAbsoluteUrl('admin/detailStatistics/index'),
+//            'Информация о страницах',
+//)));
 ?>
 
-<h1>Подробная информация о просмотрах страниц</h1>
-<div class="clearfix"></div>
+<h3>Подробная информация о просмотрах страниц</h3>
 
 <?php
 $this->widget('bootstrap.widgets.TbExtendedGridView', array(
@@ -73,40 +82,40 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
 //            )
 //        )
 //    ),
-    'extendedSummary' => array(
-        'title' => 'Общая статистика',
-        'columns' => array(
-            'browser' => array(
-                'label' => 'Используемые браузеры',
-                'types' => array(
-                    'Firefox' => array('label' => 'Firefox'),
-                    'Opera' => array('label' => 'Opera'),
-                    'Explorer' => array('label' => 'Explorer')
-                ),
-                'chartOptions' => array(
-                    'title' => 'Используемые браузеры',
-                ),
-                'class' => 'TbPercentOfTypeGooglePieOperation',
-            ),
-            'operatingSystem' => array(
-                'label' => 'Операционные системы',
-                'types' => array(
-                    'Windows 7' => array('label' => 'Windows 7'),
-                    'Linux' => array('label' => 'Linux'),
-                    'MacOS' => array('label' => 'MacOS')
-                ),
-                'chartOptions' => array(
-                    'title' => 'Операционные системы',
-                ),
-                'class' => 'TbPercentOfTypeGooglePieOperation',
-            )
-            
-        )
-    ),
-    'extendedSummaryOptions' => array(
-        'id' => 'statistics',
-        'class' => 'well pull-right',
-        'style' => ''
-    ),
+//    'extendedSummary' => array(
+//        'title' => 'Общая статистика',
+//        'columns' => array(
+//            'browser' => array(
+//                'label' => 'Используемые браузеры',
+//                'types' => array(
+//                    'Firefox' => array('label' => 'Firefox'),
+//                    'Opera' => array('label' => 'Opera'),
+//                    'Explorer' => array('label' => 'Explorer')
+//                ),
+//                'chartOptions' => array(
+//                    'title' => 'Используемые браузеры',
+//                ),
+//                'class' => 'TbPercentOfTypeGooglePieOperation',
+//            ),
+//            'operatingSystem' => array(
+//                'label' => 'Операционные системы',
+//                'types' => array(
+//                    'Windows 7' => array('label' => 'Windows 7'),
+//                    'Linux' => array('label' => 'Linux'),
+//                    'MacOS' => array('label' => 'MacOS')
+//                ),
+//                'chartOptions' => array(
+//                    'title' => 'Операционные системы',
+//                ),
+//                'class' => 'TbPercentOfTypeGooglePieOperation',
+//            )
+//            
+//        )
+//    ),
+//    'extendedSummaryOptions' => array(
+//        'id' => 'statistics',
+//        'class' => 'well pull-right',
+//        'style' => ''
+//    ),
 ));
 ?>
