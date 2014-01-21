@@ -16,6 +16,13 @@
         <div class="row">
             <div class="col-sm-9">
                 <h2>Факультет <?php echo $model->code; ?></h2>
+                
+                <?php if (!empty($model->head)): ?>
+                    <b>Декан: </b><?php echo $model->head->getThisFullName(true); ?>
+                <?php endif; ?>
+                    
+                <div class="hr-brown-2"></div>
+
                 <?php echo $model->description; ?>
 
             </div>

@@ -77,6 +77,18 @@ $this->widget(
 );
 ?>
 
+<!--<div class="row">
+    <div class="span6">
+        <div id="browser-chart" style="width: 550px; height: 350px;"></div>
+    </div>
+    <div class="span6">
+        <div id="os-chart" style="width: 550px; height: 350px;"></div>
+    </div>    
+    <div class="span6">
+        <div id="resolution-chart" style="width: 550px; height: 350px;"></div>
+    </div>
+</div>-->
+
 <!--
 <div id="browser-chart" style="width: 900px; height: 500px;"></div>
 

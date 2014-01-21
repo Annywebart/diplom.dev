@@ -168,15 +168,62 @@ class SiteController extends Controller
         $this->render('prepodavately', array('model' => $model));
     }
 
+    public function actionTimetable($id)
+    {
+        $model = LecturersModel::model()->find('id=:id', array(':id' => $id));
+        $lessons = LessonsModel::model()->findAll();
+
+        $day = array();
+        foreach (DayOfWeekModel::listData(true) as $key => $value) {
+            $day[$key] = NULL;
+
+            foreach ($lessons as $lesson) {
+                $day[$key][$lesson->id] = NULL;
+                foreach ($model->timetable as $item) {
+                    if ($item) {
+                        if ($key == $item->dayOfWeek) {
+                            if ($lesson->id == $item->idLesson) {
+                                $day[$key][$lesson->id] = $item;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+//        echo '<pre>';
+//        var_dump($day);
+//        die;
+
+        $this->render('timetable', array('model' => $model, 'day' => $day));
+    }
+
     public function actionKorpusa()
     {
-        $this->render('korpusa');
+        $model = new CorpusesModel('search');
+        $model->unsetAttributes();
+        if (isset($_GET['CorpusesModel']))
+            $model->attributes = $_GET['CorpusesModel'];
+
+        $this->render('korpusa', array('model' => $model));
+    }
+
+    public function actionClassrooms($id)
+    {
+        $criteria = new CDbCriteria();
+        $criteria->condition = 'idCorpus=:id';
+        $criteria->params = array(':id' => $id);
+        $criteria->order = 'level ASC';
+        
+        $model = ClassroomsModel::model()->findAll($criteria);
+        
+        $this->render('classrooms', array('model' => $model));
     }
 
     public function actionFakultety()
     {
         $model = new FacultetsModel('search');
-        $model->unsetAttributes();  // clear any default values
+        $model->unsetAttributes();
         if (isset($_GET['FacultetsModel']))
             $model->attributes = $_GET['FacultetsModel'];
 

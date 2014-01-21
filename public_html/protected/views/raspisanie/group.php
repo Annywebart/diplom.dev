@@ -3,7 +3,7 @@
         <ul>
             <li><?php echo CHtml::link('Главная', '/'); ?></li>
             <li><?php echo CHtml::link('Расписание', Yii::app()->createAbsoluteUrl('raspisanie/index')); ?></li>	
-            <li><?php echo CHtml::link('Факультет ' . $model->speciality->facultet->code, Yii::app()->createAbsoluteUrl('raspisanie/index')); ?></li>
+            <li><?php echo CHtml::link('Факультет ' . $model->speciality->facultet->code, Yii::app()->createAbsoluteUrl('raspisanie/facultet', array('id' => $model->speciality->facultet->id))); ?></li>
             <li><span>Группа <?php echo $model->title; ?></span></li>
         </ul>
     </div>
@@ -30,8 +30,6 @@
                 <div id="timetable-conteiner" class="row">
 
                     <?php foreach ($day as $key => $value): ?>
-                        <?php // var_dump($day) ; ?>
-                        <?php // var_dump($value) ;die; ?>
                         <div class="day col-sm-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">

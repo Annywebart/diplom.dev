@@ -56,6 +56,7 @@ class FacultetsModel extends CActiveRecord
             'specialities' => array(self::HAS_MANY, 'SpecialitiesModel', 'idFacultet'),
             'corpus' => array(self::BELONGS_TO, 'CorpusesModel', 'idCorpus'),
             'classroom' => array(self::BELONGS_TO, 'ClassroomsModel', 'idClassroom'),
+            'head' => array(self::BELONGS_TO, 'LecturersModel', 'headFacultet'),
         );
     }
 

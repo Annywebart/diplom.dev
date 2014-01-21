@@ -2,8 +2,8 @@
 <section id="breadcrumbs">
     <div class="container">
         <ul>
-            <li><a href="#">Ebro Admin</a></li>
-            <li><span>Dashboard 1</span></li>						
+            <li><?php echo CHtml::link('Главная', '/'); ?></li>
+            <li><span>Преподаватели</span></li>						
         </ul>
     </div>
 </section>
@@ -23,11 +23,10 @@
                     'emptyText' => 'Результатов не найдено',
                     'template' => "{items}\n{extendedSummary}",
                     'columns' => array(
-                        'idDepartment',
                         array(
                             'name' => 'idDepartment',
-                            'value' => '$data->department->title',
-//                                'filter' => () ? CHtml::listData(DepartmentsModel::model()->findAll(), 'id', 'title'),
+                            'value' => '$data->department->getTitle()',
+                            'filter' => CHtml::listData(DepartmentsModel::model()->findAll(), "id", "title"),
                         ),
                         'lastName',
                         'firstName',
@@ -39,27 +38,11 @@
                             'buttons' => array(
                                 'timetable' => array(
                                     'label' => 'Смотреть расписание',
-                                    'url' => 'array("site/timetable","id" => $data->id, "type" => "lecturer")',
-//                                        'imageUrl' => Yii::app()->params['styleSite'].'/images/icons/icon16-edit.png',
+                                    'url' => 'array("site/timetable", "id" => $data->id)',
                                 ),
                             ),
                         ),
                     ),
-//    'chartOptions' => array(
-//        'data' => array(
-//            'series' => array(
-//                array(
-//                    'name' => 'Hours worked',
-//                    'attribute' => 'hours'
-//                )
-//            )
-//        ),
-//        'config' => array(
-//            'chart' => array(
-//                'width' => 800
-//            )
-//        )
-//    ),
                 ));
                 ?>
 

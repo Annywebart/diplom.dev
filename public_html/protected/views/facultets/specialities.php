@@ -16,18 +16,18 @@
         <div class="row">
             <div class="col-sm-9">
                 <h2>Специальности факультета <?php echo $model->code; ?></h2>
-                <?php foreach ($model->specialities as $item): ?>
-
-                    <div class="col-sm-6 col-md-6">
-                        <div class="box_stat box_ico">
-                            <span class="stat_ico stat_ico_1">
-                                <?php echo $item->code; ?>
-                            </span>
-                            <?php echo $item->title; ?>
-                        </div>
-                    </div>                    
-
-                <?php endforeach; ?>
+                <div id="specialities">
+                    <?php if (NULL !== $model->specialities): ?>
+                        <?php foreach ($model->specialities as $item): ?>
+                            <div class="box_stat_circular">
+                                <span class="big green"><?php echo $item->code; ?></span> - 
+                                <span class="middle16"><?php echo $item->title; ?></span>
+                            </div>     
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        Результатов не найдено
+                    <?php endif; ?>
+                </div>
             </div>
             <div class="col-sm-3">
                 <div class="panel panel-default">

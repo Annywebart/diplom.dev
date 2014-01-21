@@ -7,7 +7,13 @@
         </div>
         <div class="box_stat_circular_middle">
             <div style="width: 70px; height: 70px; line-height: 70px; text-align: center; margin: 4px 0 0 4px;">
-                <span style="color: #444444; display: block; font-size: 22px; padding-top: 0px; color: #34495e"><?php echo $data->shortTitle; ?></span>
+                <span style="color: #444444; display: block; font-size: 22px; padding-top: 0px; color: #34495e">
+                    <?php if(!empty($data->shortTitle)): ?>
+                        <?php echo $data->shortTitle; ?>
+                    <?php else: ?>
+                        <i class="icon-check-empty"></i>
+                    <?php endif; ?>
+                </span>
             </div>
         </div>
         <div class="box_stat_circular_b">

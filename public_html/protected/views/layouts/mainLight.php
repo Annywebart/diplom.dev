@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name=viewport content="initial-scale=1, minimum-scale=1, width=device-width">
-        <title>Ebro Admin Login</title>
+        <title>Информационный сервис для студентов и преподавателей НТУ "ХПИ"</title>
         <link rel="stylesheet" href="<?php echo Yii::app()->params['styleSite']; ?>/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->params['styleSite']; ?>/css/todc-bootstrap.min.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->params['styleSite']; ?>/css/style.css">
@@ -35,7 +35,7 @@
         <header class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="dashboard1.html"></a>
+                    
                 </div>
             </div>
         </header>

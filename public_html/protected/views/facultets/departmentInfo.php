@@ -17,14 +17,17 @@
         <div class="row">
             <div class="col-sm-9">
                 <h2><?php echo $model->title; ?></h2>
+                
                 <?php echo $model->description; ?>
+
                 <div class="hr margin-top-20"></div>
+                 
                 <h3>Выпускающие специальности</h3>
-                
+
                 <?php foreach ($model->specialities as $item): ?>
-                    <?php echo $item->code;?> - <?php echo $item->title;?><br />
+                <span class="big green"><?php echo $item->code; ?></span> - <span class="middle"><?php echo $item->title; ?></span><br />
                 <?php endforeach; ?>
-                
+
             </div>
             <div class="col-sm-3">
                 <div class="panel panel-default">

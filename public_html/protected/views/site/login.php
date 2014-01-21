@@ -1,7 +1,11 @@
 <div class="login_wrapper">
     <div class="login_panel">
         <div class="login_head">
-            <h1></h1>
+            <div id="logo">
+                <a href="<?php echo Yii::app()->createAbsoluteUrl(Yii::app()->request->baseUrl); ?>">
+                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo-150.png"/>
+                </a>
+            </div>
         </div>
         <?php
         $form = $this->beginWidget('CActiveForm', array(

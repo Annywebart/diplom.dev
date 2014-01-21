@@ -13,26 +13,24 @@
 
 <div class="well well-small">
     <b>За все время:</b>
-    <table>
+    <div class="clearfix"></div>
+    <table style="width: 300px; float: left">
         <tr>
-            <td class="col">
-                <tr>
-                    <td>Количество посетителей:</td>
-                    <td><?php echo $info['totalSiteViews']; ?></td>
-                </tr>
-                <tr>
-                    <td>Просмотров страниц:</td>
-                    <td><?php echo $info['totalPagesViews']; ?></td>
-                </tr>
-            <td>
-            <td class="col">
-                <tr>
-                    <td>Один пользователь в среднем просматривает </td>
-                    <td><?php echo $info['totalPagesViews']/$info['totalSiteViews'] ?> страниц</td>
-                </tr>
-            </td>
+            <td style="width: 200px">Количество посетителей:</td>
+            <td style="width: 100px; font-size: 20px"><?php echo $info['totalSiteViews']; ?></td>
+        </tr>
+        <tr>
+            <td>Просмотров страниц:</td>
+            <td style="width: 100px; font-size: 20px"><?php echo $info['totalPagesViews']; ?></td>
         </tr>
     </table>
+    <table style="width: 400px; float: left">
+        <tr class="pull-right">
+            <td style="width: 300px">Один пользователь в среднем просматривает </td>
+            <td style="width: 100px; font-size: 20px"><?php echo round($info['totalPagesViews'] / $info['totalSiteViews']); ?> страниц</td>
+        </tr>
+    </table>
+    <div class="clearfix"></div>
 </div>
 
 <?php

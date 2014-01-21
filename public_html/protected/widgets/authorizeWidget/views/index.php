@@ -1,9 +1,10 @@
-<?php // var_dump($user); die; ?>
 <?php if (isset($user['id'])): ?> 
     <a href="#" class="dropdown-toggle user" data-toggle="dropdown">
         <?php if (isset($user['photo'])): ?>
             <img src="<?php echo $user['photo']; ?>" alt="" class="user_avatar">
-        <?php else: ?>
+        <?php elseif('Denis' == $user['name']): ?>
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/avatar-den.png" alt="" class="user_avatar"/>
+        <?php else: ?>    
             <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/avatar-mini.png" alt="" class="user_avatar"/>
         <?php endif; ?>
         <?php echo $user['name']; ?>

@@ -53,6 +53,7 @@ class CorpusesModel extends CActiveRecord
         return array(
             'departments' => array(self::HAS_MANY, 'DepartmentsModel', 'idCorpus'),
             'timetables' => array(self::HAS_MANY, 'TimetableModel', 'idCorpus'),
+            'classrooms' => array(self::HAS_MANY, 'ClassroomsModel', 'idCorpus'),
         );
     }
 

@@ -125,10 +125,10 @@ input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked:
 
 
 /* top header */
-#top_header {background:#f2f2f2;border-bottom:1px solid #e1e1e1;height:61px;padding:10px 0}
+#top_header {background:#f2f2f2;border-bottom:1px solid #e1e1e1;height:150px;padding:10px 0}
 
 /* main logo */
-#top_header .logo_main {display:inline-block;height:40px;line-height:40px}
+#top_header .logo_main {display:inline-block;height:150px;line-height:40px}
 
 /* search form */
 #top_header .main_search {padding:5px 0 0;margin:0;position:relative;z-index:101}

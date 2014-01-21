@@ -144,7 +144,7 @@ class DepartmentsModel extends CActiveRecord
      */
     public function getTitle()
     {
-        if(isset($this->shortTitle)) {
+        if(!empty($this->shortTitle)) {
             return $this->shortTitle;
         } else {
             return $this->title;

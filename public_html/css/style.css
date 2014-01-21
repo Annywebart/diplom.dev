@@ -16,7 +16,9 @@
     left: 300px;
     width: 600px;
 }
-
+#grid-facultets {
+    padding-top: 0 !important; 
+}
 #grid-facultets .button-column {
     width: 460px !important;
     padding-left: 0px;
@@ -84,6 +86,7 @@
 /* Groups of the facultets */
 
 #groups-conteiner {
+    width: 100%;
     padding: 0 15px;
     display: inline-block;
     box-sizing: content-box;
@@ -95,7 +98,33 @@
     border-left: 3px solid #0892CD;
     font: 100 20px/22px sans-serif;
     padding: 10px 20px;
+    margin: 0 0 0 10px;
+}
 
+#groups-conteiner .course {
+    height: 60px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+#groups-conteiner .course .large {
+    font-size: 30px;
+}
+.big {
+    font-size: 20px;
+}
+.middle {
+    font-size: 14px;
+}
+.middle16 {
+    font-size: 16px;
+}
+#groups-conteiner .brown-course {
+    border-bottom: 2px #9c5100 solid;
+    color: #9c5100;
+}
+#groups-conteiner .green-course {
+    border-bottom: 2px #48AC2E solid;
+    color: #48AC2E;
 }
 
 /* Timetable */
@@ -132,7 +161,34 @@
     width: 100%;
     border-bottom: 1px solid #D3D3D3;
 }
+.hr-brown-2 {
+    width: 100%;
+    border-bottom: 2px solid #9c5100;
+    margin: 10px 0;
+}
+
 .margin-top-10 {margin-top: 10px;}
 .margin-top-20 {margin-top: 20px;}
 .margin-bottom-10 {margin-bottom: 10px;}
 .margin-bottom-20 {margin-bottom: 20px;}
+
+
+.green {
+    color: #48AC2E;
+}
+
+#logo {
+    text-align: center;
+}
+
+#content .col-sm-9 {
+    text-align: justify;
+}
+
+#content .col-sm-9 img {
+    float: left;
+    margin: 0 10px 10px 0;
+}
+#specialities .box_stat_circular {
+    height: 30px !important;
+}

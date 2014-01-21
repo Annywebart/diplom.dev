@@ -1,8 +1,8 @@
 <section id="breadcrumbs">
     <div class="container">
         <ul>
-            <li><?php echo CHtml::link('Главная', '/') ; ?></li>
-            <li><?php echo CHtml::link('Расписание', Yii::app()->createAbsoluteUrl('raspisanie/index')) ; ?></li>	
+            <li><?php echo CHtml::link('Главная', '/'); ?></li>
+            <li><?php echo CHtml::link('Расписание', Yii::app()->createAbsoluteUrl('raspisanie/index')); ?></li>	
             <li><span>Факультет <?php echo $model->code; ?></span></li>
         </ul>
     </div>
@@ -20,14 +20,26 @@
                         <?php foreach ($model->specialities as $speciality): ?>
                             <?php if (!empty($speciality->groups)): ?>
                                 <?php foreach ($speciality->groups as $group): ?>
-                                    <?php echo CHtml::link(
-                                            $group->title, 
-                                            Yii::app()->createAbsoluteUrl('raspisanie/group', array('id' => $group->id)), 
-                                            array('class' => 'group')
-                                        );?>
+                                    <?php if (4 == $group->course): ?>
+                                        <div class="brown-course course">
+                                            <span class="large">4 курс</span>
+                                            <?php
+                                            echo CHtml::link(
+                                                    $group->title, Yii::app()->createAbsoluteUrl('raspisanie/group', array('id' => $group->id)), array('class' => 'group')
+                                            );
+                                            ?>
+                                        </div>
+                                    <?php elseif (6 == $group->course): ?>
+                                        <div class="green-course course">
+                                            <span class="large">6 курс</span>
+                                            <?php
+                                            echo CHtml::link(
+                                                    $group->title, Yii::app()->createAbsoluteUrl('raspisanie/group', array('id' => $group->id)), array('class' => 'group')
+                                            );
+                                            ?>
+                                        </div>
+                                    <?php endif; ?> 
                                 <?php endforeach; ?>
-                            <?php else: ?>
-                                <p>Результатов не найдено</p>
                             <?php endif; ?>
                         <?php endforeach; ?>
                     <?php else: ?>

@@ -28,32 +28,17 @@
         </div>
     </div>
 
-<!--    <nav id="sidebar">
-        <div class="sepH_b">
-            <a href="javascript:void(0)" id="text_nav_v_collapse" class="btn btn-default btn-xs">Collapse All</a>
-            <a href="javascript:void(0)" id="text_nav_v_expand" class="btn btn-default btn-xs">Expand All</a>
-        </div>
+    <nav id="sidebar">
         <ul id="text_nav_v" class="side_text_nav">
             <li>
-                <a href="javascript:void(0)"><span class="icon-puzzle-piece"></span>Components</a>
-                <ul>
-                    <li><a href="calendar.html">Calendar</a></li>
-                </ul>
+                <a href="javascript:void(0)"><span class="icon-puzzle-piece"></span>Возможности сервиса</a>
             </li>
             <li>
-                <a href="javascript:void(0)"><span class="icon-beaker"></span>UI Elements</a>
-                <ul>
-                    <li><a href="alerts_buttons.html">Alerts, Buttons</a></li>
-                    <li><a href="grid.html">Grid</a></li>
-                </ul>
+                <a href="javascript:void(0)"><span class="icon-question-sign"></span>Как пользоваться</a>
             </li>
             <li>
-                <a href="javascript:void(0)"><span class="icon-leaf"></span>Other Pages</a>
-                <ul>
-                    <li><a href="blank.html">Blank page</a></li>
-                    <li><a href="chat.html">Chat</a></li>
-                </ul>
+                <a href="javascript:void(0)"><span class="icon-envelope-alt"></span>Контактная информация</a>
             </li>
         </ul>				
-    </nav>-->
+    </nav>
 </section>
