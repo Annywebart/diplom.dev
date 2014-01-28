@@ -192,3 +192,7 @@
 #specialities .box_stat_circular {
     height: 30px !important;
 }
+.main {
+    font-size: 16px;
+    line-height: 34px;
+}

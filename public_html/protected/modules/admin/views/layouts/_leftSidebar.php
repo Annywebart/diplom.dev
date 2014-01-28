@@ -4,11 +4,11 @@
             <div class="antiscroll-content">
 
                 <div class="sidebar_inner">
-                    <form action="search_page.html" class="input-append" method="post">
-                        <input autocomplete="off" name="query" class="search_query input-medium" size="16" type="text"
-                               placeholder="Поиск..."/>
-                        <button type="submit" class="btn"><i class="icon-search"></i></button>
-                    </form>
+                    <div id="logo">
+                        <a href="<?php echo Yii::app()->createAbsoluteUrl(Yii::app()->request->baseUrl); ?>">
+                            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo-150.png"/>
+                        </a>
+                    </div>
                     <div id="side_accordion" class="accordion">
 
                         <div class="accordion-group">
@@ -119,18 +119,18 @@
                     <div class="push"></div>
                 </div>
 
-<!--                <div class="sidebar_info">
-                    <ul class="unstyled">
-                        <li>
-                            <span class="act act-danger">65</span>
-                            <strong>Новые сообщения</strong>
-                        </li>
-                        <li>
-                            <span class="act act-success">10</span>
-                            <strong>Пользователи он-лайн</strong>
-                        </li>
-                    </ul>
-                </div>-->
+                <!--                <div class="sidebar_info">
+                                    <ul class="unstyled">
+                                        <li>
+                                            <span class="act act-danger">65</span>
+                                            <strong>Новые сообщения</strong>
+                                        </li>
+                                        <li>
+                                            <span class="act act-success">10</span>
+                                            <strong>Пользователи он-лайн</strong>
+                                        </li>
+                                    </ul>
+                                </div>-->
 
             </div>
         </div>

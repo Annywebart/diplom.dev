@@ -29,12 +29,8 @@
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
-                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="brand" href="/admin/default/index">Project name</a>
+                    
+                    <a class="brand" href="/admin/default/index">Информационный сервис для студентов и преподавателей НТУ "ХПИ"</a>
 
                     <div class="nav-collapse collapse">
                         <?php
@@ -46,14 +42,6 @@
                         ));
                         ?>
                         <ul class="nav user_menu pull-right">
-                            <li class="hidden-phone hidden-tablet">
-                                <div class="nb_boxes clearfix">
-                                    <a data-toggle="modal" data-backdrop="static" href="#myMail" class="label ttip_b"
-                                       title="New messages">25 <i class="splashy-mail_light"></i></a>
-                                    <a data-toggle="modal" data-backdrop="static" href="#myTasks" class="label ttip_b"
-                                       title="New tasks">10 <i class="splashy-calendar_week"></i></a>
-                                </div>
-                            </li>
                             <li class="divider-vertical hidden-phone hidden-tablet"></li>
                             <li class="dropdown">
                                 <?php $this->widget('application.widgets.authorizeWidget.AuthorizeWidget'); ?>
